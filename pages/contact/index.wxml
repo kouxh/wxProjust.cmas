@@ -1,0 +1,27 @@
+<!-- pages/contact/index.wxml -->
+<view class="page-contact-index">
+    <view class="contact-header">
+        <image src="/assets/img/banner.png" alt=""></image>
+    </view>
+    <view class="contact-content">
+        <view class="contact-way">
+            <view class="way-left"></view>
+            <view class="way-right">
+                <text class="name">联系CMAS</text>
+                <text class="tel">联系电话：400-819-1255</text>
+                <text>联系邮箱：edit@chinamas.cn</text>
+            </view>
+        </view>
+        <view class="contact-box">
+            <image class="cont" src="/assets/img/cont1.png" mode="aspectFill"/>
+            <view class="mark-box">
+                  <text>CMAS产业研究</text>
+            </view>
+            <image class="cont1" src="/assets/img/cont2.png" mode="aspectFill"/>
+              <view class="mark-box1">
+                  <text>合作招募</text>
+            </view>
+        </view>
+          
+    </view>
+</view>

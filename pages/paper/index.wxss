@@ -1,0 +1,63 @@
+.page-paper-index {
+    background: #f8f8f8;
+    height: 100%;
+    width: 100%;
+}
+.page-paper-index .paper-header {
+    width: 100%;
+    height: 334rpx;
+    background-color: #fff;
+}
+.page-paper-index .paper-header image {
+    width: 100%;
+    height: 312rpx;
+    object-fit: cover;
+}
+.page-paper-index .paper-content {
+    margin-top: 16rpx;
+    /* height: 1000rpx; */
+    background-color: #fff;
+    margin-bottom: 200rpx;
+}
+.page-paper-index .paper-content .paper-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40rpx 34rpx 49rpx 14rpx;
+}
+.page-paper-index .paper-content .paper-title .title,
+.page-paper-index .paper-content .paper-title .time {
+    font-size: 32rpx;
+    color: #333;
+    letter-spacing: 0.52rpx;
+    font-weight: 700;
+}
+.page-paper-index .paper-content .paper-details {
+    padding: 0 30rpx;
+}
+.page-paper-index .paper-content .paper-details .every {
+    font-size: 34rpx;
+    color: #333;
+    letter-spacing: 5rpx;
+    padding-bottom: 50rpx;
+}
+.page-paper-index .paper-content .tip {
+    padding: 0 30rpx;
+    font-size: 34rpx;
+    color: #9d9d9d;
+    padding-bottom: 80rpx;
+    letter-spacing: 1rpx;
+}
+.page-paper-index .paper-content .tweets{
+font-weight: 700;
+font-size: 32rpx;
+color: #333333;
+letter-spacing: 1rpx;
+padding-left: 14rpx;
+padding-bottom: 28rpx;
+}
+.page-paper-index .paper-content .tweets-title{
+padding: 0 30rpx 126rpx;
+font-size: 32rpx;
+color: #333333;
+}

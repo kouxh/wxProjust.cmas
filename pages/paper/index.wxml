@@ -1,0 +1,52 @@
+<!-- pages/paper/index.wxml -->
+<view class="page page-paper-index">
+    <view class="paper-header">
+        <image src="/assets/img/banner.png" alt=""></image>
+    </view>
+    <view class="paper-content">
+        <view class="paper-title">
+            <view class="title">【CMAS早报】</view>
+            <view class="time">2020.6.23 星期二</view>
+        </view>
+        <view class="paper-details">
+            <view class="every">
+                1.全国会计专业技术资格考试领导小组办公室发布《关于调整2020年度全国会计专业技术资格考试考务日程安排及有关事项的通知》。2020年度全国会计专业技术初级资格考试日期调整为2020年8月29日至9月4日，9月9日至10日，分两个阶段进行。9月11日作为应急预留批次保留。2020年度全国会计专业技术中级资格考试仍于2020年9月5日至7日举行，共3批次。
+            </view>
+            <view class="every">
+               2. 税务部门与公安、教育等部门合作，依法查处了一批冒用个人身份信息偷逃税款的违法企业，其中大多被冒用身份信息者为在校大学生。税务部门也提醒广大自然人纳税人注意保护好个人身份信息，及时关注个人的申报情况，如发现身份信息被冒用，应立即向公安部门或税务部门举报。
+            </view>
+            <view class="every">
+                3. 十三届全国人大常委会第十九次会议表决通过新修订的档案法，将自2021年1月1日起 施行。
+            </view>
+            <view class="every">
+                4. 中央军委办公厅印发《军队领导干部经济责任审计规定》。
+            </view>
+            <view class="every">
+               5. 管理会计研究发布深度好文：新刊速递 | 疫情之下，数字化“赋能”
+            </view>
+        </view>
+        <view class="tip">
+            （以上信息来源：财政部、中国会计视野、 管理会计研究）
+        </view>
+          <view class="tweets-box">
+              <view class="tweets">
+                  【官网推文】
+              </view>
+              <view class="tweets-title">
+                  <text>
+                      这里是推文内容1
+                  </text>
+                    <text>
+                      这里是推文内容2
+                  </text>
+                  <text>
+                      这里是推文内容3
+                  </text>
+              </view>
+                
+                
+          </view>
+            
+          
+    </view>
+</view>

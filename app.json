@@ -1,0 +1,55 @@
+{
+  "pages": [
+    "pages/index/index",
+    "custom-tab-bar/index",
+    "pages/paper/index",
+    "pages/contact/index",
+    "pages/member/index/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "CMAS大讲堂",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f8f8f8",
+    "backgroundColorTop": "#00f",
+    "onReachBottomDistance": 300,
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "custom": false,
+    "position": "bottom",
+    "color": "#7A7E83",
+    "selectedColor": "#4C87FF",
+    "borderStyle": "black",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "iconPath": "assets/img/tabs/course0.png",
+        "selectedIconPath": "assets/img/tabs/course.png",
+        "pagePath": "pages/index/index",
+        "text": "课程"
+      },
+      {
+        "iconPath": "assets/img/tabs/paper0.png",
+        "selectedIconPath": "assets/img/tabs/paper.png",
+        "pagePath": "pages/paper/index",
+        "text": "CMAS早报"
+      },
+      {
+        "iconPath": "assets/img/tabs/contact0.png",
+        "selectedIconPath": "assets/img/tabs/contact.png",
+        "pagePath": "pages/contact/index",
+        "text": "联系CMAS"
+      },
+      {
+        "iconPath": "assets/img/tabs/my0.png",
+        "selectedIconPath": "assets/img/tabs/my.png",
+        "pagePath": "pages/member/index/index",
+        "text": "我的"
+      }
+    ]
+  },
+  "debug": true,
+  "sitemapLocation": "sitemap.json"
+}

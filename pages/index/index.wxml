@@ -1,0 +1,21 @@
+<!--index.wxml-->
+<view class="container">
+	<view class="userinfo">
+		<button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+		<block wx:else>
+			<image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+			<text class="userinfo-nickname">{{userInfo.nickName}}</text>
+		</block>
+	</view>
+	<view class="usermotto">
+		<text class="user-motto">{{motto}}CMAS首页</text>
+		<view wx:for="{{array}}" wx:key="index">
+			{{index}}: {{item}}
+		</view>
+    <image mode='aspectFill' src="http://img.deiyou.net/upload/seller/goods/image/2019/10/17/9574f694625945a2b8a3390937944f84" />
+		<view wx:if="{{view == 'WEBVIEW'}}"> WEBVIEW </view>
+		<view wx:elif="{{view == 'APP'}}"> APP </view>
+		<view wx:else="{{view == 'MINA'}}"> MINA </view>
+		<i-button type="primary" bind:click="handleClick">这是一个按钮</i-button>
+	</view>
+</view>
