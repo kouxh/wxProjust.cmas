@@ -1,0 +1,33 @@
+<view class="page page-order-pay">
+  <view class="center">
+  <van-icon name="{{payType[activePay].icon}}" style="color:{{payType[activePay].color}}" class="wechar"/>
+    <view class="right">
+      <view class="price-text">共计金额</view>
+      <view class="price-text">
+        <view class="price-num">90.00</view>
+        / 元
+      </view>
+    </view>
+  </view>
+  <!-- 支付方式列表 -->
+  <view class="pay-list-box">
+    <view class="pay-list-each" wx:for="{{payType}}" wx:for-item="payD" wx:for-index="index" wx:key="index" data-index="{{index}}" bind:tap="selectPayFn">
+      <view class="pay-title-box">
+        <van-icon name="{{payD.icon}}" style="color:{{payD.color}}" class="pay-title-icon"/>
+        <view class="pay-title-name">
+          {{payD.name}}
+          {{balanceNum!='--'&&payD.type==2?'(余额:￥'+balanceNum+')':''}}
+        </view>
+      </view>
+      <van-icon wx:if="{{index==activePay}}" name="checked" class="pay-icon-box pay-icon-true" />
+      <van-icon wx:if="{{index!=activePay}}" name="circle"  class=" pay-icon-box pay-icon-false"/>
+    </view>
+  </view>
+  <!-- 支付按钮 -->
+  <view class="button-btn-box {{isIphoneX?'IpX-Bottom':''}}" wx:if="{{payType.length}}">
+    <view class="button-btn-text" wx:if="{{repeatBool}}" bind:tap="goPayFn">
+      立即支付
+    </view>
+    <view class="button-btn-text" wx:if="{{!repeatBool}}">支付中…</view>
+  </view>
+</view>

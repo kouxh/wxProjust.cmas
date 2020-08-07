@@ -1,0 +1,21 @@
+<!-- pages/member/asset/index.wxml -->
+<view class="page-asset-index">
+    <view class="header"></view>
+    <view class="asset-content">
+        <view class="asset-title">
+            <van-icon name="wap-nav" size="20px" color="red" />
+            <view class="title">我的资产</view>
+        </view>
+        <view class="asset-data">
+            <view class="left">
+                <text class="num">3</text>
+                <text class="integral">积分</text>
+            </view>
+            <view class="middle"></view>
+            <view class="right">
+                <text class="num">0</text>
+                <text class="coupon">余额</text>
+            </view>
+        </view>
+    </view>
+</view>

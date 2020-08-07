@@ -1,0 +1,51 @@
+.page-login-index {
+    width: 100%;
+    min-height: 100vh;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: relative;
+}
+.page-login-index image {
+    width: 100%;
+    /* height: 100%; */
+    object-fit: cover;
+}
+.login-btn {
+    width: 386rpx;
+    height: 78rpx;
+    background-color: #040404;
+    border-radius: 39rpx;
+    font-size: 30rpx;
+    letter-spacing: 2rpx;
+    color: #fdfdfb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 560rpx;
+    left: 25%;
+}
+.phone-btn {
+    font-size: 26rpx;
+    letter-spacing: 2rpx;
+    color: #000;
+    position: absolute;
+    top: 684rpx;
+    left: 33%;
+    border-bottom: 2rpx solid #000;
+}
+.bind-tel {
+    width: 386rpx;
+    height: 78rpx;
+    background-color: #040404;
+    border-radius: 39rpx;
+    font-size: 30rpx;
+    letter-spacing: 2rpx;
+    color: #fdfdfb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 560rpx;
+    left: 25%;
+}

@@ -1,0 +1,97 @@
+.login-box .login-btn {
+  padding: 18rpx 40rpx;
+  border-radius: 8rpx;
+  background: #06BF04;
+  font-size: 26rpx;
+  text-align: center;
+  color: #fff;
+}
+.login-box .van-modal {
+  background: rgba(0, 0, 0, 0.5);
+}
+.login-box .user-popup {
+  border-radius: 8rpx;
+}
+.login-box .user-popup .user-box {
+  border-radius: 8rpx;
+  padding: 0 36rpx 24rpx;
+  background: #fff;
+}
+.login-box .user-popup .user-box .user-title {
+  position: relative;
+  display: flex;
+}
+.login-box .user-popup .user-box .user-title text {
+  display: inline-block;
+  padding: 36rpx 0 20rpx;
+  font-size: 28rpx;
+  line-height: 28rpx;
+  color: #333;
+}
+.login-box .user-popup .user-box .user-title view {
+  position: absolute;
+  top: 28rpx;
+  right: 0;
+  font-size: 40rpx;
+  color: #ccc;
+  transform: rotate(45deg);
+}
+.login-box .user-popup .user-box input {
+  border-radius: 4rpx;
+  border: 2rpx solid #d3d3d3;
+  -webkit-appearance: none;
+  height: 80rpx;
+  box-sizing: border-box;
+  padding: 0 18rpx;
+  line-height: 80rpx;
+  font-size: 24rpx;
+  color: #333;
+  outline: none;
+}
+.login-box .user-popup .user-box input::-webkit-input-placeholder {
+  color: #ccc;
+}
+.login-box .user-popup .user-box .user-mobile input {
+  display: block;
+  width: 460rpx;
+}
+.login-box .user-popup .user-box .user-validate {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16rpx;
+}
+.login-box .user-popup .user-box .user-validate input {
+  width: 270rpx;
+}
+.login-box .user-popup .user-box .user-validate .user-btn {
+  border: 2rpx solid #06BF04;
+  width: 174rpx;
+  height: 76rpx;
+  text-align: center;
+  line-height: 80rpx;
+  font-size: 22rpx;
+  color: #06BF04;
+}
+.login-box .user-popup .user-box .user-validate .send-ing {
+  border: 2rpx solid #999;
+  color: #999;
+}
+.login-box .user-popup .user-box .user-login {
+  margin-top: 36rpx;
+  border-radius: 4rpx;
+  width: 460rpx;
+  height: 80rpx;
+  font-size: 28rpx;
+  line-height: 80rpx;
+  text-align: center;
+  color: #fff;
+  background: #06BF04;
+}
+
+/* 公用css */
+.user-ipt-text{
+  color: #333;
+}
+.user-ipt-pla{
+  color: #ccc;
+}

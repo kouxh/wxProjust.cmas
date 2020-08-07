@@ -1,0 +1,29 @@
+<view class="page-help-index">
+    <view class="header"></view>
+    <view class="help-content">
+        <view class="content-title">
+            <van-icon name="question" size="20px" color="red" />
+            <view class="title">我的常见问题解答</view>
+        </view>
+        <view class="question-box">
+            <view class="each">
+                <view class="question">这里是问题1</view>
+                <view class="result">
+                    答：9月11日作为应急预留批次保留。2020年度全国会计专业技术中级资格考试仍于2020年9月5日至7日举行，共3批次。
+                </view>
+            </view>
+            <view class="each">
+                <view class="question">这里是问题1</view>
+                <view class="result">
+                    答：9月11日作为应急预留批次保留。2020年度全国会计专业技术中级资格考试仍于2020年9月5日至7日举行，共3批次。
+                </view>
+            </view>
+            <view class="each">
+                <view class="question">这里是问题1</view>
+                <view class="result">
+                    答：9月11日作为应急预留批次保留。2020年度全国会计专业技术中级资格考试仍于2020年9月5日至7日举行，共3批次。
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

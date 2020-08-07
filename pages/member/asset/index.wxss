@@ -1,0 +1,52 @@
+.page-asset-index {
+    background-color: #f8f8f8;
+    min-height: 100vh;
+    width: 100%;
+}
+.header {
+    height: 20rpx;
+    background-color: #f8f8f8;
+}
+.page-asset-index .asset-content {
+    background-color: #fff;
+    height: 800rpx;
+    margin-bottom: 200rpx;
+}
+.page-asset-index .asset-content .asset-title {
+    padding: 38rpx 0 70rpx 30rpx;
+    display: flex;
+    align-items: center;
+}
+.page-asset-index .asset-content .asset-title .title {
+    font-size: 36rpx;
+    font-weight: 700;
+    color: #333;
+    padding-left: 20rpx;
+}
+.page-asset-index .asset-content .asset-data {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 40rpx;
+}
+.page-asset-index .asset-content .asset-data .left,
+.page-asset-index .asset-content .asset-data .right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.page-asset-index .asset-content .asset-data .left .num,
+.page-asset-index .asset-content .asset-data .right .num {
+    font-size: 50rpx;
+    color: #e33229;
+}
+.page-asset-index .asset-content .asset-data .left .integral,
+.page-asset-index .asset-content .asset-data .right .coupon {
+    font-size: 26rpx;
+    color: #999999;
+}
+.page-asset-index .asset-content .asset-data .middle {
+    height: 106rpx;
+    border: 1rpx solid #999999;
+    margin: 0 80rpx;
+}

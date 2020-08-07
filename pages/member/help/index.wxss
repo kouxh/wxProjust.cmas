@@ -1,0 +1,40 @@
+.page-help-index {
+    background-color: #f8f8f8;
+    min-height: 100vh;
+    width: 100%;
+}
+.header {
+    height: 20rpx;
+    background-color: #f8f8f8;
+}
+.page-help-index .help-content {
+    background-color: #fff;
+    margin-bottom: 200rpx;
+}
+.page-help-index .help-content .content-title {
+    padding: 38rpx 0 70rpx 30rpx;
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+}
+.page-help-index .help-content .content-title .title {
+    font-size: 36rpx;
+    font-weight: 700;
+    color: #333;
+    padding-left: 20rpx;
+}
+.page-help-index .help-content .question-box {
+    padding: 0 30rpx;
+    color: #333;
+}
+.page-help-index .help-content .question-box .question {
+    font-size: 32rpx;
+    letter-spacing: 2rpx;
+    font-weight: 600;
+}
+.page-help-index .help-content .question-box .result {
+    font-size: 34rpx;
+    letter-spacing: 0;
+    padding: 32rpx 0 66rpx;
+    letter-spacing: 2rpx;
+}

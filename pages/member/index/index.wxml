@@ -1,0 +1,116 @@
+<view class="page-member-index">
+	<view class="member-header">
+		<view class="header-left">
+			<view class="avatar">
+				<image  src='{{!hasUserInfo ?"/assets/img/avatar.png": userInfo.avatarUrl}}' mode="aspectFill" />
+			</view>
+			<view class="user-info">
+				<navigator hover-class="none" url="/pages/login/index" style="font-size:28rpx" wx:if="{{!hasUserInfo && canIUse}}"> 点击登录 </navigator>
+				<block wx:else>
+					<view class="nickname">{{userInfo.nickName}}</view>
+					<view class="level">VIP等级</view>
+				</block>
+
+			</view>
+		</view>
+		<view class="header-right">
+			<van-icon name="arrow" size="24px" />
+		</view>
+	</view>
+	  <!-- 手机绑定 -->
+  <!-- <button class="member-mobile-box" wx:if="{{userInfo&&!userInfo.has_bind_mobile}}" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
+    <view class="member-mobile-tips">登录手机号，同步全渠道信息</view>
+    <view class="member-mobile-btn">登录</view>
+  </button> -->
+	<view class="member-info">
+		<view class="every-info">
+			<text class="title">真实姓名</text>
+			<input class="input" value="{{info.name}}" type="text" placeholder="请输入姓名" bindinput="infoNameFn" placeholder-class="pla"/>
+		</view>
+		<view class="every-info">
+			<text class="title">注册手机</text>
+			<input class="input" type="number" value="{{info.tell}}" maxlength="11" placeholder="158****3426" bindinput="infoTellFn" placeholder-class="pla"/>
+		</view>
+		<view class="every-info">
+			<text class="title">注册邮箱</text>
+			<input class="input" type="text"  value="{{info.email}}" placeholder="请输入正确的邮箱" bindinput="infoEmailFn" placeholder-class="pla" />
+		</view>
+		<view class="every-info1">
+			<text class="title">性别</text>
+			<van-radio-group value="{{ info.sex }}" bind:change="onSwitch" class="radio-icon">
+				<van-radio name="1">男</van-radio>
+				<van-radio name="2">女</van-radio>
+			</van-radio-group>
+		</view>
+		<view class="every-info">
+			<text class="title" >生日</text>
+			<input class="input" value="{{ info.birthday }}" type="text" placeholder="YYYY-MM-DD" bindinput="" placeholder-class="pla"  bindtap="onDisplay"/>
+				
+		</view>
+		<van-popup
+		    catchtouchmove="true"
+				show="{{ calendarShow }}"
+				round
+				position="bottom"
+				custom-style="height: 50%"
+				bind:close="onClose"
+			>
+				<van-datetime-picker
+					type="datetime"
+					bind:cancel="onClose"
+					value="{{ currentDate }}"
+					bind:input="onInput"
+					min-date="{{ minDate }}"
+					formatter="{{ formatter }}"
+					bind:confirm="onConfirm"
+				/>
+		</van-popup>
+		
+		<view class="every-info" >
+		  <van-icon name="play" color="#ccc" class="up-iocn {{selectShow&&'select_img_rotate'}}"/>
+			<text class="title">年龄段</text>
+			<!-- <input class="input" bindtap='selectTap' value="{{ info.age}}" type="text" placeholder="年龄段" bindinput="" placeholder-class="pla"/> -->
+			<view class="input" bindtap='selectTap'>
+     		<text class='ms-text'>{{ info.age}}</text>
+  	  </view>
+					<!-- 下拉需要显示的列表 -->
+		<view class="select_box" wx:if="{{selectShow}}">
+        <view class="select_one " bindtap="mySelect" data-name="20-25">20-25</view>
+        <view class="select_one" bindtap="mySelect" data-name="25-35">25-35</view>
+        <view class="select_one" bindtap="mySelect" data-name="35-45">35-45</view>
+				<view class="select_one" bindtap="mySelect" data-name="45以上">45以上</view>
+    </view>
+		</view>
+	
+		<view class="every-info">
+			<text class="title">公司名称</text>
+			<input class="input"  value="{{ info.company}}" type="text" placeholder="" bindinput="infoConFn" placeholder-class="pla"/>
+		</view>
+		<view class="every-info">
+		  <van-icon name="play" color="#ccc" class="up-iocn {{selectOption&&'select_img_rotate'}}"/>
+			<text class="title">职位</text>
+			<!-- <input class="input" bindtap='selectOption' value="{{ info.occupation}}" type="text" placeholder="职位" bindinput="" placeholder-class="pla"/> -->
+			<view class="input" bindtap='selectOption'>
+     		<text class='ms-text'>{{ info.occupation}}</text>
+  	  </view>
+			<view class="select_box" wx:if="{{selectOption}}">
+        <view class="select_one " bindtap="optionSelect" data-name="管理者">管理者</view>     
+        <view class="select_one " bindtap="optionSelect" data-name="财务人">财务人</view>
+        <view class="select_one" bindtap="optionSelect" data-name="技术人">技术人</view>
+        <view class="select_one" bindtap="optionSelect" data-name="其他">其他</view>
+				<view class="select_one" bindtap="optionSelect" data-name="学生">学生</view>
+      </view>
+		</view>
+	</view>
+	<view class="change-btn" bindtap="changeInfo">修改资料</view>
+	<van-sidebar wx:if="{{isShow}}" active-key="{{ activeKey }}" class="side" bind:change="onChange">
+		<van-sidebar-item title="基本信息" />
+		<van-sidebar-item title="我的订单" />
+		<van-sidebar-item title="我的资产" />
+		<van-sidebar-item title="我的内容" />
+		<van-sidebar-item title="帮助中心" />
+		<!-- <van-sidebar-item title="杂志购买" /> -->
+	</van-sidebar>
+	<!-- 绑定手机号弹层 -->
+  <bindMobile wx:if='{{bindMobileShow}}' bind:bindEnd='bindEndFn' />
+</view>

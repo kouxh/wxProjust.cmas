@@ -1,0 +1,250 @@
+@import "/app.wxss";
+.page-detail-index {
+    background-color: #f8f8f8;
+    height: 100%;
+    width: 100%;
+}
+.header {
+    height: 20rpx;
+    background-color: #f8f8f8;
+}
+.detail-content {
+    background-color: #fff;
+    padding: 34rpx;
+    margin-bottom: 20rpx;
+}
+.each-item {
+    height: 470rpx;
+    margin-bottom: 20rpx;
+    border-bottom: 2rpx solid #eee;
+    /* position: relative; */
+}
+
+.each-item .tit {
+    font-size: 34rpx;
+    color: #333;
+    font-weight: 600;
+    padding-top: 20rpx;
+}
+.video-box{
+    position: relative;
+}
+.each-item .video-box .img {
+    width: 686rpx;
+    height: 330rpx;
+    object-fit: cover;
+    margin-top: 20rpx;
+    
+}
+.badge,
+.live .live-badge {
+    width: 66rpx;
+    height: 34rpx;
+    position: absolute;
+    top: 20rpx;
+    left: 0rpx;
+    background-color: #e33229;
+    border-radius: 6rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22rpx;
+    color: #fff;
+}
+.content-box {
+    border-bottom: 2rpx solid #eee;
+}
+.content-box .intro {
+    font-size: 36rpx;
+    color: #333;
+    font-weight: 700;
+    padding-top: 24rpx;
+}
+.content-box .content {
+    font-size: 34rpx;
+    color: #333;
+    letter-spacing: 5rpx;
+    padding: 34rpx 0;
+}
+.page-detail-index .recommend {
+    background-color: #fff;
+    margin-bottom: 200rpx;
+}
+.recommend-header {
+    height: 324rpx;
+    display: flex;
+    align-items: center;
+}
+.header-left {
+    width: 32rpx;
+    height: 260rpx;
+    background: #e32321;
+}
+.header-right {
+    width: 695rpx;
+    height: 258rpx;
+    object-fit: cover;
+}
+.recommend-content {
+    padding: 0 32rpx;
+    padding-bottom: 40rpx;
+}
+.title-box {
+    display: flex;
+    align-items: center;
+}
+.title-l {
+    width: 50rpx;
+    height: 32rpx;
+    background: #e33229;
+    border-radius: 4rpx;
+    font-size: 22rpx;
+    color: #fff;
+    line-height: 34rpx;
+    text-align: center;
+}
+.title-r {
+    font-size: 36rpx;
+    color: #333;
+    padding-left: 24rpx;
+}
+.each-frame {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 214rpx;
+    border-bottom: 2rpx solid #eee;
+}
+.frame-l {
+    width: 478rpx;
+}
+.frame-l .up {
+    font-size: 30rpx;
+    color: #333;
+    font-weight: 600;
+}
+.frame-l .down {
+    display: flex;
+    font-size: 26rpx;
+    padding: 15rpx 0 50rpx 0;
+    letter-spacing: 4rpx;
+}
+.frame-l .down .down-l {
+    color: #ff3b30;
+}
+.frame-l .down .down-r {
+    color: #999;
+    width: 200rpx;
+    padding-left: 35rpx;
+}
+.frame-r {
+    width: 182rpx;
+    height: 160rpx;
+    object-fit: cover;
+}
+.comment-box .area {
+    padding-top: 35rpx;
+}
+.comment-box .area .input-box {
+    margin-top: 24rpx;
+    border: solid 1rpx #eee;
+    border-radius: 10rpx;
+    padding: 24rpx;
+    box-sizing: border-box;
+    width: 686rpx;
+    height: 160rpx;
+    font-size: 26rpx;
+    color: #333;
+    background: #f2f5f8;
+}
+.comment-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 35rpx 0;
+    border-bottom: 2rpx solid #eee;
+}
+.btn-r,
+.line {
+    display: flex;
+    align-items: center;
+}
+.chat-num {
+    padding-left: 10rpx;
+}
+.line {
+    padding-left: 30rpx;
+    border: none;
+    background-color: #fff;
+    /* position: static; */
+
+}
+button::after{
+    border: none;
+}
+.each-list {
+    min-height: 208rpx;
+    padding-top: 28rpx;
+    border-bottom: 2rpx solid #eee;
+}
+.list-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.conmment-info {
+    display: flex;
+    align-items: center;
+}
+.info-avater {
+    width: 80rpx;
+    height: 80rpx;
+    object-fit: cover;
+}
+.nickname {
+    font-size: 34rpx;
+    color: #333;
+    font-weight: 600;
+    padding-left: 24rpx;
+}
+.comment-content {
+    font-size: 28rpx;
+    color: #999;
+    line-height: 40rpx;
+}
+.more {
+    background: #fef0ea;
+    border-radius: 4rpx;
+    width: 206rpx;
+    height: 40rpx;
+    font-size: 24rpx;
+    color: #f27941;
+    margin: 80rpx 0 40rpx 480rpx;
+    line-height: 40rpx;
+    text-align: center;
+}
+.dialog-content {
+    text-align: center;
+    margin-top: 30rpx;
+}
+.dialog-text {
+    font-size: 32rpx;
+    color: #333;
+    font-weight: 600;
+    text-align: center;
+    padding: 24rpx 0;
+}
+.dialog-foot {
+    font-size: 28rpx;
+    color: #999;
+    text-align: center;
+    line-height: 44rpx;
+    padding-bottom: 30rpx;
+}
+.no-comment{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 0px;
+
+}

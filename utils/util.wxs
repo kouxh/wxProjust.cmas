@@ -1,0 +1,27 @@
+// 处理保留两位小数
+function numberFixed(value) {
+  if (value >= 0) {
+    //0是false
+    return value.toFixed(2);
+  }
+}
+// 重量计算 克=>斤 1斤=500克(g)
+function weightCalculation(value) {
+  if (value) {
+    return value / 500;
+  } else {
+    return 0;
+  }
+}
+// 省略
+function wordSplit(word){
+  if(word.length>4){
+    word=word.substring(0,4)+"...";
+  }
+  return word;
+}
+module.exports = {
+  numberFixed: numberFixed,
+  weightCalculation: weightCalculation,
+  wordSplit:wordSplit
+};

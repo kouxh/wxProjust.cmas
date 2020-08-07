@@ -1,0 +1,186 @@
+.page-member-index {
+    background-color: #f8f8f8;
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
+}
+.page-member-index .member-header {
+    width: 100%;
+    height: 200rpx;
+    background-color: #fff;
+    border-top: 2rpx solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.page-member-index .member-header .header-left {
+    display: flex;
+    align-items: center;
+    padding-left: 24rpx;
+}
+.page-member-index .member-header .header-left .avatar {
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 60rpx;
+    border: 1px solid #eee;
+}
+.page-member-index .member-header .header-left .avatar image {
+    width: 100%;
+    height: 100%;
+    border-radius: 60rpx;
+    object-fit: cover;
+}
+.page-member-index .member-header .header-left .user-info {
+    padding-left: 30rpx;
+}
+.page-member-index .member-header .header-left .user-info .nickname {
+    font-family: PingFangSC-Regular;
+    font-size: 36rpx;
+    color: #333333;
+}
+.page-member-index .member-header .header-left .user-info .level {
+    font-family: PingFangSC-Regular;
+    font-size: 30rpx;
+    color: #e32c29;
+    padding-top: 18rpx;
+}
+.page-member-index .member-header .header-right {
+    padding-right: 40rpx;
+    color: rgb(204, 204, 204);
+}
+
+.page-member-index .member-info {
+    margin-top: 22rpx;
+    background-color: #fff;
+    padding-left: 24px;
+    padding-right: 42rpx;
+}
+.page-member-index .member-info .every-info {
+    height: 112rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2rpx solid #eee;
+    position: relative;
+}
+.page-member-index .member-info .every-info .title,
+.page-member-index .member-info .every-info1.title {
+    font-family: PingFangSC-Regular;
+    font-size: 32rpx;
+    color: #333;
+}
+.page-member-index .member-info .every-info .input {
+    border: 2rpx solid #979797;
+    border-radius: 13rpx;
+    height: 64rpx;
+    width: 428rpx;
+    /* text-indent: 30rpx; */
+    padding-left: 40rpx;
+    font-size: 30rpx;
+}
+.page-member-index .member-info .every-info:last-child {
+    border-bottom: none;
+}
+.up-iocn{
+position: absolute;
+top: 40rpx;
+right: 20rpx;
+transform:rotate(90deg); 
+}
+.select_img_rotate{
+    transform:rotate(270deg); 
+  }
+  .select_box {
+    background-color: #fff;
+    width: 71%;
+    position: absolute;
+    top: 89rpx;
+    left: 188rpx;
+    overflow: hidden;
+    /* animation: myfirst 0.5s; */
+    z-index: 99;
+    border: 2rpx solid #979797;
+    text-align: center;
+    border-radius: 20rpx;
+}
+ 
+@keyframes myfirst {
+    from {
+        height: 0rpx;
+    }
+    to {
+        height: 210rpx;
+    }
+}
+ 
+.select_one {
+    height: 70rpx;
+    line-height: 70rpx;
+    border-bottom: 1px solid #ccc;
+}
+.page-member-index .member-info .every-info1 {
+    height: 112rpx;
+    display: flex;
+    align-items: center;
+    border-bottom: 2rpx solid #eee;
+}
+.page-member-index .member-info .every-info1 .radio-icon {
+    display: flex;
+    align-items: center;
+    padding-left: 120rpx;
+}
+.page-member-index .member-info .every-info1 .radio-icon .van-radio {
+    padding-right: 116rpx;
+}
+.page-member-index .change-btn {
+    width: 700rpx;
+    height: 100rpx;
+    background: #798697;
+    border-radius: 8rpx;
+    margin: 80rpx 24rpx 100rpx;
+    font-family: PingFangSC-Regular;
+    font-size: 36rpx;
+    color: #fff;
+    text-align: center;
+    line-height: 104rpx;
+}
+.page-member-index .side {
+    position: fixed;
+    top: 843rpx;
+    right: 0rpx;
+    z-index: 99;
+}
+.van-sidebar-item {
+    padding: var(--sidebar-padding, 15px 12px 10px 8px) !important;
+}
+.pla{
+    font-size: 28rpx;
+    color: #ccc;
+}
+.member-mobile-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16rpx 24rpx;
+    border-top: 2rpx solid #f8f8f8;
+    background: #fff;
+  }
+  .member-mobile-tips {
+    font-size: 28rpx;
+    color: #333;
+  }
+  .member-mobile-btn {
+    flex: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4rpx;
+    width: 100rpx;
+    height: 54rpx;
+    font-size: 28rpx;
+    color: #fff;
+    background: #f44;
+  }
+  .ms-text{
+    line-height: 64rpx;
+  }

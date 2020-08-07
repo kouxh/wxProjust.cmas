@@ -1,0 +1,88 @@
+.page-content-index {
+    background-color: #f8f8f8;
+    height: 100%;
+    width: 100%;
+}
+.header {
+    height: 20rpx;
+    background-color: #f8f8f8;
+}
+.page-content-index .content {
+    background-color: #fff;
+    /* height: 800rpx; */
+    margin-bottom: 200rpx;
+}
+.page-content-index .content .content-title {
+    padding: 38rpx 0 70rpx 30rpx;
+    display: flex;
+    align-items: center;
+}
+.page-content-index .content .content-title .title {
+    font-size: 36rpx;
+    font-weight: 700;
+    color: #333;
+    padding-left: 20rpx;
+}
+.page-content-index .tabs .van-tabs--card .van-tabs__wrap {
+    height: 80rpx;
+}
+.page-content-index .tabs .van-tabs__nav--card {
+    height: 80rpx;
+    border-radius: 4rpx;
+    border: 2rpx solid #1677ff;
+}
+.page-content-index .tabs .van-tabs__nav--card .van-tab {
+    color: #ccc;
+    border-right: 2rpx solid #1677ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.page-content-index .tabs .van-tabs__nav--card .van-tab.van-tab--active {
+    color: #1677ff;
+    font-size: 36rpx;
+    background-color: #fff;
+}
+.page-content-index .content .tabs .content-box {
+    padding: 45rpx 32rpx 0;
+}
+.page-content-index .content .tabs .content-box .each-item {
+    height: 470rpx;
+    margin-bottom: 20rpx;
+    border-bottom: 2rpx solid #eee;
+}
+.page-content-index .content .tabs .content-box .each-item .tit {
+    font-size: 34rpx;
+    color: #333;
+    font-weight: 600;
+}
+.page-content-index .content .tabs .content-box .each-item .img {
+    width: 686rpx;
+    height: 300rpx;
+    object-fit: cover;
+    padding-top: 18rpx;
+}
+.page-content-index .content .tabs .content-box .each-item .foot {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.page-content-index .content .tabs .content-box .each-item .foot .num {
+    font-size: 28rpx;
+    color: #717171;
+    padding: 0 20rpx 0 10rpx;
+}
+.page-content-index .content .tabs .content-box .each-item .foot .into {
+    width: 120rpx;
+    height: 36rpx;
+    font-size: 24rpx;
+    color: #e8541e;
+    line-height: 36rpx;
+    text-align: center;
+    background: #FCEEE9;
+    border-radius: 4rpx;
+    
+}
+.page-content-index .content .tabs .content-box .each-item:last-child{
+    border-bottom: none;
+}
