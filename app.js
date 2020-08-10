@@ -44,8 +44,7 @@ if(userInfoData){
           // wx.switchTab({
           //   url: '/pages/course/index/index',
           //   })
-        }
-        else{
+        } else{
           wx.reLaunch({
             url: '/pages/login/index',
           })

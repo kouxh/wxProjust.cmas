@@ -1,22 +1,5 @@
 import fetch from "./http";
 export default {
-    /**
-   * 获取验证码
-   * @param  {[type]} params [description]
-   * @return {[type]}        [description]
-   */
-  code(params) {
-    return fetch.fetchGet("code", params);
-  },
-
-    /**
-   * 绑定手机号
-   * @param  {[type]} params [description]
-   * @return {[type]}        [description]
-   */
-  bangTell(params) {
-    return fetch.fetchGet("bangTell", params);
-  },
    
     /**
    *登录
