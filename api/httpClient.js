@@ -58,7 +58,7 @@ export default {
         console.log(err, "err-----请求错误----------------");
         // 401 未登录前往登录
         // if (err.status == 401) {
-        //     wx.switchTab({ url: "/pages/scan/index" });
+        //     wx.reLaunch({ url: "/pages/login/index" });
         // }
     }
 };
