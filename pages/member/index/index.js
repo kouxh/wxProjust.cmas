@@ -141,6 +141,8 @@ Page({
     }
     if(that.data.info.age==''){
       return wx.showToast({ title: "请选择年龄段", icon: "none" });
+    }else{
+      that.data.info.age=that.data.info.age.trim();
     }
     if(that.data.info.company==''){
       return wx.showToast({ title: "请输入公司名称", icon: "none" });
@@ -282,14 +284,13 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    var userinfo = wx.getStorageSync('userinfoData');
-    console.log(userinfo)
+    // var userinfo = wx.getStorageSync('userinfoData');
+    // console.log(userinfo)
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true
       })
-      console.log(this.data.userInfo,'9999')
     } else if (this.data.canIUse) {
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
       // 所以此处加入 callback 以防止这种情况

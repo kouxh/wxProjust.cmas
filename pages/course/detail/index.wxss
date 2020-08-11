@@ -14,7 +14,7 @@
     margin-bottom: 20rpx;
 }
 .each-item {
-    /* height: 470rpx; */
+    height: 470rpx;
     margin-bottom: 20rpx;
     border-bottom: 2rpx solid #eee;
     /* position: relative; */
@@ -157,12 +157,6 @@
     color: #333;
     background: #f2f5f8;
 }
-.operation{
-    height: 70rpx;
-    display: flex;
-    align-items: center;
-    margin-left: 335rpx;
-}
 .comment-btn {
     display: flex;
     justify-content: space-between;
@@ -184,10 +178,6 @@
     background-color: #fff;
     /* position: static; */
 
-}
-button{
-    line-height: 30rpx;
- 
 }
 button::after{
     border: none;

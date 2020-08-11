@@ -80,10 +80,10 @@
 					"scene": null
 				},
 				{
-					"id": 2,
+					"id": -1,
 					"name": "pages/course/detail/index",
 					"pathName": "pages/course/detail/index",
-					"query": "id= 21",
+					"query": "",
 					"scene": null
 				},
 				{
@@ -94,10 +94,10 @@
 					"scene": null
 				},
 				{
-					"id": 4,
+					"id": -1,
 					"name": "pages/course/index/index",
 					"pathName": "pages/course/index/index",
-					"query": "id:= 21",
+					"query": "",
 					"scene": null
 				},
 				{
@@ -118,14 +118,6 @@
 					"id": -1,
 					"name": "pages/login/index",
 					"pathName": "pages/login/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/member/content/index",
-					"pathName": "pages/member/content/index",
-					"query": "",
 					"scene": null
 				}
 			]

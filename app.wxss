@@ -9,6 +9,7 @@
   padding: 200rpx 0;
   box-sizing: border-box;
 } 
+
 page {
   font-family: -apple-system, BlinkMacSystemFont, Helvetica Neue, Helvetica, Roboto, Arial, PingFang SC,
     Hiragino Sans GB, Microsoft Yahei, SimSun, sans-serif;

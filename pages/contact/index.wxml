@@ -1,6 +1,6 @@
 <!-- pages/contact/index.wxml -->
 <view class="page-contact-index">
-    <!-- <view class="contact-header">
+    <view class="contact-header">
         <image src="/assets/img/banner.png" alt=""></image>
     </view>
     <view class="contact-content">
@@ -23,5 +23,5 @@
             </view>
         </view>
           
-    </view> -->
+    </view>
 </view>

@@ -9,6 +9,5 @@
     "van-popup": "@vant/weapp/popup/index",
     "bindMobile": "../../../components/bind-mobile/index"
   },
-  "navigationBarTitleText": "我的基本信息",
-  "enablePullDownRefresh": false
+  "navigationBarTitleText": "我的基本信息"
 }

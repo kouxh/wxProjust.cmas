@@ -185,15 +185,6 @@
   left: calc(50% - 40rpx);
   z-index: 0;
 }
-video{
-  position: relative;
-}
-.play-time{
-position: absolute;
-left: 36%;
-top: 50%;
-color: #323233;
-}
 .item-box .foot {
   height: 90rpx;
   display: flex;

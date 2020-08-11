@@ -11,9 +11,7 @@ Page({
     active: 1,//tab栏默认选中
     videoPlay: null,
     dataList: [],////视频数据
-    _index: 0, //当前正在播放视频的数组下标
-    currentTime:0,//播放的当前时间
-    durationTime:1//视频总时间
+    _index: 0 //当前正在播放视频的数组下标
   },
   onLoad: function (options) {
     // 基础数据监测,以及初始请求
@@ -102,24 +100,6 @@ Page({
       var videoContext = wx.createVideoContext(_index + "")
       videoContext.play();
     }, 500)
-  },
-  // 播放进度变化时触
-  bindtimeupdate(e){
-    // let time = e.detail.currentTime;
-    // console.log(time,'www')
-    // let n = Math.floor(time);
-    this.setData({
-      currentTime:e.detail.currentTime,
-      durationTime:e.detail.duration
-    })
-    // if(this.data.isPay==false&&e.detail.currentTime>=360){
-    //   this.videoContext.pause();//暂停视频
-    //   this.videoContext.stop();//停止视频
-    //   this.setData({
-    //     controls: false,
-    //     isShow:true
-    //   });
-    // }
   },
 
   // 模拟数据加载
