@@ -27,7 +27,26 @@
                     <view class="badge-new">视频</view>
                 </view>
             </view>
-             
+             <view class="operation">
+                <view  catchtap='handleLinks' class="line">
+                    <van-icon wx:if="{{handleLinks}}" name="like"  color="#FF5F01" size="20px"/>
+                    <van-icon wx:else name="like-o" size="20px"  data-id="{{id}}"  />
+                    <text class="chat-num">{{handleLinksNum}}</text>
+                </view>
+                 <view  bindtap="onCollectionTap" class="line">
+                    <van-icon wx:if="{{!collectionStatus}}" name="star-o" size="20px" /> 
+                    <van-icon wx:else name="star" size="20px" color="#FF5F01"/>
+                    <text class="chat-num">{{collectionNum}}</text>
+                </view>
+                <button  open-type="share" hover-class="none" class="line">
+                    <van-icon name="share" size="20px" />
+                    <text class="chat-num">22</text>
+                </button>
+                <!-- <button  open-type="share" hover-class="none">
+                    <van-icon name="share" size="20px" />
+                    <text class="chat-num">22</text>
+                </button> -->
+             </view>
         </view>
         <view class="content-box">
             <view class="intro">简介</view>
@@ -65,37 +84,19 @@
                     bindenterpictureinpicture='bindVideoEnterPictureInPicture'
                     bindleavepictureinpicture='bindVideoLeavePictureInPicture'></video>
                 </view>
-                <!-- <view class="each-frame">
-                    <view class="frame-l">
-                        <view class="up">MAS走进某企业，与企业高管深度交流，讨论数字化转型的成功经验</view>
-                        <view class="down">
-                            <text class="down-l">走进企业</text>
-                            <text class="down-r ellipsis1row">壹贰叁肆伍壹贰叁肆伍壹贰叁肆伍</text>
-                        </view>
-                    </view>
-                    <image class="frame-r" src="/assets/img/video.png" mode="aspectFill" />
-                </view> -->
             </view>
             <view class="comment-box">
                 <view class="area">
                     <textarea class="input-box"  type='text' value='{{commit}}' bindinput='commitFn' placeholder-style='color:#ccc' placeholder="请输入评论内容" />
                 </view>
                 <view class="comment-btn">
-                    <van-button plain type="info"  size="small">发表评论</van-button>
+                    <van-button plain type="info"  size="small" wx:if="{{submitBool}}"  bindtap="commentFn">发表评论</van-button>
+                    <van-button plain type="info"  size="small" wx:if="{{!submitBool}}">提交中…</van-button>
                     <view class="btn-r">
                         <view class="line">
                             <van-icon name="chat-o" size="20px" />
-                            <text class="chat-num">22</text>
+                            <text class="chat-num">{{detailData.desc.comment_num}}</text>
                         </view>
-                        <view class="line" bindtap="onCollectionTap">
-                             <van-icon wx:if="{{!collectionStatus}}" name="star-o" size="20px" /> 
-                             <van-icon wx:else name="star" size="20px" color="#FF5F01"/>
-                            <text class="chat-num">{{collectionNum}}</text>
-                        </view>
-                        <button class="line" open-type="share" hover-class="none">
-                            <van-icon name="share" size="20px" />
-                            <text class="chat-num">22</text>
-                        </button>
                     </view>
                 </view>
             </view>
@@ -107,10 +108,7 @@
                             <image class="info-avater" src="https://www.chinamas.cn/{{item.photo}}" mode="aspectFill" />
                             <view class="nickname">{{item.account}}</view>
                         </view>
-                        <!-- <van-icon wx:if="{{item.collected}}" name="like"  color="#FF5F01" size="20px" data-index="{{index}}" catchtap='handleLinks'/>
-                        <van-icon wx:else name="like-o" size="20px" catchtap='handleLinks' data-id="{{id}}"  data-index="{{index}}"/> -->
-                        <van-icon  name="like"  color="#FF5F01" size="20px" />
-                        <!-- <van-icon wx:else name="like-o" size="20px" catchtap='handleLinks' data-id="{{id}}"  data-index="{{index}}"/> -->
+                        <!-- <van-icon  name="like"  color="#FF5F01" size="20px" /> -->
                     </view>
                     <view class="comment-content">
                        {{item.com_comment}}

@@ -10,7 +10,7 @@
         <view class='video-title'>{{item.cl_title}}</view>
       </view> 
       <!-- 视频图片层 -->
-      <view data-id="{{index}}" class="video-image-box" style="display: {{ _index == index ? 'none' : 'block' }};" bindtap="videoPlay">
+      <view data-id="{{index}}" class="video-image-box" style="display: {{ _index == index? 'none' : 'block' }};" bindtap="videoPlay">
         <view class="video-cover-box" >
           <!-- <image class="video-image" src="/assets/img/content.png" mode="aspectFit"> -->
           <!-- </image> -->
@@ -20,10 +20,13 @@
 				<view class="badge">
 					<view class="badge-new">视频</view>
 				</view> 
+			
       </view>
       <!-- 视频播放层 -->
-			
-			 <video src="{{item.cl_marvellous}}" data-id="{{index}}" class='video' wx:if="{{_index == index}}" objectFit='contain' autoplay='{{true}}' controls show-fullscreen-btn="false" binderror="videoErrorCallback"></video>
+			 <video src="{{item.cl_marvellous}}" data-id="{{index}}" class='video' wx:if="{{_index == index}}" objectFit='contain' autoplay='{{true}}' controls show-fullscreen-btn="false" binderror="videoErrorCallback" show-center-play-btn='{{false}}' 
+      play-btn-position="bottom" bindtimeupdate='bindtimeupdate'>
+				<view class="play-time" wx:if="{{currentTime==durationTime}}">查看完整视频<van-icon name="arrow" /><van-icon name="arrow" /></view>
+			</video>
 	
      
 			<!-- 底部展示 -->

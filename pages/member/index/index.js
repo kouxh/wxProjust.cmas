@@ -141,8 +141,6 @@ Page({
     }
     if(that.data.info.age==''){
       return wx.showToast({ title: "请选择年龄段", icon: "none" });
-    }else{
-      that.data.info.age=that.data.info.age.trim();
     }
     if(that.data.info.company==''){
       return wx.showToast({ title: "请输入公司名称", icon: "none" });

@@ -8,24 +8,35 @@ App({
     isIphoneX: false, // 是否属于iPhone X系列
   },
   onLaunch: function () {
-    // 展示本地存储能力
-    // var logs = wx.getStorageSync('logs') || []
-    // logs.unshift(Date.now())
-    // wx.setStorageSync('logs', logs)
     let that = this;
-//获取用户本地是否是第一次进入新版本
-let bindPhone = wx.getStorageSync('bindPhone');
-let token = wx.getStorageSync('userInfoData').token
-let userInfoData=wx.getStorageSync('userInfoData');
-wx.clearStorageSync(); // 首次进入，清除缓存
-if (bindPhone) wx.setStorageSync('bindPhone', true);
-if(userInfoData){
-  wx.setStorageSync('userInfoData', userInfoData);
-}
+    //获取用户本地是否是第一次进入新版本
+    let bindPhone = wx.getStorageSync('bindPhone');
+    let token = wx.getStorageSync('userInfoData').token
+    let userInfoData=wx.getStorageSync('userInfoData');
+    wx.clearStorageSync({
+      success:(res)=>{
+        console.log(res,'成功')
+      },
+      fail:(res)=>{
+        console.log(res,'失败')
+      },
+      complete:(res)=>{
+        console.log(res,'11111')
+      },
+    }); // 首次进入，清除缓存
+    if (bindPhone) {
+      setStorage('bindPhone', true, that);
+      console.log(bindPhone,'8888')
+    }
+    // wx.setStorageSync('bindPhone', true);
+    if(userInfoData){
+      setStorage('userInfoData', userInfoData, that);
+      // wx.setStorageSync('userInfoData', userInfoData);
+    }
     // 获取用户信息
     wx.getSetting({
       success: res => {
-        console.log( res.authSetting['scope.userInfo'],'99877')
+        console.log( res.authSetting['scope.userInfo'],'9987722')
         if (res.authSetting['scope.userInfo'] && bindPhone && token!=undefined) {
           console.log( res.authSetting['scope.userInfo'],'9983377')
 
