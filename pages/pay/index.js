@@ -46,51 +46,47 @@ Page({
       let that = this;
       let _this = this.data;
       that.setData({ repeatBool: false }); // 防止重复请求
-     
       // 请求接口获取唤醒支付的参数
-      // getApp()
-      //   .globalData.api.payment({
-      //     order_id: that.data.orderId,
-      //     order_no: that.data.orderNo,
-      //     store_id: wx.getStorageSync("ext").store_id,
-      //     payment_type: _this.payType[_this.activePay].type,
-      //   })
-      //   .then(res => {
-      //     // 得到支付需要的参数信息
-      //     if (res.code != 200) {
-      //       that.setData({ repeatBool: true });
-      //       return wx.showToast({ title: res.msg, icon: "none" });
-      //     }
-      //     that.setData({ payData: res.response });
-          //判断支付方式 
-          // if(_this.payType[0].type==1){
+      getApp()
+        .globalData.api.getPrepayId({
+          uid: wx.getStorageSync('userInfoData').uid,
+          lookingid: 1,//lookingid 单期回放，liveid 单期直播，alllooking 所有回看，alllive 所有直播 值都等于1
+          // store_id: wx.getStorageSync("ext").store_id,
+          // payment_type: _this.payType[_this.activePay].type,
+        })
+        .then(res => {
+          // 得到支付需要的参数信息
+          if (res.bol ==false) {
+            that.setData({ repeatBool: true });
+            return wx.showToast({ title: res.err_msg, icon: "none" });
+          }
+          that.setData({ payData: res.data });
+
+          // 判断支付方式 
+          if(_this.payType[0].type==1){
           //     // 唤起支付弹框
             that.arousePayFn();
-          // }else{
-          //   // 余额支付 请求余额的接口
+          }else{
+            // 余额支付 请求余额的接口
 
-          // }
+          }
           
-        // });
+        });
     },
     // 唤起支付弹框
   arousePayFn() {
     let that = this;
     let payData = that.data.payData;
-    console.log('99999')
+    console.log(payData,'888')
     wx.requestPayment({
-      // timeStamp: payData.result.timeStamp,
-      // nonceStr: payData.result.nonceStr,
-      // package: payData.result.package,
-      // signType: payData.result.signType,
-      // paySign: payData.result.paySign,
-      timeStamp:"1596784663",
-      nonceStr:"5f2d001750113",
-      package:"prepay_id=wx07151743278003249978e59b3e3f300000",
-      signType: "MD5",
-      paySign:"57FEE5C1EEB334CB3B26FDE2EBEC3852",
+      timeStamp: payData.timeStamp.toString(),
+      nonceStr: payData.nonceStr,
+      package: payData.package,
+      signType: payData.signType,
+      paySign: payData.sign,
       success(res) {
         console.log(res,'988888888')
+        // {errMsg: "requestPayment:ok"} "988888888"
         // wx.redirectTo({
         //   url: `/pages/pay/success/index?orderId=${payData.id}&payMoney=${that.data.pay_money}`
         // });

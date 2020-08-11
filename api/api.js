@@ -41,6 +41,38 @@ export default {
   basicUp(params) {
     return fetch.fetchGet("applets/forum/basicUp", params);
   },
+   /**
+   *支付接口
+   * @param  {[type]} params [description]
+   * @return {[type]}        [description]
+   */
+  getPrepayId(params) {
+    return fetch.fetchGet("applets/forum/Pay/getPrepayId", params);
+  },
+   /**
+   *增加评论
+   * @param  {[type]} params [description]
+   * @return {[type]}        [description]
+   */
+  commentInsertApi(params) {
+    return fetch.fetchPost("commentInsertApi", params);
+  },
+   /**
+   *加入收藏
+   * @param  {[type]} params [description]
+   * @return {[type]}        [description]
+   */
+  joinCollectionApi(params) {
+    return fetch.fetchGet("applets/forum/insertCollection", params);
+  },
+   /**
+   *收藏列表
+   * @param  {[type]} params [description]
+   * @return {[type]}        [description]
+   */
+  collectionList(params) {
+    return fetch.fetchGet("/applets/forum/collectionList", params);
+  },
 
 
 }

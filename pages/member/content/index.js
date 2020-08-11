@@ -1,4 +1,5 @@
-// pages/member/content/index.js
+//获取应用实例
+const app = getApp()
 Page({
 
   /**
@@ -6,19 +7,43 @@ Page({
    */
   data: {
     active: 0, // tab栏1'选中项'
+    collectionList: [],////视频数据
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    if(this.data.active==0){
+      this.collectionListFn();
+    }
   },
+  // 切换tab栏
   tabFn(event) {
     this.setData({
       active: event.detail.index,
     });
   },
+  // 获取我的收藏列表
+  collectionListFn(){
+    let that=this;
+    getApp()
+        .globalData.api.collectionList({
+          uid:wx.getStorageSync('userInfoData').uid
+        })
+        .then(res => {
+          console.log(res,'list-----')
+          if (res.bol == true){
+            that.setData({
+              collectionList: res.data
+            });
+          }else{
+           wx.showToast({ title: "获取数据失败,请稍后重试哟~", icon: "none" });
+          }
+           
+        });
+  },
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成

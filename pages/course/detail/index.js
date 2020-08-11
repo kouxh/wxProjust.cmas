@@ -36,10 +36,13 @@ Page({
    ],
    collectionStatus:false,//是否收藏
    collectionNum:0,//收藏的个数
+   handleLinks:false,//是否点赞
+   handleLinksNum:0,//点赞的个数
    index:0,
-   detailId: 0,
+   detailId:0,
    detailData:{},//获取详情数据
    isPay:false,//是否是付费会员
+   submitBool: true, // 是否允许再次点击
   },
 
   /**
@@ -47,7 +50,8 @@ Page({
    */
   onLoad: function (options) {
     let that = this;
-    that.setData({ detailId: options.id });
+    
+    that.setData({detailId:options.id });
     this.descDataFn();//大讲堂详情
   },
   //大讲堂详情
@@ -66,6 +70,48 @@ Page({
       }
     })
   },
+   // 发表评论
+   commentFn() {
+    let that = this;
+    if(that.data.commit==''){
+      return wx.showToast({ title: "请输入评论内容", icon: "none" });
+    }
+    that.setData({ submitBool: false })
+    // 评论
+    getApp().globalData.api.commentInsertApi({
+      type:3, //(必传 1、文章 2、杂志 3 、课堂)
+      comment:that.data.commit,
+      cid:that.data.detailId.trim(),
+      uid:wx.getStorageSync('userInfoData').uid
+    }).then(res => {
+      if (res.bol == true) {
+        that.setData({ 
+          submitBool: true,
+          commit: "" // 清空发送内容
+         })
+        wx.showToast({ title: res.data.MSG, icon: 'none' })
+        // setTimeout(function () {
+        //   that.descDataFn();//大讲堂详情
+        // }, 800);
+      } else {
+        that.setData({ submitBool: true })
+        wx.showToast({ title: res.err_msg, icon: 'none' })
+      }
+    })
+
+  },
+  // commentFn(){
+  //   let that=this
+
+  //   getApp().globalData.api.commentInsertApi({
+  //     type:3, //(必传 1、文章 2、杂志 3 、课堂)
+  //     comment:that.data.commit,
+  //     cid:that.data.detailId,
+  //     uid:wx.getStorageSync('userInfoData').uid
+  //   }).then(res=>{
+  //     console.log(res,'99999')
+  //   })
+  // },
   //视频切换暂停播放
 play(e) {
   var that = this;
@@ -85,47 +131,75 @@ play(e) {
     let that=this;
     if(that.data.collectionStatus==false){
       //如果当前状态是未收藏
-      that.setData({
-        collectionStatus:true,
-        collectionNum:++that.data.collectionNum
+      var collectionDatas = {
+        type:3, //(必传 1、文章 2、杂志 3 、课堂)
+        c_id:that.data.detailId.trim(),
+        uid:wx.getStorageSync('userInfoData').uid
+      };
+        getApp()
+        .globalData.api.joinCollectionApi({
+         json:JSON.stringify(collectionDatas)
         })
+        .then(res => {
+          if (res.bol == true){
+            that.setData({
+              collectionStatus:true,
+              collectionNum:++that.data.collectionNum
+              })
+              wx.showToast({ title: "收藏成功", icon: "none" });
+              wx.setStorageSync('collectionStatus', true)
+          }else{
+           wx.showToast({ title: res.data.msg, icon: "none" });
+          }
+           
+        });
     }else{
       //如果当前状态是已收藏
-      that.setData({
-        collectionStatus:false,
-        collectionNum:--that.data.collectionNum
-        })
-      }
+       wx.showToast({ title: "您已经收藏了", icon: "none" });
+    }
      
   },
    // 显示点赞功能
   handleLinks: function(event) {
-  // 获取当前点击下标
-  var index = event.currentTarget.dataset.index;
-  // data中获取列表
-  var message = this.data.commentList;
-  for (let i in message) { //遍历列表数据
-    if (i == index) { //根据下标找到目标
-      // var collectStatus = false
-      if (message[i].collected == 0) { //如果是没点赞+1
-        // collectStatus = true
-        message[i].collected = parseInt(message[i].collected) + 1
-      } else {
-        // collectStatus = false
-        message[i].collected = parseInt(message[i].collected) - 1
+    let that=this;
+    if(that.data.handleLinks==false){
+      //如果当前状态是未点赞
+      that.setData({
+        handleLinks:true,
+        handleLinksNum:++that.data.handleLinksNum
+        })
+    }else{
+      //如果当前状态是已点赞
+      that.setData({
+        handleLinks:false,
+        handleLinksNum:--that.data.handleLinksNum
+        })
       }
-      // wx.showToast({
-      //   title: collectStatus ? '收藏成功' : '取消收藏',
-      // })
-    }
-  }
-  this.setData({
-    commentList: message
-  })
+  // // 获取当前点击下标
+  // var index = event.currentTarget.dataset.index;
+  // // data中获取列表
+  // var message = this.data.commentList;
+  // for (let i in message) { //遍历列表数据
+  //   if (i == index) { //根据下标找到目标
+  //     // var collectStatus = false
+  //     if (message[i].collected == 0) { //如果是没点赞+1
+  //       // collectStatus = true
+  //       message[i].collected = parseInt(message[i].collected) + 1
+  //     } else {
+  //       // collectStatus = false
+  //       message[i].collected = parseInt(message[i].collected) - 1
+  //     }
+  //     // wx.showToast({
+  //     //   title: collectStatus ? '收藏成功' : '取消收藏',
+  //     // })
+  //   }
+  // }
+  // this.setData({
+  //   commentList: message
+  // })
 },
   videoErrorCallback: function(e) {
     console.log('视频错误信息:')
-    console.log(e.detail.errMsg)
   },
   bindVideoEnterPictureInPicture() {
     console.log('进入小窗模式')
@@ -198,7 +272,13 @@ play(e) {
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let collectionStatus = wx.getStorageSync('collectionStatus');
+    if(collectionStatus){
+      that.setData({
+        collectionStatus:true,
+        collectionNum:++that.data.collectionNum
+        })
+    }
   },
 
   /**
