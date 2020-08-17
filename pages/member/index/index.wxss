@@ -146,7 +146,7 @@ transform:rotate(90deg);
 }
 .page-member-index .side {
     position: fixed;
-    top: 843rpx;
+    bottom: 0rpx;
     right: 0rpx;
     z-index: 99;
 }

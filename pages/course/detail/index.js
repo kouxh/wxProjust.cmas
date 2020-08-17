@@ -198,28 +198,6 @@ Page({
   },
   //购买直播回看权限
   liveLimit: function(event) {
-    // let that =this;
-    // wx.navigateTo({
-    //   url: `/pages/pay/index?id=${that.data.detailId}`,
-    //   // url:'/pages/pay/index?id=that.data.detailId',
-    //   events: {
-    //     // 为指定事件添加一个监听器，获取被打开页面传送到当前页面的数据
-    //     paySuccessEvent: function (data) {
-    //       console.log(data, '-----------refreshevent');
-    //       if (data) {
-    //         // that.initialFn(that, 1);
-    //         that.checkUserVipFn();//判断是否是VIP
-    //         that.setData({
-    //           isShow:false,
-    //           controls: true,
-    //           initialTime:'362',
-    //         });
-    //         that.videoContext.seek(362);//跳转到指定位置
-    //         that.videoContext.play();//播放视频
-    //       }
-    //     },
-    //   }
-    // })
     let that = this;
     let _this = this.data;
     that.setData({ repeatBool: false,isShow:false, }); // 防止重复请求
@@ -252,11 +230,13 @@ Page({
       signType: payData.signType,
       paySign: payData.sign,
       success(res) {
+        console.log(res,'444444')
+        that.checkUserVipFn();//判断是否是VIP
         that.setData({
           controls: true,
-          initialTime:'361',
+          initialTime:'362',
         });
-        that.videoContext.seek(361);//跳转到指定位置
+        that.videoContext.seek(362);//跳转到指定位置
         that.videoContext.play();//播放视频
       },
       fail(res) {
@@ -327,9 +307,9 @@ Page({
     this.setData({
       isShow:false,
       controls: true,
-      initialTime:'360',
+      initialTime:'0',
     });
-    this.videoContext.seek(360);//跳转到指定位置
+    this.videoContext.seek(0);//跳转到指定位置
     this.videoContext.play();//播放视频
   },
 

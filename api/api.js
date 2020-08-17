@@ -105,6 +105,14 @@ export default {
   getLiveDesc(params) {
     return fetch.fetchGet("applets/forum/getLiveDesc", params);
   },
+  /**
+   *用户报名
+   * @param  {[type]} params [description]
+   * @return {[type]}        [description]
+   */
+  getUserSignUp(params) {
+    return fetch.fetchGet("applets/forum/getUserSignUp", params);
+  },
 
 
 }

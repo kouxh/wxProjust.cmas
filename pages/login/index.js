@@ -55,9 +55,13 @@ Page({
   getUserInfo: function (e) {
     if(e.detail.userInfo){
        //用户按了允许授权按钮
+       wx.showToast({
+        title: '授权成功',
+        icon: 'success',
+        duration: 1000
+      })
        app.globalData.userInfo = e.detail.userInfo
       //  wx.setStorageSync('userinfoData', e.detail.userInfo)
-     
       this.setData({
         userInfo: e.detail.userInfo,
         hasUserInfo: true,
@@ -65,13 +69,8 @@ Page({
         encryptedInfo: e.detail.encryptedData,//用户授权的加密数据
         ivInfo: e.detail.iv,//用户授权的iv
       })
+      console.log(this.data.hasBindMobile,'0000this.data.hasBindMobile')
       console.log(this.data.encryptedInfo,'44444',this.data.ivInfo)
-       wx.showToast({
-        title: '授权成功',
-        icon: 'success',
-        duration: 1000
-      })
-      
     }else{
        //用户按了拒绝按钮
        wx.showModal({

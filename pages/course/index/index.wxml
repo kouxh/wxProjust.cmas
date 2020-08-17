@@ -1,7 +1,6 @@
 <view class="page-course-index">
 	<view class="header">
         <image src="/assets/img/banner.png" mode='aspectFill' alt=""></image>
-		<!-- <icon class="iconfont iconsaoyisao1"></icon> -->
 	</view>
 	<view class="course-content">
 		<navigator class="item-box " wx:for="{{dataList}}" wx:for-item="item" wx:for-index="index" wx:key="index" hover-class="none" url="/pages/course/detail/index?id={{item.cl_id}}">
@@ -24,7 +23,7 @@
       </view>
       <!-- 视频播放层 -->
 			 <video src="{{item.cl_marvellous}}" data-id="{{index}}" class='video' wx:if="{{_index == index}}" objectFit='contain' autoplay='{{true}}' controls show-fullscreen-btn="false" binderror="videoErrorCallback" show-center-play-btn='{{false}}' 
-      play-btn-position="bottom" bindtimeupdate='bindtimeupdate'>
+      play-btn-position="bottom" bindtimeupdate='bindtimeupdate' show-fullscreen-btn="{{false}}">
 				<view class="bcg" wx:if="{{currentTime==durationTime}}"></view>
 				<view class="play-time" wx:if="{{currentTime==durationTime}}">查看完整视频<van-icon name="arrow" /><van-icon name="arrow" style="margin-left: -20rpx;"/></view>
 			</video>
@@ -60,13 +59,13 @@
 			<view class="badge-new">直播预告</view>
 		</view>
 	</navigator>
-	<view class="tabs">
+	<!-- <view class="tabs">
 		<van-tabs active="{{ active }}" bind:change="onChange">
 			<van-tab title="CMAS访谈录"></van-tab>
 			<van-tab title="CMAS对话"></van-tab>
 			<van-tab title="走进企业"></van-tab>
 		</van-tabs>
-	</view>
+	</view> -->
 	  
 		
 </view>

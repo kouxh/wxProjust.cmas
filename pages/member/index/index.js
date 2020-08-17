@@ -14,11 +14,11 @@ Page({
       name:"",
       tell:"",
       email:"",
-      sex:"1",
+      sex:"2",
       birthday:"",
-      age:"",
+      age:"20-25",
       company:"",
-      occupation:""
+      occupation:"管理者"
     },
     calendarShow:false,//是否展示显示日期弹框
     currentDate: new Date().getTime(),

@@ -1,7 +1,6 @@
 <view class="page-login-index">
     <image mode='aspectFill' src="/assets/img/loginbg.png" alt=""></image>
     <button class="login-btn" wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo">微信授权登录</button>
-    <!-- <navigator hover-class="none" url="/pages/register/index" class="phone-btn">手机号验证注册/登录</navigator> -->
     <button class="bind-tel" wx:if="{{userInfo!=''&& hasBindMobile}}" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">绑定手机号</button>
     
 </view>

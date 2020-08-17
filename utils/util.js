@@ -79,10 +79,74 @@ function formateObjToParamStr(paramObj) {
   return sdata.join('&');
 };
 
+// 根据直播时间，计算直播的报名状态
+function liveStatusFn(nowTime, startTime, endTime) {
+  // 返回值 Number  0等待中  1进行中  2活动结束
+  // nowTime 必传 String 现在时间字符串
+  // startTime 必传 String 开始时间字符串
+  // endTime 必传 String 结束时间字符串
+  console.log(nowTime,startTime,endTime,'6666666666')
+  let now = Date.parse(dateFormat(nowTime, "yyyy/MM/dd hh:mm:ss"));
+  let start = Date.parse(dateFormat(startTime, "yyyy/MM/dd hh:mm:ss"));
+  let end = Date.parse(dateFormat(endTime, "yyyy/MM/dd hh:mm:ss"));
+  console.log(now,start,end)
+  let liveStatus;
+  console.log(parseInt(((start-now)% (1000 * 60 * 60)) / (1000 * 60)),'33333333')
+  if (parseInt(((start-now)% (1000 * 60 * 60)) / (1000 * 60))==30) {
+    liveStatus = 0;
+  } else if (start < now && now < end) {
+    liveStatus = 1;
+  } else {
+    liveStatus = 2;
+  }
+  return liveStatus;
+};
+// 【 时间格式化2 】
+ function dateFormat(datetime, fmt) {
+  // 作用：可以将[2019-07-02]转为[2019/07/02]
+  // datetime 必选 String 时间字符串(如2019-07-02 08:09:04)
+  // fmt 必选 String 要转化的格式(如yyyy-MM-dd hh:mm:ss.S)
+  if (!datetime) return "";
+  var date;
+  if (typeof datetime === "string") {
+    datetime = datetime.replace(/\.\d+/, ""); // remove milliseconds
+    datetime = datetime.replace(/-/, "/").replace(/-/, "/");
+    datetime = datetime.replace(/T/, " ").replace(/Z/, " UTC");
+    datetime = datetime.replace(/([\+\-]\d\d)\:?(\d\d)/, " $1$2"); // -04:00 -> -0400
+    datetime = datetime.replace(/([\+\-]\d\d)$/, " $100"); // +09 -> +0900
+    date = new Date(datetime);
+  } else {
+    date = datetime;
+  }
+  var date = new Date(datetime);
+  if (/(y+)/.test(fmt)) {
+    fmt = fmt.replace(
+      RegExp.$1,
+      (date.getFullYear() + "").substr(4 - RegExp.$1.length)
+    );
+  }
+  let o = {
+    "M+": date.getMonth() + 1,
+    "d+": date.getDate(),
+    "h+": date.getHours(),
+    "m+": date.getMinutes(),
+    "s+": date.getSeconds()
+  };
+  for (var k in o)
+    if (new RegExp("(" + k + ")").test(fmt))
+      fmt = fmt.replace(
+        RegExp.$1,
+        RegExp.$1.length == 1 ? o[k] : ("00" + o[k]).substr(("" + o[k]).length)
+      );
+  return fmt;
+}
+
 module.exports = {
   formatTime: formatTime,
   setStorage:setStorage,
   dateFormatter:dateFormatter,
   deleteEmptyProperty:deleteEmptyProperty,
-  formateObjToParamStr:formateObjToParamStr
+  formateObjToParamStr:formateObjToParamStr,
+  liveStatusFn:liveStatusFn,
+  dateFormat:dateFormat
 }

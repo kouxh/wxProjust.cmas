@@ -44,9 +44,10 @@
         </view>
     </view>
     <view class="button-btn-box {{isIphoneX?'IpX-Bottom':''}}" >
-        <view class="button-btn-text" wx:if="{{status==1}}">立即报名</view>
-        <view class="button-btn-text" wx:if="{{status==2}}">报名成功</view>
-        <view class="button-btn-text" wx:if="{{status==3}}">观看直播</view>
-        <view class="button-btn-text1" wx:if="{{status==4}}">直播已结束</view>
+        <!-- <view class="button-btn-text {{liveDetailData.status=='直播已开始' ? 'button-btn-text1':''}}">{{statusName}}</view> -->
+         <view class="button-btn-text" bindtap="applyFn" wx:if="{{status==1}}">{{statusName}}</view>
+        <view class="button-btn-text" bindtap="applyFn" wx:if="{{status==2}}">{{statusName}}</view>
+        <view class="button-btn-text" wx:if="{{status==3}}">{{statusName}}</view>
+         <view class="button-btn-text1" wx:if="{{status==4}}">{{statusName}}</view>
     </view>
 </view>

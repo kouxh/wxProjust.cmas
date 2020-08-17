@@ -17,11 +17,6 @@
 			<van-icon name="arrow" size="24px" />
 		</view>
 	</view>
-	  <!-- 手机绑定 -->
-  <!-- <button class="member-mobile-box" wx:if="{{userInfo&&!userInfo.has_bind_mobile}}" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
-    <view class="member-mobile-tips">登录手机号，同步全渠道信息</view>
-    <view class="member-mobile-btn">登录</view>
-  </button> -->
 	<view class="member-info">
 		<view class="every-info">
 			<text class="title">真实姓名</text>
@@ -71,7 +66,7 @@
 			<text class="title">年龄段</text>
 			<!-- <input class="input" bindtap='selectTap' value="{{ info.age}}" type="text" placeholder="年龄段" bindinput="" placeholder-class="pla"/> -->
 			<view class="input" bindtap='selectTap'>
-     		<text class='ms-text'>{{ info.age}}</text>
+     		<text class='ms-text' >{{ info.age==null?"20-25":info.age}}</text>
   	  </view>
 					<!-- 下拉需要显示的列表 -->
 		<view class="select_box" wx:if="{{selectShow}}">
@@ -91,7 +86,7 @@
 			<text class="title">职位</text>
 			<!-- <input class="input" bindtap='selectOption' value="{{ info.occupation}}" type="text" placeholder="职位" bindinput="" placeholder-class="pla"/> -->
 			<view class="input" bindtap='selectOption'>
-     		<text class='ms-text'>{{ info.occupation}}</text>
+     		<text class='ms-text'>{{ info.occupation==null ?"管理者":info.occupation}}</text>
   	  </view>
 			<view class="select_box" wx:if="{{selectOption}}">
         <view class="select_one " bindtap="optionSelect" data-name="管理者">管理者</view>     
