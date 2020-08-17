@@ -1,5 +1,6 @@
 //app.js
 import api from "/api/api";
+import { setStorage } from "utils/util";
 App({
   globalData: {
     userInfo: null,
@@ -13,17 +14,7 @@ App({
     let bindPhone = wx.getStorageSync('bindPhone');
     let token = wx.getStorageSync('userInfoData').token
     let userInfoData=wx.getStorageSync('userInfoData');
-    wx.clearStorageSync({
-      success:(res)=>{
-        console.log(res,'成功')
-      },
-      fail:(res)=>{
-        console.log(res,'失败')
-      },
-      complete:(res)=>{
-        console.log(res,'11111')
-      },
-    }); // 首次进入，清除缓存
+    wx.clearStorageSync(); // 首次进入，清除缓存
     if (bindPhone) {
       setStorage('bindPhone', true, that);
       console.log(bindPhone,'8888')
@@ -39,13 +30,11 @@ App({
         console.log( res.authSetting['scope.userInfo'],'9987722')
         if (res.authSetting['scope.userInfo'] && bindPhone && token!=undefined) {
           console.log( res.authSetting['scope.userInfo'],'9983377')
-
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
           wx.getUserInfo({
             success: res => {
               // 可以将 res 发送给后台解码出 unionId
               this.globalData.userInfo = res.userInfo
-
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
               // 所以此处加入 callback 以防止这种情况
               if (this.userInfoReadyCallback) {

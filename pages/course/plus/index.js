@@ -1,48 +1,26 @@
-// pages/pay/index.js
+// pages/course/plus/index.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    activePay: 0, // '选中支付方式'的下标
-    payType: [{
-      type: 1,
-      name: "微信支付",
-      icon: "wechat",
-      color: "#09bb07",
-      ban: false
-    },
-    {
-      type: 2,
-      name: "余额支付",
-      icon: "card",
-      color: "#148cdc",
-      ban: false
-    }
-  ], // 支付方式列表
-  balanceNum: 1000, // 余额
-  isIphoneX: getApp().globalData.isIphoneX,
-  repeatBool: true, // 防止重复请求
-  payData: {}, // 支付配置参数
+    isIphoneX: getApp().globalData.isIphoneX,
+    repeatBool: true, // 防止重复请求
+    payData: {}, // 支付配置参数
+    detailId:0,//详情id
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(options,'optionssss')
+    let that=this;
+    that.setData({detailId:options.id });
   },
-  // 选择支付方式
-  selectPayFn(e) {
-    let index = e.currentTarget.dataset.index;
-    if (this.data.payType[index].ban) {
-      return wx.showToast({ title: "余额不足，请更换支付方式", icon: "none" });
-    }
-    this.setData({ activePay: index });
-  },
-    // 点击立即支付
-    goPayFn() {
+     // 点击立即支付
+     goPayFn() {
       let that = this;
       let _this = this.data;
       that.setData({ repeatBool: false }); // 防止重复请求
@@ -50,7 +28,7 @@ Page({
       getApp()
         .globalData.api.getPrepayId({
           uid: wx.getStorageSync('userInfoData').uid,
-          vip: 1,//1打包 2 plus会员
+          vip: 2,//1打包 2 plus会员
         })
         .then(res => {
           // 得到支付需要的参数信息
@@ -59,16 +37,8 @@ Page({
             return wx.showToast({ title: res.err_msg, icon: "none" });
           }
           that.setData({ payData: res.data });
-
-          // 判断支付方式 
-          if(_this.payType[0].type==1){
-          //     // 唤起支付弹框
+          // 唤起支付弹框
             that.arousePayFn();
-          }else{
-            // 余额支付 请求余额的接口
-
-          }
-          
         });
     },
     // 唤起支付弹框
@@ -84,11 +54,10 @@ Page({
         paySign: payData.sign,
         success(res) {
           console.log(res,'988888888')
-          // {errMsg: "requestPayment:ok"} "988888888"
-          // wx.redirectTo({
-          //   url: `/pages/pay/success/index?orderId=${payData.id}&payMoney=${that.data.pay_money}`
-          // });
-          that.paySuccessEvent();
+          wx.redirectTo({
+            url: `/pages/course/detail/index?id=${that.data.detailId}`
+          });
+          that.paySuccessPlus();
         },
         fail(res) {
           console.log(res,'支付失败,请求重试')
@@ -100,11 +69,12 @@ Page({
       });
     },
   //支付成功 通知父级页面
-  paySuccessEvent() {
-    let that = this;
-    const eventChannel = that.getOpenerEventChannel()
-    eventChannel.emit('paySuccessEvent', { data: 'success' });
-  },
+  paySuccessPlus() {
+      let that = this;
+      const eventChannel = that.getOpenerEventChannel()
+      eventChannel.emit('paySuccessPlus', { data: 'success' });
+    },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

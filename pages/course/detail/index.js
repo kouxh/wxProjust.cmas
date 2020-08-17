@@ -14,35 +14,17 @@ Page({
     id:0,
     controls:true,
     initialTime:0,
-    commentList: [
-      {
-      avater: '/assets/img/avatar.png',
-      name: '用户名',
-      collected: 1,
-      content:' 评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容'
-    },
-    {
-      avater: '/assets/img/avatar.png',
-      name: '用户名',
-      collected: 0,
-      content:' 评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容'
-    },
-    {
-      avater: '/assets/img/avatar.png',
-      name: '用户名',
-      collected: 0,
-      content:' 评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容评论内容'
-    },
-   ],
-   collectionStatus:false,//是否收藏
    collectionNum:0,//收藏的个数
    handleLinks:false,//是否点赞
    handleLinksNum:0,//点赞的个数
    index:0,
    detailId:0,
    detailData:{},//获取详情数据
-   isPay:false,//是否是付费会员
+   isVip:0,//是否是付费会员
    submitBool: true, // 是否允许再次点击
+   repeatBool: true, // 防止重复请求
+   payData: {}, // 支付配置参数
+   moreData:[],//评论列表展示的数组
   },
 
   /**
@@ -50,25 +32,40 @@ Page({
    */
   onLoad: function (options) {
     let that = this;
-    
     that.setData({detailId:options.id });
     this.descDataFn();//大讲堂详情
+    this.checkUserVipFn();//判断是否是VIP
+    
   },
   //大讲堂详情
   descDataFn(){
     let that = this;
-    //  let miyao = utils.hexMD5(5);  // 使用加密
     getApp().globalData.api.classRoomDesc({
-     id:that.data.detailId
+     id:that.data.detailId,
+     uid:wx.getStorageSync('userInfoData').uid
     }).then(res=>{
       if(res.bol==true){
         that.setData({
-          detailData: res.data
+          detailData: res.data,
+          moreData:res.data.comment.slice(0,3)
         });
+        console.log(that.data.moreData,'0000')
+        if(that.data.detailData.desc.coll==1){
+          that.setData({
+            collectionNum:++that.data.collectionNum
+          })
+
+        }
       }else{
         wx.showToast({ title: "获取数据失败,请稍后重试~", icon: "none" });
       }
     })
+  },
+  moreFn(e){
+    let that=this;
+    that.data.detailData.comment= that.data.detailData.comment.splice(0,3)
+    that.data.moreData.push(that.data.detailData.comment.slice(0,3))
+
   },
    // 发表评论
    commentFn() {
@@ -90,9 +87,6 @@ Page({
           commit: "" // 清空发送内容
          })
         wx.showToast({ title: res.data.MSG, icon: 'none' })
-        // setTimeout(function () {
-        //   that.descDataFn();//大讲堂详情
-        // }, 800);
       } else {
         that.setData({ submitBool: true })
         wx.showToast({ title: res.err_msg, icon: 'none' })
@@ -100,36 +94,25 @@ Page({
     })
 
   },
-  // commentFn(){
-  //   let that=this
 
-  //   getApp().globalData.api.commentInsertApi({
-  //     type:3, //(必传 1、文章 2、杂志 3 、课堂)
-  //     comment:that.data.commit,
-  //     cid:that.data.detailId,
-  //     uid:wx.getStorageSync('userInfoData').uid
-  //   }).then(res=>{
-  //     console.log(res,'99999')
-  //   })
-  // },
   //视频切换暂停播放
-play(e) {
-  var that = this;
-  var id = e.currentTarget.id;
-  for (var i = 0; i < that.data.detailData.relevant.length; i++) {
-    if (id === 'myVideo' + i) {
-      //console.log('播放视频不做处理');
-    } else {
-      //console.log('暂停其他正在播放的视频');
-      var videoContext = wx.createVideoContext("myVideo"+i, that);
-      videoContext.pause();
+  play(e) {
+    var that = this;
+    var id = e.currentTarget.id;
+    for (var i = 0; i < that.data.detailData.relevant.length; i++) {
+      if (id === 'myVideo' + i) {
+        //console.log('播放视频不做处理');
+      } else {
+        //console.log('暂停其他正在播放的视频');
+        var videoContext = wx.createVideoContext("myVideo"+i, that);
+        videoContext.pause();
+      }
     }
-  }
-},
+  },
   //收藏功能
   onCollectionTap: function(e){
     let that=this;
-    if(that.data.collectionStatus==false){
+    if(that.data.detailData.desc.coll==0){
       //如果当前状态是未收藏
       var collectionDatas = {
         type:3, //(必传 1、文章 2、杂志 3 、课堂)
@@ -143,11 +126,9 @@ play(e) {
         .then(res => {
           if (res.bol == true){
             that.setData({
-              collectionStatus:true,
               collectionNum:++that.data.collectionNum
               })
               wx.showToast({ title: "收藏成功", icon: "none" });
-              wx.setStorageSync('collectionStatus', true)
           }else{
            wx.showToast({ title: res.data.msg, icon: "none" });
           }
@@ -157,7 +138,6 @@ play(e) {
       //如果当前状态是已收藏
        wx.showToast({ title: "您已经收藏了", icon: "none" });
     }
-     
   },
    // 显示点赞功能
   handleLinks: function(event) {
@@ -175,41 +155,39 @@ play(e) {
         handleLinksNum:--that.data.handleLinksNum
         })
       }
-  // // 获取当前点击下标
-  // var index = event.currentTarget.dataset.index;
-  // // data中获取列表
-  // var message = this.data.commentList;
-  // for (let i in message) { //遍历列表数据
-  //   if (i == index) { //根据下标找到目标
-  //     // var collectStatus = false
-  //     if (message[i].collected == 0) { //如果是没点赞+1
-  //       // collectStatus = true
-  //       message[i].collected = parseInt(message[i].collected) + 1
-  //     } else {
-  //       // collectStatus = false
-  //       message[i].collected = parseInt(message[i].collected) - 1
-  //     }
-  //     // wx.showToast({
-  //     //   title: collectStatus ? '收藏成功' : '取消收藏',
-  //     // })
-  //   }
-  // }
-  // this.setData({
-  //   commentList: message
-  // })
-},
+  
+  },
+  //视频播放出错
   videoErrorCallback: function(e) {
     console.log('视频错误信息:')
   },
+  //视频进入小窗口
   bindVideoEnterPictureInPicture() {
     console.log('进入小窗模式')
   },
-
+  //视频退出小窗口
   bindVideoLeavePictureInPicture() {
     console.log('退出小窗模式')
   },
+  //判断是否是VIP
+  checkUserVipFn(){
+    let that=this;
+    getApp()
+        .globalData.api.checkUserVip({
+          uid:wx.getStorageSync('userInfoData').uid
+        }).then(res=>{
+          if (res.bol == true){
+            that.setData({
+              isVip:res.data.is_vip,
+            })
+          }else{
+           wx.showToast({ title: "获取数据失败，请稍后重试哟~", icon: "none" });
+          }
+        })
+  },
+  //实时监听播放进程触发
   bindtimeupdate(e){
-    if(this.data.isPay==false&&e.detail.currentTime>=360){
+    if(this.data.isVip==0 &&e.detail.currentTime>=360){
       this.videoContext.pause();//暂停视频
       this.videoContext.stop();//停止视频
       this.setData({
@@ -218,13 +196,113 @@ play(e) {
       });
     }
   },
+  //购买直播回看权限
+  liveLimit: function(event) {
+    // let that =this;
+    // wx.navigateTo({
+    //   url: `/pages/pay/index?id=${that.data.detailId}`,
+    //   // url:'/pages/pay/index?id=that.data.detailId',
+    //   events: {
+    //     // 为指定事件添加一个监听器，获取被打开页面传送到当前页面的数据
+    //     paySuccessEvent: function (data) {
+    //       console.log(data, '-----------refreshevent');
+    //       if (data) {
+    //         // that.initialFn(that, 1);
+    //         that.checkUserVipFn();//判断是否是VIP
+    //         that.setData({
+    //           isShow:false,
+    //           controls: true,
+    //           initialTime:'362',
+    //         });
+    //         that.videoContext.seek(362);//跳转到指定位置
+    //         that.videoContext.play();//播放视频
+    //       }
+    //     },
+    //   }
+    // })
+    let that = this;
+    let _this = this.data;
+    that.setData({ repeatBool: false,isShow:false, }); // 防止重复请求
+    // 请求接口获取唤醒支付的参数
+    getApp()
+      .globalData.api.getPrepayId({
+        uid: wx.getStorageSync('userInfoData').uid,
+        vip: 1,//1打包 2 plus会员
+      })
+      .then(res => {
+        // 得到支付需要的参数信息
+        if (res.bol ==false) {
+          that.setData({ repeatBool: true });
+          return wx.showToast({ title: res.err_msg, icon: "none" });
+        }
+        that.setData({ payData: res.data });
+        // 唤起支付弹框
+          that.arousePayFn();
+      });
+  },
+   // 唤起支付弹框
+   arousePayFn() {
+    let that = this;
+    let payData = that.data.payData;
+    
+    wx.requestPayment({
+      timeStamp: payData.timeStamp.toString(),
+      nonceStr: payData.nonceStr,
+      package: payData.package,
+      signType: payData.signType,
+      paySign: payData.sign,
+      success(res) {
+        that.setData({
+          controls: true,
+          initialTime:'361',
+        });
+        that.videoContext.seek(361);//跳转到指定位置
+        that.videoContext.play();//播放视频
+      },
+      fail(res) {
+        console.log(res,'支付失败,请求重试')
+        wx.showToast({ title: "支付失败,请求重试", icon: "none" });
+        that.setData({
+          isShow:true,
+          controls: false,
+        });
+      
+      },
+      complete(res) {
+        that.setData({ repeatBool: true });
+      }
+    });
+  },
+  //购买plus权限
+  plusLimit:function(event){
+    let that =this;
+    wx.navigateTo({
+      url: `/pages/course/plus/index?id=${that.data.detailId}`,
+      events: {
+        // 为指定事件添加一个监听器，获取被打开页面传送到当前页面的数据
+        paySuccessPlus: function (data) {
+          console.log(data, '-----------paySuccessPlus');
+          if (data) {
+            that.checkUserVipFn();//判断是否是VIP
+            that.setData({
+              isShow:false,
+              controls: true,
+              initialTime:'361',
+            });
+            that.videoContext.seek(361);//跳转到指定位置
+            that.videoContext.play();//播放视频
+          }
+        },
+      }
+    })
+  },
   //点击确认按钮触发
   onConfirm(e){
       this.setData({
         isShow:false,
         controls: true,
         initialTime:'362',
-        isPay:true
+        isVip:true
       });
       this.videoContext.seek(362);//跳转到指定位置
       this.videoContext.play();//播放视频
@@ -247,10 +325,12 @@ play(e) {
   // 点击取消时触发
   onClose() {
     this.setData({
-      isShow:true,
-      controls: false,
+      isShow:false,
+      controls: true,
+      initialTime:'360',
     });
-    this.setData({ close: false });
+    this.videoContext.seek(360);//跳转到指定位置
+    this.videoContext.play();//播放视频
   },
 
 
@@ -272,13 +352,7 @@ play(e) {
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    let collectionStatus = wx.getStorageSync('collectionStatus');
-    if(collectionStatus){
-      that.setData({
-        collectionStatus:true,
-        collectionNum:++that.data.collectionNum
-        })
-    }
+    
   },
 
   /**

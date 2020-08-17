@@ -1,6 +1,6 @@
 .page-asset-index {
     background-color: #f8f8f8;
-    min-height: 100vh;
+    min-height: 100%;
     width: 100%;
 }
 .header {

@@ -25,7 +25,8 @@
       <!-- 视频播放层 -->
 			 <video src="{{item.cl_marvellous}}" data-id="{{index}}" class='video' wx:if="{{_index == index}}" objectFit='contain' autoplay='{{true}}' controls show-fullscreen-btn="false" binderror="videoErrorCallback" show-center-play-btn='{{false}}' 
       play-btn-position="bottom" bindtimeupdate='bindtimeupdate'>
-				<view class="play-time" wx:if="{{currentTime==durationTime}}">查看完整视频<van-icon name="arrow" /><van-icon name="arrow" /></view>
+				<view class="bcg" wx:if="{{currentTime==durationTime}}"></view>
+				<view class="play-time" wx:if="{{currentTime==durationTime}}">查看完整视频<van-icon name="arrow" /><van-icon name="arrow" style="margin-left: -20rpx;"/></view>
 			</video>
 	
      
@@ -51,13 +52,14 @@
             </view>
 		</view> -->
 	</view>
-	<view class="live">
-		<image class="img" src="/assets/img/content.png" mode="aspectFill" />
+	<navigator class="live" hover-class="none" url="/pages/course/live-detail/index?id={{liveData.l_id}}">
+		<image mode="aspectFill" class="img" src="https://www.chinamas.cn/{{liveData.l_img}}"/>
+		<!-- <image class="img" src="/assets/img/content.png" mode="aspectFill" /> -->
 		<view class="live-badge">
 			<van-icon name="orders-o" size="16px" color="#fff"/>
 			<view class="badge-new">直播预告</view>
 		</view>
-	</view>
+	</navigator>
 	<view class="tabs">
 		<van-tabs active="{{ active }}" bind:change="onChange">
 			<van-tab title="CMAS访谈录"></van-tab>

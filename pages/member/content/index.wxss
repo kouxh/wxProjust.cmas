@@ -1,6 +1,7 @@
+@import "/app.wxss";
 .page-content-index {
-    background-color: #f8f8f8;
-    height: 100%;
+    /* background-color: #f8f8f8; */
+    min-height: 100vh;
     width: 100%;
 }
 .header {
@@ -9,7 +10,6 @@
 }
 .page-content-index .content {
     background-color: #fff;
-    /* height: 800rpx; */
     margin-bottom: 200rpx;
 }
 .page-content-index .content .content-title {
@@ -43,7 +43,8 @@
     font-size: 36rpx;
     background-color: #fff;
 }
-.page-content-index .content .tabs .content-box {
+.page-content-index .content .tabs .content-box,
+.page-content-index .content .tabs .comment-box{
     padding: 45rpx 32rpx 0;
 }
 .page-content-index .content .tabs .content-box .each-item {
@@ -73,7 +74,7 @@
     padding: 0 20rpx 0 10rpx;
 }
 .page-content-index .content .tabs .content-box .each-item .foot .into {
-    width: 120rpx;
+    width: 156rpx;
     height: 36rpx;
     font-size: 24rpx;
     color: #e8541e;
@@ -85,4 +86,74 @@
 }
 .page-content-index .content .tabs .content-box .each-item:last-child{
     border-bottom: none;
+}
+.notice-content-load{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 600rpx;
+}
+ .load {
+    margin: 0 auto;
+    padding-top: 400rpx;
+  }
+  .nomsg-img-box {
+    /* margin: 0;
+    border: 0;
+    padding: 0; */
+    padding-top: 300rpx;
+    font-size: 100%;
+    text-align: center;
+    vertical-align: baseline;
+  }
+   .nomsg-img-box .nomsg-img {
+    width: 300rpx;
+    height: 200rpx;
+  }
+  .nomsg-img-box .tips-msg {
+    text-align: center;
+    margin-top: 80rpx;
+    color: #b2b2b2;
+    font-size: 24rpx;
+  }
+  .page-content-index .content .tabs .comment-box .each-item{
+    padding-bottom: 20rpx;
+    border-bottom: 2rpx solid #eee;
+  }
+  .page-content-index .content .tabs .comment-box .each-item .tit-box{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .page-content-index .content .tabs .comment-box .each-item .tit-box .tit{
+    font-size: 30rpx;
+    color: #333;
+    width: 500rpx;
+    font-weight: 600;
+}
+.page-content-index .content .tabs .comment-box .each-item .tit-box .right{
+    color: #ccc;
+}
+  .page-content-index .content .tabs .comment-box .each-item .info{
+      display: flex;
+      padding-top: 20rpx;
+  }
+  .page-content-index .content .tabs .comment-box .each-item .info .left{
+    width: 600rpx;
+    padding-left: 20rpx;
+  }
+  .page-content-index .content .tabs .comment-box .each-item .info .right{
+    width: 86rpx;
+    height: 40rpx;
+    display: flex;
+    justify-content: center;
+    color: #fff;
+    font-size: 26rpx;
+    border-radius: 20rpx;
+}
+.not-bg{
+    background: #999;
+}
+.bg{
+    background: #1677ff;
 }

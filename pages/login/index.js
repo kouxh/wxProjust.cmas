@@ -65,6 +65,7 @@ Page({
         encryptedInfo: e.detail.encryptedData,//用户授权的加密数据
         ivInfo: e.detail.iv,//用户授权的iv
       })
+      console.log(this.data.encryptedInfo,'44444',this.data.ivInfo)
        wx.showToast({
         title: '授权成功',
         icon: 'success',
@@ -95,6 +96,7 @@ Page({
       let that = this;
     if (e.detail.encryptedData) {
       wx.setStorageSync('bindPhone', true)
+      console.log(e.detail.encryptedData,'4433333444',e.detail.iv)
       //用户点击允许
       wx.login({
         success(res) {
@@ -105,6 +107,7 @@ Page({
             encryptedDataPhone: e.detail.encryptedData,
             ivPhone: e.detail.iv,
           };
+
           var jsonStr = JSON.stringify(datas)
           wx.showLoading({
             title: "登录中...",

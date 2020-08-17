@@ -1,0 +1,85 @@
+<view class="pages-plus-index">
+    <view class="header"></view>
+    <view class="plus-content">
+        <view class="limits-box">
+            <view class="plus-title">
+                <view class="text">CMAS PLUS会员招募</view>
+                <image class="img" src="/assets/img/icon/vip2.png" mode="aspectFill" />
+            </view>
+            <view class="limits-frame">
+                <view class="limits">
+                    <image class="img" src="/assets/img/icon/vip1.png" mode="aspectFill" />
+                    <view class="text">加入CMAS PLUS会员，可享有以下权限：</view>
+                </view>
+                <view class="each-limits">
+                    <view class="up">
+                        <image class="img" src="/assets/img/icon/ticket.png" mode="aspectFill" />
+                        <view class="text">全年新锐权威学术期刊《管理会计研究》杂志一套，共六本，</view>
+                    </view>
+                    <view class="down">￥ 价值300元（50元/本，共六期）</view>
+                </view>
+                <view class="each-limits">
+                    <view class="up">
+                        <image class="img" src="/assets/img/icon/ticket.png" mode="aspectFill" />
+                        <view class="text">全年CMAS大讲堂直播回看权限，</view>
+                    </view>
+                    <view class="down">￥ 价值198元（9.9/节，共20节）</view>
+                </view>
+                <view class="each-limits">
+                    <view class="up">
+                        <image class="img" src="/assets/img/icon/ticket.png" mode="aspectFill" />
+                        <view class="text">全年观看最热门、最精彩的《CMAS无边界》系列直播节目，</view>
+                    </view>
+                    <view class="down">￥ 价值300元（50元/本，共六期）</view>
+                </view>
+                <view class="each-limits">
+                    <view class="up">
+                        <image class="img" src="/assets/img/icon/ticket.png" mode="aspectFill" />
+                        <view class="text">全年观看最务实、全干货的“走进名企学管会”系列直播节目，</view>
+                    </view>
+                    <view class="down">￥ 价值478元（39.9/场，共12场）</view>
+                </view>
+                <view class="each-limits">
+                    <view class="up">
+                        <image class="img" src="/assets/img/icon/ticket.png" mode="aspectFill" />
+                        <view class="text">全年可阅读管理会计研究网中电子刊物</view>
+                    </view>
+                </view>
+            </view>
+            <view class="vip-fee">
+                <view class="fee-box">
+                    <view class="fee-tit">PLUS会员费：</view>
+                    <view class="fee-price">
+                        <text class="lh">
+                            699元/年/人，
+                            三人以上成团可享受优惠价格
+                            599元/年/人（需自行组成团）
+                        </text>
+                        <text class="lh">
+                            2020年《管理会计研究》读者
+                            只需补299元即可成为CMAS PLUS会员，享受所有会员权益
+                        </text>
+                    </view>
+                    <view class="fee-tit">PLUS会员等级：</view>
+                    <view class="fee-price1">
+                        <view class="vip-type">
+                            <image class="img" src="/assets/img/icon/vip3.png" mode="aspectFill" />
+                            <view class="type">月度会员</view>
+                        </view>
+                        <view class="vip-type">
+                            <image class="img" src="/assets/img/icon/vip4.png" mode="aspectFill" />
+                            <view class="type">季度会员</view>
+                        </view>
+                        <view class="vip-type">
+                            <image class="img" src="/assets/img/icon/vip5.png" mode="aspectFill" />
+                            <view class="type">年度会员</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="button-btn-box {{isIphoneX?'IpX-Bottom':''}}" bind:tap="goPayFn">
+                <view class="button-btn-text">成为PLUS会员</view>
+            </view>
+        </view>
+    </view>
+</view>

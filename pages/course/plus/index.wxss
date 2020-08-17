@@ -1,0 +1,141 @@
+.pages-plus-index {
+    background-color: #f8f8f8;
+    height: 100%;
+    width: 100%;
+}
+.pages-plus-index .header {
+    height: 20rpx;
+    background-color: #f8f8f8;
+}
+.pages-plus-index .plus-content {
+    background-color: #fff;
+}
+.pages-plus-index .plus-content .limits-box{
+    margin-bottom: 200rpx;
+}
+
+.pages-plus-index .plus-content .limits-box .plus-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 36rpx 0;
+}
+.pages-plus-index .plus-content .limits-box .plus-title .text,
+.pages-plus-index .plus-content .limits-box .limits .text {
+    font-size: 36rpx;
+    color: #333333;
+    font-weight: 600;
+}
+.pages-plus-index .plus-content .limits-box .plus-title .img {
+    width: 40rpx;
+    height: 40rpx;
+    object-fit: cover;
+    padding-left: 10rpx;
+}
+.pages-plus-index .plus-content .limits-box .limits {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 30rpx;
+    padding-bottom: 20rpx;
+}
+.pages-plus-index .plus-content .limits-box .limits .img {
+    width: 35rpx;
+    height: 30rpx;
+    object-fit: cover;
+}
+.pages-plus-index .plus-content .limits-box .limits .text {
+    font-size: 34rpx;
+    padding-left: 8rpx;
+}
+.each-limits {
+    padding: 30rpx 30rpx 0rpx 56rpx;
+}
+.each-limits .up {
+    display: flex;
+}
+.each-limits .up .img {
+    width: 60rpx;
+    height: 30rpx;
+    object-fit: cover;
+    margin-top: 8rpx;
+}
+.each-limits .up .text {
+    font-size: 28rpx;
+    color: #333333;
+    letter-spacing: 4rpx;
+    font-weight: 600;
+    line-height: 44rpx;
+    width: 780rpx;
+    padding-left: 10rpx;
+}
+.each-limits .down {
+    font-size: 26rpx;
+    color: #999;
+    letter-spacing: 4rpx;
+    text-align: right;
+    padding-top: 20rpx;
+}
+.pages-plus-index .plus-content .limits-box .vip-fee {
+    margin-top: 40rpx;
+    padding: 30rpx;
+    border-top: 1rpx solid #eee;
+}
+.pages-plus-index .plus-content .limits-box .vip-fee .fee-box {
+    width: 694rpx;
+    height: 600rpx;
+    background: #f2f5f8;
+    border-radius: 22rpx;
+}
+.vip-fee .fee-box .fee-tit {
+    font-size: 32rpx;
+    color: #333;
+    letter-spacing: 4rpx;
+    font-weight: 600;
+    padding-left: 28rpx;
+    padding-top: 30rpx;
+}
+.vip-fee .fee-box .fee-price {
+    padding-left: 75rpx;
+}
+.vip-fee .fee-box .fee-price .lh{
+    letter-spacing: 4rpx;
+}
+.vip-fee .fee-box .fee-price1{
+    padding-left: 75rpx;
+    display: flex;
+    padding-top: 40rpx;
+}
+.vip-fee .fee-box .fee-price1 .vip-type {
+    display: flex;
+    align-items: center;
+    padding-right: 28rpx;
+}
+.vip-fee .fee-box .fee-price1 .vip-type .img {
+    width: 40rpx;
+    height: 40rpx;
+    object-fit: cover;
+}
+.vip-fee .fee-box .fee-price1 .vip-type .type {
+    font-size: 28rpx;
+    color: #333333;
+    letter-spacing: 4rpx;
+    padding-left: 8rpx;
+}
+.button-btn-box {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    background: #f8f8f8;
+}
+.button-btn-box .button-btn-text {
+    width: 750rpx;
+    height: 92rpx;
+    font-size: 28rpx;
+    line-height: 92rpx;
+    text-align: center;
+    color: #fff;
+    background-color: #4a90e2;
+    /* background-image: linear-gradient(260deg, #ff6464 0%, #ff4444 100%); */
+    transition: all 0.2s;
+}

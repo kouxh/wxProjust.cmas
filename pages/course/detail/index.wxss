@@ -70,24 +70,8 @@
     background-color: #fff;
     margin-bottom: 200rpx;
 }
-.recommend-header {
-    height: 324rpx;
-    display: flex;
-    align-items: center;
-}
-.header-left {
-    width: 32rpx;
-    height: 260rpx;
-    background: #e32321;
-}
-.header-right {
-    width: 695rpx;
-    height: 258rpx;
-    object-fit: cover;
-}
 .recommend-content {
-    padding: 0 32rpx;
-    padding-bottom: 40rpx;
+    padding: 32rpx 32rpx 40rpx;
 }
 .title-box {
     display: flex;
@@ -161,7 +145,7 @@
     height: 70rpx;
     display: flex;
     align-items: center;
-    margin-left: 335rpx;
+    margin-left: 360rpx;
 }
 .comment-btn {
     display: flex;
@@ -170,21 +154,18 @@
     padding: 35rpx 0;
     border-bottom: 2rpx solid #eee;
 }
-.btn-r,
+
 .line {
     display: flex;
     align-items: center;
+    padding-left: 30rpx;
+    border: none;
+    background-color: #fff;
 }
 .chat-num {
     padding-left: 10rpx;
 }
-.line {
-    padding-left: 30rpx;
-    border: none;
-    background-color: #fff;
-    /* position: static; */
 
-}
 button{
     line-height: 30rpx;
  
@@ -221,6 +202,7 @@ button::after{
     font-size: 28rpx;
     color: #999;
     line-height: 40rpx;
+    padding-top: 20rpx;
 }
 .more {
     background: #fef0ea;
@@ -233,24 +215,7 @@ button::after{
     line-height: 40rpx;
     text-align: center;
 }
-.dialog-content {
-    text-align: center;
-    margin-top: 30rpx;
-}
-.dialog-text {
-    font-size: 32rpx;
-    color: #333;
-    font-weight: 600;
-    text-align: center;
-    padding: 24rpx 0;
-}
-.dialog-foot {
-    font-size: 28rpx;
-    color: #999;
-    text-align: center;
-    line-height: 44rpx;
-    padding-bottom: 30rpx;
-}
+
 .no-comment{
     display: flex;
     justify-content: center;
@@ -258,3 +223,68 @@ button::after{
     padding-top: 0px;
 
 }
+.dialog-box{
+position: relative;
+}
+.van-icon1{
+    position: absolute;
+    color: #ccc;
+    top: 20rpx;
+    right: 35rpx;
+}
+.price-box{
+    height: 130rpx;
+    border-bottom: 1rpx solid #E6E9ED;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.price-box .img{
+    width: 36rpx;
+    height: 36rpx;
+    object-fit: cover;
+}
+.price-box .video-price{
+    font-size: 34rpx;
+    color: #000000;
+    line-height: 44rpx;
+    font-weight: 600;
+    padding-left: 12rpx;
+
+}
+.price-box .money{
+    font-size: 36rpx;
+    color: #FF5000;
+    letter-spacing: 0;
+    line-height: 36rpx;
+}
+.price-box1{
+    height: 150rpx;
+    border-bottom: 1rpx solid #E6E9ED;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.price-box1 .up{
+    font-size: 28rpx;
+    color: #333;
+    letter-spacing: 2rpx;
+    padding-bottom: 14rpx;
+}
+.price-box1 .down{
+    display: flex;
+    align-items: center;
+}
+.price-box1 .down .img{
+    width: 36rpx;
+    height: 36rpx;
+    object-fit: cover;
+}
+.price-box1 .down .buy{
+    font-size: 28rpx;
+    color: #FF8F1F;
+    line-height: 44rpx;
+    padding-left: 20rpx;
+}
+

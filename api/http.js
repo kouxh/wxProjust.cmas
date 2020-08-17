@@ -9,6 +9,16 @@ export default {
       httpClient.fetchPost(url, params, that.getOptions(options), addUrl).then(
         response => {
           resolve(response);
+          console.log(response,'9999997744477777777777')
+          if (response.code == 9999) {
+            wx.showToast({
+              title: "登录过期，请重新登录",
+              icon: "none"
+            });
+            wx.removeStorageSync('userInfoData');
+            wx.removeStorageSync('bindPhone');
+            return wx.reLaunch({ url: '/pages/login/index' })
+          }
         },
         err => {
           // 返回错误内容
@@ -28,17 +38,21 @@ export default {
       httpClient.fetchGet(url, params, that.getOptions(options), addUrl).then (
         response => {
           resolve(response);
-          
-        //   if (response.code == 999101111) {
-        //     wx.setStorageSync("isClosed", false);
-        //     return wx.reLaunch({
-        //       url: "/pages/closed/index"
-        //     });
-        //   }
+          console.log(response,'9999997777777777777')
+          if (response.code == 9999) {
+            wx.showToast({
+              title: "登录过期，请重新登录",
+              icon: "none"
+            });
+            wx.removeStorageSync('userInfoData');
+            wx.removeStorageSync('bindPhone');
+            return wx.reLaunch({ url: '/pages/login/index' })
+          }
         },
         err => {
           // 返回错误内容
           that.errJumpFn(err);
+          console.log(err, "err-----接口错误----------------");
           reject(err);
         }
       );
@@ -73,5 +87,6 @@ export default {
     // if (err.status == 999999406) {
     //   wx.switchTab({ url: "/pages/scan/index" });
     // }
+   
   }
 };

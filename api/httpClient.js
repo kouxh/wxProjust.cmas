@@ -57,8 +57,8 @@ export default {
     errJumpFn(err) {
         console.log(err, "err-----请求错误----------------");
         // 401 未登录前往登录
-        // if (err.status == 401) {
-        //     wx.reLaunch({ url: "/pages/login/index" });
-        // }
+        if (err.status == 401) {
+            wx.reLaunch({ url: "/pages/login/index" });
+        }
     }
 };

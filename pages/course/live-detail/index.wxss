@@ -1,0 +1,125 @@
+@import "/app.wxss";
+.pages-live-detail-index {
+    background: #f8f8f8;
+    height: 100%;
+    width: 100%;
+}
+.pages-live-detail-index .header {
+    height: 20rpx;
+    background-color: #f8f8f8;
+}
+.introduce-lecturer {
+    background-color: #fff;
+    padding: 0 32rpx;
+}
+.introduce-lecturer .lecturer-img {
+    width: 690rpx;
+    height: 350rpx;
+    object-fit: cover;
+    padding: 34rpx 0;
+    border-bottom: 1rpx solid #eee;
+}
+.introduce-lecturer .headline,
+.introduce-lecturer .lecturer-name {
+    font-size: 34rpx;
+    color: #333;
+    font-family: PingFangSC-Medium;
+    font-weight: 600;
+}
+.introduce-lecturer .lecturer-name {
+    font-size: 32rpx;
+}
+.work {
+    margin-left: 172rpx;
+    display: flex;
+    flex-direction: column;
+    line-height: 52rpx;
+    padding-top: 14rpx;
+    padding-bottom: 40rpx;
+}
+.pages-live-detail-index .live-time {
+    margin: 20rpx 0;
+    background-color: #fff;
+    padding: 0 32rpx;
+    height: 130rpx;
+    color: #333333;
+    display: flex;
+    align-items: center;
+}
+.pages-live-detail-index .live-time .course-time {
+    font-family: PingFangSC-Medium;
+    font-size: 32rpx;
+    font-weight: 600;
+}
+.pages-live-detail-index .live-time .time {
+    font-size: 30rpx;
+    letter-spacing: 3rpx;
+}
+.pages-live-detail-index .sponsor-box,
+.sponsor-box1 {
+    background-color: #fff;
+    padding: 44rpx 32rpx;
+    margin-bottom: 20rpx;
+}
+.pages-live-detail-index .sponsor-box .sponsor {
+    display: flex;
+    padding-bottom: 14rpx;
+}
+.pages-live-detail-index .sponsor-box .sponsor .sponsor-tit {
+    font-size: 32rpx;
+    font-weight: 600;
+    width: 160rpx;
+}
+.pages-live-detail-index .sponsor-box .sponsor .sponsor-con {
+    font-size: 30rpx;
+    letter-spacing: 3rpx;
+    width: 500rpx;
+}
+.sponsor-box1 {
+    margin-bottom: 200rpx;
+}
+.sponsor-box1 .theme {
+    display: flex;
+}
+.sponsor-box1 .theme .left {
+    width: 140rpx;
+    height: 42rpx;
+    background-color: #f00;
+    color: #fff;
+    font-size: 30rpx;
+    display: flex;
+    justify-content: center;
+    font-weight: 600;
+    border-radius: 8rpx;
+    margin-right: 34rpx;
+}
+.sponsor-box1 .theme .right {
+    font-size: 30rpx;
+    color: #333;
+    line-height: 52rpx;
+    width: 500rpx;
+    letter-spacing: 4rpx;
+}
+.pages-live-detail-index .button-btn-box {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    background: #f8f8f8;
+}
+.pages-live-detail-index .button-btn-box .button-btn-text,
+.pages-live-detail-index .button-btn-box .button-btn-text1 {
+    width: 750rpx;
+    height: 92rpx;
+    font-size: 28rpx;
+    line-height: 92rpx;
+    text-align: center;
+    color: #fff;
+    background-color: #4a90e2;
+    /* background-image: linear-gradient(260deg, #ff6464 0%, #ff4444 100%); */
+    transition: all 0.2s;
+}
+.pages-live-detail-index .button-btn-box .button-btn-text1 {
+    border: 1px solid #4a90e2;
+    background-color: #fff;
+    color: #4a90e2;
+}

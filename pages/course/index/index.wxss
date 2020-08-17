@@ -112,7 +112,7 @@
 .live .live-badge {
   width: 142rpx;
   height: 38rpx;
-  top: 36rpx;
+  top: 35rpx;
   left: 32rpx;
   display: flex;
   justify-content: center;
@@ -188,11 +188,25 @@
 video{
   position: relative;
 }
+.bcg{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 400rpx;
+  width: 100%;
+  background: #000;
+  opacity: 0.3;
+}
 .play-time{
-position: absolute;
-left: 36%;
-top: 50%;
-color: #323233;
+  position: absolute;
+  left: 34%;
+  top: 42%;
+  color: #fff;
+  font-size: 34rpx;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  
 }
 .item-box .foot {
   height: 90rpx;

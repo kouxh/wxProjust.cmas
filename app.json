@@ -14,7 +14,9 @@
     "pages/member/magazine/index",
     "pages/course/detail/index",
     "components/bind-mobile/index",
-    "pages/pay/index"
+    "pages/pay/index",
+    "pages/course/live-detail/index",
+    "pages/course/plus/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

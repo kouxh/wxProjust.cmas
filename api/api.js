@@ -57,6 +57,14 @@ export default {
   commentInsertApi(params) {
     return fetch.fetchPost("commentInsertApi", params);
   },
+    /**
+   *评论列表
+   * @param  {[type]} params [description]
+   * @return {[type]}        [description]
+   */
+  getUserCommentList(params) {
+    return fetch.fetchGet("applets/forum/getUserComment", params);
+  },
    /**
    *加入收藏
    * @param  {[type]} params [description]
@@ -71,7 +79,31 @@ export default {
    * @return {[type]}        [description]
    */
   collectionList(params) {
-    return fetch.fetchGet("/applets/forum/collectionList", params);
+    return fetch.fetchGet("applets/forum/collectionList", params);
+  },
+    /**
+   *判断是否是VIP
+   * @param  {[type]} params [description]
+   * @return {[type]}        [description]
+   */
+  checkUserVip(params) {
+    return fetch.fetchGet("applets/forum/checkUserVip", params);
+  },
+   /**
+   *获取用户余额与积分
+   * @param  {[type]} params [description]
+   * @return {[type]}        [description]
+   */
+  UserMoney(params) {
+    return fetch.fetchGet("applets/forum/getUserInfo", params);
+  },
+   /**
+   *获取直播信息
+   * @param  {[type]} params [description]
+   * @return {[type]}        [description]
+   */
+  getLiveDesc(params) {
+    return fetch.fetchGet("applets/forum/getLiveDesc", params);
   },
 
 
