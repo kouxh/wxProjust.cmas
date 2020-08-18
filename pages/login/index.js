@@ -17,39 +17,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // if (app.globalData.userInfo) {
-    //   this.setData({
-    //     userInfo: app.globalData.userInfo,
-    //     hasUserInfo: true
-    //   })
-    // } else if (this.data.canIUse) {
-    //   // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-    //   // 所以此处加入 callback 以防止这种情况
-    //   app.userInfoReadyCallback = res => {
-    //     this.setData({
-    //       userInfo: res.userInfo,
-    //       hasUserInfo: true,
-    //       hasBindMobile:true
-    //     })
-    //   }
-    // } else {
-    //   // 在没有 open-type=getUserInfo 版本的兼容处理
-    //   wx.getUserInfo({
-    //     success: res => {
-    //       app.globalData.userInfo = res.userInfo
-    //       this.setData({
-    //         userInfo: res.userInfo,
-    //         hasUserInfo: true
-    //       })
-    //     }
-    //   })
-    // }
-    // let token = wx.getStorageSync('userInfoData').token
-    // if(token){
-    //   wx.switchTab({
-    //     url: "/pages/course/index/index"
-    //   })
-    // }
+   
   },
   // 微信授权
   getUserInfo: function (e) {
@@ -70,7 +38,6 @@ Page({
         ivInfo: e.detail.iv,//用户授权的iv
       })
       console.log(this.data.hasBindMobile,'0000this.data.hasBindMobile')
-      console.log(this.data.encryptedInfo,'44444',this.data.ivInfo)
     }else{
        //用户按了拒绝按钮
        wx.showModal({
@@ -95,7 +62,6 @@ Page({
       let that = this;
     if (e.detail.encryptedData) {
       wx.setStorageSync('bindPhone', true)
-      console.log(e.detail.encryptedData,'4433333444',e.detail.iv)
       //用户点击允许
       wx.login({
         success(res) {

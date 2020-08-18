@@ -134,14 +134,15 @@
         </view>
     </view>
     <!-- 开通会员 -->
-    <van-dialog use-slot show="{{ isShow }}"  catchtouchmove="true" showConfirmButton="{{false}}" class="dialog-box" >
-        <van-icon name="cross"  class="van-icon1" bindtap="onClose" />
+    <van-dialog use-slot show="{{ isShow }}"  catchtouchmove="true" showConfirmButton="{{false}}" class="dialog-box" width="290px">
+         <view style="height:50rpx" catchtap="onClose" > <van-icon name="cross"  class="van-icon1" /></view>
+        
         <!-- <view class="price-box">
             <image class="img" src="/assets/img/icon/back-course.png" mode="aspectFill" />
             <view class="video-price">视频单价：</view>
             <view class="money">¥ 00.0</view>
         </view> -->
-        <view  class="price-box1" catchtap="liveLimit" style="padding-top:30rpx;">
+        <view  class="price-box1" catchtap="liveLimit" >
             <view class="up">全年CMAS大讲堂直播回看权限</view>
            <view class="down">
             <image class="img" src="/assets/img/icon/look.png" mode="aspectFill" />

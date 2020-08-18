@@ -14,6 +14,7 @@ Page({
     currentTime:0,//播放的当前时间
     durationTime:1,//视频总时间
     liveData:{},//直播图片
+    end:null,//视频播放结束
   },
   onLoad: function (options) {
     // 基础数据监测,以及初始请求
@@ -58,7 +59,7 @@ Page({
   //页面滚动触发
   onPageScroll(event) {
     this.setData({
-      currentTime:0
+      end:null
     })
     let scrollTop = event.scrollTop //页面滚动
     if (scrollTop==0){
@@ -98,16 +99,23 @@ Page({
       videoContext.play();
     }, 500)
   },
-  // 播放进度变化时触
-  bindtimeupdate(e){
-    // let time = e.detail.currentTime;
-    // let n = Math.floor(time);
+  // 当播放到末尾时触发 ended 事件
+  bindended(e){
     this.setData({
-      currentTime:e.detail.currentTime,
-      durationTime:e.detail.duration
+      end:e.type,
     })
-    
   },
+  // 播放进度变化时触
+  // bindtimeupdate(e){
+  //   // let time = e.detail.currentTime;
+  //   // let n = Math.floor(time);
+  //   this.setData({
+  //     currentTime:e.detail.currentTime,
+  //     durationTime:e.detail.duration
+  //   })
+  //   console.log(this.data.currentTime,'0000',this.data.durationTime)
+    
+  // },
 
   // 模拟数据加载
   getData: function () {

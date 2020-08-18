@@ -230,7 +230,6 @@ Page({
       signType: payData.signType,
       paySign: payData.sign,
       success(res) {
-        console.log(res,'444444')
         that.checkUserVipFn();//判断是否是VIP
         that.setData({
           controls: true,
@@ -242,11 +241,15 @@ Page({
       fail(res) {
         console.log(res,'支付失败,请求重试')
         wx.showToast({ title: "支付失败,请求重试", icon: "none" });
-        that.setData({
-          isShow:true,
-          controls: false,
-        });
-      
+        setTimeout(() => {
+          that.setData({
+            isShow:false,
+            controls: true,
+            initialTime:'0',
+          });
+          that.videoContext.seek(0);//跳转到指定位置
+          that.videoContext.play();//播放视频
+        }, 2000);
       },
       complete(res) {
         that.setData({ repeatBool: true });
@@ -309,11 +312,16 @@ Page({
   onClose() {
     this.setData({
       isShow:false,
-      controls: true,
-      initialTime:'0',
     });
-    this.videoContext.seek(0);//跳转到指定位置
-    this.videoContext.play();//播放视频
+    setTimeout(() => {
+      this.setData({
+        controls: true,
+        initialTime:'0',
+      });
+      this.videoContext.seek(0);//跳转到指定位置
+      this.videoContext.play();//播放视频
+    }, 2000);
+   
   },
 
 
