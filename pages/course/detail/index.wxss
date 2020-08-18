@@ -229,6 +229,7 @@ position: relative;
 .van-icon1{
     position: absolute;
     color: #ccc;
+    font-size: 44rpx;
     top: 20rpx;
     right: 35rpx;
 }

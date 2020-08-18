@@ -14,17 +14,17 @@ Page({
     id:0,
     controls:true,
     initialTime:0,
-   collectionNum:0,//收藏的个数
-   handleLinks:false,//是否点赞
-   handleLinksNum:0,//点赞的个数
-   index:0,
-   detailId:0,
-   detailData:{},//获取详情数据
-   isVip:0,//是否是付费会员
-   submitBool: true, // 是否允许再次点击
-   repeatBool: true, // 防止重复请求
-   payData: {}, // 支付配置参数
-   moreData:[],//评论列表展示的数组
+    collectionNum:0,//收藏的个数
+    handleLinks:false,//是否点赞
+    handleLinksNum:0,//点赞的个数
+    index:0,
+    detailId:0,
+    detailData:{},//获取详情数据
+    isVip:0,//是否是付费会员
+    submitBool: true, // 是否允许再次点击
+    repeatBool: true, // 防止重复请求
+    payData: {}, // 支付配置参数
+    moreData:[],//评论列表展示的数组
   },
 
   /**
@@ -61,6 +61,7 @@ Page({
       }
     })
   },
+  // 查看更多
   moreFn(e){
     let that=this;
     that.data.detailData.comment= that.data.detailData.comment.splice(0,3)
@@ -222,7 +223,6 @@ Page({
    arousePayFn() {
     let that = this;
     let payData = that.data.payData;
-    
     wx.requestPayment({
       timeStamp: payData.timeStamp.toString(),
       nonceStr: payData.nonceStr,
@@ -256,6 +256,7 @@ Page({
   //购买plus权限
   plusLimit:function(event){
     let that =this;
+    console.log(that.data.detailId,'that.data.detailId')
     wx.navigateTo({
       url: `/pages/course/plus/index?id=${that.data.detailId}`,
       events: {
@@ -263,13 +264,15 @@ Page({
         paySuccessPlus: function (data) {
           console.log(data, '-----------paySuccessPlus');
           if (data) {
+            console.log(data,'00000')
+            that.descDataFn();//大讲堂详情
             that.checkUserVipFn();//判断是否是VIP
             that.setData({
               isShow:false,
               controls: true,
-              initialTime:'361',
+              initialTime:'362',
             });
-            that.videoContext.seek(361);//跳转到指定位置
+            that.videoContext.seek(362);//跳转到指定位置
             that.videoContext.play();//播放视频
           }
         },

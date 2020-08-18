@@ -37,9 +37,6 @@ Page({
         });
       }else{
         wx.showToast({ title: "res.msg", icon: "none" });
-        // wx.reLaunch({
-        //   url: '/pages/login/index',
-        // })
       }
     })
   },
@@ -95,7 +92,6 @@ Page({
     //停止正在播放的视频
     var videoContextPrev = wx.createVideoContext(this.data._index+"")
     videoContextPrev.stop();
-
     setTimeout(function () {
       //将点击视频进行播放
       var videoContext = wx.createVideoContext(_index + "")

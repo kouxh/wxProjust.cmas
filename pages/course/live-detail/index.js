@@ -93,7 +93,7 @@ Page({
       setTimeout(() => {
         wx.switchTab({ url: "/pages/member/index/index" });
       }, 2000);
-    }else if(this.data.liveDetailData.status=="未报名"|| this.data.liveDetailData.status=="已报名"){
+    }else if((this.data.liveDetailData.status=="未报名"|| this.data.liveDetailData.status=="已报名")&&this.data.liveDetailData.userInfo=="1"){
       this.getUserSignUp();
     }
   },

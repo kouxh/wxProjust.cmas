@@ -1,4 +1,5 @@
 {
   "usingComponents": {},
-  "navigationBarTitleText": "联系CMAS-CMAS智库产业研究"
+  "navigationBarTitleText": "联系CMAS-CMAS智库产业研究",
+  "enablePullDownRefresh": false
 }

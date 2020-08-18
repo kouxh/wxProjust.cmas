@@ -56,7 +56,7 @@
                 <view class="title-r">推荐视频</view>
             </view>
             <view class="content-frame">
-                <navigator class="each-frame" wx:for="{{detailData.relevant}}" wx:for-item="item" wx:for-index="index" wx:key="index" url="/pages/course/detail/index?id={{item.cl_id}}" hover-class="none">
+                <navigator class="each-frame" wx:for="{{detailData.relevant}}" wx:for-item="item" open-type="redirect" wx:for-index="index" wx:key="index" url="/pages/course/detail/index?id={{item.cl_id}}" hover-class="none">
                     <view class="frame-l">
                         <view class="up">{{item.cl_title}}</view>
                         <view class="down">
@@ -71,10 +71,11 @@
                     show-center-play-btn='{{true}}' 
                     play-btn-position="center"
                     enable-play-gesture='true'
-                    show-mute-btn='{{true}}'
-                    picture-in-picture-mode="{{['push', 'pop']}}" 
-                    bindenterpictureinpicture='bindVideoEnterPictureInPicture'
-                    bindleavepictureinpicture='bindVideoLeavePictureInPicture'></video>
+                    show-fullscreen-btn="{{false}}"
+                   >
+                   
+
+                   </video>
                 </navigator>
             </view>
             <view class="comment-box">
@@ -105,7 +106,7 @@
                     </view>
                 </view>
                 <view class="each-list no-comment" wx:if="{{moreData.length==0}}" >暂无评论数据</view>
-                <view class="more" bindtap="moreFn" data-index="{{index}}" style="display: {{moreData.length<3 ? 'none' : 'block' }};">
+                <view class="more" bindtap="moreFn" data-index="{{index}}" style="display: {{moreData.length<3 ? 'none' : 'block'}}">
                     <text>更多评论内容</text>
                     <van-icon name="arrow" size="20rpx" />
                     <van-icon name="arrow" size="20rpx" style="margin-left: -12rpx;"/>
@@ -134,13 +135,13 @@
     </view>
     <!-- 开通会员 -->
     <van-dialog use-slot show="{{ isShow }}"  catchtouchmove="true" showConfirmButton="{{false}}" class="dialog-box" >
-        <van-icon name="cross"  class="van-icon1" bindtap="onClose"/>
-        <view class="price-box">
+        <van-icon name="cross"  class="van-icon1" bindtap="onClose" />
+        <!-- <view class="price-box">
             <image class="img" src="/assets/img/icon/back-course.png" mode="aspectFill" />
             <view class="video-price">视频单价：</view>
             <view class="money">¥ 00.0</view>
-        </view>
-        <view  class="price-box1" catchtap="liveLimit">
+        </view> -->
+        <view  class="price-box1" catchtap="liveLimit" style="padding-top:30rpx;">
             <view class="up">全年CMAS大讲堂直播回看权限</view>
            <view class="down">
             <image class="img" src="/assets/img/icon/look.png" mode="aspectFill" />

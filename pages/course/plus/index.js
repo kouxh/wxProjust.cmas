@@ -54,9 +54,13 @@ Page({
         paySign: payData.sign,
         success(res) {
           console.log(res,'988888888')
-          wx.redirectTo({
-            url: `/pages/course/detail/index?id=${that.data.detailId}`
-          });
+          console.log(that.data.detailId,'that.data.detailId33')
+          // wx.redirectTo({
+          //   url: `/pages/course/detail/index?id=${that.data.detailId}`
+          // });
+          wx.navigateBack({
+            delta: 1
+          })
           that.paySuccessPlus();
         },
         fail(res) {

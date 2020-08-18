@@ -197,6 +197,15 @@ video{
   background: #000;
   opacity: 0.3;
 }
+.mask{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 315rpx;
+  width: 100%;
+  /* background: #000; */
+  opacity: 0.1;
+}
 .play-time{
   position: absolute;
   left: 34%;
