@@ -25,6 +25,7 @@ Page({
     repeatBool: true, // 防止重复请求
     payData: {}, // 支付配置参数
     moreData:[],//评论列表展示的数组
+    isPlay:false,//不自动播放
   },
 
   /**
@@ -190,7 +191,7 @@ Page({
   bindtimeupdate(e){
     if(this.data.isVip==0 &&e.detail.currentTime>=360){
       this.videoContext.pause();//暂停视频
-      this.videoContext.stop();//停止视频
+      // this.videoContext.stop();//停止视频
       this.setData({
         controls: false,
         isShow:true
@@ -233,10 +234,14 @@ Page({
         that.checkUserVipFn();//判断是否是VIP
         that.setData({
           controls: true,
-          initialTime:'362',
+          initialTime:'361',
+          isPlay:true
         });
-        that.videoContext.seek(362);//跳转到指定位置
-        that.videoContext.play();//播放视频
+        that.videoContext.seek(361);//跳转到指定位置
+        setTimeout(() => {
+          that.videoContext.play();//播放视频
+        }, 2000);
+        
       },
       fail(res) {
         console.log(res,'支付失败,请求重试')
@@ -246,6 +251,7 @@ Page({
             isShow:false,
             controls: true,
             initialTime:'0',
+            isPlay:true
           });
           that.videoContext.seek(0);//跳转到指定位置
           that.videoContext.play();//播放视频
@@ -273,10 +279,13 @@ Page({
             that.setData({
               isShow:false,
               controls: true,
-              initialTime:'362',
+              initialTime:'361',
+              isPlay:true
             });
-            that.videoContext.seek(362);//跳转到指定位置
-            that.videoContext.play();//播放视频
+            that.videoContext.seek(361);//跳转到指定位置
+            setTimeout(() => {
+              that.videoContext.play();//播放视频
+            }, 2000);
           }
         },
       }
@@ -317,6 +326,7 @@ Page({
       this.setData({
         controls: true,
         initialTime:'0',
+        isPlay:true
       });
       this.videoContext.seek(0);//跳转到指定位置
       this.videoContext.play();//播放视频

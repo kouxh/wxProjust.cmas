@@ -11,7 +11,7 @@
                 show-play-btn="{{true}}" 
                 controls='{{controls}}'
                 object-fit='fill'
-                autoplay='{{false}}'
+                autoplay='{{isPlay}}'
                 muted='{{false}}'
                 initial-time='{{initialTime}}'
                 show-mute-btn='{{true}}'
@@ -134,7 +134,7 @@
         </view>
     </view>
     <!-- 开通会员 -->
-    <van-dialog use-slot show="{{ isShow }}"  catchtouchmove="true" showConfirmButton="{{false}}" class="dialog-box" width="290px">
+    <van-dialog use-slot show="{{ isShow }}"  catchtouchmove="true" showConfirmButton="{{false}}" class="dialog-box">
          <view style="height:50rpx" catchtap="onClose" > <van-icon name="cross"  class="van-icon1" /></view>
         
         <!-- <view class="price-box">
