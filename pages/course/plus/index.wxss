@@ -24,7 +24,7 @@
 .pages-plus-index .plus-content .limits-box .limits .text {
     font-size: 36rpx;
     color: #333333;
-    font-weight: 600;
+    font-weight: bold;
 }
 .pages-plus-index .plus-content .limits-box .plus-title .img {
     width: 40rpx;
@@ -64,7 +64,7 @@
     font-size: 28rpx;
     color: #333333;
     letter-spacing: 2rpx;
-    font-weight: 600;
+    font-weight: bold;
     line-height: 40rpx;
     width: 780rpx;
     padding-left: 10rpx;
@@ -91,7 +91,7 @@
     font-size: 32rpx;
     color: #333;
     letter-spacing: 2rpx;
-    font-weight: 600;
+    font-weight: bold;
     padding-left: 28rpx;
     padding-top: 25rpx;
 }

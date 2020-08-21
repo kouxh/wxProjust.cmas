@@ -36,7 +36,7 @@
 .page-order-index .content .content-box .each-item .tit {
     font-size: 34rpx;
     color: #333;
-    font-weight: 600;
+    font-weight: bold;
 }
 .page-order-index .content .content-box .each-item .img {
     width: 686rpx;

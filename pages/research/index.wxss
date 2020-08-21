@@ -1,5 +1,8 @@
-.page-research-index {
+page{
   background: #f8f8f8; 
+}
+.page-research-index {
+  
   height: 100%;
   width: 100%;
 }
@@ -31,7 +34,7 @@
   letter-spacing: 0.55rpx;
   padding-right: 20rpx;
   padding-left: 8rpx;
-  font-weight: 600;
+  font-weight: bold;
 }
 .page-research-index .introduce-box{
   background-color: #fff;

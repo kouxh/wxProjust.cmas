@@ -55,7 +55,7 @@
 .page-content-index .content .tabs .content-box .each-item .tit {
     font-size: 34rpx;
     color: #333;
-    font-weight: 600;
+    font-weight: bold;
 }
 .page-content-index .content .tabs .content-box .each-item .img {
     width: 686rpx;
@@ -130,7 +130,7 @@
     font-size: 30rpx;
     color: #333;
     width: 500rpx;
-    font-weight: 600;
+    font-weight: bold;
 }
 .page-content-index .content .tabs .comment-box .each-item .tit-box .right{
     color: #ccc;

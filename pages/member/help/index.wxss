@@ -30,7 +30,7 @@
 .page-help-index .help-content .question-box .question {
     font-size: 32rpx;
     letter-spacing: 2rpx;
-    font-weight: 600;
+    font-weight: bold;
 }
 .page-help-index .help-content .question-box .result {
     font-size: 34rpx;

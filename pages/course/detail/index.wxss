@@ -23,7 +23,7 @@
 .each-item .tit {
     font-size: 34rpx;
     color: #333;
-    font-weight: 600;
+    font-weight: bold;
     padding-top: 20rpx;
 }
 .video-box{
@@ -105,7 +105,7 @@
 .frame-l .up {
     font-size: 30rpx;
     color: #333;
-    font-weight: 600;
+    font-weight: bold;
 }
 .frame-l .down {
     display: flex;
@@ -185,12 +185,13 @@ button::after{
 .info-avater {
     width: 80rpx;
     height: 80rpx;
+    border-radius: 40rpx;
     object-fit: cover;
 }
 .nickname {
     font-size: 34rpx;
     color: #333;
-    font-weight: 600;
+    /* font-weight: bold; */
     padding-left: 24rpx;
 }
 .comment-content {
@@ -244,7 +245,7 @@ position: relative;
     font-size: 34rpx;
     color: #000000;
     line-height: 44rpx;
-    font-weight: 600;
+    font-weight: bold;
     padding-left: 12rpx;
 
 }

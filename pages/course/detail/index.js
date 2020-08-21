@@ -249,7 +249,7 @@ Page({
   onConfirm(e){
     let that = this;
     let _this = this.data;
-    that.setData({ repeatBool: false}); // 防止重复请求
+    that.setData({ repeatBool: false,isShow:false,}); // 防止重复请求
        // 请求接口获取唤醒支付的参数
     getApp()
     .globalData.api.getPrepayId({

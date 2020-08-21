@@ -1,4 +1,7 @@
 @import "/app.wxss";
+page{
+    background: #f8f8f8;
+}
 .pages-live-detail-index {
     background: #f8f8f8;
     height: 100%;
@@ -23,7 +26,7 @@
 .introduce-lecturer .lecturer-name {
     font-size: 32rpx;
     color: #333;
-    font-weight: 600;
+    font-weight: bold;
 }
 .introduce-lecturer .lecturer-name {
     font-size: 32rpx;
@@ -51,7 +54,7 @@
 .pages-live-detail-index .live-time .course-time {
     color: #333;
     font-size: 32rpx;
-    font-weight: 600;
+    font-weight: bold;
 }
 .pages-live-detail-index .live-time .time {
     font-size: 30rpx;
@@ -71,7 +74,7 @@
 }
 .pages-live-detail-index .sponsor-box .sponsor .sponsor-tit {
     font-size: 32rpx;
-    font-weight: 600;
+    font-weight: bold;
     color: #333;
     width: 25%;
 }
@@ -95,7 +98,7 @@
     font-size: 30rpx;
     display: flex;
     justify-content: center;
-    font-weight: 600;
+    font-weight: bold;
     border-radius: 8rpx;
     margin-right: 34rpx;
 }
