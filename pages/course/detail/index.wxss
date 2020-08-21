@@ -116,11 +116,6 @@
 .frame-l .down .down-l {
     color: #ff3b30;
 }
-.frame-l .down .down-r {
-    color: #999;
-    width: 200rpx;
-    padding-left: 35rpx;
-}
 .frame-r {
     width: 182rpx;
     height: 160rpx;
@@ -174,7 +169,7 @@ button::after{
     border: none;
 }
 .each-list {
-    min-height: 208rpx;
+    min-height: 180rpx;
     padding-top: 28rpx;
     border-bottom: 2rpx solid #eee;
 }
@@ -287,5 +282,30 @@ position: relative;
     color: #FF8F1F;
     line-height: 44rpx;
     padding-left: 20rpx;
+}
+.invoice{
+    color: #999;
+    font-size: 28rpx;
+    height: 70rpx;
+    text-align: center;
+    line-height: 70rpx;
+
+}
+.back-box{
+    padding: 40rpx 45rpx 40rpx 80rpx;
+    line-height: 44rpx;
+    color: #333;
+    font-size: 28rpx;
+
+}
+.back-box .price{
+    display: flex;
+}
+.back-box .price .money{
+    color: #f00;
+    font-size: 34rpx;
+}
+.back-box .limit{
+    padding-top: 25rpx;
 }
 

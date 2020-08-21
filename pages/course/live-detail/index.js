@@ -9,7 +9,8 @@ Page({
     status:1,//1立即报名2报名成功3观看直播4直播结束
     statusName:"立即报名",
     liveDetailData:{},//直播详情数据
-    detailId:0
+    detailId:0,
+    url:"https://dkt.yuanian.com/"
   },
 
   /**
@@ -27,7 +28,6 @@ Page({
       id:that.data.detailId,
       uid:wx.getStorageSync('userInfoData').uid
     }).then(res=>{
-      console.log(res,'8888')
       if(res.bol==true){
         that.setData({
           liveDetailData: res.data
@@ -43,17 +43,15 @@ Page({
             statusName: "报名成功"
           });
         }
-       
         let liveStatus;
         let nowTime = dateFormat(new Date(),"yyyy-MM-dd hh:mm:ss");
-        console.log(nowTime,'999999999999')
         liveStatus = liveStatusFn(
           nowTime,
           res.data.start_at,
           res.data.end_at,
         );
         console.log(liveStatus,'666666666')
-        if(liveStatus==1||liveStatus==0){
+        if(liveStatus==1 || liveStatus==0){
           that.setData({
             status:3,
             statusName: "观看直播"
@@ -87,9 +85,8 @@ Page({
   },
   // 立即报名
   applyFn(){
-    console.log('eee')
     if(this.data.liveDetailData.userInfo=="0" && this.data.liveDetailData.status=="未报名"){
-      wx.showToast({ title: "请完善个人信息", icon: "none" });
+      wx.showToast({ title: "请先完善个人信息哟~", icon: "none" });
       setTimeout(() => {
         wx.switchTab({ url: "/pages/member/index/index" });
       }, 2000);
@@ -97,6 +94,12 @@ Page({
       this.getUserSignUp();
     }
   },
+  //观看直播
+  lookFn(){
+    wx.navigateTo({
+      url:`/pages/course/outsideurl/url?link=${this.data.url}` //
+  })
+},
 
   
 

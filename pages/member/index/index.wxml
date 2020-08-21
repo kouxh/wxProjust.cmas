@@ -101,9 +101,9 @@
 	<van-sidebar wx:if="{{isShow}}" active-key="{{ activeKey }}" class="side" bind:change="onChange">
 		<van-sidebar-item title="基本信息" />
 		<van-sidebar-item title="我的订单" />
-		<van-sidebar-item title="我的资产" />
 		<van-sidebar-item title="我的内容" />
 		<van-sidebar-item title="帮助中心" />
+			<!-- <van-sidebar-item title="我的资产" /> -->
 		<!-- <van-sidebar-item title="杂志购买" /> -->
 	</van-sidebar>
 	<!-- 绑定手机号弹层 -->

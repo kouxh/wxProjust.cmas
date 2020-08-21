@@ -16,7 +16,9 @@
     "components/bind-mobile/index",
     "pages/pay/index",
     "pages/course/live-detail/index",
-    "pages/course/plus/index"
+    "pages/course/plus/index",
+    "pages/research/index",
+    "pages/course/outsideurl/url"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -10,11 +10,12 @@ Page({
     active: 1,//tab栏默认选中
     videoPlay: null,
     dataList: [],//视频数据
-    _index: 0, //当前正在播放视频的数组下标
+    _index: 1, //当前正在播放视频的数组下标
     currentTime:0,//播放的当前时间
     durationTime:1,//视频总时间
     liveData:{},//直播图片
     end:null,//视频播放结束
+    autoplay:false
   },
   onLoad: function (options) {
     // 基础数据监测,以及初始请求
@@ -59,22 +60,25 @@ Page({
   //页面滚动触发
   onPageScroll(event) {
     this.setData({
-      end:null
+      end:null,
+      autoplay:true
     })
     let scrollTop = event.scrollTop //页面滚动
     if (scrollTop==0){
       indexKey=0
       this.setData({ _index:indexKey})
-    }
-    // console.log(scrollTop)
+    } 
     if (scrollTop >= distance) { //页面向上滚动indexKey
+      if(indexKey + 1 < meigeSP.length&&scrollTop < meigeSP[indexKey] * 1){
+        indexKey=0
+        this.setData({ _index:indexKey})
+      }
       if (indexKey + 1 < meigeSP.length && scrollTop >= meigeSP[indexKey] * 1) {
         this.setData({ _index: indexKey + 1 })
         indexKey += 1
-        console.log("indexKey", indexKey)
       }
     } else { //页面向下滚动
-      if (distance - scrollTop < 15) { //每次滚动的距离小于15时不改变  减少setData的次数
+      if (distance - scrollTop < 30) { //每次滚动的距离小于15时不改变  减少setData的次数
         return
       }
       if (indexKey - 1 > 0 && scrollTop < meigeSP[indexKey - 1]) {
@@ -84,6 +88,7 @@ Page({
     }
     distance = scrollTop
   },
+
   // 点击cover播放，其它视频结束
   videoPlay: function (e) {
     var _index = e.currentTarget.dataset.id

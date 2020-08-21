@@ -26,6 +26,8 @@ Page({
     payData: {}, // 支付配置参数
     moreData:[],//评论列表展示的数组
     isPlay:false,//不自动播放
+    contactPhone:'400-819-1255',//联系电话
+    backLookShow:false,//是否展示CMAS大讲堂回看权限弹框
   },
 
   /**
@@ -37,6 +39,17 @@ Page({
     this.descDataFn();//大讲堂详情
     this.checkUserVipFn();//判断是否是VIP
     
+  },
+  makePhoneCall:function(){
+    wx.makePhoneCall({
+      phoneNumber: this.data.contactPhone,
+      success:function(){
+        console.log('拨打成功')
+      },
+      fail:function(){
+        console.log('拨打失败')
+      }
+    })
   },
   //大讲堂详情
   descDataFn(){
@@ -50,7 +63,6 @@ Page({
           detailData: res.data,
           moreData:res.data.comment.slice(0,3)
         });
-        console.log(that.data.moreData,'0000')
         if(that.data.detailData.desc.coll==1){
           that.setData({
             collectionNum:++that.data.collectionNum
@@ -200,68 +212,10 @@ Page({
   },
   //购买直播回看权限
   liveLimit: function(event) {
-    let that = this;
-    let _this = this.data;
-    that.setData({ repeatBool: false,isShow:false, }); // 防止重复请求
-    // 请求接口获取唤醒支付的参数
-    getApp()
-      .globalData.api.getPrepayId({
-        uid: wx.getStorageSync('userInfoData').uid,
-        vip: 1,//1打包 2 plus会员
-      })
-      .then(res => {
-        // 得到支付需要的参数信息
-        if (res.bol ==false) {
-          that.setData({ repeatBool: true });
-          return wx.showToast({ title: res.err_msg, icon: "none" });
-        }
-        that.setData({ payData: res.data });
-        // 唤起支付弹框
-          that.arousePayFn();
-      });
+    let that=this;
+    that.setData({ isShow:false, backLookShow:true }); 
   },
-   // 唤起支付弹框
-   arousePayFn() {
-    let that = this;
-    let payData = that.data.payData;
-    wx.requestPayment({
-      timeStamp: payData.timeStamp.toString(),
-      nonceStr: payData.nonceStr,
-      package: payData.package,
-      signType: payData.signType,
-      paySign: payData.sign,
-      success(res) {
-        that.checkUserVipFn();//判断是否是VIP
-        that.setData({
-          controls: true,
-          initialTime:'361',
-          isPlay:true
-        });
-        that.videoContext.seek(361);//跳转到指定位置
-        setTimeout(() => {
-          that.videoContext.play();//播放视频
-        }, 2000);
-        
-      },
-      fail(res) {
-        console.log(res,'支付失败,请求重试')
-        wx.showToast({ title: "支付失败,请求重试", icon: "none" });
-        setTimeout(() => {
-          that.setData({
-            isShow:false,
-            controls: true,
-            initialTime:'0',
-            isPlay:true
-          });
-          that.videoContext.seek(0);//跳转到指定位置
-          that.videoContext.play();//播放视频
-        }, 2000);
-      },
-      complete(res) {
-        that.setData({ repeatBool: true });
-      }
-    });
-  },
+ 
   //购买plus权限
   plusLimit:function(event){
     let that =this;
@@ -291,31 +245,70 @@ Page({
       }
     })
   },
-  //点击确认按钮触发
+  //回看弹框立即购买确定按钮
   onConfirm(e){
-      this.setData({
-        isShow:false,
-        controls: true,
-        initialTime:'362',
-        isVip:true
-      });
-      this.videoContext.seek(362);//跳转到指定位置
-      this.videoContext.play();//播放视频
-      wx.navigateTo({
-        url:'/pages/pay/index',
-        // url: `/pages/pay/index/index?orderNo=${checkRes.response.OrderNumber}&price=${that.data.priceData.pay_money}`
-        events: {
-          // 为指定事件添加一个监听器，获取被打开页面传送到当前页面的数据
-          paySuccessEvent: function (data) {
-            console.log(data, '-----------refreshevent');
-            if (data) {
-              that.initialFn(that, 1);
-            }
-          },
-        }
-      })
-      
-     
+    let that = this;
+    let _this = this.data;
+    that.setData({ repeatBool: false}); // 防止重复请求
+       // 请求接口获取唤醒支付的参数
+    getApp()
+    .globalData.api.getPrepayId({
+      uid: wx.getStorageSync('userInfoData').uid,
+      vip: 1,//1打包 2 plus会员
+    })
+    .then(res => {
+      // 得到支付需要的参数信息
+      if (res.bol ==false) {
+        that.setData({ repeatBool: true });
+        return wx.showToast({ title: res.err_msg, icon: "none" });
+      }
+      that.setData({ payData: res.data });
+      // 唤起支付弹框
+        that.arousePayFn();
+    });
+  },
+    // 唤起支付弹框
+  arousePayFn() {
+    let that = this;
+    let payData = that.data.payData;
+    wx.requestPayment({
+      timeStamp: payData.timeStamp.toString(),
+      nonceStr: payData.nonceStr,
+      package: payData.package,
+      signType: payData.signType,
+      paySign: payData.sign,
+      success(res) {
+        that.checkUserVipFn();//判断是否是VIP
+        that.setData({
+          backLookShow:false,
+          controls: true,
+          initialTime:'361',
+          isPlay:true,
+        });
+        that.videoContext.seek(361);//跳转到指定位置
+        setTimeout(() => {
+          that.videoContext.play();//播放视频
+        }, 2000);
+        
+      },
+      fail(res) {
+        console.log(res,'支付失败,请求重试')
+        wx.showToast({ title: "支付失败,请求重试", icon: "none" });
+          that.setData({
+            backLookShow:false,
+            controls: true,
+            initialTime:'0',
+            isPlay:true
+          });
+          that.videoContext.seek(0);//跳转到指定位置
+        setTimeout(() => {
+          that.videoContext.play();//播放视频
+        }, 2000);
+      },
+      complete(res) {
+        that.setData({ repeatBool: true });
+      }
+    });
   },
   // 点击取消时触发
   onClose() {
@@ -333,8 +326,23 @@ Page({
     }, 2000);
    
   },
-
-
+  //回看弹框取消
+  lookClose(){
+    this.setData({
+      backLookShow:false,
+      isShow:true
+    });
+    // setTimeout(() => {
+    //   this.setData({
+    //     controls: true,
+    //     initialTime:'0',
+    //     isPlay:true
+    //   });
+    //   this.videoContext.seek(0);//跳转到指定位置
+    //   this.videoContext.play();//播放视频
+    // }, 2000);
+  },
+  
    // 编辑/添加地址 详细地址 同步
    commitFn(e) {
     this.setData({

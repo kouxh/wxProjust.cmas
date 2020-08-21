@@ -4,12 +4,10 @@
         <image class="lecturer-img" src="https://www.chinamas.cn/{{liveDetailData.l_img}}" mode="aspectFill" />
         <view class="headline">{{liveDetailData.l_title}}</view>
         <text class="lecturer-name" decode="{{true}}">
-            讲&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; 师：{{liveDetailData.l_lecturer}}
+            讲&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; 师：{{liveDetailData.l_lecturer}}
         </text>
         <view class="work">
-            <text>{{liveDetailData.l_post}}</text>
-            <!-- <text>全国会计名家工程入选者</text>
-            <text>教授、博士生导师</text> -->
+            <view>{{liveDetailData.l_post}}</view>
         </view>
     </view>
     <view class="live-time">
@@ -39,15 +37,14 @@
             <view class="left">演讲主题</view>
             <view class="right">
                 “基于大数据的智能管理会计”的精彩演讲，和您探讨“智能时代会计的变与不变和智能管理会计的体系重构”.
-                “基于大数据的智能管理会计”的精彩演讲，和您探讨“智能时代会计的变与不变和智能管理会计的体系重构”.
             </view>
         </view>
     </view>
     <view class="button-btn-box {{isIphoneX?'IpX-Bottom':''}}" >
         <!-- <view class="button-btn-text {{liveDetailData.status=='直播已开始' ? 'button-btn-text1':''}}">{{statusName}}</view> -->
-         <view class="button-btn-text" bindtap="applyFn" wx:if="{{status==1}}">{{statusName}}</view>
+        <view class="button-btn-text" bindtap="applyFn" wx:if="{{status==1}}">{{statusName}}</view>
         <view class="button-btn-text" bindtap="applyFn" wx:if="{{status==2}}">{{statusName}}</view>
-        <view class="button-btn-text" wx:if="{{status==3}}">{{statusName}}</view>
-         <view class="button-btn-text1" wx:if="{{status==4}}">{{statusName}}</view>
+        <view class="button-btn-text" wx:if="{{status==3}}" bindtap="lookFn">{{statusName}}</view>
+        <view class="button-btn-text1" wx:if="{{status==4}}">{{statusName}}</view>
     </view>
 </view>

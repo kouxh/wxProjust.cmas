@@ -3,37 +3,18 @@
     <view class="header"></view>
     <view class="content">
         <view class="content-title">
-            <van-icon name="wap-nav" size="20px" color="red" />
-            <view class="title">我的课程</view>
+            <van-icon name="orders-o" size="20px" color="red" />
+            <view class="title">我的订单</view>
         </view>
         <view class="content-box">
-            <view class="each-item">
-                <view class="tit">CMAS走进某企业，与企业高管深度交流，讨论数字化转型的成功经验</view>
-                <image class="img" src="/assets/img/content.png" mode="aspectFill" />
+            <!-- <view class="each-item">
+                <view class="tit"> 订单名称：购买打包视频</view>
                 <view class="foot">
                     <van-icon name="eye" size="20px" color="#B1B0B0" />
                     <view class="num">265</view>
                     <view class="into">走进企业</view>
                 </view>
-            </view>
-            <view class="each-item">
-                <view class="tit">CMAS走进某企业，与企业高管深度交流，讨论数字化转型的成功经验</view>
-                <image class="img" src="/assets/img/content.png" mode="aspectFill" />
-                <view class="foot">
-                    <van-icon name="eye" size="20px" color="#B1B0B0" />
-                    <view class="num">265</view>
-                    <view class="into">走进企业</view>
-                </view>
-            </view>
-            <view class="each-item">
-                <view class="tit">CMAS走进某企业，与企业高管深度交流，讨论数字化转型的成功经验</view>
-                <image class="img" src="/assets/img/content.png" mode="aspectFill" />
-                <view class="foot">
-                    <van-icon name="eye" size="20px" color="#B1B0B0" />
-                    <view class="num">265</view>
-                    <view class="into">走进企业</view>
-                </view>
-            </view>
+            </view> -->
             <view class="each-item">
                 <view class="tit">CMAS走进某企业，与企业高管深度交流，讨论数字化转型的成功经验</view>
                 <image class="img" src="/assets/img/content.png" mode="aspectFill" />

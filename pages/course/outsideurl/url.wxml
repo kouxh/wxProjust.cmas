@@ -1,0 +1,2 @@
+<!--pages/course/outsideurl/url.wxml-->
+<web-view src="{{url}}"></web-view>

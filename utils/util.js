@@ -91,12 +91,12 @@ function liveStatusFn(nowTime, startTime, endTime) {
   let end = Date.parse(dateFormat(endTime, "yyyy/MM/dd hh:mm:ss"));
   console.log(now,start,end)
   let liveStatus;
-  console.log(parseInt(((start-now)% (1000 * 60 * 60)) / (1000 * 60)),'33333333')
-  if (parseInt(((start-now)% (1000 * 60 * 60)) / (1000 * 60))==30) {
+  console.log(parseInt(((start-now)% (1000 * 60 * 60)) / (1000 * 60)),'000')
+  if (parseInt(((start-now)% (1000 * 60 * 60)) / (1000 * 60))>0&&parseInt(((start-now)% (1000 * 60 * 60)) / (1000 * 60))<=30) {
     liveStatus = 0;
   } else if (start < now && now < end) {
     liveStatus = 1;
-  } else {
+  } else if(now > end) {
     liveStatus = 2;
   }
   return liveStatus;

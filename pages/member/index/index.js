@@ -183,7 +183,7 @@ Page({
       if (res.bol == true) {
         wx.showToast({ title: "修改成功", icon: 'success',duration:2000 });
       }else{
-        wx.showToast({ title: "修改数据失败,请稍后重试~", icon: "none" });
+        // wx.showToast({ title: "", icon: "none" });
       }
     })
     //   var phoneurl = 'https://www.chinamas.cn/basicInfoApi';
@@ -208,19 +208,11 @@ Page({
      
     }else if(event.detail == 2){
       wx.navigateTo({
-        url: "/pages/member/asset/index"
+        url: "/pages/member/content/index"
       });
     }else if(event.detail == 3){
       wx.navigateTo({
-        url: "/pages/member/content/index"
-      });
-    }else if(event.detail == 4){
-      wx.navigateTo({
         url: "/pages/member/help/index"
-      });
-    }else if(event.detail == 5){
-      wx.navigateTo({
-        url: "/pages/member/magazine/index"
       });
     }
 

@@ -49,32 +49,32 @@
     padding-left: 8rpx;
 }
 .each-limits {
-    padding: 30rpx 30rpx 0rpx 56rpx;
+    padding: 20rpx 30rpx 0rpx 56rpx;
 }
 .each-limits .up {
     display: flex;
 }
 .each-limits .up .img {
-    width: 60rpx;
+    width: 50rpx;
     height: 30rpx;
     object-fit: cover;
-    margin-top: 8rpx;
+    margin-top: 7rpx;
 }
 .each-limits .up .text {
     font-size: 28rpx;
     color: #333333;
-    letter-spacing: 4rpx;
+    letter-spacing: 2rpx;
     font-weight: 600;
-    line-height: 44rpx;
+    line-height: 40rpx;
     width: 780rpx;
     padding-left: 10rpx;
 }
 .each-limits .down {
     font-size: 26rpx;
     color: #999;
-    letter-spacing: 4rpx;
+    letter-spacing: 2rpx;
     text-align: right;
-    padding-top: 20rpx;
+    padding-top: 10rpx;
 }
 .pages-plus-index .plus-content .limits-box .vip-fee {
     margin-top: 40rpx;
@@ -90,21 +90,33 @@
 .vip-fee .fee-box .fee-tit {
     font-size: 32rpx;
     color: #333;
-    letter-spacing: 4rpx;
+    letter-spacing: 2rpx;
     font-weight: 600;
     padding-left: 28rpx;
-    padding-top: 30rpx;
+    padding-top: 25rpx;
 }
 .vip-fee .fee-box .fee-price {
-    padding-left: 75rpx;
+    padding-left: 45rpx;
+    margin-top: 20rpx;
+    color: #333;
 }
 .vip-fee .fee-box .fee-price .lh{
-    letter-spacing: 4rpx;
+    letter-spacing: 2rpx;
+    padding-left: 60rpx;
+    font-size: 28rpx;
+    color: #999;
+    margin-top: -10rpx;
 }
+.radio{
+    margin-bottom: 20rpx;
+    font-size: 30rpx;
+}
+
 .vip-fee .fee-box .fee-price1{
-    padding-left: 75rpx;
+    padding-left: 60rpx;
     display: flex;
-    padding-top: 40rpx;
+    padding-top: 20rpx;
+    padding-bottom: 20rpx;
 }
 .vip-fee .fee-box .fee-price1 .vip-type {
     display: flex;
@@ -119,7 +131,7 @@
 .vip-fee .fee-box .fee-price1 .vip-type .type {
     font-size: 28rpx;
     color: #333333;
-    letter-spacing: 4rpx;
+    letter-spacing: 2rpx;
     padding-left: 8rpx;
 }
 .button-btn-box {

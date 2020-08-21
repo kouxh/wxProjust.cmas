@@ -9,6 +9,7 @@ Page({
     repeatBool: true, // 防止重复请求
     payData: {}, // 支付配置参数
     detailId:0,//详情id
+    radio: '1',//默认选中单选框
   },
 
   /**
@@ -19,6 +20,13 @@ Page({
     let that=this;
     that.setData({detailId:options.id });
   },
+    //单选框切换
+    onChange(event) {
+      console.log(event,'000')
+      this.setData({
+        radio: event.detail,
+      });
+    },
      // 点击立即支付
      goPayFn() {
       let that = this;

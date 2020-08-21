@@ -61,8 +61,6 @@
                         <view class="up">{{item.cl_title}}</view>
                         <view class="down">
                             <text class="down-l">{{item.cl_type}}</text>
-                             <text class="down-r ellipsis1row" >{{util.wordSplit("壹贰叁肆伍壹贰叁肆伍壹贰叁肆伍")}}</text>
-                            <!-- <text class="down-r ellipsis1row">壹贰叁肆伍壹贰叁肆伍壹贰叁肆伍</text> -->
                         </view>
                     </view>
                     <!-- <image class="frame-r" src="/assets/img/video.png" mode="aspectFill" /> -->
@@ -73,8 +71,6 @@
                     enable-play-gesture='true'
                     show-fullscreen-btn="{{false}}"
                    >
-                   
-
                    </video>
                 </navigator>
             </view>
@@ -95,11 +91,9 @@
                 <view  class="each-list" wx:for='{{moreData}}' wx:for-item="item" wx:for-index="index" wx:key='index' >
                     <view class="list-top">
                         <view class="conmment-info">
-                            <!-- <image class="info-avater" src="/assets/img/avatar.png" mode="aspectFill" /> -->
                             <image class="info-avater" src="https://www.chinamas.cn/{{item.photo}}" mode="aspectFill" />
                             <view class="nickname">{{item.account}}</view>
                         </view>
-                        <!-- <van-icon  name="like"  color="#FF5F01" size="20px" /> -->
                     </view>
                     <view class="comment-content">
                        {{item.com_comment}}
@@ -134,7 +128,7 @@
         </view>
     </view>
     <!-- 开通会员 -->
-    <van-dialog use-slot show="{{ isShow }}"  catchtouchmove="true" showConfirmButton="{{false}}" class="dialog-box">
+    <van-dialog use-slot show="{{ isShow }}"  catchtouchmove="true" showConfirmButton="{{false}}" class="dialog-box" width="280px">
          <view style="height:50rpx" catchtap="onClose" > <van-icon name="cross"  class="van-icon1" /></view>
         
         <!-- <view class="price-box">
@@ -156,5 +150,24 @@
             <text class="buy">购买会员权限</text>
            </view>
         </view>
+        <view class="invoice" bindtap="makePhoneCall">购买后如需发票请联系：{{contactPhone}}</view>
     </van-dialog>
+    <!-- CMAS大讲堂回看权限弹框 -->
+    <van-dialog
+        use-slot
+        title="CMAS大讲堂回看权限"
+        show="{{ backLookShow }}"
+        show-cancel-button
+        bind:confirm="onConfirm"
+        bind:close="lookClose"
+        cancelButtonText="我再想想"
+        confirmButtonText="立即购买"
+        width="280px"
+        >
+        <view class="back-box">
+            <view class="price">价钱：<view class="money">￥198.00</view></view>
+            <view class="limit">权限：一年内，免费查看CMAS大讲堂所有视频</view>
+        </view>
+    </van-dialog>
+
 </view>

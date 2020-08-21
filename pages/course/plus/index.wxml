@@ -49,8 +49,24 @@
             <view class="vip-fee">
                 <view class="fee-box">
                     <view class="fee-tit">PLUS会员费：</view>
+                    
                     <view class="fee-price">
-                        <text class="lh">
+                     <radio-group class="radio-group" bindchange="onChange" color="#4a90e2" >
+                            <radio value="1" checked="1" color="#4a90e2" class="radio"> 699元/年/人</radio>
+                            <view></view>
+                            <radio value="2" disabled class="radio"> 团购  599元/年/人</radio>
+                            <view class="lh" >3人以上（含3人）成团可享受优惠</view> 
+                            <radio value="3" disabled class="radio">读者优惠  299元/年/人 </radio>
+                            <view class="lh">2020年订阅《管理会计研究》全年刊的读者可享读者价。该套餐不享受本年度全年刊物免费看的服务</view>
+                     </radio-group>
+                        <!-- <van-radio-group value="{{ radio }}" bind:change="onChange">
+                            <van-radio name="1"> 699元/年/人</van-radio>
+                            <van-radio name="2" disabled> 团购  599元/年/人  </van-radio>
+                            <view class="lh" >3人以上（含3人）成团可享受优惠</view>
+                            <van-radio name="3"disabled>读者优惠  299元/年/人 </van-radio>
+                            <view class="lh">2020年订阅《管理会计研究》全年刊的读者可享读者价。该套餐不享受本年度全年刊物免费看的服务</view>
+                        </van-radio-group> -->
+                        <!-- <text class="lh">
                             699元/年/人，
                             三人以上成团可享受优惠价格
                             599元/年/人（需自行组成团）
@@ -58,7 +74,7 @@
                         <text class="lh">
                             2020年《管理会计研究》读者
                             只需补299元即可成为CMAS PLUS会员，享受所有会员权益
-                        </text>
+                        </text> -->
                     </view>
                     <view class="fee-tit">PLUS会员等级：</view>
                     <view class="fee-price1">

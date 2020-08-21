@@ -1,0 +1,53 @@
+<view class="page-research-index">
+    <view class="header"></view>
+    <view class="title-box">
+        <view class="title-icon"></view>
+        <image class="header-img" src="/assets/img/header.png" mode="aspectFill" />
+        <view class="title">产业研究</view>
+        <view class="title-icon"></view>
+    </view>
+    <view class="introduce-box">
+        <view class="intro">
+            CMAS智库汇集行业专家，聚焦产业研究是CMAS智库最具价值的服务内容。CMAS智库专家多年来给石化、地产、金融、制造业等多个行业进行过多项产业研究，并为一大批龙头企业提供极具针对性和指导价值的专项研究报告。
+            <view style="margin-top:20rpx">为了更好地推动产业研究，CMAS智库按照行业设立专业的行业研究中心，目前已经拟定的有：</view>
+        </view>
+        <view class="detailed-box">
+            <view class="item">
+                <view class="title">数字化转型研究中心</view>
+                <view class="content">
+                    CMAS智库专家紧跟行业发展趋势和技术演进路线，就数字技术和数字化应用场景进行深入研究，给企业提出行之有效的数字化转型建议路径和实施方案。
+                </view>
+            </view>
+            <view class="item">
+                <view class="title">管理会计研究中心</view>
+                <view class="content">
+                    在数字技术的推动下，管理会计的理论和实践都有了巨大发展。管理会计将以崭新的面貌和富有实效的理论架构和实施方案，帮助更多企业做好全面预算、成本控制和绩效评估，助力企业战略转型。
+                </view>
+            </view>
+            <view class="item">
+                <view class="title">智能共享研究中心</view>
+                <view class="content">
+                    业财税一体化融合是企业快速发展的必然要求，财务共享建设蔚然成风。以此为基础，逐步扩展到采购、商旅、IT等多个业务领域，形成极具数字化特征的智能共享平台，为集团企业搭建起强大灵活的大中台架构。
+                </view>
+            </view>
+            <view class="item">
+                <view class="title">地产研究中心</view>
+                <view class="content">
+                    以赛普元年专家为核心班底，以房地产数字化大运营体系建设为核心主题，为新形势下的房地产企业提供全局性、前瞻性的趋势研究，并针对具体需求给出专业咨询方案和产业研究报告。
+                </view>
+            </view>
+            <view class="item">
+                <view class="title">汽车行业研究中心</view>
+                <view class="content">
+                    数字技术在汽车行业的应用非常广泛而深入，同时在产品设计、制造、管理等各个方面都面临非常迫切的优化升级需求。CMAS特别成立汽车行业研究中心，为中国汽车企业的数字化转型和国际化运营助一臂之力！
+                </view>
+            </view>
+            <view class="item">
+                <view class="title">医院数字化研究中心</view>
+                <view class="content">
+                    随着DRG（按病种计费模式）的深入推进，医院管理体系再次面临系统性改造，管理会计、数字化管理等理论和工具的大量使用是一个必然趋势。CMAS智库集合医疗专家和数字化专业队伍，为医院的数字化提升和管理变革出谋划策。
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

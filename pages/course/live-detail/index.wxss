@@ -13,7 +13,7 @@
     padding: 0 32rpx;
 }
 .introduce-lecturer .lecturer-img {
-    width: 690rpx;
+    width: 100%;
     height: 350rpx;
     object-fit: cover;
     padding: 34rpx 0;
@@ -21,9 +21,8 @@
 }
 .introduce-lecturer .headline,
 .introduce-lecturer .lecturer-name {
-    font-size: 34rpx;
+    font-size: 32rpx;
     color: #333;
-    font-family: PingFangSC-Medium;
     font-weight: 600;
 }
 .introduce-lecturer .lecturer-name {
@@ -36,6 +35,9 @@
     line-height: 52rpx;
     padding-top: 14rpx;
     padding-bottom: 40rpx;
+    font-size: 30rpx;
+    color: #333333;
+    letter-spacing: 3rpx;
 }
 .pages-live-detail-index .live-time {
     margin: 20rpx 0;
@@ -47,12 +49,13 @@
     align-items: center;
 }
 .pages-live-detail-index .live-time .course-time {
-    font-family: PingFangSC-Medium;
+    color: #333;
     font-size: 32rpx;
     font-weight: 600;
 }
 .pages-live-detail-index .live-time .time {
     font-size: 30rpx;
+    color: #333;
     letter-spacing: 3rpx;
 }
 .pages-live-detail-index .sponsor-box,
@@ -64,16 +67,19 @@
 .pages-live-detail-index .sponsor-box .sponsor {
     display: flex;
     padding-bottom: 14rpx;
+    width: 100%;
 }
 .pages-live-detail-index .sponsor-box .sponsor .sponsor-tit {
     font-size: 32rpx;
     font-weight: 600;
-    width: 160rpx;
+    color: #333;
+    width: 25%;
 }
 .pages-live-detail-index .sponsor-box .sponsor .sponsor-con {
     font-size: 30rpx;
+    color: #333;
     letter-spacing: 3rpx;
-    width: 500rpx;
+    width: 70%;
 }
 .sponsor-box1 {
     margin-bottom: 200rpx;
@@ -98,7 +104,7 @@
     color: #333;
     line-height: 52rpx;
     width: 500rpx;
-    letter-spacing: 4rpx;
+    letter-spacing: 3rpx;
 }
 .pages-live-detail-index .button-btn-box {
     position: fixed;

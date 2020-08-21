@@ -1,0 +1,68 @@
+.page-research-index {
+  background: #f8f8f8; 
+  height: 100%;
+  width: 100%;
+}
+.page-research-index .header{
+  height: 20rpx;
+  background-color: #f8f8f8;
+}
+.page-research-index .title-box{
+  height: 130rpx;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.page-research-index .title-box .title-icon{
+    width: 84rpx;
+    height: 1rpx;
+    border-top: 1rpx solid #979797;
+}
+.page-research-index .title-box .header-img{
+  width: 200rpx;
+  height: 40rpx;  
+  object-fit: contain;
+  padding-left: 20rpx;
+}
+.page-research-index .title-box .title{
+  font-size: 36rpx;
+  color: #333;
+  letter-spacing: 0.55rpx;
+  padding-right: 20rpx;
+  padding-left: 8rpx;
+  font-weight: 600;
+}
+.page-research-index .introduce-box{
+  background-color: #fff;
+  padding: 0 34rpx;
+}
+.page-research-index .introduce-box .intro{
+  font-size: 30rpx;
+  color: #333;
+  padding-bottom: 34rpx;
+  line-height: 48rpx;
+}
+.page-research-index .introduce-box .detailed-box{
+  margin-bottom: 200rpx;
+}
+.detailed-box .item{
+  padding-bottom: 20rpx;
+}
+.detailed-box .item .title{
+  font-size: 30rpx;
+  color: #f00;
+  padding-bottom: 15rpx;
+
+}
+.detailed-box .item .content{
+  font-size: 28rpx;
+  color: #868587;
+  line-height: 30rpx;
+  line-height: 54rpx;
+}
+
+
+
+
+

@@ -37,6 +37,7 @@
   margin-top: 20rpx;
   background-color: #fff;
   padding: 45rpx 32rpx 0;
+  margin-bottom: 200rpx;
 }
 
 .each-item {
@@ -101,7 +102,8 @@
   position: relative;
   border-bottom: 2rpx solid #eee;
   border-top: 2rpx solid #eee;
-  margin-bottom: 200rpx;
+  margin-top: 20rpx;
+  
   
 }
 .live .img {
@@ -217,6 +219,7 @@ video{
   align-items: center;
   
 }
+
 .item-box .foot {
   height: 90rpx;
   display: flex;

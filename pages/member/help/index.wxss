@@ -12,7 +12,7 @@
     margin-bottom: 200rpx;
 }
 .page-help-index .help-content .content-title {
-    padding: 38rpx 0 70rpx 30rpx;
+    padding: 38rpx 0 70rpx 24rpx;
     display: flex;
     align-items: center;
     background-color: #fff;

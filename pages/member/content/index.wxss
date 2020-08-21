@@ -124,6 +124,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-top: 20rpx;
   }
   .page-content-index .content .tabs .comment-box .each-item .tit-box .tit{
     font-size: 30rpx;
@@ -149,10 +150,10 @@
     justify-content: center;
     color: #fff;
     font-size: 26rpx;
-    border-radius: 20rpx;
+    border-radius: 10rpx;
 }
 .not-bg{
-    background: #999;
+    background: #ccc;
 }
 .bg{
     background: #1677ff;
