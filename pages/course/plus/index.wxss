@@ -105,11 +105,14 @@
     padding-left: 60rpx;
     font-size: 28rpx;
     color: #999;
-    margin-top: -10rpx;
+    margin-top: 6rpx;
 }
 .radio{
     margin-bottom: 20rpx;
     font-size: 30rpx;
+}
+.van-radio{
+    margin-top: 30rpx;
 }
 
 .vip-fee .fee-box .fee-price1{
@@ -150,4 +153,292 @@
     background-color: #4a90e2;
     /* background-image: linear-gradient(260deg, #ff6464 0%, #ff4444 100%); */
     transition: all 0.2s;
+}
+.back-box{
+    height: 200rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+/* 读者优惠弹框 */
+.reader-box{
+    padding: 50rpx 80rpx 20rpx 80rpx;
+}
+.reader-box .introduce{
+    font-size: 28rpx;
+    color: #909090; 
+    border-bottom: 2rpx solid #E6E9ED;
+    padding-bottom: 30rpx;
+}
+.reader-box .introduce .contact{
+    padding-top: 30rpx;
+}
+.reader-box .tel-box{
+    padding: 24rpx 0 10rpx 0;
+    border-bottom: 2rpx solid #E6E9ED;
+}
+.reader-box .tel-box .top{
+    display: flex;
+    padding-bottom: 20rpx;
+}
+.reader-box .tel-box .top .circle{
+    width: 14rpx;
+    height: 14rpx;
+    border-radius: 7rpx;
+    background-color: #FF5240;
+    margin-top: 9rpx;
+    margin-left: 14rpx;
+
+}
+.reader-box .tel-box .top .text{
+    font-size: 28rpx;
+    color: #333333;
+    padding-left: 20rpx;
+}
+.reader-box .tel-box .tel-input{
+    display: flex;
+    align-items: center;
+    margin-left: 20rpx;
+    margin-bottom: 20rpx;
+}
+.reader-box .tel-box .tel-input > input {
+    font-size: 28rpx;
+    color: #333;
+    background: #F3F4F6;
+    border-radius: 13rpx;
+    height: 64rpx;
+    width: 408rpx;
+    padding-left: 20rpx;
+
+  }
+  .reader-box .tel-box .tel-input .code{
+    font-size: 24rpx;
+    color: #FF2E2D;
+    margin-left: 18rpx;
+  }
+  .reader-box .price-box{
+    padding-top: 20rpx;
+    color: #FF5240;
+    display: flex;
+    align-items: center;
+    padding-left: 10rpx;
+  }
+  .reader-box .price-box .price{
+    font-size: 26rpx;
+    padding-left: 8rpx;
+  }
+  .reader-box .price-box .money{
+    font-size: 32rpx;
+    }
+  .reader-box .pay-box{
+      margin: 30rpx auto;
+      width: 516rpx;
+      height: 66rpx;
+      background: #F96900;
+      border-radius: 8rpx;
+      font-size: 30rpx;
+      color: #fff;
+      text-align: center;
+      line-height: 66rpx;
+  }
+  /* 团购弹框 */
+  .group-box{
+    padding: 50rpx 70rpx 30rpx 70rpx;
+  }
+  .group-box .introduce{
+     color: #FF5240;
+     display: flex;
+     border-bottom: 2rpx solid #E6E9ED;
+     padding-bottom: 40rpx;
+  }
+  
+  .group-box .introduce .right{
+    padding-left: 20rpx
+  }
+  .group-box .introduce .right .text{
+    font-size: 32rpx;
+ }
+ .group-box .introduce .right .info{
+    font-size: 28rpx;
+    color: #191919;
+    padding-top: 8rpx;
+ }
+ .group-box .pay-type{
+    padding-top: 40rpx;
+ }
+ .group-box .pay-type .type-one{
+    padding-bottom: 30rpx;
+ }
+ .group-box .pay-type .type-one .top{
+    color: #FF5240;
+    display: flex;
+    align-items: center;
+    padding-left: 16rpx;
+    padding-bottom: 16rpx;
+}
+.group-box .pay-type .type-one .top .circle{
+    width: 14rpx;
+    height: 14rpx;
+    border-radius: 7rpx;
+    background-color: #FF5240;
+}
+.group-box .pay-type .type-one .top .type-text{
+    font-size: 28rpx;
+    padding-left: 34rpx;
+    padding-right: 65rpx
+}
+.group-box .pay-type .type-one .top .next-btn,
+.group-box .pay-type .type-one .top .not-next-btn{
+    width: 120rpx;
+    height: 44rpx;
+    border: 1px solid #FF5240;
+    color: #FF5240;
+    background: #fff;
+    border-radius: 22rpx;
+    font-size: 28rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 28rpx;
+}
+.group-box .pay-type .type-one .top .not-next-btn{
+    background: #eee;
+    color: #ccc;
+    border: 1rpx solid transparent;
+}
+button::after{border-width:0}
+.group-box .pay-type .type-one .down{
+    font-size: 24rpx;
+   color: #333;
+   padding-left: 58rpx
+}
+/* 统一付 */
+.flex-x {
+    display: flex;
+    align-items: center;
+  }
+  
+   .template_title_list {
+    height: 90rpx;
+    background: #fff;
+    justify-content: space-between;
+    padding: 0 30rpx;
+    box-sizing: border-box;
+    margin-bottom: 4rpx;
+  }
+  .template_title{
+    color: #8f8f8f;
+    flex-shrink: 0;
+    margin-left: 30rpx;
+  }
+  
+  .template_title > input {
+    font-size: 28rpx;
+    color: #333;
+    text-align: right;
+    flex-grow: 1;
+  }
+  
+  /* 添加内容 */
+  .add{
+    flex-grow: 1;
+    font-size: 40rpx;
+    color: #818181;
+    background: #F3F4F6;
+    border-radius: 22rpx;
+    height: 64rpx;
+    width: 530rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .tip{
+    font-size: 24rpx;
+    color: #818181;
+    padding: 20rpx 0 20rpx 10rpx;
+  }
+  
+
+  
+  /* 删除内容 */
+  
+  .del {
+    font-size: 32rpx;
+    color: #f16765;
+    margin-right: 14rpx;
+    padding: 20rpx;
+  }
+  
+  input {
+    flex-grow: 1;
+    font-size: 28rpx;
+    color: #333;
+    /* border: 2rpx solid #979797; */
+    background: #F3F4F6;
+    border-radius: 22rpx;
+    height: 64rpx;
+    width: 428rpx;
+    padding-left: 40rpx;
+/* font-size: 30rpx; */
+
+  }
+
+  .btn {
+   margin-top: 100rpx;
+  }
+  /* 各自付款 */
+  .frame-box{
+    padding: 50rpx 80rpx 30rpx 80rpx;
+  }
+  .frame-box .info-box{
+    border-bottom: 2rpx solid #E6E9ED;
+  }
+  .frame-box .info-box .box-top{
+      display: flex;
+      align-items: center;
+      font-size: 32rpx;
+      color: #FF5240;
+  }
+
+.frame-box .info-box .box-top .text{
+    padding-left: 10rpx;
+}
+ .box-down{
+    display: flex;
+    padding:36rpx 0;
+}
+.box-down .circle{
+    width: 14rpx;
+    height: 14rpx;
+    border-radius: 10rpx;
+    background-color: #FF5240;
+    margin-top: 9rpx;
+    margin-left: 14rpx;
+}
+.box-down .right{
+    font-size: 28rpx;
+    color: #333;
+    padding-left: 20rpx;
+    width: 508rpx;
+}
+.frame-box .status-box{
+   padding-bottom: 20rpx;
+}
+.phone{
+    font-size: 28rpx;
+    color: #333;
+    padding-left: 44rpx;
+    margin-top: -24rpx;
+}
+.pay-btn{
+    margin: 30rpx auto;
+    width: 516rpx;
+    height: 66rpx;
+    background: #F96900;
+    border-radius: 8rpx;
+    font-size: 30rpx;
+    color: #fff;
+    text-align: center;
+    line-height: 66rpx;
 }

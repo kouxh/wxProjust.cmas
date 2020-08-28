@@ -63,7 +63,7 @@
 .content-box .content {
     font-size: 34rpx;
     color: #333;
-    letter-spacing: 5rpx;
+    /* letter-spacing: 5rpx; */
     padding: 34rpx 0;
 }
 .page-detail-index .recommend {
@@ -140,7 +140,7 @@
     height: 70rpx;
     display: flex;
     align-items: center;
-    margin-left: 360rpx;
+    float:  right;
 }
 .comment-btn {
     display: flex;

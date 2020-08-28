@@ -73,6 +73,23 @@ export default {
   joinCollectionApi(params) {
     return fetch.fetchGet("applets/forum/insertCollection", params);
   },
+    /**
+   *小程序课堂点赞
+   * @param  {[type]} params [description]
+   * @return {[type]}        [description]
+   */
+  classRoomGiveApi(params) {
+    return fetch.fetchGet("applets/forum/classRoomGive", params);
+  },
+   /**
+   *小程序分享
+   * @param  {[type]} params [description]
+   * @return {[type]}        [description]
+   */
+  classRoomShareApi(params) {
+    return fetch.fetchGet("applets/forum/classRoomShare", params);
+  },
+
    /**
    *收藏列表
    * @param  {[type]} params [description]

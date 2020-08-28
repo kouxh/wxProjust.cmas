@@ -17,6 +17,8 @@ export default {
             });
             wx.removeStorageSync('userInfoData');
             wx.removeStorageSync('bindPhone');
+            getApp().globalData.userInfo=null;
+            console.log( getApp().globalData.userInfo,'777')
             return wx.reLaunch({ url: '/pages/login/index' })
           }
         },
@@ -46,6 +48,8 @@ export default {
             });
             wx.removeStorageSync('userInfoData');
             wx.removeStorageSync('bindPhone');
+            getApp().globalData.userInfo=null;
+            console.log( getApp().globalData.userInfo,'777')
             return wx.reLaunch({ url: '/pages/login/index' })
           }
         },

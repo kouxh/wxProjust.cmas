@@ -9,34 +9,43 @@ Page({
   data: {
     active: 1,//tab栏默认选中
     videoPlay: null,
-    dataList: [],//视频数据
-    _index: 1, //当前正在播放视频的数组下标
+    dataList: [
+      // { title: "标题", content: ""},
+    ],//视频数据
+    _index:0, //当前正在播放视频的数组下标
     currentTime:0,//播放的当前时间
     durationTime:1,//视频总时间
     liveData:{},//直播图片
     end:null,//视频播放结束
-    autoplay:false
+    autoplay:false,
   },
   onLoad: function (options) {
     // 基础数据监测,以及初始请求
     let that =this;
-    this.getData();
-    this.spHeight();//获取每个视频的距离顶部的高度
-    this.listDataFn();  //大讲堂列表
+    // this.getData();
+    that.listDataFn();  //大讲堂列表
+    setTimeout(() => {
+      that.spHeight();//获取每个视频的距离顶部的高度
+    }, 2000);
   },
   
 
   //大讲堂列表
-  listDataFn(){
+ listDataFn(){
     let that = this;
     getApp().globalData.api.classRoomList({
       where:"CMAS大讲堂"
     }).then(res=>{
       if(res.bol==true){
-        that.setData({
-          dataList: res.data.list,
-          liveData:res.data.live,
-        });
+        // wx.nextTick(() => {
+          that.setData({
+            ss:res.data,
+            dataList: res.data.list,
+            liveData:res.data.live,
+          });
+          console.log(that.data.dataList,'0000')
+        // });
+       
       }else{
         wx.showToast({ title: "res.msg", icon: "none" });
       }
@@ -55,6 +64,7 @@ Page({
       rect[0].forEach(item => {
         meigeSP.push(item.top)
       })
+      console.log(meigeSP,'222')
     })
   },
   //页面滚动触发
@@ -69,16 +79,16 @@ Page({
       this.setData({ _index:indexKey})
     } 
     if (scrollTop >= distance) { //页面向上滚动indexKey
-      if(indexKey + 1 < meigeSP.length&&scrollTop < meigeSP[indexKey] * 1){
-        indexKey=0
-        this.setData({ _index:indexKey})
-      }
-      if (indexKey + 1 < meigeSP.length && scrollTop >= meigeSP[indexKey] * 1) {
+      // if(indexKey + 1 < meigeSP.length&&scrollTop < meigeSP[indexKey] * 0.9){
+      //   indexKey=0
+      //   this.setData({ _index:indexKey})
+      // }
+      if (indexKey + 1 < meigeSP.length && scrollTop >= meigeSP[indexKey] * 0.9) {
         this.setData({ _index: indexKey + 1 })
         indexKey += 1
       }
     } else { //页面向下滚动
-      if (distance - scrollTop < 30) { //每次滚动的距离小于15时不改变  减少setData的次数
+      if (distance - scrollTop < 15) { //每次滚动的距离小于15时不改变  减少setData的次数
         return
       }
       if (indexKey - 1 > 0 && scrollTop < meigeSP[indexKey - 1]) {
@@ -123,14 +133,12 @@ Page({
   // },
 
   // 模拟数据加载
-  getData: function () {
-    this.setData({
-      dataList: [
-        { "id": 0, "title": "CMAS走进某企业，与企业高管深度交流，讨论数字化转型的成功经验", "content": "https://res.ycclass.iubug.com//endub/video/202005/gyfj3lnyh4_1590738493.mp4?t=123", "cover": "/assets/img/content.png" }, 
-        { "id": 1, "title": "CMAS走进某企业，与企业高管深度交流，讨论数字化转型的成功经验", "content": "https://res.ycclass.iubug.com//endub/video/202005/gyfj3lnyh4_1590738493.mp4?t=123", "cover": "/assets/img/content.png" }]
-    });
-
-  },
+  // getData: function () {
+  //   this.setData({
+  //     dataList: [
+  //       { "id": 0, "title": "标题", "content": "https://res.ycclass.iubug.com//endub/video/202005/gyfj3lnyh4_1590738493.mp4?t=123"}, ]
+  //   });
+  // },
   // 视频播放出错时触发
   videoErrorCallback(e) {
     console.log('视频错误信息:')
@@ -140,7 +148,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+   
   },
 
   /**

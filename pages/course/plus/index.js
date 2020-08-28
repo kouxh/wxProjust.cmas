@@ -10,6 +10,17 @@ Page({
     payData: {}, // 支付配置参数
     detailId:0,//详情id
     radio: '1',//默认选中单选框
+    url:"https://xpwi.github.io/shike/",
+    groupShow:false,//是否展示团购弹框
+    readerShow:false,//是否展示读者弹框
+    uniformShow:false,//是否展示统一付款弹框
+    lumpShow:false,//是否展示成团弹框
+    isCopy:false,//是否复制成功
+    disabled:true,
+    mobile:"",
+    code:"",
+    conLists: [], //内容标题（如：今天完成工作、备注、次日工作安排）可以添加或者删除
+
   },
 
   /**
@@ -22,10 +33,134 @@ Page({
   },
     //单选框切换
     onChange(event) {
-      console.log(event,'000')
+      console.log(event)
       this.setData({
         radio: event.detail,
       });
+      if(this.data.radio=="2"){
+        this.setData({
+          groupShow:true
+        })
+      }
+      if(this.data.radio=="3"){
+        this.setData({ readerShow: true });
+      }
+    },
+    //点击下一步
+    nextFn(){
+      this.setData({
+        uniformShow:true,
+        groupShow:false
+      })
+    },
+    //点击成团
+    groupFn(){
+      this.setData({
+        lumpShow:true,
+        groupShow:false
+      })
+    },
+    // 复制功能
+    copyFn(e) {
+      let that = this;
+      var copy = e.currentTarget.dataset.copy;
+      wx.setClipboardData({
+        data: copy,
+        success(res) {
+          console.log(res,'222')
+          wx.showToast({
+            title: '复制成功',
+            duration: 2000
+          })
+          that.setData({
+            isCopy:true,
+            disabled:false
+          })
+        },
+        fail(res) {
+          // wx.showToast({ title: "复制失败", icon: "none" });
+        }
+      });
+    },
+    //读者优惠点击关闭图标
+    onClose() {
+      this.setData({ readerShow: false, radio:"1" });
+      console.log(this.data.radio)
+    },
+    //团购点击关闭图标
+     onClose1() {
+      this.setData({ groupShow: false, radio:"1"});
+    },
+    //团购统一付款点击关闭图标
+    onClose2() {
+      this.setData({ uniformShow: false, radio:"1" });
+    },
+    //团购各自付款点击关闭图标
+    onClose3() {
+      this.setData({ lumpShow: false, radio:"1" });
+    },
+     /**
+ * 添加内容
+ */
+  add(e) {
+    // 点击添加按钮，就往数组里添加一条空数据
+    var _list = this.data.conLists;
+    _list.push("")
+    this.setData({
+      conLists: _list
+    })
+   },
+ 
+   /**
+    * 删除内容
+    */
+   del(e) {
+      var idx = e.currentTarget.dataset.index;
+      var _list = this.data.conLists;
+      console.log(idx)
+      for (let i = 0; i < _list.length; i++) {
+        if (idx == i) {
+          _list.splice(idx, 1)
+        }
+      }
+      this.setData({
+        conLists: _list
+      })
+    },
+  
+    /**
+   * 获取输入的内容标题
+   */
+    changeConTitle(e) {
+      console.log(e,'000')
+      var idx = e.currentTarget.dataset.index; //当前下标
+      var val = e.detail.value; //当前输入的值
+      var _list = this.data.conLists; //data中存放的数据
+      for (let i = 0; i < _list.length; i++) {
+     if (idx == i) {
+         _list[i] = { modelLabel: val } //将当前输入的值放到数组中对应的位置
+       }
+     }
+     this.setData({
+       conLists: _list
+     })
+   },
+ 
+   /**
+  * 下一步
+  */
+    next(e) {
+      var _conLists = this.data.conLists;
+      console.log('这是模板内容标题数组', _conLists)
+      for (let i = 0; i < _conLists.length; i++) {
+        if (!_conLists[i]) {
+          wx.showToast({
+            title: '请输入第' + `${i * 1 + 1}` + '条的模板内容标题！',
+            icon: 'none'
+          })
+          return;
+        }
+      }
     },
      // 点击立即支付
      goPayFn() {
@@ -86,7 +221,15 @@ Page({
       const eventChannel = that.getOpenerEventChannel()
       eventChannel.emit('paySuccessPlus', { data: 'success' });
     },
-
+      // 手机号内容同步
+      mobileFn(e) {
+        this.setData({ mobile: e.detail.value });
+      },
+  
+      // 验证码内容同步
+      codeFn(e) {
+        this.setData({ code: e.detail.value });
+      },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

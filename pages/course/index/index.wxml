@@ -19,7 +19,7 @@
 		</view>
 	</navigator>
 	<!-- 视频 -->
-	<view class="course-content">
+	<view class="course-content" wx:if="{{dataList.length>0}}">
 		<view class="item-box " wx:for="{{dataList}}" wx:for-item="item" wx:for-index="index" wx:key="index" >
       <!-- 标题层 -->
       <navigator class="video-title-box" hover-class="none" url="/pages/course/detail/index?id={{item.cl_id}}">
@@ -40,7 +40,7 @@
       </view>
       <!-- 视频播放层 -->
 			 <video src="{{item.cl_marvellous}}" data-id="{{index}}" class='video' wx:if="{{_index == index}}" objectFit='contain' autoplay='{{autoplay}}' controls  binderror="videoErrorCallback" show-center-play-btn='{{false}}' 
-      play-btn-position="bottom"  show-fullscreen-btn="{{false}}" bindended="bindended">
+        play-btn-position="bottom"  show-fullscreen-btn="{{false}}" bindended="bindended">
 				<view class="bcg" wx:if="{{end=='ended'}}"></view>
 				<view class="play-time"  wx:if="{{end=='ended'}}">查看完整视频<van-icon name="arrow" /><van-icon name="arrow" style="margin-left: -20rpx;"/></view>
 				<navigator hover-class="none" url="/pages/course/detail/index?id={{item.cl_id}}" class="mask"></navigator>

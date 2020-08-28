@@ -14,9 +14,6 @@ Page({
     id:0,
     controls:true,
     initialTime:0,
-    collectionNum:0,//收藏的个数
-    handleLinks:false,//是否点赞
-    handleLinksNum:0,//点赞的个数
     index:0,
     detailId:0,
     detailData:{},//获取详情数据
@@ -34,8 +31,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options,'999')
     let that = this;
     that.setData({detailId:options.id });
+    // if(options.shareUid!=undefined){
+    //   this.shareFn();
+    // }
     this.descDataFn();//大讲堂详情
     this.checkUserVipFn();//判断是否是VIP
     
@@ -55,7 +56,7 @@ Page({
   descDataFn(){
     let that = this;
     getApp().globalData.api.classRoomDesc({
-     id:that.data.detailId,
+     cid:that.data.detailId,
      uid:wx.getStorageSync('userInfoData').uid
     }).then(res=>{
       if(res.bol==true){
@@ -63,12 +64,6 @@ Page({
           detailData: res.data,
           moreData:res.data.comment.slice(0,3)
         });
-        if(that.data.detailData.desc.coll==1){
-          that.setData({
-            collectionNum:++that.data.collectionNum
-          })
-
-        }
       }else{
         wx.showToast({ title: "获取数据失败,请稍后重试~", icon: "none" });
       }
@@ -77,8 +72,11 @@ Page({
   // 查看更多
   moreFn(e){
     let that=this;
-    that.data.detailData.comment= that.data.detailData.comment.splice(0,3)
-    that.data.moreData.push(that.data.detailData.comment.slice(0,3))
+    // that.data.detailData.comment= that.data.detailData.comment.splice(0,3)
+    // that.data.moreData.push(that.data.detailData.comment.slice(0,3))
+  that.setData({
+    moreData:that.data.detailData.comment
+  })
 
   },
    // 发表评论
@@ -126,7 +124,7 @@ Page({
   //收藏功能
   onCollectionTap: function(e){
     let that=this;
-    if(that.data.detailData.desc.coll==0){
+    if(that.data.detailData.desc.coll_status==0){
       //如果当前状态是未收藏
       var collectionDatas = {
         type:3, //(必传 1、文章 2、杂志 3 、课堂)
@@ -140,7 +138,8 @@ Page({
         .then(res => {
           if (res.bol == true){
             that.setData({
-              collectionNum:++that.data.collectionNum
+              "detailData.desc.coll_status":1,
+              "detailData.desc.cl_collection_num":++that.data.detailData.desc.cl_collection_num
               })
               wx.showToast({ title: "收藏成功", icon: "none" });
           }else{
@@ -153,23 +152,54 @@ Page({
        wx.showToast({ title: "您已经收藏了", icon: "none" });
     }
   },
-   // 显示点赞功能
+  // 点赞功能
   handleLinks: function(event) {
     let that=this;
-    if(that.data.handleLinks==false){
+    if(that.data.detailData.desc.give_status==0){
       //如果当前状态是未点赞
-      that.setData({
-        handleLinks:true,
-        handleLinksNum:++that.data.handleLinksNum
+      getApp()
+        .globalData.api.classRoomGiveApi({
+          cid:that.data.detailId.trim(),
+          uid:wx.getStorageSync('userInfoData').uid
         })
+        .then(res => {
+          if (res.bol == true){
+            that.setData({
+              "detailData.desc.give_status":1,
+              "detailData.desc.cl_give_num":++that.data.detailData.desc.cl_give_num
+              })
+              wx.showToast({ title: "点赞成功", icon: "none" });
+          }else{
+           wx.showToast({ title: res.data.msg, icon: "none" });
+          }
+           
+        });
     }else{
       //如果当前状态是已点赞
-      that.setData({
-        handleLinks:false,
-        handleLinksNum:--that.data.handleLinksNum
-        })
+      wx.showToast({ title: "您已经点过赞了", icon: "none" });
+      // that.setData({
+      //   "detailData.desc.give_status":0,
+      //   "detailData.desc.cl_give_num":--that.data.detailData.desc.cl_give_num
+      //   })
       }
-  
+  },
+  //分享功能
+  shareFn: function(event) {
+    let that=this;
+      getApp()
+        .globalData.api.classRoomShareApi({
+          cid:that.data.detailId.trim(),
+        })
+        .then(res => {
+          if (res.bol == true){
+            that.setData({
+              "detailData.desc.cl_share_num":++that.data.detailData.desc.cl_share_num
+              })
+              wx.showToast({ title: "分享成功", icon: "none" });
+          }else{
+           wx.showToast({ title: res.data.msg, icon: "none" });
+          }
+        });
   },
   //视频播放出错
   videoErrorCallback: function(e) {
@@ -399,12 +429,14 @@ Page({
     if (options.from === 'button') {
       // 来自页面内转发按钮
     }
+    this.shareFn();
     return {
       title: '精彩视频',
+      // path:`/pages/course/detail/index?id=${this.data.detailId}&shareUid=${wx.getStorageSync('userInfoData').uid}`
       path: '/pages/course/detail/index?id='+ this.data.detailId,
-      success: function(res) {
-        // 转发成功，可以把当前页面的链接发送给后端，用于记录当前页面被转发了多少次或其他业务
-      }
     }
+   
+  
   }
+
 })

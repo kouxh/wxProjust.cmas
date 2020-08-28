@@ -1,27 +1,47 @@
-<!-- pages/member/my-order/index.wxml -->
 <view class="page-order-index">
-    <view class="header"></view>
     <view class="content">
         <view class="content-title">
             <van-icon name="orders-o" size="20px" color="red" />
             <view class="title">我的订单</view>
         </view>
-        <view class="content-box">
-            <!-- <view class="each-item">
-                <view class="tit"> 订单名称：购买打包视频</view>
-                <view class="foot">
-                    <van-icon name="eye" size="20px" color="#B1B0B0" />
-                    <view class="num">265</view>
-                    <view class="into">走进企业</view>
+        <view class="item-info">
+            <view class="info-top">
+                <view class="info-top-top">
+                    <view class="top-left">CMAS大讲堂回看权限</view>
+                    <van-icon name="delete" />
                 </view>
-            </view> -->
-            <view class="each-item">
-                <view class="tit">CMAS走进某企业，与企业高管深度交流，讨论数字化转型的成功经验</view>
-                <image class="img" src="/assets/img/content.png" mode="aspectFill" />
-                <view class="foot">
-                    <van-icon name="eye" size="20px" color="#B1B0B0" />
-                    <view class="num">265</view>
-                    <view class="into">走进企业</view>
+                <view class="info-top-down">
+                    <view class="down-left">期限：xx年月日-x年x月x日</view>
+                    <view class="down-right">数量：1</view>
+                </view>
+            </view>
+            <view class="info-bottom">
+                <view class="bottom-left">
+                    价格：<view class="money">198元</view>
+                </view>
+                <view class="bottom-right">
+                已完成
+                </view>
+            </view>
+        </view>
+        <view class="item-info">
+            <view class="info-top">
+                <view class="info-top-top">
+                    <view class="top-left">CMAS大讲堂回看权限</view>
+                    <van-icon name="delete" />
+                </view>
+                <view class="info-top-middle">备注：团购人员的手机号</view>
+                <view class="info-top-down">
+                    <view class="down-left">期限：xx年月日-x年x月x日</view>
+                    <view class="down-right">数量：1</view>
+                </view>
+            </view>
+            <view class="info-bottom">
+                <view class="bottom-left">
+                    价格：<view class="money">198元</view>
+                </view>
+                <view class="bottom-right">
+                已完成
                 </view>
             </view>
         </view>

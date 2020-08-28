@@ -29,18 +29,18 @@
             </view>
              <view class="operation">
                 <view  catchtap='handleLinks' class="line">
-                    <van-icon wx:if="{{handleLinks}}" name="like"  color="#FF5F01" size="20px"/>
-                    <van-icon wx:else name="like-o" size="20px"  data-id="{{id}}"  />
-                    <text class="chat-num">{{handleLinksNum}}</text>
+                    <van-icon wx:if="{{detailData.desc.give_status==0}}" name="like-o"   size="20px"/>
+                    <van-icon wx:else name="like" size="20px"  color="#FF5F01" />
+                    <text class="chat-num">{{detailData.desc.cl_give_num}}</text>
                 </view>
                  <view  bindtap="onCollectionTap" class="line">
-                    <van-icon wx:if="{{detailData.desc.coll==0}}" name="star-o" size="20px" /> 
+                    <van-icon wx:if="{{detailData.desc.coll_status==0}}" name="star-o" size="20px" /> 
                     <van-icon wx:else name="star" size="20px" color="#FF5F01"/>
-                    <text class="chat-num">{{collectionNum}}</text>
+                    <text class="chat-num">{{detailData.desc.cl_collection_num}}</text>
                 </view>
-                <button  open-type="share" hover-class="none" class="line">
+                <button  open-type="share" hover-class="none" class="line" data-name="shareBtn">
                     <van-icon name="share" size="20px" />
-                    <text class="chat-num">22</text>
+                    <text class="chat-num">{{detailData.desc.cl_share_num}}</text>
                 </button>
              </view>
         </view>
@@ -100,7 +100,7 @@
                     </view>
                 </view>
                 <view class="each-list no-comment" wx:if="{{moreData.length==0}}" >暂无评论数据</view>
-                <view class="more" bindtap="moreFn" data-index="{{index}}" style="display: {{moreData.length<3 ? 'none' : 'block'}}">
+                <view class="more" bindtap="moreFn" data-index="{{index}}" wx:if="{{moreData.length > 3 && moreData.length != detailData.comment.length }}" >
                     <text>更多评论内容</text>
                     <van-icon name="arrow" size="20rpx" />
                     <van-icon name="arrow" size="20rpx" style="margin-left: -12rpx;"/>
@@ -163,6 +163,7 @@
         cancelButtonText="我再想想"
         confirmButtonText="立即购买"
         width="280px"
+        catchtouchmove="true"
         >
         <view class="back-box">
             <view class="price">价钱：<view class="money">￥198.00</view></view>
