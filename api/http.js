@@ -73,6 +73,7 @@ export default {
           // Authorization: wx.getStorageSync("Authorization"),
           // Platform: config.getPlatform(),
           token: wx.getStorageSync("userInfoData").token,
+          uid: wx.getStorageSync("userInfoData").uid,
         //   DistributorAuth: wx.getStorageSync("distributorAuth").result
         //     ? wx.getStorageSync("distributorAuth").result
         //     : "",

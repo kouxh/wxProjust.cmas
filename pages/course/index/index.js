@@ -45,7 +45,6 @@ Page({
           });
           console.log(that.data.dataList,'0000')
         // });
-       
       }else{
         wx.showToast({ title: "res.msg", icon: "none" });
       }

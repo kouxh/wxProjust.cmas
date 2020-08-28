@@ -25,6 +25,7 @@ Page({
     isPlay:false,//不自动播放
     contactPhone:'400-819-1255',//联系电话
     backLookShow:false,//是否展示CMAS大讲堂回看权限弹框
+    loading:true,//首次加载
   },
 
   /**
@@ -62,7 +63,8 @@ Page({
       if(res.bol==true){
         that.setData({
           detailData: res.data,
-          moreData:res.data.comment.slice(0,3)
+          moreData:res.data.comment.slice(0,3),
+          loading: false
         });
       }else{
         wx.showToast({ title: "获取数据失败,请稍后重试~", icon: "none" });
@@ -195,7 +197,7 @@ Page({
             that.setData({
               "detailData.desc.cl_share_num":++that.data.detailData.desc.cl_share_num
               })
-              wx.showToast({ title: "分享成功", icon: "none" });
+              // wx.showToast({ title: "分享成功", icon: "none" });
           }else{
            wx.showToast({ title: res.data.msg, icon: "none" });
           }

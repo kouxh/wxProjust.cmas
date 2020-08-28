@@ -1,132 +1,141 @@
 <wxs src="../../../utils/util.wxs" module="util" />
+
 <view class="page-detail-index">
-    <view class="header"></view>
-    <view class="detail-content">
-        <view class="each-item">
-            <view class="tit">{{detailData.desc.cl_title}}</view>
-            <!-- <image class="img" src="/assets/img/content.png" mode="aspectFill" /> -->
-            <view class="video-box">
-                 <video class="img" id="myVideo" src="{{detailData.desc.cl_video_path}}" binderror="videoErrorCallback" 
-                show-center-play-btn='{{false}}' 
-                show-play-btn="{{true}}" 
-                controls='{{controls}}'
-                object-fit='fill'
-                autoplay='{{isPlay}}'
-                muted='{{false}}'
-                initial-time='{{initialTime}}'
-                show-mute-btn='{{true}}'
-                play-btn-position="bottom"
-                enable-play-gesture='{{true}}'
-                picture-in-picture-mode="{{['push', 'pop']}}" 
-                bindtimeupdate='bindtimeupdate'
-                bindenterpictureinpicture='bindVideoEnterPictureInPicture'
-                bindleavepictureinpicture='bindVideoLeavePictureInPicture'
-                >
-                </video>
-                <view class="badge">
-                    <view class="badge-new">视频</view>
+    <view class="loading" wx-if="{{loading}}"> 
+        <van-loading size="24px"></van-loading>
+    </view>
+    <view wx-if="{{!loading}}">
+        <view class="header"></view>
+        <view class="detail-content">
+            <view class="each-item">
+                <view class="tit">{{detailData.desc.cl_title}}</view>
+                <!-- <image class="img" src="/assets/img/content.png" mode="aspectFill" /> -->
+                <view class="video-box">
+                    <video class="img" id="myVideo" src="{{detailData.desc.cl_video_path}}" binderror="videoErrorCallback" 
+                    show-center-play-btn='{{false}}' 
+                    show-play-btn="{{true}}" 
+                    controls='{{controls}}'
+                    object-fit='fill'
+                    autoplay='{{isPlay}}'
+                    muted='{{false}}'
+                    initial-time='{{initialTime}}'
+                    show-mute-btn='{{true}}'
+                    play-btn-position="bottom"
+                    enable-play-gesture='{{true}}'
+                    picture-in-picture-mode="{{['push', 'pop']}}" 
+                    bindtimeupdate='bindtimeupdate'
+                    bindenterpictureinpicture='bindVideoEnterPictureInPicture'
+                    bindleavepictureinpicture='bindVideoLeavePictureInPicture'
+                    >
+                    </video>
+                    <view class="badge">
+                        <view class="badge-new">视频</view>
+                    </view>
+                </view>
+                <view class="operation">
+                    <view  catchtap='handleLinks' class="line">
+                        <van-icon wx:if="{{detailData.desc.give_status==0}}" name="like-o"   size="20px"/>
+                        <van-icon wx:else name="like" size="20px"  color="#FF5F01" />
+                        <text class="chat-num">{{detailData.desc.cl_give_num}}</text>
+                    </view>
+                    <view  bindtap="onCollectionTap" class="line">
+                        <van-icon wx:if="{{detailData.desc.coll_status==0}}" name="star-o" size="20px" /> 
+                        <van-icon wx:else name="star" size="20px" color="#FF5F01"/>
+                        <text class="chat-num">{{detailData.desc.cl_collection_num}}</text>
+                    </view>
+                    <view>
+                        <button  open-type="share" hover-class="none" class="line" data-name="shareBtn">
+                        <van-icon name="share" size="20px" />
+                        <text class="chat-num">{{detailData.desc.cl_share_num}}</text>
+                    </button>
+                    </view>
                 </view>
             </view>
-             <view class="operation">
-                <view  catchtap='handleLinks' class="line">
-                    <van-icon wx:if="{{detailData.desc.give_status==0}}" name="like-o"   size="20px"/>
-                    <van-icon wx:else name="like" size="20px"  color="#FF5F01" />
-                    <text class="chat-num">{{detailData.desc.cl_give_num}}</text>
-                </view>
-                 <view  bindtap="onCollectionTap" class="line">
-                    <van-icon wx:if="{{detailData.desc.coll_status==0}}" name="star-o" size="20px" /> 
-                    <van-icon wx:else name="star" size="20px" color="#FF5F01"/>
-                    <text class="chat-num">{{detailData.desc.cl_collection_num}}</text>
-                </view>
-                <button  open-type="share" hover-class="none" class="line" data-name="shareBtn">
-                    <van-icon name="share" size="20px" />
-                    <text class="chat-num">{{detailData.desc.cl_share_num}}</text>
-                </button>
-             </view>
+            <view class="content-box">
+                <view class="intro">简介</view>
+                <view class="content">{{detailData.desc.cl_msg}} </view>
+            </view>
         </view>
-        <view class="content-box">
-            <view class="intro">简介</view>
-            <view class="content">{{detailData.desc.cl_msg}} </view>
+        <view class="recommend">
+            <view class="recommend-content">
+                <view class="title-box">
+                    <view class="title-l">荐</view>
+                    <view class="title-r">推荐视频</view>
+                </view>
+                <view class="content-frame">
+                    <navigator class="each-frame" wx:for="{{detailData.relevant}}" wx:for-item="item" open-type="redirect" wx:for-index="index" wx:key="index" url="/pages/course/detail/index?id={{item.cl_id}}" hover-class="none">
+                        <view class="frame-l">
+                            <view class="up">{{item.cl_title}}</view>
+                            <view class="down">
+                                <text class="down-l">{{item.cl_type}}</text>
+                            </view>
+                        </view>
+                        <!-- <image class="frame-r" src="/assets/img/video.png" mode="aspectFill" /> -->
+                        <video class="frame-r" src="{{item.cl_marvellous}}" data-id="{{item.cl_id}}" id="myVideo{{index}}" bindplay="play" objectFit='fill'   
+                        binderror="videoErrorCallback" 
+                        show-center-play-btn='{{true}}' 
+                        play-btn-position="center"
+                        enable-play-gesture='true'
+                        show-fullscreen-btn="{{false}}"
+                    >
+                    </video>
+                    </navigator>
+                </view>
+                <view class="comment-box">
+                    <view class="area">
+                        <textarea class="input-box"  type='text' value='{{commit}}' bindinput='commitFn' placeholder-style='color:#ccc' placeholder="请输入评论内容" />
+                    </view>
+                    <view class="comment-btn">
+                        <van-button plain type="info"  size="small" wx:if="{{submitBool}}"  bindtap="commentFn">发表评论</van-button>
+                        <van-button plain type="info"  size="small" wx:if="{{!submitBool}}">提交中…</van-button>
+                        <view class="line">
+                            <van-icon name="chat-o" size="20px" />
+                            <text class="chat-num">{{detailData.desc.comment_num}}</text>
+                        </view>
+                    </view>
+                </view>
+                <view class="comment-list">
+                    <view  class="each-list" wx:for='{{moreData}}' wx:for-item="item" wx:for-index="index" wx:key='index' >
+                        <view class="list-top">
+                            <view class="conmment-info">
+                                <image class="info-avater" src="https://www.chinamas.cn/{{item.photo}}" mode="aspectFill" />
+                                <view class="nickname">{{item.account}}</view>
+                            </view>
+                        </view>
+                        <view class="comment-content">
+                        {{item.com_comment}}
+                        </view>
+                    </view>
+                    <view class="each-list no-comment" wx:if="{{moreData.length==0}}" >暂无评论数据</view>
+                    <view class="more" bindtap="moreFn" data-index="{{index}}" wx:if="{{moreData.length > 3 && moreData.length != detailData.comment.length }}" >
+                        <text>更多评论内容</text>
+                        <van-icon name="arrow" size="20rpx" />
+                        <van-icon name="arrow" size="20rpx" style="margin-left: -12rpx;"/>
+                    </view>
+                </view>
+                <!-- <view class="comment-list">
+                    <view  class="each-list" wx:for='{{detailData.comment}}' wx:for-item="item" wx:for-index="index" wx:key='index'  wx:if="{{index < 3}}">
+                        <view class="list-top">
+                            <view class="conmment-info">
+                                <image class="info-avater" src="https://www.chinamas.cn/{{item.photo}}" mode="aspectFill" />
+                                <view class="nickname">{{item.account}}</view>
+                            </view>
+                        </view>
+                        <view class="comment-content">
+                        {{item.com_comment}}
+                        </view>
+                    </view>
+                    <view class="each-list no-comment" wx:if="{{detailData.comment.length==0}}" >暂无评论数据</view>
+                    <view class="more" bindtap="moreFn" data-index="{{index}}" style="display: {{detailData.comment.length<3 ? 'none' : 'block' }};">
+                        <text>更多评论内容</text>
+                        <van-icon name="arrow" size="20rpx" />
+                        <van-icon name="arrow" size="20rpx" style="margin-left: -12rpx;"/>
+                    </view>
+                </view> -->
+            </view>
         </view>
     </view>
-    <view class="recommend">
-        <view class="recommend-content">
-            <view class="title-box">
-                <view class="title-l">荐</view>
-                <view class="title-r">推荐视频</view>
-            </view>
-            <view class="content-frame">
-                <navigator class="each-frame" wx:for="{{detailData.relevant}}" wx:for-item="item" open-type="redirect" wx:for-index="index" wx:key="index" url="/pages/course/detail/index?id={{item.cl_id}}" hover-class="none">
-                    <view class="frame-l">
-                        <view class="up">{{item.cl_title}}</view>
-                        <view class="down">
-                            <text class="down-l">{{item.cl_type}}</text>
-                        </view>
-                    </view>
-                    <!-- <image class="frame-r" src="/assets/img/video.png" mode="aspectFill" /> -->
-                    <video class="frame-r" src="{{item.cl_marvellous}}" data-id="{{item.cl_id}}" id="myVideo{{index}}" bindplay="play" objectFit='fill'   
-                    binderror="videoErrorCallback" 
-                    show-center-play-btn='{{true}}' 
-                    play-btn-position="center"
-                    enable-play-gesture='true'
-                    show-fullscreen-btn="{{false}}"
-                   >
-                   </video>
-                </navigator>
-            </view>
-            <view class="comment-box">
-                <view class="area">
-                    <textarea class="input-box"  type='text' value='{{commit}}' bindinput='commitFn' placeholder-style='color:#ccc' placeholder="请输入评论内容" />
-                </view>
-                <view class="comment-btn">
-                    <van-button plain type="info"  size="small" wx:if="{{submitBool}}"  bindtap="commentFn">发表评论</van-button>
-                    <van-button plain type="info"  size="small" wx:if="{{!submitBool}}">提交中…</van-button>
-                    <view class="line">
-                        <van-icon name="chat-o" size="20px" />
-                        <text class="chat-num">{{detailData.desc.comment_num}}</text>
-                    </view>
-                </view>
-            </view>
-            <view class="comment-list">
-                <view  class="each-list" wx:for='{{moreData}}' wx:for-item="item" wx:for-index="index" wx:key='index' >
-                    <view class="list-top">
-                        <view class="conmment-info">
-                            <image class="info-avater" src="https://www.chinamas.cn/{{item.photo}}" mode="aspectFill" />
-                            <view class="nickname">{{item.account}}</view>
-                        </view>
-                    </view>
-                    <view class="comment-content">
-                       {{item.com_comment}}
-                    </view>
-                </view>
-                <view class="each-list no-comment" wx:if="{{moreData.length==0}}" >暂无评论数据</view>
-                <view class="more" bindtap="moreFn" data-index="{{index}}" wx:if="{{moreData.length > 3 && moreData.length != detailData.comment.length }}" >
-                    <text>更多评论内容</text>
-                    <van-icon name="arrow" size="20rpx" />
-                    <van-icon name="arrow" size="20rpx" style="margin-left: -12rpx;"/>
-                </view>
-            </view>
-             <!-- <view class="comment-list">
-                <view  class="each-list" wx:for='{{detailData.comment}}' wx:for-item="item" wx:for-index="index" wx:key='index'  wx:if="{{index < 3}}">
-                    <view class="list-top">
-                        <view class="conmment-info">
-                            <image class="info-avater" src="https://www.chinamas.cn/{{item.photo}}" mode="aspectFill" />
-                            <view class="nickname">{{item.account}}</view>
-                        </view>
-                    </view>
-                    <view class="comment-content">
-                       {{item.com_comment}}
-                    </view>
-                </view>
-                <view class="each-list no-comment" wx:if="{{detailData.comment.length==0}}" >暂无评论数据</view>
-                <view class="more" bindtap="moreFn" data-index="{{index}}" style="display: {{detailData.comment.length<3 ? 'none' : 'block' }};">
-                    <text>更多评论内容</text>
-                    <van-icon name="arrow" size="20rpx" />
-                    <van-icon name="arrow" size="20rpx" style="margin-left: -12rpx;"/>
-                </view>
-            </view> -->
-        </view>
-    </view>
+    
     <!-- 开通会员 -->
     <van-dialog use-slot show="{{ isShow }}"  catchtouchmove="true" showConfirmButton="{{false}}" class="dialog-box" width="280px">
          <view style="height:50rpx" catchtap="onClose" > <van-icon name="cross"  class="van-icon1" /></view>

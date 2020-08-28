@@ -5,7 +5,6 @@ App({
   globalData: {
     userInfo: null,
     api, //请求方法封装
-    initializeCallbacks: [],
     isIphoneX: false, // 是否属于iPhone X系列
   },
   onLaunch: function () {

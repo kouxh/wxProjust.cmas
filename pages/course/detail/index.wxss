@@ -1,4 +1,13 @@
 @import "/app.wxss";
+.loading{
+    width: 100%;
+    min-height: 100%;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    padding-top: 50%;
+
+}
 .page-detail-index {
     background-color: #f8f8f8;
     height: 100%;
@@ -14,9 +23,9 @@
     margin-bottom: 20rpx;
 }
 .each-item {
-    /* height: 470rpx; */
+    /* min-height: 500rpx; */
     margin-bottom: 20rpx;
-    border-bottom: 2rpx solid #eee;
+    /* border-bottom: 2rpx solid #eee; */
     /* position: relative; */
 }
 
@@ -138,9 +147,11 @@
 }
 .operation{
     height: 70rpx;
+    width: 100%;
     display: flex;
     align-items: center;
-    float:  right;
+    justify-content: flex-end;
+    border-bottom: 2rpx solid #eee;
 }
 .comment-btn {
     display: flex;

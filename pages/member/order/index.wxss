@@ -25,10 +25,17 @@ page{
 }
 .page-order-index .content .item-info{
     background-color: #fff;
-    padding: 30rpx 50rpx 10rpx;
-}
-.page-order-index .content .item-info .info-top{
+    padding: 30rpx 50rpx 20rpx;
     border-bottom: 2rpx solid #dadada;
+}
+.page-order-index .content .item-info:last-child {
+    border-bottom: none;
+  }
+/* .page-order-index .content .item-info .info-top{
+    border-bottom: 2rpx solid #dadada;
+} */
+.page-order-index .content .item-info .info-top .info-top-top{
+    padding-bottom: 20rpx;
 }
 .page-order-index .content .item-info .info-top .info-top-top,
 .page-order-index .content .item-info .info-top .info-top-down,
@@ -40,23 +47,30 @@ page{
 .page-order-index .content .item-info .info-top .info-top-middle{
     font-size: 20rpx;
     color: #ff6161;
-    padding-top: 20rpx;
+    padding-bottom: 20rpx;
 }
 .page-order-index .content .item-info .info-top .info-top-top .top-left{
     font-size: 28rpx;
 	letter-spacing: 2rpx;
 	color: #141718;
 }
+.page-order-index .content .item-info .info-top .info-top-top .order-num{
+    font-size: 26rpx;
+	line-height: 13rpx;
+    color: #a0a0a0;
+}
 .page-order-index .content .item-info .info-top .info-top-down,
 .page-order-index .content .item-info .info-bottom{
     font-family: SourceHanSansCN-Regular;
 	font-size: 26rpx;
-	font-weight: normal;
-	font-stretch: normal;
-	line-height: 13rpx;
-	letter-spacing: -1rpx;
     color: #a0a0a0;
-    margin: 30rpx 0 ;
+    
+}
+/* .page-order-index .content .item-info .info-top .info-top-down{
+    padding-bottom: 20rpx;
+} */
+.page-order-index .content .item-info .info-bottom{
+    padding-top: 20rpx;
 }
 .page-order-index .content .item-info .info-bottom .bottom-left{
     display: flex;

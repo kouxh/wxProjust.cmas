@@ -130,6 +130,14 @@ export default {
   getUserSignUp(params) {
     return fetch.fetchGet("applets/forum/getUserSignUp", params);
   },
+    /**
+   *订单列表
+   * @param  {[type]} params [description]
+   * @return {[type]}        [description]
+   */
+  getOrderList(params) {
+    return fetch.fetchGet("applets/forum/getOrderList", params);
+  },
 
 
 }

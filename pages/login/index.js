@@ -29,6 +29,7 @@ Page({
         duration: 1000
       })
        app.globalData.userInfo = e.detail.userInfo
+       console.log(e.detail.userInfo,'e.detail.userInfo')
       //  wx.setStorageSync('hasUserInfo',true)
       this.setData({
         userInfo: e.detail.userInfo,

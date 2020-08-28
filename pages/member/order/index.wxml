@@ -4,28 +4,37 @@
             <van-icon name="orders-o" size="20px" color="red" />
             <view class="title">我的订单</view>
         </view>
-        <view class="item-info">
+        <view class="item-info" wx:for="{{orderList}}" wx:for-item="item" wx:for-index="index" wx:key="index">
             <view class="info-top">
                 <view class="info-top-top">
-                    <view class="top-left">CMAS大讲堂回看权限</view>
-                    <van-icon name="delete" />
+                    <view class="top-left">订单编号：</view>
+                    <view class="order-num">{{item.order_num}}</view>
                 </view>
+                <view class="info-top-top">
+                    <view class="top-left">{{item.name}}</view>
+                    <!-- <van-icon name="delete" /> -->
+                </view>
+               
                 <view class="info-top-down">
-                    <view class="down-left">期限：xx年月日-x年x月x日</view>
-                    <view class="down-right">数量：1</view>
+                    <view class="down-left">期限：{{item.start_time}}-{{item.end_time}}</view>
+                    <view class="down-right">数量：{{item.num}}</view>
                 </view>
             </view>
             <view class="info-bottom">
                 <view class="bottom-left">
-                    价格：<view class="money">198元</view>
+                    价格：<view class="money">{{item.money}}</view>
                 </view>
                 <view class="bottom-right">
-                已完成
+                {{item.status}}
                 </view>
             </view>
         </view>
-        <view class="item-info">
+        <!-- <view class="item-info">
             <view class="info-top">
+                <view class="info-top-top">
+                    <view class="top-left">订单编号：</view>
+                    <view class="order-num">{{item.order_num}}</view>
+                </view>
                 <view class="info-top-top">
                     <view class="top-left">CMAS大讲堂回看权限</view>
                     <van-icon name="delete" />
@@ -44,6 +53,6 @@
                 已完成
                 </view>
             </view>
-        </view>
+        </view> -->
     </view>
 </view>
