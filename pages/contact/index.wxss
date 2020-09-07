@@ -51,9 +51,10 @@ page{
 }
 .official-account{
     height: 168rpx;
+    width: 100%;
     margin: 40rpx 24rpx;
-    border: 1px solid #ccc;
-    border-radius: 20rpx;
+    /* border: 1px solid #ccc; */
+    /* border-radius: 20rpx; */
 }
 .page-contact-index .contact-content .contact-box {
     width: 700rpx;
