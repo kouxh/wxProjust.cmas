@@ -13,10 +13,10 @@
              
             </view>
         </view>
-           <view style="width:100%;">
-                    <official-account bind:load='successFn' bind:error='errorFn'></official-account>
-                </view>
-        <view class="contact-box">
+        <view class="official-account"  wx:if="{{isShow}}" >
+            <official-account bind:load='successFn' bind:error='errorFn'></official-account>
+        </view>
+        <view class="contact-box" style="margin-top:{{isShow==false ? 40+'rpx':0}} " >
             <navigator url="/pages/research/index" hover-class="none">
                 <image class="cont" src="/assets/img/cont1.png" mode="aspectFill"/>
                 <view class="mark-box">

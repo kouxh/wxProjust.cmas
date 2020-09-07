@@ -23,7 +23,7 @@ page{
     margin-bottom: 200rpx;
 }
 .page-contact-index .contact-content .contact-way {
-    height: 225rpx;
+    /* height: 225rpx; */
     padding-left: 36rpx;
     padding-top: 52rpx;
     display: flex;
@@ -48,6 +48,12 @@ page{
 }
 .page-contact-index .contact-content .contact-way .way-right .tel {
     padding: 6rpx 0;
+}
+.official-account{
+    height: 168rpx;
+    margin: 40rpx 24rpx;
+    border: 1px solid #ccc;
+    border-radius: 20rpx;
 }
 .page-contact-index .contact-content .contact-box {
     width: 700rpx;

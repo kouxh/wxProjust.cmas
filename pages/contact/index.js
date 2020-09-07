@@ -6,7 +6,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    contactPhone:'400-819-1255'
+    contactPhone:'400-819-1255',
+    isShow: true, // 是否显示'公众号'组件
+
   },
 
   /**
@@ -20,7 +22,6 @@ Page({
     console.log("11111111111");
     this.setData({
       isShow: true,
-      isSuccess: true
     });
   },
 
@@ -30,8 +31,6 @@ Page({
     // wx.showToast({ title: e.detail.errMsg, icon: "none" });
     this.setData({
       isShow: false,
-      isSuccess: false,
-      errMsg: e.detail.errMsg
     });
   },
   //电话调用
