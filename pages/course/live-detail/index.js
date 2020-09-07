@@ -51,7 +51,7 @@ Page({
           res.data.end_at,
         );
         console.log(liveStatus,'666666666')
-        if(liveStatus==1 || liveStatus==0){
+        if(res.data.status=="已报名" && (liveStatus==1 || liveStatus==0)){
           that.setData({
             status:3,
             statusName: "观看直播"
@@ -78,6 +78,10 @@ Page({
       console.log(res,'99933339999999')
       if(res.bol==true){
         wx.showToast({ title: res.data.msg, icon: "none" });
+        that.setData({
+          status:2,
+          statusName: "报名成功"
+        });
       }else{
         wx.showToast({ title: "获取数据失败,请稍后重试~", icon: "none" });
       }

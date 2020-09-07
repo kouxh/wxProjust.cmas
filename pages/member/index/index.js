@@ -21,14 +21,17 @@ Page({
       occupation:"管理者"
     },
     calendarShow:false,//是否展示显示日期弹框
-    currentDate: new Date().getTime(),
     minDate: new Date(1960, 0, 1).getTime(),
+    maxDate: new Date(2030, 12, 1).getTime(),
+    currentDate: new Date().getTime(),
     formatter(type, value) {
       if (type === 'year') {
         return `${value}年`;
       } else if (type === 'month') {
         return `${value}月`;
-      }
+      }else if (type === 'day') {
+        　　return `${value}日`
+      } 
       return value;
     },
     activeKey: 0,//菜单默认选中
@@ -73,17 +76,7 @@ Page({
         isShow: !this.data.isShow
       });
     }
-    // {index: 3, pagePath: "pages/member/index/index", text: "我的"}
-    // 可以在此做自己需求的逻辑操作，如点击出现弹窗等
-    // wx.showActionSheet({
-    //   itemList: ['1', '2'],
-    //   success(res) {
-    //     console.log(res.tapIndex)
-    //   }
-    // })
-    // wx.showToast({
-    //   title: 'tab点击',
-    // })
+    
 
   },
     // 点击下拉显示框
@@ -183,21 +176,9 @@ Page({
       if (res.bol == true) {
         wx.showToast({ title: "修改成功", icon: 'success',duration:2000 });
       }else{
-        // wx.showToast({ title: "", icon: "none" });
+        wx.showToast({ title: "请先修改信息再点击修改资料", icon: "none" });
       }
     })
-    //   var phoneurl = 'https://www.chinamas.cn/basicInfoApi';
-    // wx.request({
-    //   url:phoneurl,
-    //   data:that.data.info,
-    //   header: {
-    //     'content-type': 'application/json'
-    //   },
-    //   method: 'POST',
-    //   success: function (res) {
-    //     console.log(res,'9999999999')
-    //   }
-    // })
   },
   onChange(event) {
     console.log(event.detail);
@@ -222,10 +203,11 @@ Page({
     this.setData({ calendarShow: true });
   },
   onClose() {
-    this.setData({ calendarShow: false });
+    this.setData({ calendarShow: !this.data.calendarShow });
   },
 
   onInput(event) {
+    console.log(event,'0000')
     this.setData({
       currentDate: event.detail,
     });

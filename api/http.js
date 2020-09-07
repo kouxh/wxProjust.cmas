@@ -10,7 +10,7 @@ export default {
         response => {
           resolve(response);
           console.log(response,'9999997744477777777777')
-          if (response.code == 9999) {
+          if (response.code == 10043) {
             wx.showToast({
               title: "登录过期，请重新登录",
               icon: "none"
@@ -41,7 +41,7 @@ export default {
         response => {
           resolve(response);
           console.log(response,'9999997777777777777')
-          if (response.code == 9999) {
+          if (response.code == 10043) {
             wx.showToast({
               title: "登录过期，请重新登录",
               icon: "none"

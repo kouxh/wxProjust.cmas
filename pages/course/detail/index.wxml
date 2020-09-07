@@ -146,17 +146,17 @@
             <view class="money">¥ 00.0</view>
         </view> -->
         <view  class="price-box1" catchtap="liveLimit" >
-            <view class="up">全年CMAS大讲堂直播回看权限</view>
+            <view class="up">全年线上课程直播及回看</view>
            <view class="down">
             <image class="img" src="/assets/img/icon/look.png" mode="aspectFill" />
-            <text class="buy">购买</text>
+            <text class="buy">购买课程会员</text>
            </view>
         </view>
         <view class="price-box1" catchtap="plusLimit">
-            <view class="up">成为PLUS会员观看全部回看视频</view>
+            <view class="up">全年杂志赠阅及线上课程直播及回看</view>
            <view class="down">
             <image class="img" src="/assets/img/icon/vip.png" mode="aspectFill" />
-            <text class="buy">购买会员权限</text>
+            <text class="buy">购买PLUS会员</text>
            </view>
         </view>
         <view class="invoice" bindtap="makePhoneCall">购买后如需发票请联系：{{contactPhone}}</view>
@@ -164,19 +164,18 @@
     <!-- CMAS大讲堂回看权限弹框 -->
     <van-dialog
         use-slot
-        title="CMAS大讲堂回看权限"
+        title="CMAS课程会员"
         show="{{ backLookShow }}"
         show-cancel-button
         bind:confirm="onConfirm"
         bind:close="lookClose"
         cancelButtonText="我再想想"
         confirmButtonText="立即购买"
-        width="280px"
         catchtouchmove="true"
         >
         <view class="back-box">
-            <view class="price">价钱：<view class="money">￥198.00</view></view>
-            <view class="limit">权限：一年内，免费查看CMAS大讲堂所有视频</view>
+            <view class="price">价钱：<view class="money">￥199.00</view></view>
+            <view class="limit">权限：可观看全年线上直播课程，包含直播及回看</view>
         </view>
     </van-dialog>
 

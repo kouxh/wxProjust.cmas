@@ -38,6 +38,9 @@ page{
     color: #333;
     display: flex;
     flex-direction: column;
+    justify-content:  space-between;
+    box-sizing:  border-box;
+    height: 145rpx;
     padding-left: 28rpx;
 }
 .page-contact-index .contact-content .contact-way .way-right .name {

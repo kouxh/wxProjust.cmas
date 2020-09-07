@@ -52,7 +52,8 @@
             </view>
             <view class="content-box" wx:if="{{listShowType==2}}">
                 <view class="nomsg-img-box">
-                    <image mode='aspectFill' src="http://img.deiyou.net/upload/seller/goods/image/2019/10/17/f086693ec29d4f17950a0bbb2ef4eb12" alt class="nomsg-img"></image>
+                    <!-- <image mode='aspectFill' src="http://img.deiyou.net/upload/seller/goods/image/2019/10/17/f086693ec29d4f17950a0bbb2ef4eb12" alt class="nomsg-img"></image> -->
+                    <image mode='aspectFill' src="/assets/img/nomsg.png" alt class="nomsg-img"></image>
                     <view class="tips-msg">暂无数据哟~</view>
                 </view>
             </view>

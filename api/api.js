@@ -138,7 +138,14 @@ export default {
   getOrderList(params) {
     return fetch.fetchGet("applets/forum/getOrderList", params);
   },
-
+    /**
+   *购买读者plus
+   * @param  {[type]} params [description]
+   * @return {[type]}        [description]
+   */
+  readerMeal(params) {
+    return fetch.fetchGet("applets/forum/purchaseAnnualSetMeal", params);
+  },
 
 }
 

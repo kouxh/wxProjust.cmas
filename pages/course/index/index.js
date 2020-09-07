@@ -37,14 +37,14 @@ Page({
       where:"CMAS大讲堂"
     }).then(res=>{
       if(res.bol==true){
-        // wx.nextTick(() => {
+        wx.nextTick(() => {
           that.setData({
             ss:res.data,
             dataList: res.data.list,
             liveData:res.data.live,
           });
           console.log(that.data.dataList,'0000')
-        // });
+        });
       }else{
         wx.showToast({ title: "res.msg", icon: "none" });
       }
@@ -82,7 +82,7 @@ Page({
       //   indexKey=0
       //   this.setData({ _index:indexKey})
       // }
-      if (indexKey + 1 < meigeSP.length && scrollTop >= meigeSP[indexKey] * 0.9) {
+      if (indexKey + 1 < meigeSP.length && scrollTop >= meigeSP[indexKey] * 1) {
         this.setData({ _index: indexKey + 1 })
         indexKey += 1
       }

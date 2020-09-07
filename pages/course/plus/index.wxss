@@ -1,5 +1,8 @@
-.pages-plus-index {
+page{
     background-color: #f8f8f8;
+}
+.pages-plus-index {
+   
     height: 100%;
     width: 100%;
 }
@@ -36,7 +39,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-left: 30rpx;
+    margin-left: -30rpx;
+    /* padding-left: 30rpx; */
     padding-bottom: 20rpx;
 }
 .pages-plus-index .plus-content .limits-box .limits .img {
@@ -64,7 +68,7 @@
     font-size: 28rpx;
     color: #333333;
     letter-spacing: 2rpx;
-    font-weight: bold;
+    /* font-weight: bold; */
     line-height: 40rpx;
     width: 780rpx;
     padding-left: 10rpx;
@@ -83,7 +87,7 @@
 }
 .pages-plus-index .plus-content .limits-box .vip-fee .fee-box {
     width: 694rpx;
-    height: 600rpx;
+    /* height: 600rpx; */
     background: #f2f5f8;
     border-radius: 22rpx;
 }
@@ -95,15 +99,19 @@
     padding-left: 28rpx;
     padding-top: 25rpx;
 }
+.van-radio__label {
+    color: #333;
+    font-size: 28rpx;
+}
 .vip-fee .fee-box .fee-price {
-    padding-left: 45rpx;
+    padding-left: 30rpx;
     margin-top: 20rpx;
     color: #333;
 }
 .vip-fee .fee-box .fee-price .lh{
     letter-spacing: 2rpx;
     padding-left: 60rpx;
-    font-size: 28rpx;
+    font-size: 26rpx;
     color: #999;
     margin-top: 6rpx;
 }
@@ -112,14 +120,14 @@
     font-size: 30rpx;
 }
 .van-radio{
-    margin-top: 30rpx;
+    margin-top: 20rpx;
 }
 
 .vip-fee .fee-box .fee-price1{
-    padding-left: 60rpx;
+    padding-left: 30rpx;
     display: flex;
     padding-top: 20rpx;
-    padding-bottom: 20rpx;
+    padding-bottom: 30rpx;
 }
 .vip-fee .fee-box .fee-price1 .vip-type {
     display: flex;
@@ -199,6 +207,7 @@
 .reader-box .tel-box .tel-input{
     display: flex;
     align-items: center;
+    justify-content: space-between;
     margin-left: 20rpx;
     margin-bottom: 20rpx;
 }
@@ -208,7 +217,7 @@
     background: #F3F4F6;
     border-radius: 13rpx;
     height: 64rpx;
-    width: 408rpx;
+    width: 68%;
     padding-left: 20rpx;
 
   }
@@ -216,6 +225,11 @@
     font-size: 24rpx;
     color: #FF2E2D;
     margin-left: 18rpx;
+  }
+   .send-ing {
+    font-size: 24rpx;
+    margin-left: 18rpx;
+    color: #999;
   }
   .reader-box .price-box{
     padding-top: 20rpx;

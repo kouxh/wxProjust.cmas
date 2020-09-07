@@ -9,9 +9,13 @@
             <view class="way-right">
                 <text class="name">联系CMAS</text>
                 <text class="tel" bindtap="makePhoneCall">联系电话：{{contactPhone}}</text>
-                <text>联系邮箱：edit@chinamas.cn</text>
+                <!-- <text>联系邮箱：edit@chinamas.cn</text> -->
+             
             </view>
         </view>
+           <view style="width:100%;">
+                    <official-account bind:load='successFn' bind:error='errorFn'></official-account>
+                </view>
         <view class="contact-box">
             <navigator url="/pages/research/index" hover-class="none">
                 <image class="cont" src="/assets/img/cont1.png" mode="aspectFill"/>

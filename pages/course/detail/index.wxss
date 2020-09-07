@@ -304,7 +304,7 @@ position: relative;
 
 }
 .back-box{
-    padding: 40rpx 45rpx 40rpx 80rpx;
+    padding: 40rpx 45rpx 40rpx 40rpx;
     line-height: 44rpx;
     color: #333;
     font-size: 28rpx;
@@ -312,6 +312,7 @@ position: relative;
 }
 .back-box .price{
     display: flex;
+    justify-content: center;
 }
 .back-box .price .money{
     color: #f00;

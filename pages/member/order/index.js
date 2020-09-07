@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    orderList:[]
+    orderList:[],
+    listShowType:0,//0加载 1 有数据 2 无数据
   },
 
   /**
@@ -26,6 +27,7 @@ Page({
           if (res.bol == true){
             that.setData({
               orderList: res.data,
+              listShowType: res.data.length>0 ? 1 : 2
             });
           }else{
            wx.showToast({ title: "获取数据失败,请稍后重试哟~", icon: "none" });

@@ -17,10 +17,14 @@ Page({
     lumpShow:false,//是否展示成团弹框
     isCopy:false,//是否复制成功
     disabled:true,
-    mobile:"",
-    code:"",
+    mobile:"",//注册手机号
+    code:"",//验证码
     conLists: [], //内容标题（如：今天完成工作、备注、次日工作安排）可以添加或者删除
-
+    initialCount: 60, // 倒计时秒数
+    count: 60, // 倒计时秒数
+    isReset: false, // 是否重置'倒计时'
+    sendState: 0, // '验证码发送'按钮的状态 0待发送 1发送中 2倒数时中 3重新发送
+    contactPhone:'400-819-1255',//咨询电话
   },
 
   /**
@@ -46,6 +50,18 @@ Page({
         this.setData({ readerShow: true });
       }
     },
+    //电话调用
+  makePhoneCall:function(){
+    wx.makePhoneCall({
+      phoneNumber: this.data.contactPhone,
+      success:function(){
+        console.log('拨打成功')
+      },
+      fail:function(){
+        console.log('拨打失败')
+      }
+    })
+  },
     //点击下一步
     nextFn(){
       this.setData({
@@ -84,8 +100,100 @@ Page({
     },
     //读者优惠点击关闭图标
     onClose() {
-      this.setData({ readerShow: false, radio:"1" });
-      console.log(this.data.radio)
+      this.setData({ readerShow: false, radio:"1",mobile:'',code:'',sendState:0 });
+    },
+    // 获取验证码
+    getCodeFn() {
+      let that = this;
+      // 验证手机号
+      var p1 = /^1\d{10}$/;
+      if (p1.test(that.data.mobile) == false) {
+        return wx.showToast({ title: "请填写正确的手机号", icon: "none" });
+      }
+      that.setData({ sendState: 1 });
+      that.sendFn();//获取验证码
+    },
+
+    // 发送验证码
+    sendFn() {
+      let that=this;
+      var phoneurl = 'https://www.chinamas.cn/code';
+      wx.request({
+        //上线接口地址要是https测试可以使用http接口方式
+          url: phoneurl,
+          data: {
+          phone:that.data.mobile
+          },
+          method: 'GET',
+          header: {
+          'content-type': 'application/json',
+          'mode': 2
+          },
+          success: function (res) {
+            console.log(res,'000')
+          if (res.data.bol == "true") {
+           wx.showToast({ title: res.data.msg, icon: "none" });
+           that.countDownFn();
+          } else {
+            wx.showToast({ title: res.data.data.msg, icon: "none" });
+            that.setData({ sendState: 3 });
+          }
+          },
+        })
+      
+    },
+
+    // 倒计时
+    countDownFn() {
+      console.log('0000')
+      let that = this;
+      let _this = this.data;
+      that.setData({ sendState: 2 });
+      var timer = null;
+      let countN = that.data.count;
+      timer = setInterval(function() {
+        countN--;
+        that.setData({ count: countN });
+        if (countN <= 0||_this.isReset) {
+          that.setData({
+            count: _this.initialCount,
+            sendState: 3,
+            isReset:false
+          });
+          clearInterval(timer);
+        }
+      }, 1000);
+    },
+    //确认支付
+    confirmPay(){
+      let that=this;
+       // 验证手机号
+       var p1 = /^1\d{10}$/;
+       if (p1.test(that.data.mobile) == false) {
+         return wx.showToast({ title: "请填写正确的手机号", icon: "none" });
+       }
+       if (that.data.code == "") {
+        return wx.showToast({ title: "请输入验证码", icon: "none" });
+      }
+      getApp()
+        .globalData.api.readerMeal({
+          vid:4,//读者id
+          tell:that.data.mobile,
+          code:that.data.code,
+          uid: wx.getStorageSync("userInfoData").uid,
+        })
+        .then(res => {
+           // 得到支付需要的参数信息
+           if (res.bol ==false) {
+            return wx.showToast({ title: res.err_msg, icon: "none" });
+          }else if(res.code==9999){
+            return wx.showToast({ title: res.msg, icon: "none" });
+          }
+          that.setData({ payData: res.data });
+          console.log(that.data.payData,'读者唤起支付页面')
+          // 唤起支付弹框
+            that.arousePayFn();
+        });
     },
     //团购点击关闭图标
      onClose1() {
@@ -171,7 +279,7 @@ Page({
       getApp()
         .globalData.api.getPrepayId({
           uid: wx.getStorageSync('userInfoData').uid,
-          vip: 2,//1打包 2 plus会员
+          vid: 2,//1打包 2 plus会员 3团购 4读者
         })
         .then(res => {
           // 得到支付需要的参数信息
@@ -188,7 +296,7 @@ Page({
     arousePayFn() {
       let that = this;
       let payData = that.data.payData;
-      console.log(payData,'888')
+      console.log(payData,'唤起支付参数888')
       wx.requestPayment({
         timeStamp: payData.timeStamp.toString(),
         nonceStr: payData.nonceStr,

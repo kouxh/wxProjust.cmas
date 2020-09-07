@@ -29,7 +29,7 @@ Page({
         duration: 1000
       })
        app.globalData.userInfo = e.detail.userInfo
-       console.log(e.detail.userInfo,'e.detail.userInfo')
+       console.log(e,'用户授权e.detail.userInfo')
       //  wx.setStorageSync('hasUserInfo',true)
       this.setData({
         userInfo: e.detail.userInfo,
@@ -59,7 +59,7 @@ Page({
   },
   // 手机号授权
   getPhoneNumber (e) {
-    console.log(e,'888')
+    console.log(e,'手机号授权888')
       let that = this;
     if (e.detail.encryptedData) {
       wx.setStorageSync('bindPhone', true)

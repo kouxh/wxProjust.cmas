@@ -39,28 +39,24 @@
 		</view>
 		<view class="every-info">
 			<text class="title" >生日</text>
-			<input class="input" value="{{ info.birthday }}" type="text" placeholder="YYYY-MM-DD" bindinput="" placeholder-class="pla"  bindtap="onDisplay"/>
-				
+			<input class="input" value="{{ info.birthday }}" type="text" placeholder="YYYY-MM-DD" bindinput="" placeholder-class="pla"  bindtap="onDisplay" disabled/>
 		</view>
 		<van-popup
-		    catchtouchmove="true"
 				show="{{ calendarShow }}"
 				round
 				position="bottom"
-				custom-style="height: 50%"
 				bind:close="onClose"
 			>
 				<van-datetime-picker
-					type="datetime"
-					bind:cancel="onClose"
+					type="date"
 					value="{{ currentDate }}"
-					bind:input="onInput"
 					min-date="{{ minDate }}"
+					max-date="{{maxDate}}"
 					formatter="{{ formatter }}"
+					bind:cancel="onClose"
 					bind:confirm="onConfirm"
 				/>
 		</van-popup>
-		
 		<view class="every-info" >
 		  <van-icon name="play" color="#ccc" class="up-iocn {{selectShow&&'select_img_rotate'}}"/>
 			<text class="title">年龄段</text>

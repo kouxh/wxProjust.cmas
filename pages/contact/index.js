@@ -15,6 +15,26 @@ Page({
   onLoad: function (options) {
     
   },
+  // 加载'成功'时
+  successFn() {
+    console.log("11111111111");
+    this.setData({
+      isShow: true,
+      isSuccess: true
+    });
+  },
+
+  // 加载'失败'时
+  errorFn(e) {
+    console.log(e, "22222222222");
+    // wx.showToast({ title: e.detail.errMsg, icon: "none" });
+    this.setData({
+      isShow: false,
+      isSuccess: false,
+      errMsg: e.detail.errMsg
+    });
+  },
+  //电话调用
   makePhoneCall:function(){
     wx.makePhoneCall({
       phoneNumber: this.data.contactPhone,
@@ -26,6 +46,19 @@ Page({
       }
     })
   },
+  // //邮箱调用
+  // sendEmail:function(){
+  //   wx.showActionSheet({
+  //     itemList: ['edit@chinamas.cn'],
+  //     success (res) {
+  //       console.log(res.tapIndex)
+  //     },
+  //     fail (res) {
+  //       console.log(res.errMsg)
+  //     }
+  //   })
+   
+  // },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

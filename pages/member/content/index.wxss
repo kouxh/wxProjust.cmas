@@ -107,7 +107,7 @@
     vertical-align: baseline;
   }
    .nomsg-img-box .nomsg-img {
-    width: 300rpx;
+    /* width: 300rpx; */
     height: 200rpx;
   }
   .nomsg-img-box .tips-msg {
