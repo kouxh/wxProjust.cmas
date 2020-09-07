@@ -286,7 +286,7 @@ Page({
     getApp()
     .globalData.api.getPrepayId({
       uid: wx.getStorageSync('userInfoData').uid,
-      vip: 1,//1打包 2 plus会员
+      vid: 1,//1打包 2 plus会员
     })
     .then(res => {
       // 得到支付需要的参数信息
