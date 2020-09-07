@@ -75,7 +75,6 @@ Page({
       lid:that.data.detailId,
       uid:wx.getStorageSync('userInfoData').uid
     }).then(res=>{
-      console.log(res,'99933339999999')
       if(res.bol==true){
         wx.showToast({ title: res.data.msg, icon: "none" });
         that.setData({

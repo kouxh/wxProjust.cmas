@@ -36,7 +36,6 @@ export default {
   fetchGet: function (url, params, options, addUrl = "") {
     var that = this;
     return new Promise((resolve, reject) => {
-      console.log(resolve)
       httpClient.fetchGet(url, params, that.getOptions(options), addUrl).then (
         response => {
           resolve(response);
