@@ -39,8 +39,7 @@ page{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: -30rpx;
-    /* padding-left: 30rpx; */
+    margin-left: -50rpx;
     padding-bottom: 20rpx;
 }
 .pages-plus-index .plus-content .limits-box .limits .img {
@@ -107,6 +106,7 @@ page{
     padding-left: 30rpx;
     margin-top: 20rpx;
     color: #333;
+    padding-bottom: 30rpx;
 }
 .vip-fee .fee-box .fee-price .lh{
     letter-spacing: 2rpx;

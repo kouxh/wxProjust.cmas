@@ -153,7 +153,7 @@
            </view>
         </view>
         <view class="price-box1" catchtap="plusLimit">
-            <view class="up">全年杂志赠阅及线上课程直播及回看</view>
+            <view class="up">全年杂志赠阅、线上课程直播及回看</view>
            <view class="down">
             <image class="img" src="/assets/img/icon/vip.png" mode="aspectFill" />
             <text class="buy">购买PLUS会员</text>

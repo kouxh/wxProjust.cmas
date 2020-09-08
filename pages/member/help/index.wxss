@@ -1,6 +1,9 @@
-.page-help-index {
+page {
     background-color: #f8f8f8;
-    min-height: 100vh;
+}
+.page-help-index {
+   
+    height: 100%;
     width: 100%;
 }
 .header {
@@ -12,7 +15,7 @@
     margin-bottom: 200rpx;
 }
 .page-help-index .help-content .content-title {
-    padding: 38rpx 0 70rpx 24rpx;
+    padding: 38rpx 0 50rpx 24rpx;
     display: flex;
     align-items: center;
     background-color: #fff;
@@ -33,8 +36,9 @@
     font-weight: bold;
 }
 .page-help-index .help-content .question-box .result {
-    font-size: 34rpx;
-    letter-spacing: 0;
-    padding: 32rpx 0 66rpx;
+    font-size: 30rpx;
+    padding: 20rpx 0 20rpx;
     letter-spacing: 2rpx;
+    line-height: 46rpx;
+    color: #333;
 }

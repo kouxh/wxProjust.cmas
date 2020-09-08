@@ -20,7 +20,7 @@
                     </view>
                 
                     <view class="info-top-down">
-                        <view class="down-left">期限：{{item.start_time}}-{{item.end_time}}</view>
+                        <view class="down-left" wx:if="{{item.status!='已过期'}}">期限：{{item.start_time}}-{{item.end_time}}</view>
                         <view class="down-right">数量：{{item.num}}</view>
                     </view>
                 </view>

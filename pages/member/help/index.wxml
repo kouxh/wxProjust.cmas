@@ -3,25 +3,49 @@
     <view class="help-content">
         <view class="content-title">
             <van-icon name="question" size="20px" color="red" />
-            <view class="title">我的常见问题解答</view>
+            <view class="title">常见问题解答</view>
         </view>
         <view class="question-box">
             <view class="each">
-                <view class="question">这里是问题1</view>
+                <view class="question">如何成为CMAS会员？</view>
                 <view class="result">
-                    答：9月11日作为应急预留批次保留。2020年度全国会计专业技术中级资格考试仍于2020年9月5日至7日举行，共3批次。
+                    答：关注【管理会计研究网】服务号，免费注册成为会员即可。
                 </view>
             </view>
             <view class="each">
-                <view class="question">这里是问题1</view>
+                <view class="question">CMAS会员的权益是什么？</view>
                 <view class="result">
-                    答：9月11日作为应急预留批次保留。2020年度全国会计专业技术中级资格考试仍于2020年9月5日至7日举行，共3批次。
+                    <view>答：1.观看年《CMAS大讲堂》课程直播；</view>
+                    <text decode="{{true}}">&ensp;&ensp;&ensp;&ensp;2.阅读管理会计研究官网（www.chinamas.cn）中杂志精选文章。</text>
                 </view>
             </view>
             <view class="each">
-                <view class="question">这里是问题1</view>
+                <view class="question">CMAS PLUS会员的权益是什么？</view>
                 <view class="result">
-                    答：9月11日作为应急预留批次保留。2020年度全国会计专业技术中级资格考试仍于2020年9月5日至7日举行，共3批次。
+                    <view>答：1.赠阅全年《管理会计研究》杂志一套，共六本，价值300元（50元/本，共六期）；</view>
+                    <text decode="{{true}}">&ensp;&ensp;&ensp;&ensp;2.免费获得全年及往期电子刊杂志；</text>
+                    <view><text decode="{{true}}">&ensp;&ensp;&ensp;&ensp;3.观看全年《CMAS大讲堂》课程，包含直播及回看；</text></view>
+                    <view><text decode="{{true}}">&ensp;&ensp;&ensp;&ensp;4.观看全年《CMAS对话》高端访谈节目；</text></view>
+                    <view><text decode="{{true}}">&ensp;&ensp;&ensp;&ensp;5.观看全年《走进名企》实务直播节目；</text></view>
+                    <view><text decode="{{true}}">&ensp;&ensp;&ensp;&ensp;6.优先受邀参加主题沙龙、年度峰会等线下活动；</text></view>
+                </view>
+            </view>
+            <view class="each">
+                <view class="question">2020年《管理会计研究》读者如果成为CMAS PIUS会员？</view>
+                <view class="result">
+                    答：已订阅2020年全年《管理会计研究》的读者，只需**元即可成为CMAS PLUS会员，享受所有会员权益。
+                </view>
+            </view>
+            <view class="each">
+                <view class="question">发票开具的内容是什么？</view>
+                <view class="result">
+                    答：开具的发票统一为【电子发票】；开具金额为实际付款金额，发票的内容为【培训费】。
+                </view>
+            </view>
+            <view class="each">
+                <view class="question">发票大概多久开出来？</view>
+                <view class="result">
+                    答：发票申请提交后，在电子发票充足的情况下，一般会在30天内开出并发送至您指定的邮箱。
                 </view>
             </view>
         </view>

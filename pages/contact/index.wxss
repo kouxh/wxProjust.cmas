@@ -1,5 +1,6 @@
 page{
   background: #f8f8f8; 
+  position: relative;
 }
 .page-contact-index {
     background: #f8f8f8; 
@@ -49,12 +50,21 @@ page{
 .page-contact-index .contact-content .contact-way .way-right .tel {
     padding: 6rpx 0;
 }
-.official-account{
-    /* height: 168rpx; */
-    margin: 40rpx 24rpx;
-    /* border: 1px solid #ccc; */
-    border-radius: 20rpx;
+.hide{
+    height: 44rpx;
+    position: absolute;
+    top: 540rpx;
+    background: #fff;
+    width: 94%;
+    z-index: 99;
+    margin: 0rpx 24rpx;
+    border-bottom: 1rpx solid #eee;
+
 }
+.official-account{
+    margin: 0rpx 24rpx 40rpx;
+}
+
 .page-contact-index .contact-content .contact-box {
     width: 700rpx;
     border-radius: 4rpx;

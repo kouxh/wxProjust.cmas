@@ -13,6 +13,7 @@
              
             </view>
         </view>
+        <view class="hide"></view>
         <view class="official-account"  wx:if="{{isShow}}" >
             <official-account bind:load='successFn' bind:error='errorFn'></official-account>
         </view>
