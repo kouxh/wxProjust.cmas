@@ -103,12 +103,16 @@ Page({
         if (res.bol) {
           wx.showToast({ title: res.data.msg, icon: "none" });
           setTimeout(() => {
-              // wx.navigateBack({
-              //   delta: 2
-              // })
-              // that.formFinish();
-              wx.redirectTo({
-                url: `/pages/course/detail/index?jump=true&&id=${that.data.detailId}`
+             // 将参数传回上一页
+              const pages = getCurrentPages()
+              const prevPage = pages[pages.length-3] // 上一页
+              // 调用上一个页面的setData 方法，将数据存储
+              prevPage.setData({
+                jump: true
+              })
+              // 返回上一页
+              wx.navigateBack({
+                delta: 2
               })
             }, 2000);
         } else {
@@ -117,12 +121,20 @@ Page({
       });
         
     }else{
-      wx.redirectTo({
-        url: `/pages/course/detail/index?jump=true&&id=${that.data.detailId}`
-      })
-      // wx.navigateBack({
-      //   delta: 1
+      // wx.redirectTo({
+      //   url: `/pages/course/detail/index?jump=true&&id=${that.data.detailId}`
       // })
+        // 将参数传回上一页
+        const pages = getCurrentPages()
+        const prevPage = pages[pages.length-3] // 上一页
+        // 调用上一个页面的setData 方法，将数据存储
+        prevPage.setData({
+          jump: true
+        })
+        // 返回上一页
+        wx.navigateBack({
+          delta: 2
+        })
       // that.formFinish();
     }
     

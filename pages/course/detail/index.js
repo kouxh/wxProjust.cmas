@@ -38,21 +38,7 @@ Page({
     // if(options.shareUid!=undefined){
     //   this.shareFn();
     // }
-    if(options.jump=="true"){
-      console.log(options.jump,'options.jumpoptions.jumpoptions.jump')
-      that.descDataFn();//大讲堂详情
-      that.checkUserVipFn();//判断是否是VIP
-      that.setData({
-        isShow:false,
-        controls: true,
-        initialTime:'361',
-        isPlay:true
-      });
-      that.videoContext.seek(361);//跳转到指定位置
-      setTimeout(() => {
-      that.videoContext.play();//播放视频
-      }, 2000);
-    }
+    
     this.descDataFn();//大讲堂详情
     this.checkUserVipFn();//判断是否是VIP
     
@@ -408,7 +394,25 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    let that=this;
+    const pages = getCurrentPages()
+    const currPage = pages[pages.length - 1]  // 当前页
+    console.log(currPage.data)  // data中会含有testdata
+    if(currPage.data.jump==true){
+      console.log(currPage.data.jump,'options.jumpoptions.jumpoptions.jump')
+      that.descDataFn();//大讲堂详情
+      that.checkUserVipFn();//判断是否是VIP
+      that.setData({
+        isShow:false,
+        controls: true,
+        initialTime:'361',
+        isPlay:true
+      });
+      that.videoContext.seek(361);//跳转到指定位置
+      setTimeout(() => {
+      that.videoContext.play();//播放视频
+      }, 2000);
+    }
   },
 
   /**
