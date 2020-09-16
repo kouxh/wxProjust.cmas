@@ -1,0 +1,58 @@
+<view class="pages-course-form-index">
+  <view class="address-box" wx:if="{{type==1}}">
+    <view class="title">领取《管理会计研究》杂志</view>
+    <view class="tip">*发刊后的7天内将邮寄到该地址，请您确保填写地址无误。</view>
+    <view class='address-list'>
+      <input class='address-ipt' type='text' value='{{editorName}}' bindinput='editorNameFn' placeholder-class='address-phd' placeholder="收货人" />
+    </view>
+    <view class='address-list'>
+      <input class='address-ipt' type='number' maxlength="{{11}}" value='{{editorMobile}}' bindinput='editorMobileFn' placeholder-class='address-phd' placeholder="联系电话" />
+    </view>
+    <view class='address-list-textarea'>
+      <textarea auto-height class='address-textarea' type='text' value='{{editorDetailed}}' bindinput='editorDetailedFn' placeholder-class='address-phd' placeholder="请收货地址" />
+      <!-- <input class='address-textarea' type='text' value='{{editorDetailed}}' bindinput='editorDetailedFn' placeholder-class='address-phd' placeholder="请输入收件人详细地址" /> -->
+    </view>
+    <view class="submit-btn" bindtap="addressSubmitBtn">提交</view>
+  </view>
+  <view class="invoice-box" wx:if="{{type==2}}">
+    <view class="title-box" style="border-bottom:{{radio=='2'?'none':''}}">
+      <view class="is-open">是否开具发票？</view>
+      <van-radio-group value="{{ radio }}" bind:change="onChange" class="radio-icon">
+        <van-radio name="1">是</van-radio>
+        <van-radio name="2">否</van-radio>
+      </van-radio-group>
+    </view>
+    <view wx:if="{{radio=='1'}}">
+      <view class="title-box">
+        <view class="invoice-type">发票类型</view>
+        <view class="type-box">
+          <view class="type">电子发票</view>
+          <view class="tip">*15个工作日内开具并发至邮箱!</view>
+        </view>
+      </view>
+      <view class="title-box">
+        <view class="invoice-type">发票信息</view>
+        <view class='address-list' style="margin-top:30rpx;">
+          <input class='address-ipt' type='text' value='{{title}}' bindinput='titleFn' placeholder-class='address-phd' placeholder="发票抬头" />
+        </view>
+        <view class='address-list'>
+          <input class='address-ipt' type='text' value='{{taxNumber}}' bindinput='taxNumberFn' placeholder-class='address-phd' placeholder="税号" />
+        </view>
+      </view>
+      <view class="title-box" style="border-bottom:none;">
+        <view class="invoice-type">接收方式</view>
+        <view class='address-list' style="margin-top:30rpx;">
+          <input class='address-ipt' type='text' value='{{email}}' bindinput='emailFn' placeholder-class='address-phd' placeholder="电子邮箱" />
+        </view>
+        <view class="take-tip">*请提供能正常接收邮件的邮箱！</view>
+        <view class='address-list'>
+          <input class='address-ipt' type='text' value='{{personName}}' bindinput='personNameFn' placeholder-class='address-phd' placeholder="联系人" />
+        </view>
+        <view class='address-list'>
+          <input class='address-ipt' type='text' value='{{tel}}' bindinput='telFn' placeholder-class='address-phd' placeholder="联系电话" />
+        </view>
+      </view>
+    </view>
+    <view class="submit-btn" bindtap="submitBtn">提交</view>
+  </view>
+</view>

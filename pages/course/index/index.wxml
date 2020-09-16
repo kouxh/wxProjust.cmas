@@ -7,7 +7,7 @@
 			</van-tabs>
 		</view> -->
 	<view class="header">
-        <image src="/assets/img/banner.png" mode='aspectFill' alt=""></image>
+        <image src="/assets/img/banner1.jpg" mode='aspectFill' alt=""></image>
 	</view>
 	<!-- 直播 -->
 	<navigator class="live" hover-class="none" url="/pages/course/live-detail/index?id={{liveData.l_id}}">
@@ -28,15 +28,14 @@
       <!-- 视频图片层 -->
       <view data-id="{{index}}" class="video-image-box" style="display: {{ _index == index? 'none' : 'block' }};"  		  bindtap="videoPlay">
         <view class="video-cover-box" >
-          <!-- <image class="video-image" src="/assets/img/content.png" mode="aspectFit"> -->
-          <!-- </image> -->
+          <image class="video-image" src="https://www.chinamas.cn{{item.cl_img}}" mode="aspectFit">
+          </image>
         </view> 
         <!-- 视频按钮 -->
         <image class="video-image-play" src="/assets/img/icon_short.png" mode="scaleToFill"></image>
 				<view class="badge">
 					<view class="badge-new">视频</view>
 				</view> 
-			
       </view>
       <!-- 视频播放层 -->
 			 <video src="{{item.cl_marvellous}}" data-id="{{index}}" class='video' wx:if="{{_index == index}}" objectFit='contain' autoplay='{{autoplay}}' controls  binderror="videoErrorCallback" show-center-play-btn='{{false}}' 

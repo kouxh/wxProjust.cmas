@@ -17,7 +17,8 @@
     "pages/course/live-detail/index",
     "pages/course/plus/index",
     "pages/research/index",
-    "pages/course/outsideurl/url"
+    "pages/course/outsideurl/url",
+    "pages/course/form/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -27,7 +28,7 @@
     "backgroundColor": "#f8f8f8",
     "backgroundColorTop": "#00f",
     "onReachBottomDistance": 300,
-    "enablePullDownRefresh": true
+    "enablePullDownRefresh": false
   },
   "tabBar": {
     "custom": false,

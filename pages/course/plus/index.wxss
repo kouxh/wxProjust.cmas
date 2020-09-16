@@ -340,6 +340,13 @@ button::after{border-width:0}
     padding: 0 30rpx;
     box-sizing: border-box;
     margin-bottom: 4rpx;
+    position: relative;
+  }
+  .close{
+    position: absolute;
+    right: 48rpx;
+    color: #818181;
+    z-index: 100;
   }
   .template_title{
     color: #8f8f8f;

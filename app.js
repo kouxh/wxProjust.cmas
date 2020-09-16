@@ -13,6 +13,7 @@ App({
     let bindPhone = wx.getStorageSync('bindPhone');
     let token = wx.getStorageSync('userInfoData').token
     let userInfoData=wx.getStorageSync('userInfoData');
+    let shareUid=wx.getStorageSync('shareUid');
     wx.clearStorageSync(); // 首次进入，清除缓存
     if (bindPhone) {
       setStorage('bindPhone', true, that);
@@ -23,10 +24,13 @@ App({
       setStorage('userInfoData', userInfoData, that);
       // wx.setStorageSync('userInfoData', userInfoData);
     }
+    if(shareUid){
+      setStorage('shareUid', shareUid, that);
+    }
     // 获取用户信息
     wx.getSetting({
       success: res => {
-        console.log( res.authSetting['scope.userInfo'],'9987722')
+        console.log( res,res.authSetting['scope.userInfo'],'9987722')
         if (res.authSetting['scope.userInfo'] && bindPhone && token!=undefined) {
           console.log( res.authSetting['scope.userInfo'],'9983377')
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
@@ -44,6 +48,7 @@ App({
           // wx.switchTab({
           //   url: '/pages/course/index/index',
           //   })
+        
         } else{
           wx.reLaunch({
             url: '/pages/login/index',

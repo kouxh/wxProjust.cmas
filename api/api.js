@@ -146,7 +146,38 @@ export default {
   readerMeal(params) {
     return fetch.fetchGet("applets/forum/purchaseAnnualSetMeal", params);
   },
-
+     /**
+   *团购一起付plus
+   * @param  {[type]} params [description]
+   * @return {[type]}        [description]
+   */
+  togetherPay(params) {
+    return fetch.fetchGet("applets/forum/togetherPay", params);
+  },
+     /**
+   *检测手机号
+   * @param  {[type]} params [description]
+   * @return {[type]}        [description]
+   */
+  checkTellIsVip(params) {
+    return fetch.fetchGet("applets/forum/checkTellIsVip", params);
+  },
+  /**
+   *购买VIP添加送杂志收货地址
+   * @param  {[type]} params [description]
+   * @return {[type]}        [description]
+   */
+  insertAddressVip(params) {
+    return fetch.fetchGet("applets/forum/insertAddressVip", params);
+  },
+ /**
+   *购买VIP填写发票信息
+   * @param  {[type]} params [description]
+   * @return {[type]}        [description]
+   */
+  insertInvoiceVip(params) {
+    return fetch.fetchGet("applets/forum/insertInvoiceVip", params);
+  },
 }
 
 // 获得充值单支付参数

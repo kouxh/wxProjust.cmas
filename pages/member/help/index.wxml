@@ -23,7 +23,7 @@
                 <view class="question">CMAS PLUS会员的权益是什么？</view>
                 <view class="result">
                     <view>答：1.赠阅全年《管理会计研究》杂志一套，共六本，价值300元（50元/本，共六期）；</view>
-                    <text decode="{{true}}">&ensp;&ensp;&ensp;&ensp;2.免费获得全年及往期电子刊杂志；</text>
+                    <text decode="{{true}}">&ensp;&ensp;&ensp;&ensp;2.免费阅读管理会计研究网站付费文章；</text>
                     <view><text decode="{{true}}">&ensp;&ensp;&ensp;&ensp;3.观看全年《CMAS大讲堂》课程，包含直播及回看；</text></view>
                     <view><text decode="{{true}}">&ensp;&ensp;&ensp;&ensp;4.观看全年《CMAS对话》高端访谈节目；</text></view>
                     <view><text decode="{{true}}">&ensp;&ensp;&ensp;&ensp;5.观看全年《走进名企》实务直播节目；</text></view>

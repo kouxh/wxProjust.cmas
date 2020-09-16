@@ -17,7 +17,49 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-   
+    // if (app.globalData.userInfo) {
+    //   this.setData({
+    //     userInfo: app.globalData.userInfo,
+    //     hasUserInfo: true,
+    //     hasBindMobile:true
+    //   })
+    // } else if (this.data.canIUse) {
+    //   // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+    //   // 所以此处加入 callback 以防止这种情况
+    //   app.userInfoReadyCallback = res => {
+    //     this.setData({
+    //       userInfo: res.userInfo,
+    //       hasUserInfo: true,
+    //       hasBindMobile:true
+    //     })
+    //   }
+    // } else {
+    //   // 在没有 open-type=getUserInfo 版本的兼容处理
+    //   wx.getUserInfo({
+    //     success: res => {
+    //       app.globalData.userInfo = res.userInfo
+    //       this.setData({
+    //         userInfo: res.userInfo,
+    //         hasUserInfo: true,
+    //         hasBindMobile:true
+    //       })
+    //     }
+    //   })
+    // }
+    let token = wx.getStorageSync('userInfoData').token
+    if(!this.data.hasBindMobile && token){
+      wx.switchTab({
+        url: "/pages/course/index/index"
+      })
+    }
+    // let shareUid=wx.getStorageSync('shareUid');
+    // console.log(shareUid,'shareUidshareUid')
+    // if(!this.data.hasBindMobile && token && shareUid!=''){
+    //   console.log(shareUid,'shareUidlogin登录页')
+    //   wx.reLaunch({
+    //     url: '/pages/course/plus/index',
+    //   })
+    // }
   },
   // 微信授权
   getUserInfo: function (e) {
@@ -29,8 +71,8 @@ Page({
         duration: 1000
       })
        app.globalData.userInfo = e.detail.userInfo
+      //  wx.setStorageSync('www',e.detail.userInfo)
        console.log(e,'用户授权e.detail.userInfo')
-      //  wx.setStorageSync('hasUserInfo',true)
       this.setData({
         userInfo: e.detail.userInfo,
         hasUserInfo: true,
@@ -54,8 +96,6 @@ Page({
 
        })
     }
-    
-   
   },
   // 手机号授权
   getPhoneNumber (e) {
@@ -83,7 +123,6 @@ Page({
           getApp()
             .globalData.api.login({json:jsonStr})
             .then(res1 => {
-              console.log(res1,'66666')
               if(!res1.bol){
                     wx.showToast({
                       title: "绑定失败",
@@ -98,6 +137,14 @@ Page({
                 wx.setStorageSync('userInfoData', res1.data)
                 // wx.setStorageSync('token', res1.data.token)
                 wx.hideLoading();
+                // let shareUid=wx.getStorageSync('shareUid');
+                // if(shareUid!=''){
+                //   console.log(shareUid,'shareUid')
+                //   wx.reLaunch({
+                //     url: '/pages/course/plus/index',
+                //   })
+                  // wx.removeStorageSync('shareUid');
+                // }
                 wx.switchTab({
                   url: "/pages/course/index/index"
                 })
@@ -135,39 +182,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    // if (app.globalData.userInfo) {
-    //   this.setData({
-    //     userInfo: app.globalData.userInfo,
-    //     hasUserInfo: true
-    //   })
-    // } else if (this.data.canIUse) {
-    //   // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-    //   // 所以此处加入 callback 以防止这种情况
-    //   app.userInfoReadyCallback = res => {
-    //     this.setData({
-    //       userInfo: res.userInfo,
-    //       hasUserInfo: true,
-    //       // hasBindMobile:true
-    //     })
-    //   }
-    // } else {
-    //   // 在没有 open-type=getUserInfo 版本的兼容处理
-    //   wx.getUserInfo({
-    //     success: res => {
-    //       app.globalData.userInfo = res.userInfo
-    //       this.setData({
-    //         userInfo: res.userInfo,
-    //         hasUserInfo: true
-    //       })
-    //     }
-    //   })
-    // }
-    let token = wx.getStorageSync('userInfoData').token
-    if(!this.data.hasBindMobile && token){
-      wx.switchTab({
-        url: "/pages/course/index/index"
-      })
-    }
+   
   },
 
   /**

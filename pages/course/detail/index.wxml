@@ -21,6 +21,7 @@
                     initial-time='{{initialTime}}'
                     show-mute-btn='{{true}}'
                     play-btn-position="bottom"
+                    poster="https://www.chinamas.cn{{detailData.desc.cl_img}}"
                     enable-play-gesture='{{true}}'
                     picture-in-picture-mode="{{['push', 'pop']}}" 
                     bindtimeupdate='bindtimeupdate'
@@ -139,12 +140,6 @@
     <!-- 开通会员 -->
     <van-dialog use-slot show="{{ isShow }}"  catchtouchmove="true" showConfirmButton="{{false}}" class="dialog-box" width="280px">
          <view style="height:50rpx" catchtap="onClose" > <van-icon name="cross"  class="van-icon1" /></view>
-        
-        <!-- <view class="price-box">
-            <image class="img" src="/assets/img/icon/back-course.png" mode="aspectFill" />
-            <view class="video-price">视频单价：</view>
-            <view class="money">¥ 00.0</view>
-        </view> -->
         <view  class="price-box1" catchtap="liveLimit" >
             <view class="up">全年线上课程直播及回看</view>
            <view class="down">

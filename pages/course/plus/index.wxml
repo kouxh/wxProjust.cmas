@@ -21,7 +21,8 @@
                 <view class="each-limits">
                     <view class="up">
                         <image class="img" src="/assets/img/icon/ticket.png" mode="aspectFill" />
-                        <view class="text">免费获得全年及往期电子刊杂志</view>
+                        <!-- <view class="text">免费获得全年及往期电子刊杂志</view> -->
+                        <view class="text"> 免费阅读管理会计研究网站付费文章</view>
                     </view>
                     <!-- <view class="down">￥ 价值198元（9.9/节，共20节）</view> -->
                 </view>
@@ -55,7 +56,6 @@
             <view class="vip-fee">
                 <view class="fee-box">
                     <view class="fee-tit">PLUS会员费：</view>
-                    
                     <view class="fee-price">
                      <!-- <radio-group class="radio-group" bindchange="onChange" >
                             <radio value="1" checked="1" color="#4a90e2" class="radio"> 699元/年/人</radio>
@@ -67,8 +67,8 @@
                      </radio-group> -->
                         <van-radio-group value="{{ radio }}" bind:change="onChange">
                             <van-radio name="1">599元/年/人</van-radio>
-                            <van-radio name="2">团购 499元/年/人 </van-radio>
-                            <view class="lh" >人以上（含3人）成团可享受优惠</view>
+                            <van-radio name="2" disabled>团购 499元/年/人 </van-radio>
+                            <view class="lh" >3人以上（含3人）成团可享受优惠</view>
                             <van-radio name="3">读者优惠 199元/年/人 </van-radio>
                             <view class="lh">已订阅2020年《管理会计研究》全年刊的读者可享受读者价</view>
                         </van-radio-group>
@@ -123,8 +123,9 @@
                          <view class="circle"></view>
                          <view class="type-text">各自付款</view>
                          <van-icon name="ellipsis" size="24px"/>
-                         <view class="next-btn" bindtap="copyFn" data-copy="{{url}}">复制</view>
-                         <button class="{{isCopy ?'next-btn' : 'not-next-btn'}} " disabled="{{disabled}}" catchtap="groupFn" >成团</button>
+                         <!-- <button class="next-btn" bindtap="copyFn" data-copy="{{url}}" open-type="share" hover-class="none">复制</button>  -->
+                         <button class="next-btn" open-type="share" data-name="shareBtn" bindtap="copyFn">复制</button>
+                         <button class="{{isCopy ?'next-btn' : 'not-next-btn'}}"  disabled="{{disabled}}" catchtap="groupFn" >成团</button>
                     </view>
                     <view class="down">*复制成团链接，发给其他成团人员，成团后Plus会员权限自动开启。</view>
                 </view>
@@ -141,7 +142,9 @@
                 <block wx:for="{{conLists}}" wx:key="index">
                     <view class='template_title_list flex-x'>
                     <!-- <view class="del" bindtap='del' data-index='{{index}}'>-</view> -->
-                    <input placeholder='成团人手机号' bindinput='changeConTitle' data-index='{{index}}' maxlength="11 "type="number" ></input>
+                    <input placeholder='成团人手机号' bindinput='changeConTitle' data-index='{{index}}' maxlength="11 "type="number" bindblur="onBlur" ></input>
+                    <view class="close" bindtap='del' data-index='{{index}}'><van-icon name="close"  /></view>
+                    
                     </view>
                 </block>
                 <view class='template_title' bindtap='add'>
@@ -152,9 +155,9 @@
             <view class="price-box " style="padding-left:30rpx;">
                 <van-icon name="balance-o" />
                 <view class="price">支付金额：</view>
-                <view class="money">XX元</view>
+                <view class="money">{{groupMoney}}元</view>
             </view>
-            <view class="pay-box">确认支付</view>
+            <view class="pay-box"  bindtap="groupConfirmPay">确认支付</view>
         </view>
     </van-popup>
     <!-- 各自付款 -->
@@ -177,7 +180,7 @@
                 </view>
                 <view class="phone">入团人手机号码为：</view>
             </view>
-            <view class="pay-btn">确认支付</view>
+            <view class="pay-btn" bindtap="olonePay">确认支付</view>
         </view>
     </van-popup>
     <!-- 读者优惠 -->
