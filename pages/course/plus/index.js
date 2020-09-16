@@ -25,7 +25,7 @@ Page({
     count: 60, // 倒计时秒数
     isReset: false, // 是否重置'倒计时'
     sendState: 0, // '验证码发送'按钮的状态 0待发送 1发送中 2倒数时中 3重新发送
-    contactPhone: '400-819-1255',//咨询电话
+    contactPhone: '400 819 1255',//咨询电话
     groupMoney: "XX",
     isNeed:false,//是否需要充值会员
     isTel:'',//无需更改的手机号

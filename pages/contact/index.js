@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    contactPhone:'400-819-1255',
+    contactPhone:'400 819 1255',
     isShow: true, // 是否显示'公众号'组件
 
   },

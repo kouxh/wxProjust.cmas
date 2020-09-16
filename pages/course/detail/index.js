@@ -23,7 +23,7 @@ Page({
     payData: {}, // 支付配置参数
     moreData:[],//评论列表展示的数组
     isPlay:false,//不自动播放
-    contactPhone:'400-819-1255',//联系电话
+    contactPhone:'400 819 1255',//联系电话
     backLookShow:false,//是否展示CMAS大讲堂回看权限弹框
     loading:true,//首次加载
   },
@@ -38,7 +38,7 @@ Page({
     // if(options.shareUid!=undefined){
     //   this.shareFn();
     // }
-    
+   
     this.descDataFn();//大讲堂详情
     this.checkUserVipFn();//判断是否是VIP
     

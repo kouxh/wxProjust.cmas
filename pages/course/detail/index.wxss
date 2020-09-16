@@ -1,13 +1,4 @@
 @import "/app.wxss";
-.loading{
-    width: 100%;
-    min-height: 100%;
-    background: #fff;
-    display: flex;
-    justify-content: center;
-    padding-top: 50%;
-
-}
 .page-detail-index {
     background-color: #f8f8f8;
     height: 100%;
@@ -23,10 +14,7 @@
     margin-bottom: 20rpx;
 }
 .each-item {
-    /* min-height: 500rpx; */
     margin-bottom: 20rpx;
-    /* border-bottom: 2rpx solid #eee; */
-    /* position: relative; */
 }
 
 .each-item .tit {
@@ -40,10 +28,9 @@
 }
 .each-item .video-box .img {
     width: 686rpx;
-    height: 330rpx;
+    height: 370rpx;
     object-fit: cover;
     margin-top: 20rpx;
-    
 }
 .badge,
 .live .live-badge {

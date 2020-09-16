@@ -154,7 +154,7 @@
             <text class="buy">购买PLUS会员</text>
            </view>
         </view>
-        <view class="invoice" bindtap="makePhoneCall">购买后如需发票请联系：{{contactPhone}}</view>
+        <view class="invoice" bindtap="makePhoneCall">咨询电话：{{contactPhone}}</view>
     </van-dialog>
     <!-- CMAS大讲堂回看权限弹框 -->
     <van-dialog
