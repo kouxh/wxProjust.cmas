@@ -42,6 +42,7 @@ Page({
     bindMobileShow: false, // 是否需要绑定手机号
     selectShow: false,//控制下拉列表的显示隐藏，false隐藏、true显示
     selectOption:false,
+    isLoad:true,//是否需要加载
   },
 
  
@@ -62,6 +63,7 @@ Page({
       if(res.bol==true){
         this.setData({
           info: res.data,
+          isLoad:false
         })
       }else{
         wx.showToast({ title: "获取数据失败,请稍后重试~", icon: "none" });

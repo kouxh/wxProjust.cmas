@@ -10,7 +10,8 @@ Page({
     statusName:"立即报名",
     liveDetailData:{},//直播详情数据
     detailId:0,
-    url:"https://dkt.yuanian.com/"
+    url:"https://dkt.yuanian.com/",
+    isLoad:true,//是否需要加载
   },
 
   /**
@@ -30,7 +31,8 @@ Page({
     }).then(res=>{
       if(res.bol==true){
         that.setData({
-          liveDetailData: res.data
+          liveDetailData: res.data,
+          isLoad:false
         });
         if(res.data.status=="未报名"){
           that.setData({

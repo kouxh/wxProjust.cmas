@@ -45,3 +45,12 @@ page {
 .IpX-Bottom {
   padding-bottom: 40rpx !important;
 }
+.loading{
+  width: 100%;
+  min-height: 100vh;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  padding-top: 50%;
+
+}

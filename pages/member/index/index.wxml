@@ -1,4 +1,7 @@
-<view class="page-member-index">
+<view class="loading" wx:if="{{isLoad}}">
+    <van-loading class="load"/>
+</view>
+<view class="page-member-index" wx:if="{{!isLoad}}">
 	<view class="member-header">
 		<view class="header-left">
 			<view class="avatar">

@@ -1,4 +1,7 @@
-<view class="pages-live-detail-index">
+ <view class="loading" wx:if="{{isLoad}}">
+    <van-loading class="load"/>
+</view>
+<view class="pages-live-detail-index" wx:if="{{!isLoad}}">
     <view class="header"></view>
     <view class="introduce-lecturer">
         <image class="lecturer-img" src="https://www.chinamas.cn/{{liveDetailData.l_img}}" mode="aspectFill" />
