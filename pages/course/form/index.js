@@ -107,7 +107,7 @@ Page({
               //   delta: 2
               // })
               // that.formFinish();
-              wx.reLaunch({
+              wx.redirectTo({
                 url: `/pages/course/detail/index?jump=true&&id=${that.data.detailId}`
               })
             }, 2000);
@@ -117,7 +117,7 @@ Page({
       });
         
     }else{
-      wx.reLaunch({
+      wx.redirectTo({
         url: `/pages/course/detail/index?jump=true&&id=${that.data.detailId}`
       })
       // wx.navigateBack({
