@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/login/index",
     "pages/course/index/index",
+    "pages/login/index",
     "custom-tab-bar/index",
     "pages/paper/index",
     "pages/contact/index",

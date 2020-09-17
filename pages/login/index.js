@@ -17,6 +17,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let that=this;
     // if (app.globalData.userInfo) {
     //   this.setData({
     //     userInfo: app.globalData.userInfo,
@@ -47,11 +48,28 @@ Page({
     //   })
     // }
     let token = wx.getStorageSync('userInfoData').token
-    if(!this.data.hasBindMobile && token){
-      wx.switchTab({
-        url: "/pages/course/index/index"
-      })
-    }
+    // if(!this.data.hasBindMobile && token){
+    //   wx.switchTab({
+    //     url: "/pages/course/index/index"
+    //   })
+    // }
+    // 查看是否授权
+    wx.getSetting({
+      success: function (res) {
+        if (res.authSetting['scope.userInfo'] && !that.data.hasBindMobile && token) {
+          wx.getUserInfo({
+            success: function (res) {
+              app.globalData.userInfo = res.userInfo
+              //用户已经授权过
+              wx.switchTab({
+                url: "/pages/course/index/index"
+              })
+            }
+          });
+        }
+      }
+    })
+    
     // let shareUid=wx.getStorageSync('shareUid');
     // console.log(shareUid,'shareUidshareUid')
     // if(!this.data.hasBindMobile && token && shareUid!=''){

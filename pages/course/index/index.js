@@ -22,7 +22,17 @@ Page({
   onLoad: function (options) {
     // 基础数据监测,以及初始请求
     let that =this;
-    // this.getData();
+     // 查看是否授权
+     wx.getSetting({
+      success: function (res) {
+        if (!res.authSetting['scope.userInfo']) {
+          //未登录,跳转到登录页
+          wx.reLaunch({
+            url: '/pages/login/index',
+          })
+        }
+      }
+    })
     that.listDataFn();  //大讲堂列表
     setTimeout(() => {
       that.spHeight();//获取每个视频的距离顶部的高度
