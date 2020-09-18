@@ -51,7 +51,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // this.basicInfoData();
+     // 查看是否授权
+     wx.getSetting({
+      success: function (res) {
+        if (!res.authSetting['scope.userInfo']) {
+          //未登录,跳转到登录页
+          wx.reLaunch({
+            url: '/pages/login/index',
+          })
+        }
+      }
+    })
+    this.basicInfoData();
   },
   //基本信息展示
   basicInfoData(){
@@ -72,12 +83,23 @@ Page({
   },
    /**点击底部tab */
    onTabItemTap(item) {
-    console.log(item)
+    console.log(item,'3333333')
     if (item.index == 2) {
+      // 查看是否授权
+      wx.getSetting({
+        success: function (res) {
+          if (!res.authSetting['scope.userInfo']) {
+            //未登录,跳转到登录页
+            wx.reLaunch({
+              url: '/pages/login/index',
+            })
+          }
+        }
+      })
       this.setData({
         isShow: !this.data.isShow
       });
-    }
+  }
     
 
   },
@@ -188,7 +210,6 @@ Page({
       wx.navigateTo({
         url: "/pages/member/order/index"
       });
-     
     }else if(event.detail == 2){
       wx.navigateTo({
         url: "/pages/member/content/index"
@@ -258,8 +279,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    var userinfo = wx.getStorageSync('userinfoData');
-    console.log(userinfo)
+    // var userinfo = wx.getStorageSync('userinfoData');
+    // console.log(userinfo)
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -288,7 +309,6 @@ Page({
         }
       })
     }
-    this.basicInfoData();
   },
 
   /**

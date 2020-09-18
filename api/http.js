@@ -69,14 +69,8 @@ export default {
         baseURL: config.getConfig(),
         headers: {
          'content-type': 'application/json', // 默认值
-          // Authorization: wx.getStorageSync("Authorization"),
-          // Platform: config.getPlatform(),
           token: wx.getStorageSync("userInfoData").token,
           uid: wx.getStorageSync("userInfoData").uid,
-        //   DistributorAuth: wx.getStorageSync("distributorAuth").result
-        //     ? wx.getStorageSync("distributorAuth").result
-        //     : "",
-        //   Environment: wx.getStorageSync("channeltoken")
         },
         timeout: 10000
       };

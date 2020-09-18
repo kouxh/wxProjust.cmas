@@ -12,6 +12,16 @@ Page({
     detailId:0,
     url:"https://dkt.yuanian.com/",
     isLoad:true,//是否需要加载
+    shareShow: false, // 是否显示'按钮弹出层'
+    posterShow: false, // 是否显示'分享海报'弹出层
+    styleData: {
+      canvasW: 0, // 画布宽
+      canvasH: 0, // 画布高
+      imgW: 0, // 图片宽
+      imgH: 0 // 图片高
+    }, // 画布的样式
+    loadStep: 0, // 加载进度 0加载中 1加载成功 2加载失败
+    imgtextImgBase64: "", // 商品海报的图片的Base64
   },
 
   /**
@@ -69,7 +79,6 @@ Page({
       }
     })
   },
-  
   //点击立即报名
   getUserSignUp(){
     let that = this;
@@ -104,7 +113,42 @@ Page({
     wx.navigateTo({
       url:`/pages/course/outsideurl/url?link=${this.data.url}` //
   })
-},
+  },
+  // 选择分享方式
+  shareShowFn() {
+    let that = this;
+    let _this = this.data;
+    console.log('99')
+    this.setData({
+      shareShow: !_this.shareShow
+    });
+  },
+  // 显示海报弹出层
+   posterShowFn() {
+    this.setData({
+      posterShow: !this.data.posterShow
+    });
+  },
+    // 图片生成并加载完成
+    loadStepImgFn() {
+      this.setData({
+        loadStep: 1
+      });
+    },
+      // 点击放大图片
+      amplifyFn(e) {
+        let imgUrl = e.currentTarget.dataset.imgurl;
+        if (imgUrl) {
+          wx.previewImage({
+            urls: [imgUrl]
+          });
+        } else {
+          wx.previewImage({
+            urls: [this.data.imgtextImgBase64]
+          });
+        }
+      },
+  
 
   
 

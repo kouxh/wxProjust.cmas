@@ -1,5 +1,6 @@
 // 引入md5.js文件
 import utils from "../../../utils/md5.js";
+import {checkLogin} from "../../../utils/util";
 //获取应用实例
 const app = getApp()
 let meigeSP=[] //每个视频的距离顶部的高度
@@ -22,17 +23,6 @@ Page({
   onLoad: function (options) {
     // 基础数据监测,以及初始请求
     let that =this;
-     // 查看是否授权
-     wx.getSetting({
-      success: function (res) {
-        if (!res.authSetting['scope.userInfo']) {
-          //未登录,跳转到登录页
-          wx.reLaunch({
-            url: '/pages/login/index',
-          })
-        }
-      }
-    })
     that.listDataFn();  //大讲堂列表
     setTimeout(() => {
       that.spHeight();//获取每个视频的距离顶部的高度
@@ -43,21 +33,30 @@ Page({
   //大讲堂列表
  listDataFn(){
     let that = this;
-    getApp().globalData.api.classRoomList({
-      where:"CMAS大讲堂"
-    }).then(res=>{
-      if(res.bol==true){
-        wx.nextTick(() => {
-          that.setData({
-            ss:res.data,
-            dataList: res.data.list,
-            liveData:res.data.live,
+    var listurl = 'https://www.chinamas.cn/applets/forum/classRoomList';
+    wx.request({
+      //上线接口地址要是https测试可以使用http接口方式
+      url: listurl,
+      data: {
+        where:"CMAS大讲堂"
+      },
+      method: 'GET',
+      header: {
+        'content-type': 'application/json',
+      },
+      success: function (res) {
+        console.log(res,'列表-------------')
+        if(res.data.bol==true){
+          wx.nextTick(() => {
+            that.setData({
+              dataList: res.data.data.list,
+              liveData:res.data.data.live,
+            });
           });
-          console.log(that.data.dataList,'0000')
-        });
-      }else{
-        wx.showToast({ title: "res.msg", icon: "none" });
-      }
+        }else{
+          wx.showToast({ title: res.data.err_msg, icon: "none" });
+        }
+      },
     })
   },
  
@@ -141,18 +140,21 @@ Page({
     
   // },
 
-  // 模拟数据加载
-  // getData: function () {
-  //   this.setData({
-  //     dataList: [
-  //       { "id": 0, "title": "标题", "content": "https://res.ycclass.iubug.com//endub/video/202005/gyfj3lnyh4_1590738493.mp4?t=123"}, ]
-  //   });
-  // },
   // 视频播放出错时触发
   videoErrorCallback(e) {
     console.log('视频错误信息:')
     console.log(e.detail.errMsg)
   },
+  //点击跳转到详情
+  goDetail:function(e){
+    var id=parseInt(e.currentTarget.dataset.id);
+    checkLogin('/pages/course/detail/index?id='+id,1,true,1);
+  },
+  //点击跳转到直播详情
+  liveFn(){
+    checkLogin('/pages/course/live-detail/index?id='+this.data.liveData.l_id,1,true,1);
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

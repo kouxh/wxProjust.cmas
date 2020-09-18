@@ -50,9 +50,9 @@ App({
           //   })
         
         } else{
-          wx.reLaunch({
-            url: '/pages/login/index',
-          })
+          // wx.reLaunch({
+          //   url: '/pages/login/index',
+          // })
          
         }
       }

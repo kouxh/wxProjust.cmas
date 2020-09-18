@@ -27,11 +27,11 @@
 		</view>
 		<view class="every-info">
 			<text class="title">注册手机</text>
-			<input class="input" type="number" value="{{info.tell}}" maxlength="11" placeholder="158****3426" bindinput="infoTellFn" placeholder-class="pla"/>
+			<input class="input" type="number" value="{{info.tell}}" maxlength="11" placeholder="请输入手机号" bindinput="infoTellFn" placeholder-class="pla"/>
 		</view>
 		<view class="every-info">
 			<text class="title">注册邮箱</text>
-			<input class="input" type="text"  value="{{info.email}}" placeholder="请输入正确的邮箱" bindinput="infoEmailFn" placeholder-class="pla" />
+			<input class="input" type="text"  value="{{info.email}}" placeholder="请输入邮箱" bindinput="infoEmailFn" placeholder-class="pla" />
 		</view>
 		<view class="every-info1">
 			<text class="title">性别</text>

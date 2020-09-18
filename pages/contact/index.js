@@ -1,4 +1,4 @@
-// pages/contact/index.js
+
 const app = getApp()
 Page({
 
@@ -8,18 +8,45 @@ Page({
   data: {
     contactPhone:'400 819 1255',
     isShow: true, // 是否显示'公众号'组件
-
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    // 查看是否授权
+    // wx.getSetting({
+    //   success: function (res) {
+    //     if (!res.authSetting['scope.userInfo']) {
+    //       //未登录,跳转到登录页
+    //       wx.reLaunch({
+    //         url: '/pages/login/index',
+    //       })
+    //     }
+    //   }
+    // })
+      
+  },
+   /**点击底部tab */
+   onTabItemTap(item) {
+    if (item.index == 1) {
+      // 查看是否授权
+      // wx.getSetting({
+      //   success: function (res) {
+      //     if (!res.authSetting['scope.userInfo']) {
+      //       //未登录,跳转到登录页
+      //       wx.reLaunch({
+      //         url: '/pages/login/index',
+      //       })
+      //     }
+      //   }
+      // })
+  }
     
+
   },
   // 加载'成功'时
   successFn() {
-    console.log("11111111111");
     this.setData({
       isShow: true,
     });
@@ -27,7 +54,6 @@ Page({
 
   // 加载'失败'时
   errorFn(e) {
-    console.log(e, "22222222222");
     // wx.showToast({ title: e.detail.errMsg, icon: "none" });
     this.setData({
       isShow: false,
@@ -45,19 +71,6 @@ Page({
       }
     })
   },
-  // //邮箱调用
-  // sendEmail:function(){
-  //   wx.showActionSheet({
-  //     itemList: ['edit@chinamas.cn'],
-  //     success (res) {
-  //       console.log(res.tapIndex)
-  //     },
-  //     fail (res) {
-  //       console.log(res.errMsg)
-  //     }
-  //   })
-   
-  // },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

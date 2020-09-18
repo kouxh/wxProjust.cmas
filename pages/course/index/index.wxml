@@ -10,21 +10,23 @@
         <image src="/assets/img/banner1.jpg" mode='aspectFill' alt=""></image>
 	</view>
 	<!-- 直播 -->
-	<navigator class="live" hover-class="none" url="/pages/course/live-detail/index?id={{liveData.l_id}}">
+	<view class="live" bindtap="liveFn">
 		<image mode="aspectFill" class="img" src="https://www.chinamas.cn/{{liveData.l_img}}"/>
-		<!-- <image class="img" src="/assets/img/content.png" mode="aspectFill" /> -->
 		<view class="live-badge">
 			<van-icon name="orders-o" size="16px" color="#fff"/>
 			<view class="badge-new">直播预告</view>
 		</view>
-	</navigator>
+	</view>
 	<!-- 视频 -->
 	<view class="course-content" wx:if="{{dataList.length>0}}">
 		<view class="item-box " wx:for="{{dataList}}" wx:for-item="item" wx:for-index="index" wx:key="index" >
       <!-- 标题层 -->
-      <navigator class="video-title-box" hover-class="none" url="/pages/course/detail/index?id={{item.cl_id}}">
+      <!-- <navigator class="video-title-box" hover-class="none" url="/pages/course/detail/index?id={{item.cl_id}}">
         <view class='video-title'>{{item.cl_title}}</view>
-      </navigator> 
+      </navigator>  -->
+			<view class="video-title-box" data-id="{{item.cl_id}}" catchtap="goDetail">
+        <view class='video-title'>{{item.cl_title}}</view>
+      </view> 
       <!-- 视频图片层 -->
       <view data-id="{{index}}" class="video-image-box" style="display: {{ _index == index? 'none' : 'block' }};"  		  bindtap="videoPlay">
         <view class="video-cover-box" >
@@ -42,7 +44,9 @@
         play-btn-position="bottom"  show-fullscreen-btn="{{false}}" bindended="bindended">
 				<view class="bcg" wx:if="{{end=='ended'}}"></view>
 				<view class="play-time"  wx:if="{{end=='ended'}}">查看完整视频<van-icon name="arrow" /><van-icon name="arrow" style="margin-left: -20rpx;"/></view>
-				<navigator hover-class="none" url="/pages/course/detail/index?id={{item.cl_id}}" class="mask"></navigator>
+				<!-- <navigator hover-class="none" url="/pages/course/detail/index?id={{item.cl_id}}" class="mask"></navigator> -->
+				<view class="mask" data-id="{{item.cl_id}}" catchtap="goDetail">
+				</view> 
 			</video>
 			<!-- 底部展示 -->
 			<view class="foot">

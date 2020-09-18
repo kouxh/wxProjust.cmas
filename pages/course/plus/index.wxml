@@ -22,7 +22,7 @@
                     <view class="up">
                         <image class="img" src="/assets/img/icon/ticket.png" mode="aspectFill" />
                         <!-- <view class="text">免费获得全年及往期电子刊杂志</view> -->
-                        <view class="text"> 免费阅读管理会计研究网站付费文章</view>
+                        <view class="text"> 畅读管理会计研究网站付费文章</view>
                     </view>
                     <!-- <view class="down">￥ 价值198元（9.9/节，共20节）</view> -->
                 </view>

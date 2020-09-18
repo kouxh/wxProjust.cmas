@@ -43,6 +43,56 @@
             </view>
         </view>
     </view>
+    <view class="share-box" wx:if="{{shareShow}}">
+        <view class="share" bindtap="shareShowFn">分享</view>
+        <!-- 弹出层 -->
+        <view class="goods-popup-box">
+            <!-- '操作按钮' -->
+            <van-popup show="{{shareShow}}" position="bottom" bind:click-overlay='shareShowFn'>
+                <view class="goods-popup-btnbox">
+                    <!-- 操作按钮 -->
+                    <view class="goods-salesman-btnbox">
+                        <!-- 分享给朋友 -->
+                        <view class="salesman-btn-each" data-type='shareShow'>
+                            <button open-type='share' class="salesman-btn-share" bind:tap="shareShowFn"></button>
+                            <view class="salesman-btn-iconbox" style="background: #5dc834;">
+                            <image mode='aspectFill' class="salesman-btn-icon" src="http://img.deiyou.net/upload/seller/goods/image/2019/10/17/aa8a46cdc1f24a0cae3234ef1ed2a6ff"></image>
+                            </view>
+                            <view class="salesman-btn-text">分享给朋友</view>
+                        </view>
+                        <!-- 分割线 -->
+                        <view class="salesman-btn-apart"></view>
+                        <!-- 发海报 -->
+                        <view class="salesman-btn-each" data-type='imgtextQrShow' bindtap="posterShowFn">
+                            <view class="salesman-btn-iconbox" style="background: #41aef6;">
+                            <image mode='aspectFill' class="salesman-btn-icon" src="http://img.deiyou.net/upload/seller/goods/image/2019/10/17/670d4de3b0e64b3497367373e4529197"></image>
+                            </view>
+                            <view class="salesman-btn-text">发海报</view>
+                        </view>
+                    </view>
+                </view>
+            </van-popup>
+            <!-- 绘制canvas画布 -->
+            <canvas canvas-id="poster-canvas" style="width:{{styleData.canvasW?styleData.canvasW:540}}px;height:{{styleData.canvasH?styleData.canvasH:850}}px;position:fixed;top: -10000rpx;"></canvas>
+            <!-- '商品海报' -->
+            <van-popup show="{{posterShow}}" overflowY="{{false}}" bgColor="transparent" bind:click-overlay="posterShowFn">
+            <view class="goods-imgtextqr-popupbox" style="width:{{styleData.imgW}}rpx;height:{{styleData.imgH}}rpx">
+                <!-- 生成中 -->
+                <view class="goods-imgtextqr-loadhide {{loadStep==0?'goods-imgtextqr-loadshow':''}}">
+                <van-loading size='50px' color="#666" />
+                <view class="goods-imgtextqr-loadtips">卡片绘制中…</view>
+                </view>
+                <!-- 生成后的图片 -->
+                <image mode='widthFix' class="imgtext-canvas-img" style="display: block;width:{{styleData.imgW}}rpx;height:{{styleData.imgH}}rpx" src='{{imgtextImgBase64}}' wx:if="{{imgtextImgBase64}}" bindtap="amplifyFn" bindload="loadStepImgFn"></image>
+                <!-- 操作提示语 -->
+                <view class="qrcode-tips-box">
+                <view class="iconfont icon-zhiwenxiao qrcode-tips-icon"></view>
+                <view class="qrcode-tips-text">点击图片保存至相册</view>
+                </view>
+            </view>
+            </van-popup>
+        </view>
+    </view>
     <view class="button-btn-box {{isIphoneX?'IpX-Bottom':''}}" >
         <!-- <view class="button-btn-text {{liveDetailData.status=='直播已开始' ? 'button-btn-text1':''}}">{{statusName}}</view> -->
         <view class="button-btn-text" bindtap="applyFn" wx:if="{{status==1}}">{{statusName}}</view>
