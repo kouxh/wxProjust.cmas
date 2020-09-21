@@ -51,10 +51,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let token = wx.getStorageSync('userInfoData').token;
+    console.log(token,'token00')
      // 查看是否授权
      wx.getSetting({
       success: function (res) {
-        if (!res.authSetting['scope.userInfo']) {
+        if (!res.authSetting['scope.userInfo'] || token==undefined) {
           //未登录,跳转到登录页
           wx.reLaunch({
             url: '/pages/login/index',
@@ -85,17 +87,6 @@ Page({
    onTabItemTap(item) {
     console.log(item,'3333333')
     if (item.index == 2) {
-      // 查看是否授权
-      wx.getSetting({
-        success: function (res) {
-          if (!res.authSetting['scope.userInfo']) {
-            //未登录,跳转到登录页
-            wx.reLaunch({
-              url: '/pages/login/index',
-            })
-          }
-        }
-      })
       this.setData({
         isShow: !this.data.isShow
       });

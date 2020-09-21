@@ -152,38 +152,71 @@ function liveStatusFn(nowTime, startTime, endTime) {
 function checkLogin (url,path,isLogin,type){
   let bindPhone = wx.getStorageSync('bindPhone');
   let token = wx.getStorageSync('userInfoData').token;
-  let userInfoData=wx.getStorageSync('userInfoData');
-  console.log(getApp().globalData.userInfo,'9999999',token,bindPhone,userInfoData)
-  if((!(getApp().globalData.userInfo) || token==undefined) && isLogin){
-    console.log('1111')
-    wx.showToast({
-      title: '关注更多精彩视频，请先授权登录！',
-      icon: "none"
-    })
-      wx.reLaunch({
-        url: '/pages/login/index',
-      })
-  }else{
-    console.log('22222')
-    if(type==1){
-      wx.navigateTo({
-        url: url,
-      })
-    }else if(type==2){
-      wx.switchTab({
-        url: url,
-      })
-    }else if(type==3){
-      wx.redirectTo({
-        url: url,
-      })
-    }else if(type==4){
-      wx.reLaunch({
-        url: url,
-      })
-    }
+  wx.getSetting({
+    success: res => {
+      console.log(res.authSetting['scope.userInfo'] ,'9999999',token,bindPhone)
+      if ((!res.authSetting['scope.userInfo']  || token==undefined || bindPhone=='') && isLogin) {
+        console.log('1111')
+          wx.showToast({
+            title: '关注更多精彩视频，请先授权登录！',
+            icon: "none"
+          })
+            wx.reLaunch({
+              url: '/pages/login/index',
+            })
+      }else{
+          console.log('22222')
+          if(type==1){
+            wx.navigateTo({
+              url: url,
+            })
+          }else if(type==2){
+            wx.switchTab({
+              url: url,
+            })
+          }else if(type==3){
+            wx.redirectTo({
+              url: url,
+            })
+          }else if(type==4){
+            wx.reLaunch({
+              url: url,
+            })
+          }
      
-  }
+      }
+    }
+  })
+  // if((!(getApp().globalData.userInfo) || token==undefined) && isLogin){
+  //   console.log('1111')
+  //   wx.showToast({
+  //     title: '关注更多精彩视频，请先授权登录！',
+  //     icon: "none"
+  //   })
+  //     wx.reLaunch({
+  //       url: '/pages/login/index',
+  //     })
+  // }else{
+  //   console.log('22222')
+  //   if(type==1){
+  //     wx.navigateTo({
+  //       url: url,
+  //     })
+  //   }else if(type==2){
+  //     wx.switchTab({
+  //       url: url,
+  //     })
+  //   }else if(type==3){
+  //     wx.redirectTo({
+  //       url: url,
+  //     })
+  //   }else if(type==4){
+  //     wx.reLaunch({
+  //       url: url,
+  //     })
+  //   }
+     
+  // }
 }
 
 module.exports = {

@@ -35,6 +35,8 @@ page{
   padding-right: 20rpx;
   padding-left: 8rpx;
   font-weight: bold;
+  
+  
 }
 .page-research-index .introduce-box{
   background-color: #fff;
@@ -56,6 +58,8 @@ page{
   font-size: 30rpx;
   color: #f00;
   padding-bottom: 15rpx;
+  display: flex;
+  align-items: center;
 
 }
 .detailed-box .item .content{
@@ -63,6 +67,14 @@ page{
   color: #868587;
   line-height: 30rpx;
   line-height: 54rpx;
+}
+.circle{
+  width: 14rpx;
+  height: 14rpx;
+  border-radius: 7rpx;
+  background-color: #FF5240;
+  margin-top: 9rpx;
+  margin-right: 20rpx;
 }
 
 
