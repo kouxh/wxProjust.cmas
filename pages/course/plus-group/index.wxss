@@ -99,7 +99,7 @@ page{
  .member-box .member-invite {
   position: relative;
   box-sizing: border-box;
-  border: 2rpx dashed #ddd;
+  /* border: 2rpx dashed #ddd; */
 }
 .price{
   font-size: 26rpx;

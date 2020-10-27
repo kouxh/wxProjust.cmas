@@ -18,6 +18,7 @@ Page({
     plusId:'',//通过分享进来的标识
     teamId:'',//团id
     payData: {}, // 支付配置参数
+    uid:''
   },
 
   /**
@@ -28,42 +29,81 @@ Page({
     console.log(options,'options---------')
     that.setData({
       plusId: options.plusId,
-      teamId:options.teamId
+      teamId:options.teamId,
+      uid:options.uid
     });
     // this.countDown("2020-09-24 14:44:58");
  
     this.getGroupInfo();
   },
-  //分享详情
   getGroupInfo(){
-      let that=this;
-      getApp()
-          .globalData.api.getGroupInfo({
-            uid:wx.getStorageSync('userInfoData').uid
-          }).then(res=>{
-            if(res.bol){
-              that.setData({
-                details:res.data,
-                userInfoArr:res.data.member,
-                grouponsState:res.data.status
-              })
-              var nowTime = format((res.data.GroupEndAt*1000));
-              // 处理 参团状态 --- 无 拼团成功 未参与 已参与 拼团失败
-              if (that.data.userInfoArr.length==3) {
-                that.setData({ grouponsState: "拼团成功" });
-              } else {
-                that.daojisfn(nowTime);
-                let timer = null;
-                timer = setInterval(function () {
-                  let bool = that.daojisfn(nowTime);
-                  if (bool) clearInterval(timer);
-                }, 1000);
-              }
-            }else{
-              wx.showToast({ title: res.data.msg, icon: "none" });
-            }
+    let that = this;
+    var listurl = 'https://www.chinamas.cn/applets/forum/getGroupInfo';
+    wx.request({
+      //上线接口地址要是https测试可以使用http接口方式
+      url: listurl,
+      data: {
+        uid:that.data.uid?that.data.uid:wx.getStorageSync('userInfoData').uid
+      },
+      method: 'GET',
+      header: {
+        'content-type': 'application/json',
+      },
+      success: function (res) {
+        if(res.data.bol){
+          that.setData({
+            details:res.data.data,
+            userInfoArr:res.data.data.member,
+            grouponsState:res.data.data.status
           })
+          var nowTime = format((res.data.data.GroupEndAt*1000));
+          // 处理 参团状态 --- 无 拼团成功 未参与 已参与 拼团失败
+          if (that.data.userInfoArr.length==3) {
+            that.setData({ grouponsState: "拼团成功" });
+          } else {
+            that.daojisfn(nowTime);
+            let timer = null;
+            timer = setInterval(function () {
+              let bool = that.daojisfn(nowTime);
+              if (bool) clearInterval(timer);
+            }, 1000);
+          }
+        }else{
+          wx.showToast({ title: res.data.data.msg, icon: "none" });
+        }
+      },
+    })
   },
+  //分享详情
+  // getGroupInfo(){
+  //     let that=this;
+  //     getApp()
+  //         .globalData.api.getGroupInfo({
+  //           uid:that.data.uid?that.data.uid:wx.getStorageSync('userInfoData').uid
+  //         }).then(res=>{
+  //           if(res.bol){
+  //             that.setData({
+  //               details:res.data,
+  //               userInfoArr:res.data.member,
+  //               grouponsState:res.data.status
+  //             })
+  //             var nowTime = format((res.data.GroupEndAt*1000));
+  //             // 处理 参团状态 --- 无 拼团成功 未参与 已参与 拼团失败
+  //             if (that.data.userInfoArr.length==3) {
+  //               that.setData({ grouponsState: "拼团成功" });
+  //             } else {
+  //               that.daojisfn(nowTime);
+  //               let timer = null;
+  //               timer = setInterval(function () {
+  //                 let bool = that.daojisfn(nowTime);
+  //                 if (bool) clearInterval(timer);
+  //               }, 1000);
+  //             }
+  //           }else{
+  //             wx.showToast({ title: res.data.msg, icon: "none" });
+  //           }
+  //         })
+  // },
 
    // 倒计时函数
   // 返回值：倒计时是否结束
@@ -313,12 +353,16 @@ Page({
    */
   onShareAppMessage: function (options) {
     let _this = this.data;
+    // var uid=wx.getStorageSync("userInfoData").uid
+    // console.log(uid,'0000000000000')
     if (options.from === 'button') {
       // 来自页面内转发按钮
     }
+    let uid=wx.getStorageSync("userInfoData").uid
+    console.log(uid,'0000000000000')
     return {
       title: "PLUS会员团购",
-      path: `/pages/course/plus-group/index?plusId=1`,
+      path:`/pages/course/plus-group/index?plusId=1&uid=${wx.getStorageSync('userInfoData').uid}`
     };
   }
 })
