@@ -69,21 +69,6 @@
                         </van-radio-group>
                      
                     </view>
-                    <!-- <view class="fee-tit">PLUS会员等级：</view>
-                    <view class="fee-price1">
-                        <view class="vip-type">
-                            <image class="img" src="/assets/img/icon/vip3.png" mode="aspectFill" />
-                            <view class="type">月度会员</view>
-                        </view>
-                        <view class="vip-type">
-                            <image class="img" src="/assets/img/icon/vip4.png" mode="aspectFill" />
-                            <view class="type">季度会员</view>
-                        </view>
-                        <view class="vip-type">
-                            <image class="img" src="/assets/img/icon/vip5.png" mode="aspectFill" />
-                            <view class="type">年度会员</view>
-                        </view>
-                    </view> -->
                 </view>
             </view>
             <view class="button-btn-box {{isIphoneX?'IpX-Bottom':''}}" bind:tap="goPayFn">

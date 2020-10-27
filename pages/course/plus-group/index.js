@@ -1,4 +1,4 @@
-import {format,add0} from "../../../utils/util";
+// import {format,add0} from "../../../utils/util";
 Page({
   /**
    * 页面的初始数据
@@ -78,7 +78,7 @@ Page({
                 userInfoArr:res.data.member,
                 grouponsState:res.data.msg
               })
-              var nowTime = format((res.data.groupEndAT*1000));
+              var nowTime = that.format((res.data.groupEndAT*1000));
               // 处理 参团状态 --- 无 拼团成功 未参与 已参与 拼团失败
               if (that.data.userInfoArr.length==3) {
                 that.setData({ grouponsState: "拼团成功" });
@@ -131,6 +131,18 @@ Page({
     // that.setData({ grouponsState: grouponsStateN });
     // return endTimeBool;
   },
+   format(shijianchuo){
+    //shijianchuo是整数，否则要parseInt转换
+    var time = new Date(shijianchuo);
+    var y = time.getFullYear();
+    var m = time.getMonth()+1;
+    var d = time.getDate();
+    var h = time.getHours();
+    var mm = time.getMinutes();
+    var s = time.getSeconds();
+    return y+'-'+this.add0(m)+'-'+this.add0(d)+' '+this.add0(h)+':'+this.add0(mm)+':'+this.add0(s);
+    },
+    add0(m){return m<10?'0'+m:m },
   // 倒计时函数
   // countDown( end_time) {
   //   let _this = this;
