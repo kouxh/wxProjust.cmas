@@ -169,7 +169,7 @@ Page({
                 console.log(that.data.pagePlus,'that.data.pagePlus')
                 if(that.data.pagePlus){
                   wx.reLaunch({
-                    url: '/pages/course/plus-group/index',
+                    url: `/pages/course/plus-group/index?teamId=${that.data.pagePlus}`,
                   })
                 }else{
                   wx.switchTab({

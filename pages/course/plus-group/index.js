@@ -42,7 +42,7 @@ Page({
         // this.setData({
         //   isAuthorized:false
         // })
-        return wx.reLaunch({ url: '/pages/login/index?pagePlus=1' })
+        return wx.reLaunch({ url: `/pages/login/index?pagePlus=${that.data.teamId}`})
       }
       // wx.getSetting({
       //   success: res => {
@@ -62,43 +62,7 @@ Page({
     }
     this.getGroupInfo();
   },
-  // getGroupInfo(){
-  //   let that = this;
-  //   var listurl = 'https://www.chinamas.cn/applets/forum/getGroupInfo';
-  //   wx.request({
-  //     url: listurl,
-  //     data: {
-  //       uid:that.data.uid?that.data.uid:wx.getStorageSync('userInfoData').uid
-  //     },
-  //     method: 'GET',
-  //     header: {
-  //       'content-type': 'application/json',
-  //     },
-  //     success: function (res) {
-  //       if(res.data.bol){
-  //         that.setData({
-  //           details:res.data.data,
-  //           userInfoArr:res.data.data.member,
-  //           grouponsState:res.data.data.status
-  //         })
-  //         var nowTime = format((res.data.data.GroupEndAt*1000));
-  //         // 处理 参团状态 --- 无 拼团成功 未参与 已参与 拼团失败
-  //         if (that.data.userInfoArr.length==3) {
-  //           that.setData({ grouponsState: "拼团成功" });
-  //         } else {
-  //           that.daojisfn(nowTime);
-  //           let timer = null;
-  //           timer = setInterval(function () {
-  //             let bool = that.daojisfn(nowTime);
-  //             if (bool) clearInterval(timer);
-  //           }, 1000);
-  //         }
-  //       }else{
-  //         wx.showToast({ title: res.data.data.msg, icon: "none" });
-  //       }
-  //     },
-  //   })
-  // },
+
   //分享详情
   getGroupInfo(){
       let that=this;
@@ -318,7 +282,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function (options) {
-
   },
 
   /**
