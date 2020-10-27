@@ -1,4 +1,4 @@
-// import {format,add0} from "../../../utils/util";
+import {format,add0} from "../../../utils/util";
 Page({
   /**
    * 页面的初始数据
@@ -73,12 +73,14 @@ Page({
           }).then(res=>{
             console.log(res,'0000')
             if(res.bol){
+              wx.showToast({ title: res.data.groupEndAT, icon: "none" });
               that.setData({
                 details:res.data,
                 userInfoArr:res.data.member,
                 grouponsState:res.data.msg
               })
-              var nowTime = that.format((res.data.groupEndAT*1000));
+           
+              var nowTime = format(parseInt(res.data.groupEndAT*1000));
               // 处理 参团状态 --- 无 拼团成功 未参与 已参与 拼团失败
               if (that.data.userInfoArr.length==3) {
                 that.setData({ grouponsState: "拼团成功" });
@@ -131,53 +133,7 @@ Page({
     // that.setData({ grouponsState: grouponsStateN });
     // return endTimeBool;
   },
-   format(shijianchuo){
-    //shijianchuo是整数，否则要parseInt转换
-    var time = new Date(shijianchuo);
-    var y = time.getFullYear();
-    var m = time.getMonth()+1;
-    var d = time.getDate();
-    var h = time.getHours();
-    var mm = time.getMinutes();
-    var s = time.getSeconds();
-    return y+'-'+this.add0(m)+'-'+this.add0(d)+' '+this.add0(h)+':'+this.add0(mm)+':'+this.add0(s);
-    },
-    add0(m){return m<10?'0'+m:m },
-  // 倒计时函数
-  // countDown( end_time) {
-  //   let _this = this;
-  //   clearInterval(timer);
-  //   let timer = setInterval(function () {
-  //     let nowTime = new Date();
-  //     let endTime = new Date(end_time);
-  //     let t = endTime.getTime() - nowTime.getTime();
-  //     if (t > 0) {
-  //       let day = parseInt(t / 1000 / 60 / 60 / 24);
-  //       let hour = parseInt((t / 1000 / 60 / 60) % 24);
-  //       let min = parseInt((t / 1000 / 60) % 60);
-  //       let sec = parseInt((t / 1000) % 60);
-  //       day = day < 10 ? "0" + day : day;
-  //       hour = hour < 10 ? "0" + hour : hour;
-  //       min = min < 10 ? "0" + min : min;
-  //       sec = sec < 10 ? "0" + sec : sec;
-  //       _this.setData({
-  //         countDownStr: day + ':' + hour + ':' + min + ':' + sec,
-  //       })
-  //       let partakeBool = false; // 是否参与该团
-  //          for (let userInfo of _this.data.userInfoArr) {
-  //             if (userInfo.avater) partakeBool = true;
-  //          }
-  //          let grouponsStateN = _this.data.grouponsState;
-  //          grouponsStateN = partakeBool? "已参与": "未参与";
-  //         _this.setData({ grouponsState: grouponsStateN });
-  //     }else {
-  //       _this.setData({
-  //         grouponsState: "拼团失败",
-  //       })
-  //       clearInterval(timer);
-  //     } 
-  //   }, 1000)
-  // },
+
    // 立即参团页
    goDetailsFn() {
     let that = this;
