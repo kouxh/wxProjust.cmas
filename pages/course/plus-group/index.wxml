@@ -1,4 +1,4 @@
-<view class="pages-gruop-index">
+<view class="pages-gruop-index" wx:if="{{isAuthorized}}">
   <view class="content-box">
     <view class="title">PLUS的权益</view>
     <view class="limit-box">
@@ -37,7 +37,7 @@
           <image mode='aspectFill' class="member-each-img" src='../../../assets/img/person.png' />
         </view>
       </view>
-      <view class="count-down" wx:if="{{grouponsState=='分享'||grouponsState=='未支付'}}">结束时间：{{countDownStr}}</view>
+      <view class="count-down" wx:if="{{grouponsState=='分享'||grouponsState=='支付'||grouponsState=='绑定成功'}}">结束时间：{{countDownStr}}</view>
       <view class="count-down" wx:if="{{grouponsState=='拼团失败'}}">有效时间内, 未达到拼团要求！</view>
       <view class="count-down" wx:if="{{grouponsState=='拼团成功'}}">拼团成功了!</view>
 
@@ -52,8 +52,10 @@
   </view>
   <!-- 已参与 -->
   <button open-type='share' class="btn" wx:if="{{grouponsState=='分享'}}">正在拼团，邀请好友</button>
-   <!-- 未参与 -->
-  <view class="btn" bind:tap="goDetailsFn" wx:if="{{grouponsState=='未支付'}}">立即参团</view>
+  <!-- 参与未付款-->
+  <view class="btn" bind:tap="goDetailsFn" wx:if="{{grouponsState=='支付'}}">立即支付</view>
+   <!--未参与  -->
+  <view class="btn" bind:tap="goDetailsFn" wx:if="{{grouponsState=='绑定成功'}}">绑定成功，立即支付</view>
   <!-- 拼团成功 -->
   <view class="btn" wx:if="{{grouponsState=='拼团成功'}}" bind:tap="successfn">拼团成功</view>
   <!-- 拼团失败 -->

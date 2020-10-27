@@ -28,10 +28,11 @@ Page({
     isNeed:false,//是否需要充值会员
     isTel:'',//无需更改的手机号
     shareUid:'',//分享标识
-    groupType:1,//1发起拼团2 拼团详情3 请支付
+    groupType:1,//1发起拼团2 拼团详情
     jump:'',//跳转标识
     pageName:'',//跳转页面标题
     together:false,//是否统一支付
+    teamId:'',//团id
   },
 
   /**
@@ -86,13 +87,10 @@ Page({
       uid: wx.getStorageSync("userInfoData").uid,
     })
     .then(res => {
-      if(res.err_code=='10046'){
+    if(res.err_code=='10047'){
         that.setData({
-          groupType:3
-        })
-      }else if(res.err_code=='10047'){
-        that.setData({
-          groupType:2
+          groupType:2,
+          teamId:res.data.groupCode
         })
       }else if (res.err_code=='10048') {
         that.setData({
@@ -113,7 +111,7 @@ Page({
         }).then(res=>{
           if(res.err_code=='10047'){
             wx.navigateTo({
-              url:"/pages/course/plus-group/index??teamId=1",
+              url:`/pages/course/plus-group/index?teamId=${this.data.teamId}`,
             })
           }else if(res.err_code=='10048'){
             that.setData({
@@ -127,7 +125,7 @@ Page({
               radio: "1"
             })
             wx.navigateTo({
-              url:"/pages/course/plus-group/index??teamId=1",
+              url:`/pages/course/plus-group/index?teamId=${this.data.teamId}`,
             })
           }
         })
@@ -360,7 +358,7 @@ Page({
       radio: "1"
     })
     wx.navigateTo({
-      url:"/pages/course/plus-group/index??teamId=1",
+      url:`/pages/course/plus-group/index?teamId=${this.data.teamId}`,
     })
   },
   // 唤起支付弹框
@@ -384,7 +382,7 @@ Page({
           }else if(that.data.radio=="2"&&that.data.together==false){
             console.log(that.data.together,'0000000000')
             wx.navigateTo({
-              url:"/pages/course/plus-group/index?teamId=1",
+              url:`/pages/course/plus-group/index?teamId=${this.data.teamId}`,
             })
           }
         }else if(that.data.radio=="1"||that.data.radio=="3"||(that.data.radio=="2"&&that.data.together==true)){
@@ -394,7 +392,7 @@ Page({
           that.paySuccessPlus();
         }else if(that.data.radio=="2"&&that.data.together==false){
           wx.navigateTo({
-            url:"/pages/course/plus-group/index?teamId=1",
+            url:`/pages/course/plus-group/index?teamId=${this.data.teamId}`,
           })
         }
         //跳转到表单页面

@@ -274,6 +274,15 @@ export default {
   getGroupInfo(params) {
     return fetch.fetchGet("applets/forum/getGroupInfo", params);
   },
+  /**
+   *分享页面详情显示数据
+   * @param  {[type]} params [description]
+   * @return {[type]}        [description]
+   */
+  sharePageShow(params) {
+    return fetch.fetchGet("applets/forum/sharePageShow", params);
+  },
+
 }
 
 // 获得充值单支付参数

@@ -18,7 +18,7 @@ Page({
     plusId:'',//通过分享进来的标识
     teamId:'',//团id
     payData: {}, // 支付配置参数
-    uid:''
+    isAuthorized:true,//是否授权
   },
 
   /**
@@ -30,80 +30,107 @@ Page({
     that.setData({
       plusId: options.plusId,
       teamId:options.teamId,
-      uid:options.uid
     });
     // this.countDown("2020-09-24 14:44:58");
- 
+    //查看是否授权，没有授权跳转到授权页
+    let userN = wx.getStorageSync("userInfoData");
+    let bindPhone = wx.getStorageSync('bindPhone');
+    let token = wx.getStorageSync('userInfoData').token;
+    console.log(userN,'userN----------')
+    if(that.data.plusId){
+      if(!userN){
+        this.setData({
+          isAuthorized:false
+        })
+        return wx.reLaunch({ url: '/pages/login/index?pagePlus=1' })
+      }
+      // wx.getSetting({
+      //   success: res => {
+      //     console.log(res.authSetting['scope.userInfo'] ,'9999999',token,bindPhone)
+      //     if (!res.authSetting['scope.userInfo']  || token==undefined || bindPhone=='') {
+      //       console.log('1111')
+      //           wx.reLaunch({
+      //            url: '/pages/login/index?pagePlus=1'
+      //           })
+      //     }else{
+      //       // this.getPayStatus();
+      //       this.getGroupInfo();
+      //     }
+      //   }
+      // })
+    }else{
+    }
     this.getGroupInfo();
   },
-  getGroupInfo(){
-    let that = this;
-    var listurl = 'https://www.chinamas.cn/applets/forum/getGroupInfo';
-    wx.request({
-      //上线接口地址要是https测试可以使用http接口方式
-      url: listurl,
-      data: {
-        uid:that.data.uid?that.data.uid:wx.getStorageSync('userInfoData').uid
-      },
-      method: 'GET',
-      header: {
-        'content-type': 'application/json',
-      },
-      success: function (res) {
-        if(res.data.bol){
-          that.setData({
-            details:res.data.data,
-            userInfoArr:res.data.data.member,
-            grouponsState:res.data.data.status
-          })
-          var nowTime = format((res.data.data.GroupEndAt*1000));
-          // 处理 参团状态 --- 无 拼团成功 未参与 已参与 拼团失败
-          if (that.data.userInfoArr.length==3) {
-            that.setData({ grouponsState: "拼团成功" });
-          } else {
-            that.daojisfn(nowTime);
-            let timer = null;
-            timer = setInterval(function () {
-              let bool = that.daojisfn(nowTime);
-              if (bool) clearInterval(timer);
-            }, 1000);
-          }
-        }else{
-          wx.showToast({ title: res.data.data.msg, icon: "none" });
-        }
-      },
-    })
-  },
-  //分享详情
   // getGroupInfo(){
-  //     let that=this;
-  //     getApp()
-  //         .globalData.api.getGroupInfo({
-  //           uid:that.data.uid?that.data.uid:wx.getStorageSync('userInfoData').uid
-  //         }).then(res=>{
-  //           if(res.bol){
-  //             that.setData({
-  //               details:res.data,
-  //               userInfoArr:res.data.member,
-  //               grouponsState:res.data.status
-  //             })
-  //             var nowTime = format((res.data.GroupEndAt*1000));
-  //             // 处理 参团状态 --- 无 拼团成功 未参与 已参与 拼团失败
-  //             if (that.data.userInfoArr.length==3) {
-  //               that.setData({ grouponsState: "拼团成功" });
-  //             } else {
-  //               that.daojisfn(nowTime);
-  //               let timer = null;
-  //               timer = setInterval(function () {
-  //                 let bool = that.daojisfn(nowTime);
-  //                 if (bool) clearInterval(timer);
-  //               }, 1000);
-  //             }
-  //           }else{
-  //             wx.showToast({ title: res.data.msg, icon: "none" });
-  //           }
+  //   let that = this;
+  //   var listurl = 'https://www.chinamas.cn/applets/forum/getGroupInfo';
+  //   wx.request({
+  //     url: listurl,
+  //     data: {
+  //       uid:that.data.uid?that.data.uid:wx.getStorageSync('userInfoData').uid
+  //     },
+  //     method: 'GET',
+  //     header: {
+  //       'content-type': 'application/json',
+  //     },
+  //     success: function (res) {
+  //       if(res.data.bol){
+  //         that.setData({
+  //           details:res.data.data,
+  //           userInfoArr:res.data.data.member,
+  //           grouponsState:res.data.data.status
   //         })
+  //         var nowTime = format((res.data.data.GroupEndAt*1000));
+  //         // 处理 参团状态 --- 无 拼团成功 未参与 已参与 拼团失败
+  //         if (that.data.userInfoArr.length==3) {
+  //           that.setData({ grouponsState: "拼团成功" });
+  //         } else {
+  //           that.daojisfn(nowTime);
+  //           let timer = null;
+  //           timer = setInterval(function () {
+  //             let bool = that.daojisfn(nowTime);
+  //             if (bool) clearInterval(timer);
+  //           }, 1000);
+  //         }
+  //       }else{
+  //         wx.showToast({ title: res.data.data.msg, icon: "none" });
+  //       }
+  //     },
+  //   })
   // },
+  //分享详情
+  getGroupInfo(){
+      let that=this;
+      getApp()
+          .globalData.api.sharePageShow({
+            groupCode:that.data.teamId,
+            uid:wx.getStorageSync('userInfoData').uid
+          }).then(res=>{
+            console.log(res,'0000')
+            if(res.bol){
+              that.setData({
+                details:res.data,
+                userInfoArr:res.data.member,
+                grouponsState:res.data.msg
+              })
+              var nowTime = format((res.data.groupEndAT*1000));
+              // 处理 参团状态 --- 无 拼团成功 未参与 已参与 拼团失败
+              if (that.data.userInfoArr.length==3) {
+                that.setData({ grouponsState: "拼团成功" });
+              } else {
+                that.daojisfn(nowTime);
+                let timer = null;
+                timer = setInterval(function () {
+                  let bool = that.daojisfn(nowTime);
+                  if (bool) clearInterval(timer);
+                }, 1000);
+              }
+            }else{
+              wx.showToast({ title: res.data.msg, icon: "none" });
+            }
+          })
+  },
 
    // 倒计时函数
   // 返回值：倒计时是否结束
@@ -177,32 +204,8 @@ Page({
   // },
    // 立即参团页
    goDetailsFn() {
-    let _this = this.data;
-    //查看是否授权，没有授权跳转到授权页
-    let userN = wx.getStorageSync("userInfoData");
-    let bindPhone = wx.getStorageSync('bindPhone');
-    let token = wx.getStorageSync('userInfoData').token;
-    console.log(userN,'userN----------')
-    if(_this.plusId){
-      // if(!userN){
-      //   wx.reLaunch({ url: '/pages/login/index?pagePlus=1' })
-      // }
-      wx.getSetting({
-        success: res => {
-          console.log(res.authSetting['scope.userInfo'] ,'9999999',token,bindPhone)
-          if (!res.authSetting['scope.userInfo']  || token==undefined || bindPhone=='') {
-            console.log('1111')
-                wx.reLaunch({
-                 url: '/pages/login/index?pagePlus=1'
-                })
-          }else{
-            this.getPayStatus();
-          }
-        }
-      })
-    }else{
-
-    }
+    let that = this;
+    that.getPayStatus();
   },
   getPayStatus(){
     //判断是否拼团已满 如果未满进入邀请页面 已满提示状态状态更改为1
@@ -210,19 +213,17 @@ Page({
     let that=this;
     getApp()
         .globalData.api.getPayStatus({
+          groupCode:that.data.teamId,
           uid:wx.getStorageSync('userInfoData').uid
         }).then(res=>{
-          if(res.err_code=='10047'){
-            // wx.navigateTo({
-            //   url:"/pages/course/plus-group/index??teamId=1",
-            // })
-          }else if(res.err_code=='10048'){
-            wx.navigateTo({
+          if(res.bol){
+            //请求支付接口
+            that.unifiedPay();
+          }else{
+            wx.reLaunch({
               url:"/pages/course/plus/index",
             })
             return wx.showToast({ title: res.data.msg, icon: "none" });  
-          }else if (res.err_code=='10000') {
-            that.unifiedPay();
           }
         })
   },
@@ -362,7 +363,8 @@ Page({
     console.log(uid,'0000000000000')
     return {
       title: "PLUS会员团购",
-      path:`/pages/course/plus-group/index?plusId=1&uid=${wx.getStorageSync('userInfoData').uid}`
+      path:`/pages/course/plus-group/index?plusId=1`
+      // path:`/pages/course/plus-group/index?plusId=1&uid=${wx.getStorageSync('userInfoData').uid}`
     };
   }
 })

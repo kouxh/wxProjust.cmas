@@ -120,7 +120,7 @@
                          <van-icon name="ellipsis" size="24px"/>
                          <view class="next-btn" bindtap="originateFn" wx:if='{{groupType==1}}' style="width:160rpx;">发起成团</view>
                          <view class="next-btn" bindtap="groupFn" wx:if='{{groupType==2}}' style="width:160rpx;">成团详情</view>
-                         <view class="next-btn" bindtap="payFn" wx:if='{{groupType==3}}' style="width:160rpx;">请支付</view>
+                         <!-- <view class="next-btn" bindtap="payFn" wx:if='{{groupType==3}}' style="width:160rpx;">请支付</view> -->
                     </view>
                     <view class="down">*复制成团链接，发给其他成团人员，成团后Plus会员权限自动开启。</view>
                 </view>
