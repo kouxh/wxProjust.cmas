@@ -1,0 +1,101 @@
+@import "/app.wxss";
+page{
+  background-color: #f8f8f8;
+}
+.page-content-index {
+  height: 100%;
+  width: 100%;
+}
+.page-content-index .content {
+    background-color: #fff;
+    margin-bottom: 200rpx;
+    margin-top: 20rpx;
+}
+.page-content-index .content .content-title {
+    padding: 38rpx 0 0rpx 30rpx;
+    display: flex;
+    align-items: center;
+}
+.page-content-index .content .content-title .title {
+    font-size: 36rpx;
+    font-weight: 700;
+    color: #333;
+    padding-left: 20rpx;
+}
+
+.page-content-index .content .tabs .comment-box{
+    padding: 20rpx 32rpx 0;
+}
+
+  .nomsg-img-box {
+    width: 100%;
+   min-height: 70vh;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    padding-top: 50%;
+  }
+   .nomsg-img-box .nomsg-img {
+    width: 100%;
+    height: 200rpx;
+  }
+  .nomsg-img-box .tips-msg {
+    text-align: center;
+    margin-top: 40rpx;
+    color: #b2b2b2;
+    font-size: 24rpx;
+  }
+  .page-content-index .content .tabs .comment-box .each-item{
+    padding-bottom: 20rpx;
+    border-bottom: 2rpx solid #eee;
+  }
+  .page-content-index .content .tabs .comment-box .each-item:last-child{
+    border-bottom: none;
+  }
+  .page-content-index .content .tabs .comment-box .each-item .tit-box{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20rpx;
+  }
+  .page-content-index .content .tabs .comment-box .each-item .tit-box .tit{
+    font-size: 30rpx;
+    color: #333;
+    width: 500rpx;
+    font-weight: bold;
+}
+.page-content-index .content .tabs .comment-box .each-item .tit-box .right{
+    color: #ccc;
+}
+  .page-content-index .content .tabs .comment-box .each-item .info{
+      display: flex;
+      padding-top: 20rpx;
+  }
+  .page-content-index .content .tabs .comment-box .each-item .info .left{
+    width: 600rpx;
+    padding-left: 20rpx;
+  }
+  .page-content-index .content .tabs .comment-box .each-item .info .right{
+    width: 86rpx;
+    height: 40rpx;
+    display: flex;
+    justify-content: center;
+    color: #fff;
+    font-size: 26rpx;
+    border-radius: 10rpx;
+}
+.not-bg{
+    background: #ccc;
+}
+.bg{
+    background: #07c160;
+}
+.reply-box{
+  padding: 10rpx 0 10rpx 100rpx ;
+}
+.com-text{
+  color: #333;
+  font-size: 28rpx;
+  display: flex;
+  /* justify-content: flex-end; */
+}

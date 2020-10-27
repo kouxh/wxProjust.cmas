@@ -1,0 +1,183 @@
+@import "/app.wxss";
+.page-member-mysite {
+  /* padding: 0 0 200rpx; */
+  background-color: #f8f8f8;
+  min-height: 100vh;
+}
+.page-member-mysite .mysite-list {
+  margin-bottom: 50rpx;
+}
+.page-member-mysite .mysite-list .mysite {
+  background-color: #fff;
+  display: flex;
+  padding: 30rpx;
+  border-bottom: 2rpx solid #f8f8f8;
+}
+.page-member-mysite .mysite-list .mysite .mysite-content {
+  width: 100%;
+}
+.page-member-mysite .mysite-list .mysite .mysite-content .mysite-content-name {
+  display: flex;
+  align-items: center;
+  padding-bottom: 20rpx;
+  font-size: 32rpx;
+  color: #333;
+}
+
+.page-member-mysite .mysite-list .mysite .mysite-content .mysite-content-site {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -moz-box-orient: vertical;
+  -webkit-box-orient: vertical;
+  line-height: 40rpx;
+  font-size: 28rpx;
+  color: #666;
+}
+.mysite-content-default {
+  font-size: 30rpx;
+  color: #333;
+  padding-left: 96rpx;
+  padding-top: 10rpx;
+}
+
+.page-member-mysite .add-botton-box {
+  position: fixed;
+  box-sizing: border-box;
+  bottom: 0;
+  width: 100%;
+  border-top: 2rpx solid #eee;
+  background-color: #fff;
+  padding: 6rpx 16rpx;
+}
+.page-member-mysite .add-botton-box .add-botton {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  line-height: 80rpx;
+  border-radius: 10rpx;
+  background-color: #000;
+  font-size: 28rpx;
+  color: #fff;
+}
+.page-member-mysite .site-add-edit {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2000;
+  width: 750rpx;
+  height: 100%;
+  background: #f8f8f8;
+  transition: all 0.5s;
+}
+.page-member-mysite .site-add-edit .van-cell {
+  position: relative;
+  padding: 24rpx;
+}
+.page-member-mysite .site-add-edit .van-cell:nth-last-child(2)::before {
+  left: 0rpx;
+  width: 750rpx;
+}
+.page-member-mysite .site-add-edit .van-cell::after {
+  display: none;
+}
+.page-member-mysite .site-add-edit .van-cell::before {
+  content: " ";
+  position: absolute;
+  bottom: 0;
+  left: 24rpx;
+  width: 700rpx;
+  height: 2rpx;
+  background: #eee;
+}
+.page-member-mysite .site-add-edit .van-cell .van-cell__title {
+  max-width: 166rpx;
+  font-size: 32rpx;
+}
+.page-member-mysite .site-add-edit .van-cell .van-cell__value {
+  font-size: 28rpx;
+  color: #333;
+  overflow: initial;
+}
+.page-member-mysite .site-add-edit .van-cell .van-cell__value input::-webkit-input-placeholder,
+.page-member-mysite .site-add-edit .van-cell .van-cell__value textarea::-webkit-input-placeholder {
+  color: #ccc;
+}
+.page-member-mysite .site-add-edit .van-cell .van-cell__value .van-cell {
+  padding: 0;
+}
+.page-member-mysite .site-add-edit .van-cell .van-cell__value .van-cell::after {
+  display: none;
+}
+.page-member-mysite .site-add-edit .van-cell .van-cell__value .van-cell::before {
+  height: 0rpx;
+}
+.page-member-mysite .site-add-edit .van-cell .van-cell__value input {
+  color: #333;
+}
+.page-member-mysite .site-add-edit .van-switch-cell .van-cell__title {
+  max-width: 320rpx;
+}
+.page-member-mysite .site-add-edit .van-cell:not(:last-child)::after {
+  left: 24rpx;
+  width: 700rpx;
+}
+.page-member-mysite .site-add-edit .site-add .van-address-edit__buttons {
+  margin: 20rpx 30rpx 20rpx 30rpx;
+  padding: 0;
+}
+.page-member-mysite .site-add-edit .site-add .van-address-edit__buttons .van-button {
+  margin-bottom: 0;
+}
+.page-member-mysite .site-add-edit .site-add {
+  position: relative;
+}
+.page-member-mysite .site-add-edit .site-add .site-add-btn {
+  margin: auto;
+  border-radius: 1.1rpx;
+  width: 688rpx;
+  height: 88rpx;
+  font-size: 28rpx;
+  text-align: center;
+  line-height: 86rpx;
+  color: #333;
+  background: #fff;
+  border: 2rpx solid #eee;
+  background: #fff;
+}
+.address-btn {
+  margin: auto auto;
+  border-radius: 10rpx;
+  width: 700rpx;
+  height: 80rpx;
+  font-size: 28rpx;
+  text-align: center;
+  line-height: 80rpx;
+}
+
+.address-btn1 {
+  margin-top: 70rpx;
+  background-color: #ff4444;
+  color: #fff;
+}
+
+.address-btn2 {
+  margin-top: 30rpx;
+  background-color: #fff;
+  border: solid 2rpx #eee;
+  color: #666;
+}
+
+.page-member-mysite .site-add-edit .site-add .van-button--default {
+  display: none !important;
+}
+.page-member-mysite .site-add-edit-hide {
+  left: 2000rpx;
+}
+.img{
+  width: 50rpx;
+  height: 50rpx;
+  object-fit: cover;
+
+}

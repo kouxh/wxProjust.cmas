@@ -1,0 +1,46 @@
+<view class="loading" wx:if="{{isLoad}}">
+    <van-loading class="load"/>
+</view>
+<view class="pages-course-form-index" wx:if="{{!isLoad}}">
+  <view class="invoice-box">
+    <!-- <view class="title-box" style="border-bottom:{{radio=='2'?'none':''}}">
+      <view class="is-open">是否开具发票？</view>
+      <van-radio-group value="{{ radio }}" bind:change="onChange" class="radio-icon">
+        <van-radio name="1">是</van-radio>
+        <van-radio name="2">否</van-radio>
+      </van-radio-group>
+    </view> -->
+    <!-- <view wx:if="{{radio=='1'}}"> -->
+      <view class="title-box">
+        <view class="invoice-type">发票类型</view>
+        <view class="type-box">
+          <view class="type">电子发票</view>
+          <view class="tip">*15个工作日内开具并发至邮箱!</view>
+        </view>
+      </view>
+      <view class="title-box">
+        <view class="invoice-type">发票信息</view>
+        <view class='address-list' style="margin-top:30rpx;">
+          <input class='address-ipt' type='text' value='{{title}}' bindinput='titleFn' placeholder-class='address-phd' placeholder="发票抬头" />
+        </view>
+        <view class='address-list'>
+          <input class='address-ipt' type='text' value='{{taxNumber}}' bindinput='taxNumberFn' placeholder-class='address-phd' placeholder="税号" />
+        </view>
+      </view>
+      <view class="title-box" style="border-bottom:none;">
+        <view class="invoice-type">接收方式</view>
+        <view class='address-list' style="margin-top:30rpx;">
+          <input class='address-ipt' type='text' value='{{email}}' bindinput='emailFn' placeholder-class='address-phd' placeholder="电子邮箱" />
+        </view>
+        <view class="take-tip">*请提供能正常接收邮件的邮箱！</view>
+        <view class='address-list'>
+          <input class='address-ipt' type='text' value='{{personName}}' bindinput='personNameFn' placeholder-class='address-phd' placeholder="联系人" />
+        </view>
+        <view class='address-list'>
+          <input class='address-ipt' type='text' value='{{tel}}' maxlength="11" bindinput='telFn' placeholder-class='address-phd' placeholder="联系电话" />
+        </view>
+      </view>
+    <!-- </view> -->
+    <view class="submit-btn" bindtap="submitBtn">提交</view>
+  </view>
+</view>

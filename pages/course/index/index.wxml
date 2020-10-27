@@ -1,16 +1,8 @@
 <view class="page-course-index">
-	<!-- <view class="tabs">
-			<van-tabs active="{{ active }}" bind:change="onChange">
-				<van-tab title="CMAS访谈录"></van-tab>
-				<van-tab title="CMAS对话"></van-tab>
-				<van-tab title="走进企业"></van-tab>
-			</van-tabs>
-		</view> -->
 	<view class="header">
         <image src="/assets/img/banner1.jpg" mode='aspectFill' alt=""></image>
 	</view>
 	<!-- 直播 -->
-	<!-- <button open-type="contact" bindcontact="handleContact">哈哈</button> -->
 	<view class="live" bindtap="liveFn">
 		<image mode="aspectFill" class="img" src="https://www.chinamas.cn/{{liveData.l_img}}"/>
 		<view class="live-badge" wx:if="{{liveData.is_end==1}}">
@@ -61,7 +53,5 @@
 			</view>
     </view>
 	</view>
-	
-	
 </view>
   

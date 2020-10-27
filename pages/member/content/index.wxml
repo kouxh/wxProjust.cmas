@@ -1,21 +1,15 @@
-<!-- pages/member/content/index.wxml -->
 <view class="page-content-index">
-    <view class="header"></view>
     <view class="content">
         <view class="content-title">
-            <van-icon name="apps-o" size="20px" color="red" />
-            <view class="title">我的内容</view>
+            <van-icon name="like-o" size="22px" color="red" />
+            <view class="title">我的收藏</view>
         </view>
         <view class="tabs">
-            <van-tabs type="card" active="{{ active }}" bind:change="tabFn" swipeable>
-                <van-tab title="我的收藏"></van-tab>
-                <van-tab title="我的评论"></van-tab>
-            </van-tabs>
              <!-- 加载中 -->
-            <view class="notice-content-load" wx:if="{{listShowType==0}}">
-                <van-loading class="load" style="paddingTop: 727rpx,margin: 0 auto" />
+            <view class="loading" wx:if="{{listShowType==0}}">
+                <van-loading class="load"/>
             </view>
-            <view class="content-box" wx:if="{{active==0 && listShowType==1}}">
+            <view class="content-box" wx:if="{{listShowType==1}}">
                 <view class="each-item" wx:for="{{collectionList}}" wx:for-item="item" wx:for-index="index" wx:key="index">
                     <view class="tit">{{item.cl_title}}</view>
                     <image class="img" src="https://www.chinamas.cn/{{item.cl_img}}" mode="aspectFill" />
@@ -25,34 +19,9 @@
                         <view class="into">{{item.cl_type}}</view>
                     </view>
                 </view>
-                <!-- <view class="each-item">
-                    <view class="tit">CMAS走进某企业，与企业高管深度交流，讨论数字化转型的成功经验</view>
-                    <image class="img" src="/assets/img/content.png" mode="aspectFill" />
-                    <view class="foot">
-                        <van-icon name="eye" size="20px" color="#B1B0B0" />
-                        <view class="num">265</view>
-                        <view class="into">走进企业</view>
-                    </view>
-                </view> -->
-            </view>
-            <view class="comment-box" wx:if="{{active==1 && listShowType==1}}">
-                <view class="each-item" wx:for="{{commentList}}" wx:for-item="it" wx:for-index="in" wx:key="in">
-                    <view class="tit-box">
-                        <view class="tit ellipsis1row" >{{it.cl_title}}</view>
-                        <view class="right">{{it.com_crea_at}}</view>
-                    </view>
-                    
-                    <view class="info">
-                        <view class="right not-bg" wx:if="{{it.com_status==1}}">未通过</view>
-                        <view class="right bg" wx:if="{{it.com_status==2}}">通过</view>
-                        <view class="left ellipsis2row">{{it.com_comment}}</view>
-                    </view>
-                    
-                </view>
             </view>
             <view class="content-box" wx:if="{{listShowType==2}}">
                 <view class="nomsg-img-box">
-                    <!-- <image mode='aspectFill' src="http://img.deiyou.net/upload/seller/goods/image/2019/10/17/f086693ec29d4f17950a0bbb2ef4eb12" alt class="nomsg-img"></image> -->
                     <image mode='aspectFill' src="/assets/img/nomsg.png" alt class="nomsg-img"></image>
                     <view class="tips-msg">暂无数据哟~</view>
                 </view>

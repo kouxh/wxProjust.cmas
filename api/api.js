@@ -41,13 +41,13 @@ export default {
   basicUp(params) {
     return fetch.fetchGet("applets/forum/basicUp", params);
   },
-   /**
-   *支付接口
+  /**
+   *新支付统一接口
    * @param  {[type]} params [description]
    * @return {[type]}        [description]
    */
-  getPrepayId(params) {
-    return fetch.fetchGet("applets/forum/Pay/getPrepayId", params);
+  unifiedPay(params) {
+    return fetch.fetchPost("applets/forum/Pay/unifiedPay", params);
   },
    /**
    *增加评论
@@ -138,22 +138,6 @@ export default {
   getOrderList(params) {
     return fetch.fetchGet("applets/forum/getOrderList", params);
   },
-    /**
-   *购买读者plus
-   * @param  {[type]} params [description]
-   * @return {[type]}        [description]
-   */
-  readerMeal(params) {
-    return fetch.fetchGet("applets/forum/purchaseAnnualSetMeal", params);
-  },
-     /**
-   *团购一起付plus
-   * @param  {[type]} params [description]
-   * @return {[type]}        [description]
-   */
-  togetherPay(params) {
-    return fetch.fetchGet("applets/forum/togetherPay", params);
-  },
      /**
    *检测手机号
    * @param  {[type]} params [description]
@@ -168,7 +152,31 @@ export default {
    * @return {[type]}        [description]
    */
   insertAddressVip(params) {
-    return fetch.fetchGet("applets/forum/insertAddressVip", params);
+    return fetch.fetchPost("applets/forum/insertAddressVip", params);
+  },
+   /**
+   *获取收货地址列表
+   * @param  {[type]} params [description]
+   * @return {[type]}        [description]
+   */
+  getAddressListApi(params) {
+    return fetch.fetchGet("applets/forum/getAddressListApi", params);
+  },
+  /**
+   *查询单条地址
+   * @param  {[type]} params [description]
+   * @return {[type]}        [description]
+   */
+  getOneAddressApi(params) {
+    return fetch.fetchGet("applets/forum/getOneAddressApi", params);
+  },
+   /**
+   *修改收货地址
+   * @param  {[type]} params [description]
+   * @return {[type]}        [description]
+   */
+  upAddressVip(params) {
+    return fetch.fetchPost("applets/forum/upAddressVip", params);
   },
  /**
    *购买VIP填写发票信息
@@ -176,7 +184,95 @@ export default {
    * @return {[type]}        [description]
    */
   insertInvoiceVip(params) {
-    return fetch.fetchGet("applets/forum/insertInvoiceVip", params);
+    return fetch.fetchPost("applets/forum/insertInvoiceVip", params);
+  },
+   /**
+   *修改发票信息
+   * @param  {[type]} params [description]
+   * @return {[type]}        [description]
+   */
+  upInvoiceVip(params) {
+    return fetch.fetchPost("applets/forum/upInvoiceVip", params);
+  },
+   /**
+   *获取发票信息
+   * @param  {[type]} params [description]
+   * @return {[type]}        [description]
+   */
+  getInvoiceApi(params) {
+    return fetch.fetchGet("applets/forum/getInvoiceApi", params);
+  },
+  /**
+   *获取用户评论之后作者回复数量
+   * @param  {[type]} params [description]
+   * @return {[type]}        [description]
+   */
+  getReplyNumApi(params) {
+    return fetch.fetchGet("applets/forum/getReplyNumApi", params);
+  },
+  /**
+   *分享成团订单添加收货地址
+   * @param  {[type]} params [description]
+   * @return {[type]}        [description]
+   */
+  orderAddressApi(params) {
+    return fetch.fetchGet("applets/forum/orderAddressApi", params);
+  },
+/**
+   *分享成团订单添加发票信息
+   * @param  {[type]} params [description]
+   * @return {[type]}        [description]
+   */
+  orderInvoiceApi(params) {
+    return fetch.fetchGet("applets/forum/orderInvoiceApi", params);
+  },  
+  /**
+   *直播列表
+   * @param  {[type]} params [description]
+   * @return {[type]}        [description]
+   */
+  getLiveList(params) {
+    return fetch.fetchGet("applets/forum/getLiveList", params);
+  },
+   /**
+   *用户购买VIP发送通知信
+   * @param  {[type]} params [description]
+   * @return {[type]}        [description]
+   */
+  getPayMail(params) {
+    return fetch.fetchGet("applets/forum/getPayMail", params);
+  },
+    /**
+   *修改用户站内信状态为已读
+   * @param  {[type]} params [description]
+   * @return {[type]}        [description]
+   */
+  upUserMailStatus(params) {
+    return fetch.fetchGet("applets/forum/upUserMailStatus", params);
+  },
+  /**
+   *检测用户是否在成团列表中
+   * @param  {[type]} params [description]
+   * @return {[type]}        [description]
+   */
+  checkUserInGroup(params) {
+    return fetch.fetchGet("applets/forum/checkUserInGroup", params);
+  },
+  /**
+   *显示支付前的状态 --- 查询团是否满员
+   * @param  {[type]} params [description]
+   * @return {[type]}        [description]
+   */
+  getPayStatus(params) {
+    return fetch.fetchGet("applets/forum/getPayStatus", params);
+  },
+    /**
+   *分享详情
+   * @param  {[type]} params [description]
+   * @return {[type]}        [description]
+   */
+  getGroupInfo(params) {
+    return fetch.fetchGet("applets/forum/getGroupInfo", params);
   },
 }
 

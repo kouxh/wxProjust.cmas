@@ -1,8 +1,0 @@
-{
-  
-  "usingComponents": {
-    "van-icon": "@vant/weapp/icon/index"
-  },
-  "navigationBarTitleText": "收银台",
-  "enablePullDownRefresh": false
-}

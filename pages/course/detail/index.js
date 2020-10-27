@@ -1,6 +1,5 @@
 
 // 引入md5.js文件
-// import utils from "../../../utils/md5.js";
 import { hexMD5 } from "../../../utils/md5.js"
 //获取应用实例
 const app = getApp()
@@ -9,7 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    commit:'',
+    commit:'',//评论内容
     isShow: false,//是否开通会员弹框
     id:0,
     controls:true,
@@ -17,6 +16,7 @@ Page({
     index:0,
     detailId:0,
     detailData:{},//获取详情数据
+    recommendData:{},//推荐数据
     isVip:0,//是否是付费会员
     submitBool: true, // 是否允许再次点击
     repeatBool: true, // 防止重复请求
@@ -26,31 +26,33 @@ Page({
     contactPhone:'400 819 1255',//联系电话
     backLookShow:false,//是否展示CMAS大讲堂回看权限弹框
     loading:true,//首次加载
+    isReplay:false,//是否展开评论
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options,'999')
     let that = this;
     that.setData({detailId:options.id });
-    // if(options.shareUid!=undefined){
-    //   this.shareFn();
-    // }
-   
-    this.descDataFn();//大讲堂详情
-    this.checkUserVipFn();//判断是否是VIP
+    that.descDataFn();//大讲堂详情
+    that.checkUserVipFn();//判断是否是VIP
     
+  },
+  //点击展开评论
+  replayFn(){
+    this.setData({
+      isReplay:!this.data.isReplay
+    })
   },
   makePhoneCall:function(){
     wx.makePhoneCall({
       phoneNumber: this.data.contactPhone,
       success:function(){
-        console.log('拨打成功')
+        // console.log('拨打成功')
       },
       fail:function(){
-        console.log('拨打失败')
+        // console.log('拨打失败')
       }
     })
   },
@@ -64,19 +66,18 @@ Page({
       if(res.bol==true){
         that.setData({
           detailData: res.data,
+          recommendData:res.data.relevant.slice(0,5),
           moreData:res.data.comment.slice(0,3),
           loading: false
         });
       }else{
-        wx.showToast({ title: "获取数据失败,请稍后重试~", icon: "none" });
+        wx.showToast({ title: res.data.msg, icon: "none" });
       }
     })
   },
   // 查看更多
   moreFn(e){
     let that=this;
-    // that.data.detailData.comment= that.data.detailData.comment.splice(0,3)
-    // that.data.moreData.push(that.data.detailData.comment.slice(0,3))
   that.setData({
     moreData:that.data.detailData.comment
   })
@@ -180,10 +181,6 @@ Page({
     }else{
       //如果当前状态是已点赞
       wx.showToast({ title: "您已经点过赞了", icon: "none" });
-      // that.setData({
-      //   "detailData.desc.give_status":0,
-      //   "detailData.desc.cl_give_num":--that.data.detailData.desc.cl_give_num
-      //   })
       }
   },
   //分享功能
@@ -198,7 +195,6 @@ Page({
             that.setData({
               "detailData.desc.cl_share_num":++that.data.detailData.desc.cl_share_num
               })
-              // wx.showToast({ title: "分享成功", icon: "none" });
           }else{
            wx.showToast({ title: res.data.msg, icon: "none" });
           }
@@ -228,7 +224,7 @@ Page({
               isVip:res.data.is_vip,
             })
           }else{
-           wx.showToast({ title: "获取数据失败，请稍后重试哟~", icon: "none" });
+           wx.showToast({ title: res.data.msg, icon: "none" });
           }
         })
   },
@@ -252,7 +248,6 @@ Page({
   //购买plus权限
   plusLimit:function(event){
     let that =this;
-    console.log(that.data.detailId,'that.data.detailId')
     wx.navigateTo({
       url: `/pages/course/plus/index?id=${that.data.detailId}`,
       events: {
@@ -260,7 +255,6 @@ Page({
         paySuccessPlus: function (data) {
           console.log(data, '-----------paySuccessPlus');
           if (data) {
-            console.log(data,'00000')
             that.descDataFn();//大讲堂详情
             that.checkUserVipFn();//判断是否是VIP
             that.setData({
@@ -283,12 +277,17 @@ Page({
     let that = this;
     let _this = this.data;
     that.setData({ repeatBool: false,isShow:false,}); // 防止重复请求
+    var datas = {
+        vid: 5,//5、回放权限
+        uid: wx.getStorageSync("userInfoData").uid,
+     };
+    var jsonDatas= JSON.stringify(datas)
        // 请求接口获取唤醒支付的参数
-    getApp()
-    .globalData.api.getPrepayId({
-      uid: wx.getStorageSync('userInfoData').uid,
-      vid: 1,//1打包 2 plus会员
-    })
+       getApp()
+       .globalData.api.unifiedPay({
+         type:5,//5、回放权限
+         json:jsonDatas
+       })
     .then(res => {
       // 得到支付需要的参数信息
       if (res.bol ==false) {
@@ -433,7 +432,8 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    // this.descDataFn();//大讲堂详情
+    this.checkUserVipFn();//判断是否是VIP
   },
 
   /**

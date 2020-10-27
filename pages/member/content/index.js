@@ -6,9 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    active: 0, // tab栏1'选中项'
     collectionList: [],//收藏数据
-    commentList:[],//评论数据
     listShowType: 0, // 列表显示状态 0加载中 1有2无
 
   },
@@ -18,19 +16,6 @@ Page({
    */
   onLoad: function (options) {
     this.collectionListFn();
-  },
-  // 切换tab栏
-  tabFn(event) {
-    this.setData({
-      active: event.detail.index,
-      listShowType: 0,
-    });
-    if(this.data.active==1){
-      this.commentListFn();
-    }else{
-      this.collectionListFn();
-    }
-    wx.pageScrollTo({ scrollTop: 0 })
   },
   // 获取我的收藏列表
   collectionListFn(){
@@ -51,26 +36,6 @@ Page({
            
         });
   },
-   // 获取我的评论列表
-   commentListFn(){
-    let that=this;
-    getApp()
-        .globalData.api.getUserCommentList({
-          uid:wx.getStorageSync('userInfoData').uid
-        })
-        .then(res => {
-          if (res.bol == true){
-            that.setData({
-              commentList: res.data,
-              listShowType: res.data.length>0 ? 1 : 2
-            });
-          }else{
-           wx.showToast({ title: "获取数据失败,请稍后重试哟~", icon: "none" });
-          }
-           
-        });
-  },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

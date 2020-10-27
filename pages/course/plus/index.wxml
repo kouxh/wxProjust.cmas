@@ -16,29 +16,24 @@
                         <image class="img" src="/assets/img/icon/ticket.png" mode="aspectFill" />
                         <view class="text">赠阅全年《管理会计研究》杂志一套，共六本，价值300元（50元/本，共六期）</view>
                     </view>
-                    <!-- <view class="down">￥ 价值300元（50元/本，共六期）</view> -->
                 </view>
                 <view class="each-limits">
                     <view class="up">
                         <image class="img" src="/assets/img/icon/ticket.png" mode="aspectFill" />
-                        <!-- <view class="text">免费获得全年及往期电子刊杂志</view> -->
                         <view class="text"> 畅读管理会计研究网站付费文章</view>
                     </view>
-                    <!-- <view class="down">￥ 价值198元（9.9/节，共20节）</view> -->
                 </view>
                 <view class="each-limits">
                     <view class="up">
                         <image class="img" src="/assets/img/icon/ticket.png" mode="aspectFill" />
                         <view class="text">观看全年《CMAS大讲堂》课程，包含直播及回看</view>
                     </view>
-                    <!-- <view class="down">￥ 价值300元（50元/本，共六期）</view> -->
                 </view>
                 <view class="each-limits">
                     <view class="up">
                         <image class="img" src="/assets/img/icon/ticket.png" mode="aspectFill" />
                         <view class="text">观看全年《CMAS对话》高端访谈节目</view>
                     </view>
-                    <!-- <view class="down">￥ 价值478元（39.9/场，共12场）</view> -->
                 </view>
                 <view class="each-limits">
                     <view class="up">
@@ -67,7 +62,7 @@
                      </radio-group> -->
                         <van-radio-group value="{{ radio }}" bind:change="onChange">
                             <van-radio name="1">599元/年/人</van-radio>
-                            <van-radio name="2" disabled>团购 499元/年/人 </van-radio>
+                            <van-radio name="2" >团购 499元/年/人 </van-radio>
                             <view class="lh" >3人以上（含3人）成团可享受优惠</view>
                             <van-radio name="3">读者优惠 199元/年/人 </van-radio>
                             <view class="lh">已订阅2020年《管理会计研究》全年刊的读者可享受读者价</view>
@@ -104,7 +99,7 @@
                     <van-icon name="balance-o" size="20px"/>
                 </view>
                 <view class="right">
-                    <view class="text">团购  599/年/人</view>
+                    <view class="text">团购  499/年/人</view>
                     <view class="info">3人以上（含3人）成团可享受优惠</view>
                 </view>
             </view>
@@ -123,9 +118,9 @@
                          <view class="circle"></view>
                          <view class="type-text">各自付款</view>
                          <van-icon name="ellipsis" size="24px"/>
-                         <!-- <button class="next-btn" bindtap="copyFn" data-copy="{{url}}" open-type="share" hover-class="none">复制</button>  -->
-                         <button class="next-btn" open-type="share" data-name="shareBtn" bindtap="copyFn">复制</button>
-                         <button class="{{isCopy ?'next-btn' : 'not-next-btn'}}"  disabled="{{disabled}}" catchtap="groupFn" >成团</button>
+                         <view class="next-btn" bindtap="originateFn" wx:if='{{groupType==1}}' style="width:160rpx;">发起成团</view>
+                         <view class="next-btn" bindtap="groupFn" wx:if='{{groupType==2}}' style="width:160rpx;">成团详情</view>
+                         <view class="next-btn" bindtap="payFn" wx:if='{{groupType==3}}' style="width:160rpx;">请支付</view>
                     </view>
                     <view class="down">*复制成团链接，发给其他成团人员，成团后Plus会员权限自动开启。</view>
                 </view>
@@ -158,29 +153,6 @@
                 <view class="money">{{groupMoney}}元</view>
             </view>
             <view class="pay-box"  bindtap="groupConfirmPay">确认支付</view>
-        </view>
-    </van-popup>
-    <!-- 各自付款 -->
-    <van-popup show="{{ lumpShow }}" round closeable position="bottom" bind:close="onClose3" catchtouchmove="true">
-         <view class="frame-box">
-            <view class="info-box">
-                <view class="box-top">
-                    <van-icon name="balance-o" size="20px"/>
-                    <view class="text">团购  599/年/人</view>
-                </view>
-                <view class="box-down">
-                    <view class="circle"></view>
-                    <view class="right">成团的用户您好，3人及3人以上付款后，plus会员权限将开启。</view>
-                </view>
-            </view>
-            <view class="status-box">
-                 <view class="box-down">
-                    <view class="circle"></view>
-                    <view class="right">目前付款人：x个。</view>
-                </view>
-                <view class="phone">入团人手机号码为：</view>
-            </view>
-            <view class="pay-btn" bindtap="olonePay">确认支付</view>
         </view>
     </van-popup>
     <!-- 读者优惠 -->

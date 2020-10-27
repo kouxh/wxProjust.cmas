@@ -1,0 +1,144 @@
+page{
+  background-color: #f8f8f8;
+}
+.pages-gruop-index{
+  width: 100%;
+  height: 100%;
+}
+.content-box{
+  margin-top: 20rpx;
+  height: 850rpx;
+	background-color: #fff;
+  border-radius: 1rpx;
+  padding: 50rpx 30rpx;
+}
+.content-box .title{
+  font-size: 30rpx;
+  color: #141718;
+  padding-bottom: 20rpx;
+}
+.content-box .limit-box{
+  width: 688rpx;
+	height: 372rpx;
+	background-color: #f5f5f5;
+	border-radius: 6rpx;
+}
+.each-limits {
+  padding: 20rpx 30rpx 0rpx 20rpx;
+  display: flex;
+  align-items: center;
+}
+.each-limits .circle {
+    width: 10rpx;
+    height: 10rpx;
+    border-radius: 6rpx;
+    background-color: #141718;
+}
+.each-limits .text {
+  font-size: 24rpx;
+  color: #141718;
+  padding-left: 20rpx;
+}
+.join-box{
+  width: 688rpx;
+	height: 260rpx;
+	background-color: #f5f5f5;
+  border-radius: 6rpx;
+  margin-top: 30rpx;
+  position: relative;
+}
+.join-box .join-tit{
+  font-size: 26rpx;
+  color: #141718;
+  padding: 24rpx 0rpx 50rpx 30rpx;
+}
+ .member-box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+ .member-box .member-each {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0rpx 20rpx 0;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+}
+
+ .member-box .member-each:first-child::before {
+  content: "团长";
+  position: absolute;
+  bottom: -4rpx;
+  left: 50%;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: -26rpx;
+  border-radius: 14rpx;
+  border: 2rpx solid #fff;
+  width: 52rpx;
+  height: 24rpx;
+  font-size: 16rpx;
+  line-height: 1;
+  color: #fff;
+  background: #f44;
+}
+.member-box .member-each .member-each-img {
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  vertical-align: middle;
+}
+
+ .member-box .member-invite {
+  position: relative;
+  box-sizing: border-box;
+  border: 2rpx dashed #ddd;
+}
+.price{
+  font-size: 26rpx;
+  color: #141718;
+  padding: 30rpx 0rpx;
+}
+.tip{
+  width: 280rpx;
+	height: 30rpx;
+	border-radius: 4rpx;
+  border: solid 1rpx #ff6161;
+  font-size: 20rpx;
+  color: #ff6161;
+  display: flex;
+  align-items: center;
+  padding-left: 8rpx;
+}
+.count-down{
+  position: absolute;
+  top: 0rpx;
+  right: 0rpx;
+  width: 360rpx;
+	height: 70rpx;
+  background-color: #df0000;
+  font-size: 26rpx;
+  color: #ffffff;
+  line-height: 70rpx;
+  text-align: center;
+  border-radius: 0 10rpx 0 10rpx;
+}
+.btn{
+  width: 688rpx;
+  height: 72rpx;
+  border-radius: 40rpx;
+  background-color: #141718;
+  margin: 40rpx auto;
+  font-size: 26rpx;
+  color: #ffffff;
+  line-height: 72rpx;
+  text-align: center;
+}
+

@@ -5,7 +5,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-   
+    isOpen:false,
+    isOpen1:false,
+    isOpen2:false,
+    isOpen3:false,
+    isOpen4:false,
+    isOpen5:false,
   },
 
   /**
@@ -14,7 +19,36 @@ Page({
   onLoad: function (options) {
 
   },
- 
+  openFn(){
+    this.setData({
+      isOpen:!this.data.isOpen
+    })
+  },
+  openFn1(){
+    this.setData({
+      isOpen1:!this.data.isOpen1
+    })
+  },
+  openFn2(){
+    this.setData({
+      isOpen2:!this.data.isOpen2
+    })
+  },
+  openFn3(){
+    this.setData({
+      isOpen3:!this.data.isOpen3
+    })
+  },
+  openFn4(){
+    this.setData({
+      isOpen4:!this.data.isOpen4
+    })
+  },
+  openFn5(){
+    this.setData({
+      isOpen5:!this.data.isOpen5
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

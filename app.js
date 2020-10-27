@@ -19,10 +19,8 @@ App({
       setStorage('bindPhone', true, that);
       console.log(bindPhone,'8888')
     }
-    // wx.setStorageSync('bindPhone', true);
     if(userInfoData){
       setStorage('userInfoData', userInfoData, that);
-      // wx.setStorageSync('userInfoData', userInfoData);
     }
     if(shareUid){
       setStorage('shareUid', shareUid, that);

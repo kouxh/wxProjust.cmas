@@ -1,0 +1,38 @@
+<view class="page-content-index">
+    <view class="content">
+        <view class="content-title">
+            <van-icon name="edit" size="22px" color="red" />
+            <view class="title">我的评论</view>
+        </view>
+        <view class="tabs">
+             <!-- 加载中 -->
+            <view class="loading" wx:if="{{listShowType==0}}">
+                <van-loading class="load" />
+            </view>
+            <view class="comment-box" wx:if="{{listShowType==1}}">
+                <view class="each-item" wx:for="{{commentList}}" wx:for-item="it" wx:for-index="in" wx:key="in">
+                    <view class="tit-box">
+                        <view class="tit ellipsis1row" >{{it.cl_title}}</view>
+                        <view class="right">{{it.com_crea_at}}</view>
+                    </view>
+                    <view class="info">
+                        <view class="right not-bg" wx:if="{{it.com_status==0}}">未通过</view>
+                        <view class="right bg" wx:else>通过</view>
+                        <view class="left ellipsis2row">{{it.com_comment}}</view>
+                    </view>
+                    <view class="reply-box" wx:if="{{it.children!=null}}">
+                        <view wx:for="{{it.children}}" wx:key="index">
+                          <view class="com-text">作者回复：{{item.com_comment}}</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="content-box" wx:if="{{listShowType==2}}">
+                <view class="nomsg-img-box">
+                    <image mode='aspectFill' src="/assets/img/nomsg.png" alt class="nomsg-img"></image>
+                    <view class="tips-msg">暂无数据哟~</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

@@ -35,6 +35,21 @@ Page({
            
         });
   },
+  //领取地址
+  getAddress:function(e){
+    console.log(e,'---------------')
+    var orderNum = e.currentTarget.dataset.order;
+    wx.navigateTo({
+      url: `/pages/member/address/index?orderNum=${orderNum}`
+    })
+  },
+  //开具发票
+  geInvoice:function(e){
+    var orderNum = e.currentTarget.dataset.order;
+    wx.navigateTo({
+      url: `/pages/member/invoice/index?orderNum=${orderNum}`
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

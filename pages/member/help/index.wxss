@@ -15,7 +15,7 @@ page {
     margin-bottom: 200rpx;
 }
 .page-help-index .help-content .content-title {
-    padding: 38rpx 0 50rpx 24rpx;
+    padding: 38rpx 0 40rpx 24rpx;
     display: flex;
     align-items: center;
     background-color: #fff;
@@ -27,7 +27,7 @@ page {
     padding-left: 20rpx;
 }
 .page-help-index .help-content .question-box {
-    padding: 0 30rpx;
+    padding: 0 30rpx 0 40rpx;
     color: #333;
 }
 .page-help-index .help-content .question-box .question {
@@ -41,4 +41,8 @@ page {
     letter-spacing: 2rpx;
     line-height: 46rpx;
     color: #333;
+}
+.each{
+    padding-bottom: 30rpx;
+
 }

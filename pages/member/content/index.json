@@ -5,6 +5,5 @@
     "van-tabs": "@vant/weapp/tabs/index",
     "van-loading": "@vant/weapp/loading/index"
   },
-  "navigationBarTitleText": "我的内容",
-  "enablePullDownRefresh": false
+  "navigationBarTitleText": "我的收藏"
 }

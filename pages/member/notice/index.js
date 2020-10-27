@@ -1,34 +1,25 @@
-// pages/member/asset/index.js
+// pages/member/notice/index.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-      userMoney:{},
+    userName:'',//用户名
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-   this.UserMoneyFn();//获取用户余额与积分
+    this.setData({
+      userName:wx.getStorageSync('userInfoData').account
+    })
   },
-  //获取用户余额与积分
-  UserMoneyFn(){
-    let that=this;
-    getApp()
-    .globalData.api.UserMoney({
-      uid:wx.getStorageSync('userInfoData').uid
-    }).then(res=>{
-      console.log(res,'3445555')
-      if (res.bol == true){
-        that.setData({
-          userMoney:res.data,
-          })
-      }else{
-       wx.showToast({ title: "获取数据失败，请稍后重试哟~", icon: "none" });
-      }
+  //点击确认按钮
+  confirm(){
+    wx.navigateBack({
+      delta: 1
     })
   },
   /**
@@ -56,7 +47,11 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    let pages = getCurrentPages() //获取当前页面栈的信息
+    let prevPage = pages[pages.length - 2] //获取上一个页面
+    prevPage.setData({ //把需要回传的值保存到上一个页面
+      confirm: "succeed"
+    });
   },
 
   /**

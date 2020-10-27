@@ -26,24 +26,28 @@ page{
 .page-order-index .content .item-info{
     background-color: #fff;
     padding: 30rpx 50rpx 20rpx;
-    border-bottom: 2rpx solid #dadada;
+    
+    margin-bottom: 20rpx;
+
 }
 .page-order-index .content .item-info:last-child {
     border-bottom: none;
   }
-/* .page-order-index .content .item-info .info-top{
-    border-bottom: 2rpx solid #dadada;
-} */
+.page-order-index .content .item-info .info-top{
+    /* border-bottom: 2rpx solid #dadada; */
+    padding-bottom: 20rpx;
+}
 .page-order-index .content .item-info .info-top .info-top-top{
     padding-bottom: 20rpx;
 }
 .page-order-index .content .item-info .info-top .info-top-top,
-.page-order-index .content .item-info .info-top .info-top-down,
-.page-order-index .content .item-info .info-bottom{
+.page-order-index .content .item-info .info-top .info-top-down
+{
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
+
 .page-order-index .content .item-info .info-top .info-top-middle{
     font-size: 20rpx;
     color: #ff6161;
@@ -54,6 +58,14 @@ page{
 	letter-spacing: 2rpx;
 	color: #141718;
 }
+.page-order-index .content .item-info .info-top .info-top-top .top-right{
+    font-size: 28rpx;
+	letter-spacing: 2rpx;
+    color: #141718;
+    display: flex;
+    align-items: center;
+}
+
 .page-order-index .content .item-info .info-top .info-top-top .order-num{
     font-size: 26rpx;
 	line-height: 13rpx;
@@ -66,18 +78,16 @@ page{
     color: #a0a0a0;
     
 }
-/* .page-order-index .content .item-info .info-top .info-top-down{
-    padding-bottom: 20rpx;
-} */
 .page-order-index .content .item-info .info-bottom{
     padding-top: 20rpx;
+    display: flex;
+    justify-content: flex-end;
+    border-top: 2rpx solid #dadada;
 }
 .page-order-index .content .item-info .info-bottom .bottom-left{
     display: flex;
 }
-.page-order-index .content .item-info .info-bottom .bottom-left .money{
-    color: #141718;
-}
+
 .none-box{
     width: 100%;
     min-height: 100vh;
@@ -90,7 +100,6 @@ page{
     vertical-align: baseline;
   }
    .nomsg-img-box .nomsg-img {
-    /* width: 300rpx; */
     height: 200rpx;
   }
   .nomsg-img-box .tips-msg {
@@ -106,7 +115,21 @@ page{
     display: flex;
     justify-content: center;
     padding-top: 50%;
+}
 
+.addBtn,.addBtn1{
+    width: 156rpx;
+    height: 60rpx;
+    border-radius: 40rpx;
+    border: 1rpx solid #ccc;
+    font-size: 28rpx;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.addBtn1{
+    margin-left: 30rpx;
 }
 
 

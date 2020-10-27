@@ -3,22 +3,26 @@
     "pages/course/index/index",
     "pages/login/index",
     "custom-tab-bar/index",
-    "pages/paper/index",
     "pages/contact/index",
     "pages/member/index/index",
     "pages/member/order/index",
-    "pages/member/asset/index",
     "pages/member/content/index",
     "pages/member/help/index",
-    "pages/member/magazine/index",
     "pages/course/detail/index",
     "components/bind-mobile/index",
-    "pages/pay/index",
     "pages/course/live-detail/index",
     "pages/course/plus/index",
     "pages/research/index",
     "pages/course/outsideurl/url",
-    "pages/course/form/index"
+    "pages/course/form/index",
+    "pages/member/my/index",
+    "pages/member/comment/index",
+    "pages/member/address/index",
+    "pages/member/invoice/index",
+    "pages/course/plus-group/index",
+    "pages/member/address-list/index",
+    "pages/member/live/index",
+    "pages/member/notice/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -53,7 +57,7 @@
       {
         "iconPath": "assets/img/tabs/my0.png",
         "selectedIconPath": "assets/img/tabs/my.png",
-        "pagePath": "pages/member/index/index",
+        "pagePath": "pages/member/my/index",
         "text": "我的"
       }
     ]

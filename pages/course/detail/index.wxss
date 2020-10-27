@@ -1,18 +1,22 @@
 @import "/app.wxss";
+
 .page-detail-index {
     background-color: #f8f8f8;
     height: 100%;
     width: 100%;
 }
+
 .header {
     height: 20rpx;
     background-color: #f8f8f8;
 }
+
 .detail-content {
     background-color: #fff;
     padding: 34rpx;
     margin-bottom: 20rpx;
 }
+
 .each-item {
     margin-bottom: 20rpx;
 }
@@ -23,15 +27,18 @@
     font-weight: bold;
     padding-top: 20rpx;
 }
-.video-box{
+
+.video-box {
     position: relative;
 }
+
 .each-item .video-box .img {
     width: 686rpx;
     height: 370rpx;
     object-fit: cover;
     margin-top: 20rpx;
 }
+
 .badge,
 .live .live-badge {
     width: 66rpx;
@@ -47,32 +54,38 @@
     font-size: 22rpx;
     color: #fff;
 }
+
 .content-box {
     border-bottom: 2rpx solid #eee;
 }
+
 .content-box .intro {
     font-size: 36rpx;
     color: #333;
     font-weight: 700;
     padding-top: 24rpx;
 }
+
 .content-box .content {
     font-size: 34rpx;
     color: #333;
-    /* letter-spacing: 5rpx; */
     padding: 34rpx 0;
 }
+
 .page-detail-index .recommend {
     background-color: #fff;
     margin-bottom: 200rpx;
 }
+
 .recommend-content {
     padding: 32rpx 32rpx 40rpx;
 }
+
 .title-box {
     display: flex;
     align-items: center;
 }
+
 .title-l {
     width: 50rpx;
     height: 32rpx;
@@ -83,11 +96,13 @@
     line-height: 34rpx;
     text-align: center;
 }
+
 .title-r {
     font-size: 36rpx;
     color: #333;
     padding-left: 24rpx;
 }
+
 .each-frame {
     display: flex;
     justify-content: center;
@@ -95,31 +110,38 @@
     height: 214rpx;
     border-bottom: 2rpx solid #eee;
 }
+
 .frame-l {
     width: 478rpx;
 }
+
 .frame-l .up {
     font-size: 30rpx;
     color: #333;
     font-weight: bold;
 }
+
 .frame-l .down {
     display: flex;
     font-size: 26rpx;
     padding: 15rpx 0 50rpx 0;
     letter-spacing: 4rpx;
 }
+
 .frame-l .down .down-l {
     color: #ff3b30;
 }
+
 .frame-r {
     width: 182rpx;
     height: 160rpx;
     object-fit: cover;
 }
+
 .comment-box .area {
     padding-top: 35rpx;
 }
+
 .comment-box .area .input-box {
     margin-top: 24rpx;
     border: solid 1rpx #eee;
@@ -132,7 +154,8 @@
     color: #333;
     background: #f2f5f8;
 }
-.operation{
+
+.operation {
     height: 70rpx;
     width: 100%;
     display: flex;
@@ -140,6 +163,7 @@
     justify-content: flex-end;
     border-bottom: 2rpx solid #eee;
 }
+
 .comment-btn {
     display: flex;
     justify-content: space-between;
@@ -155,49 +179,101 @@
     border: none;
     background-color: #fff;
 }
+
 .chat-num {
     padding-left: 10rpx;
 }
 
-button{
+button {
     line-height: 30rpx;
- 
+
 }
-button::after{
+
+button::after {
     border: none;
 }
+
 .each-list {
     min-height: 180rpx;
     padding-top: 28rpx;
     border-bottom: 2rpx solid #eee;
 }
+
 .list-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+
 .conmment-info {
     display: flex;
     align-items: center;
 }
+
+.right {
+    font-size: 28rpx;
+    color: #ccc;
+}
+
 .info-avater {
     width: 80rpx;
     height: 80rpx;
     border-radius: 40rpx;
     object-fit: cover;
 }
+
 .nickname {
     font-size: 34rpx;
     color: #333;
-    /* font-weight: bold; */
     padding-left: 24rpx;
 }
+
 .comment-content {
     font-size: 28rpx;
     color: #999;
     line-height: 40rpx;
     padding-top: 20rpx;
 }
+
+.lower {
+    padding-top: 10rpx;
+    padding-bottom: 28rpx;
+
+}
+
+.lower-right {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 28rpx;
+    color: #999;
+    line-height: 40rpx;
+}
+
+.reply-box {
+    padding-left: 60rpx;
+}
+
+.reply-top {
+    display: flex;
+    align-items: center;
+    font-size: 28rpx;
+    color: #999;
+}
+
+.tiem {
+    padding-left: 20rpx;
+    font-size: 28rx;
+    color: #333;
+    padding-top: 8rpx;
+
+}
+
+.reply-content {
+    font-size: 28rpx;
+    color: #999;
+    padding-top: 10rpx;
+}
+
 .more {
     background: #fef0ea;
     border-radius: 4rpx;
@@ -210,36 +286,41 @@ button::after{
     text-align: center;
 }
 
-.no-comment{
+.no-comment {
     display: flex;
     justify-content: center;
     align-items: center;
     padding-top: 0px;
 
 }
-.dialog-box{
-position: relative;
+
+.dialog-box {
+    position: relative;
 }
-.van-icon1{
+
+.van-icon1 {
     position: absolute;
     color: #ccc;
-    font-size: 44rpx;
-    top: 20rpx;
+    font-size: 48rpx;
+    top: 32rpx;
     right: 35rpx;
 }
-.price-box{
+
+.price-box {
     height: 130rpx;
     border-bottom: 1rpx solid #E6E9ED;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.price-box .img{
+
+.price-box .img {
     width: 36rpx;
     height: 36rpx;
     object-fit: cover;
 }
-.price-box .video-price{
+
+.price-box .video-price {
     font-size: 34rpx;
     color: #000000;
     line-height: 44rpx;
@@ -247,13 +328,15 @@ position: relative;
     padding-left: 12rpx;
 
 }
-.price-box .money{
+
+.price-box .money {
     font-size: 36rpx;
     color: #FF5000;
     letter-spacing: 0;
     line-height: 36rpx;
 }
-.price-box1{
+
+.price-box1 {
     height: 150rpx;
     border-bottom: 1rpx solid #E6E9ED;
     display: flex;
@@ -261,28 +344,33 @@ position: relative;
     justify-content: center;
     align-items: center;
 }
-.price-box1 .up{
+
+.price-box1 .up {
     font-size: 28rpx;
     color: #333;
     letter-spacing: 2rpx;
     padding-bottom: 14rpx;
 }
-.price-box1 .down{
+
+.price-box1 .down {
     display: flex;
     align-items: center;
 }
-.price-box1 .down .img{
+
+.price-box1 .down .img {
     width: 36rpx;
     height: 36rpx;
     object-fit: cover;
 }
-.price-box1 .down .buy{
+
+.price-box1 .down .buy {
     font-size: 28rpx;
     color: #FF8F1F;
     line-height: 44rpx;
     padding-left: 20rpx;
 }
-.invoice{
+
+.invoice {
     color: #999;
     font-size: 28rpx;
     height: 70rpx;
@@ -290,22 +378,25 @@ position: relative;
     line-height: 70rpx;
 
 }
-.back-box{
+
+.back-box {
     padding: 40rpx 45rpx 40rpx 40rpx;
     line-height: 44rpx;
     color: #333;
     font-size: 28rpx;
 
 }
-.back-box .price{
+
+.back-box .price {
     display: flex;
     justify-content: center;
 }
-.back-box .price .money{
+
+.back-box .price .money {
     color: #f00;
     font-size: 34rpx;
 }
-.back-box .limit{
+
+.back-box .limit {
     padding-top: 25rpx;
 }
-

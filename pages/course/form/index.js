@@ -1,10 +1,15 @@
-// pages/course/form/index.js
+const area = require('../../../utils/area.js')
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
+    areaShow:false,
+    areaList: Object.assign({}, area.default),
+    areaStr: '', //选择的地址
+    province_name:'',//省
+    city_name:'',//市
+    area_name:'',//区
     editorName: "", // 编辑 / 添加地址 昵称
     editorMobile: "", // 编辑 / 添加地址 手机号
     editorDetailed: "", // 编辑 / 添加地址 详细地址
@@ -16,6 +21,7 @@ Page({
     tel:'',
     type:1,//1领取2开具发票
     detailId:'',//传出来的id
+    backRouter:'',//返回路径
   },
 
   /**
@@ -24,7 +30,50 @@ Page({
   onLoad: function (options) {
     console.log(options,'options')
     let that=this;
-    that.setData({ detailId: options.id });
+    that.setData({ 
+      detailId: options.id,
+      type:options.formType,
+      backRouter:options.goBack,
+    });
+  },
+//点击选择省市区
+  areaFn(){
+    this.setData({
+      areaShow:true
+    })
+  },
+  //点击遮罩层
+  onClose(){
+    this.setData({
+      areaShow:false
+    })
+  },
+//点击右上方完成按钮
+  getArea: function(val) {
+    console.log('getArea-- ',val)
+    if (val.detail.values.length >= 3) {
+      let areaStr = val.detail.values[0].name + '/' + val.detail.values[1].name + '/' + val.detail.values[2].name;
+      this.setData({
+        areaStr:areaStr,
+        province_name:val.detail.values[0].name,
+        city_name:val.detail.values[1].name,
+        area_name:val.detail.values[2].name
+      })
+    }
+    this.setData({
+      areaShow:false
+    })
+  },
+//选项改变时触发
+  showArea: function(val) {
+    console.log('showArea-- ',val)
+  },
+//点击关闭地址弹框
+ colseArea: function() {
+    console.log('colseArea-- ')
+    this.setData({
+      areaShow:false
+    })
   },
   //领取杂志提交接口提交
   addressSubmitBtn(){
@@ -38,6 +87,9 @@ Page({
     ) {
       return wx.showToast({ title: "请输入正确手机号", icon: "none" });
     }
+    if (that.data.areaStr == "") {
+      return wx.showToast({ title: "请选择省市区", icon: "none" });
+    }
     if (that.data.editorDetailed == "") {
       return wx.showToast({ title: "请输入详细地址", icon: "none" });
     }
@@ -46,18 +98,20 @@ Page({
       consignee: that.data.editorName,
       tell:that.data.editorMobile,
       desc_address:that.data.editorDetailed,
-      uid:wx.getStorageSync("userInfoData").uid
+      uid:wx.getStorageSync("userInfoData").uid,
+      city:that.data.province_name,
+      area:that.data.city_name,
+      county:that.data.area_name,
     })
     .then(res => {
       console.log(res,'收货地址------')
       if (res.bol) {
       wx.showToast({ title: res.data.msg, icon: "none" });
-      setTimeout(() => {
-        that.setData({
-          type: 2, 
-        });
-       }, 2000);
-    console.log(that.data.type,'4444')
+        setTimeout(() => {
+          that.setData({
+            type: 2, 
+          });
+         }, 2000);
       } else {
         wx.showToast({ title: res.data.msg, icon: "none" });
       }
@@ -99,42 +153,51 @@ Page({
         in_uid:wx.getStorageSync("userInfoData").uid
       })
       .then(res => {
-        console.log(res,'开具发票------')
         if (res.bol) {
           wx.showToast({ title: res.data.msg, icon: "none" });
-          setTimeout(() => {
-             // 将参数传回上一页
-              const pages = getCurrentPages()
-              const prevPage = pages[pages.length-3] // 上一页
-              // 调用上一个页面的setData 方法，将数据存储
-              prevPage.setData({
-                jump: true
-              })
-              // 返回上一页
+          if(that.data.backRouter==1){
+            setTimeout(() => {
               wx.navigateBack({
-                delta: 2
+                delta: 1
               })
-            }, 2000);
+            },2000)
+          }else{
+            setTimeout(() => {
+              // 将参数传回上一页
+               const pages = getCurrentPages()
+               const prevPage = pages[pages.length-3] // 上一页
+               // 调用上一个页面的setData 方法，将数据存储
+               prevPage.setData({
+                 jump: true
+               })
+               // 返回上一页
+               wx.navigateBack({
+                 delta: 2
+               })
+             }, 2000);
+          }
         } else {
           wx.showToast({ title: res.data.msg, icon: "none" });
         }
       });
-        
     }else{
-      // wx.redirectTo({
-      //   url: `/pages/course/detail/index?jump=true&&id=${that.data.detailId}`
-      // })
-        // 将参数传回上一页
-        const pages = getCurrentPages()
-        const prevPage = pages[pages.length-3] // 上一页
-        // 调用上一个页面的setData 方法，将数据存储
-        prevPage.setData({
-          jump: true
-        })
-        // 返回上一页
+      if(that.data.backRouter==1){
         wx.navigateBack({
-          delta: 2
+          delta: 1
         })
+      }else{
+         // 将参数传回上一页
+         const pages = getCurrentPages()
+         const prevPage = pages[pages.length-3] // 上一页
+         // 调用上一个页面的setData 方法，将数据存储
+         prevPage.setData({
+           jump: true
+         })
+         // 返回上一页
+         wx.navigateBack({
+           delta: 2
+         })
+      }
       // that.formFinish();
     }
     

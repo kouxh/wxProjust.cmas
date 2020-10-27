@@ -14,7 +14,7 @@ Page({
       name:"",
       tell:"",
       email:"",
-      sex:"2",
+      sex:"0",
       birthday:"",
       age:"20-25",
       company:"",
@@ -35,11 +35,6 @@ Page({
       return value;
     },
     activeKey: 0,//菜单默认选中
-    isShow: false,//是否展示我的菜单栏,
-    userInfo:{},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    bindMobileShow: false, // 是否需要绑定手机号
     selectShow: false,//控制下拉列表的显示隐藏，false隐藏、true显示
     selectOption:false,
     isLoad:true,//是否需要加载
@@ -51,19 +46,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let token = wx.getStorageSync('userInfoData').token;
-    console.log(token,'token00')
-     // 查看是否授权
-     wx.getSetting({
-      success: function (res) {
-        if (!res.authSetting['scope.userInfo'] || token==undefined) {
-          //未登录,跳转到登录页
-          wx.reLaunch({
-            url: '/pages/login/index',
-          })
-        }
-      }
-    })
     this.basicInfoData();
   },
   //基本信息展示
@@ -74,26 +56,34 @@ Page({
       uid:uid
     }).then(res=>{
       if(res.bol==true){
+        // if (res.data.name == "0") {
+        //   that.data.info.name='';
+        // }
+        // if(res.data.email=='0' ){
+        //   that.data.info.email='';
+        // }
+        // if(res.data.birthday=='0'){
+        //   that.data.info.birthday='';
+        // }
+        // if(res.data.age=='0'){
+        //   that.data.info.age='';
+        // }
+        // if(res.data.company=='0'){
+        //   that.data.info.company='';
+        // }
+        // if(res.data.occupation=='0'){
+        //   that.data.info.occupation='';
+        // }
         this.setData({
           info: res.data,
-          isLoad:false
+          isLoad:false,
         })
       }else{
         wx.showToast({ title: "获取数据失败,请稍后重试~", icon: "none" });
       }
     })
   },
-   /**点击底部tab */
-   onTabItemTap(item) {
-    console.log(item,'3333333')
-    if (item.index == 2) {
-      this.setData({
-        isShow: !this.data.isShow
-      });
-  }
-    
-
-  },
+ 
     // 点击下拉显示框
     selectOption() {
       this.setData({
@@ -195,23 +185,6 @@ Page({
       }
     })
   },
-  onChange(event) {
-    console.log(event.detail);
-   if(event.detail == 1){
-      wx.navigateTo({
-        url: "/pages/member/order/index"
-      });
-    }else if(event.detail == 2){
-      wx.navigateTo({
-        url: "/pages/member/content/index"
-      });
-    }else if(event.detail == 3){
-      wx.navigateTo({
-        url: "/pages/member/help/index"
-      });
-    }
-
-  },
   //日期弹框展示
   onDisplay() {
     this.setData({ calendarShow: true });
@@ -221,7 +194,6 @@ Page({
   },
 
   onInput(event) {
-    console.log(event,'0000')
     this.setData({
       currentDate: event.detail,
     });
@@ -270,36 +242,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    // var userinfo = wx.getStorageSync('userinfoData');
-    // console.log(userinfo)
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-      console.log(this.data.userInfo,'9999')
-    } else if (this.data.canIUse) {
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true,
-          hasBindMobile:true
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
-    }
+   
   },
 
   /**

@@ -1,0 +1,44 @@
+<!-- <view class="loading" wx:if="{{isLoad}}">
+    <van-loading class="load"/>
+</view> -->
+<view class="pages-course-form-index">
+  <view class="address-box" >
+    <view class="title">领取《管理会计研究》杂志</view>
+    <view class="tip">*发刊后的7天内将邮寄到该地址，请您确保填写地址无误。</view>
+    <view class='address-list'>
+      <input class='address-ipt' type='text' value='{{editorName}}' bindinput='editorNameFn' placeholder-class='address-phd' placeholder="收货人" />
+    </view>
+    <view class='address-list'>
+      <input class='address-ipt' type='number' maxlength="{{11}}" value='{{editorMobile}}' bindinput='editorMobileFn' placeholder-class='address-phd' placeholder="联系电话" />
+    </view>
+    <view class='address-list' catchtap="areaFn">
+      <input class='address-ipt' type='text' disabled value="{{areaStr}}" placeholder-class='address-phd' placeholder="请选择省市区" />
+    </view>
+    <view class='address-list-textarea'>
+      <textarea auto-height class='address-textarea' type='text' value='{{editorDetailed}}' bindinput='editorDetailedFn' placeholder-class='address-phd' placeholder="请收货地址" />
+    </view>
+    <view class="submit-btn" bindtap="upAddressVip">提交</view>
+  </view>
+  <!-- <view class="content-box" wx:if="{{showType==2}}">
+      <view class="nomsg-img-box">
+          <image mode='aspectFill' src="/assets/img/nomsg.png" alt class="nomsg-img"></image>
+          <view class="tips-msg">{{tipText}}</view>
+      </view>
+  </view> -->
+   <van-popup
+    round
+    show="{{areaShow}}"
+    position="bottom"
+    custom-style="height: 50%;"
+    bind:close="onClose"
+     >
+    <van-area
+      area-list="{{ areaList }}"
+      value="{{countyCode}}"
+      title="选择地址"
+      bind:confirm="getArea"
+      bind:cancel="colseArea"
+      bind:change="showArea"
+    />
+  </van-popup>
+</view>

@@ -11,6 +11,7 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     encryptedInfo:'',
     ivInfo:'',
+    pagePlus:'',//从plus分享页面跳转标识
   },
 
   /**
@@ -18,6 +19,9 @@ Page({
    */
   onLoad: function (options) {
     let that=this;
+      this.setData({
+        pagePlus: options.pagePlus,
+      })
     // if (app.globalData.userInfo) {
     //   this.setData({
     //     userInfo: app.globalData.userInfo,
@@ -153,7 +157,6 @@ Page({
                       duration: 2000
                 });
                 wx.setStorageSync('userInfoData', res1.data)
-                // wx.setStorageSync('token', res1.data.token)
                 wx.hideLoading();
                 // let shareUid=wx.getStorageSync('shareUid');
                 // if(shareUid!=''){
@@ -163,9 +166,17 @@ Page({
                 //   })
                   // wx.removeStorageSync('shareUid');
                 // }
-                wx.switchTab({
-                  url: "/pages/course/index/index"
-                })
+                console.log(that.data.pagePlus,'that.data.pagePlus')
+                if(that.data.pagePlus){
+                  wx.reLaunch({
+                    url: '/pages/course/plus-group/index',
+                  })
+                }else{
+                  wx.switchTab({
+                    url: "/pages/course/index/index"
+                  })
+                }
+                
               }
              
             });

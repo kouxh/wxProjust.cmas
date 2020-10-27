@@ -1,5 +1,4 @@
 <wxs src="../../../utils/util.wxs" module="util" />
-
 <view class="page-detail-index">
     <view class="loading" wx-if="{{loading}}"> 
         <van-loading size="24px"></van-loading>
@@ -9,7 +8,6 @@
         <view class="detail-content">
             <view class="each-item">
                 <view class="tit">{{detailData.desc.cl_title}}</view>
-                <!-- <image class="img" src="/assets/img/content.png" mode="aspectFill" /> -->
                 <view class="video-box">
                     <video class="img" id="myVideo" src="{{detailData.desc.cl_video_path}}" binderror="videoErrorCallback" 
                     show-center-play-btn='{{false}}' 
@@ -64,7 +62,7 @@
                     <view class="title-r">推荐视频</view>
                 </view>
                 <view class="content-frame">
-                    <navigator class="each-frame" wx:for="{{detailData.relevant}}" wx:for-item="item" open-type="redirect" wx:for-index="index" wx:key="index" url="/pages/course/detail/index?id={{item.cl_id}}" hover-class="none">
+                    <navigator class="each-frame" wx:for="{{recommendData}}" wx:for-item="item" open-type="redirect" wx:for-index="index" wx:key="index" url="/pages/course/detail/index?id={{item.cl_id}}" hover-class="none">
                         <view class="frame-l">
                             <view class="up">{{item.cl_title}}</view>
                             <view class="down">
@@ -99,47 +97,42 @@
                     <view  class="each-list" wx:for='{{moreData}}' wx:for-item="item" wx:for-index="index" wx:key='index' >
                         <view class="list-top">
                             <view class="conmment-info">
-                                <image class="info-avater" src="https://www.chinamas.cn/{{item.photo}}" mode="aspectFill" />
-                                <view class="nickname">{{item.account}}</view>
+                                <image class="info-avater"  src="{{item.photo ? item.photo:'/assets/img/avatar.png'}}" mode="aspectFill" />
+                                <view class="nickname">{{item.account?item.account:'用户名'}}</view>
                             </view>
+                            <view class="right">{{item.com_crea_at}}</view>
                         </view>
                         <view class="comment-content">
                         {{item.com_comment}}
                         </view>
+                        <view class="lower" wx:if="{{item.children!=null}}">
+                           <view class="lower-right" bindtap="replayFn">展开回复</view>
+                           <view wx:if='{{isReplay}}'>
+                            <view class="reply-box" wx:for='{{item.children}}' wx:for-item="it" wx:for-index="in" wx:key='in'>
+                                <view class="reply-top">
+                                    <image class="info-avater" src="/assets/img/avatar.png" mode="aspectFill" />
+                                    <view class="nickname">作者</view>
+                                </view>
+                                <view class="reply-content">{{it.com_comment}}</view>
+                             </view>
+                           </view>
+                           
+                        </view>
                     </view>
                     <view class="each-list no-comment" wx:if="{{moreData.length==0}}" >暂无评论数据</view>
-                    <view class="more" bindtap="moreFn" data-index="{{index}}" wx:if="{{moreData.length > 3 && moreData.length != detailData.comment.length }}" >
+                    <view class="more" bindtap="moreFn" data-index="{{index}}" wx:if="{{moreData.length >=3 && moreData.length != detailData.comment.length }}" >
                         <text>更多评论内容</text>
                         <van-icon name="arrow" size="20rpx" />
                         <van-icon name="arrow" size="20rpx" style="margin-left: -12rpx;"/>
                     </view>
                 </view>
-                <!-- <view class="comment-list">
-                    <view  class="each-list" wx:for='{{detailData.comment}}' wx:for-item="item" wx:for-index="index" wx:key='index'  wx:if="{{index < 3}}">
-                        <view class="list-top">
-                            <view class="conmment-info">
-                                <image class="info-avater" src="https://www.chinamas.cn/{{item.photo}}" mode="aspectFill" />
-                                <view class="nickname">{{item.account}}</view>
-                            </view>
-                        </view>
-                        <view class="comment-content">
-                        {{item.com_comment}}
-                        </view>
-                    </view>
-                    <view class="each-list no-comment" wx:if="{{detailData.comment.length==0}}" >暂无评论数据</view>
-                    <view class="more" bindtap="moreFn" data-index="{{index}}" style="display: {{detailData.comment.length<3 ? 'none' : 'block' }};">
-                        <text>更多评论内容</text>
-                        <van-icon name="arrow" size="20rpx" />
-                        <van-icon name="arrow" size="20rpx" style="margin-left: -12rpx;"/>
-                    </view>
-                </view> -->
             </view>
         </view>
     </view>
     
     <!-- 开通会员 -->
-    <van-dialog use-slot show="{{ isShow }}"  catchtouchmove="true" showConfirmButton="{{false}}" class="dialog-box" width="280px">
-         <view style="height:50rpx" catchtap="onClose" > <van-icon name="cross"  class="van-icon1" /></view>
+    <van-dialog use-slot show="{{ isShow }}"  catchtouchmove="true" showConfirmButton="{{false}}" class="dialog-box" width="290px">
+         <view style="height:60rpx" catchtap="onClose" > <van-icon name="cross"  class="van-icon1" /></view>
         <view  class="price-box1" catchtap="liveLimit" >
             <view class="up">全年线上课程直播及回看</view>
            <view class="down">
@@ -169,7 +162,7 @@
         catchtouchmove="true"
         >
         <view class="back-box">
-            <view class="price">价钱：<view class="money">￥199.00</view></view>
+            <view class="price">价钱：<view class="money">￥198.00</view></view>
             <view class="limit">权限：可观看全年线上直播课程，包含直播及回看</view>
         </view>
     </van-dialog>

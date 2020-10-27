@@ -102,7 +102,7 @@ Page({
     if(this.data.liveDetailData.userInfo=="0" && this.data.liveDetailData.status=="未报名"){
       wx.showToast({ title: "请先完善个人信息哟~", icon: "none" });
       setTimeout(() => {
-        wx.switchTab({ url: "/pages/member/index/index" });
+        wx.navigateTo({ url: "/pages/member/index/index" });
       }, 2000);
     }else if((this.data.liveDetailData.status=="未报名"|| this.data.liveDetailData.status=="已报名")&&this.data.liveDetailData.userInfo=="1"){
       this.getUserSignUp();

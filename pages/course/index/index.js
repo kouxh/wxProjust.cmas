@@ -8,17 +8,15 @@ let distance=0 //标记页面是向下还是向上滚动
 let indexKey=0 //标记当前滚动到那个视频了
 Page({
   data: {
-    active: 1,//tab栏默认选中
     videoPlay: null,
-    dataList: [
-      // { title: "标题", content: ""},
-    ],//视频数据
+    dataList: [],//视频数据
     _index:0, //当前正在播放视频的数组下标
     currentTime:0,//播放的当前时间
     durationTime:1,//视频总时间
     liveData:{},//直播图片
     end:null,//视频播放结束
     autoplay:false,
+    url:'/assets/img/1.png'
   },
   onLoad: function (options) {
     // 基础数据监测,以及初始请求
@@ -28,8 +26,6 @@ Page({
       that.spHeight();//获取每个视频的距离顶部的高度
     }, 2000);
   },
-  
-
   //大讲堂列表
  listDataFn(){
     let that = this;
@@ -45,7 +41,6 @@ Page({
         'content-type': 'application/json',
       },
       success: function (res) {
-        console.log(res,'列表-------------')
         if(res.data.bol==true){
           wx.nextTick(() => {
             that.setData({
@@ -59,10 +54,7 @@ Page({
       },
     })
   },
- 
-  //tab栏切换
-  onChange(event) {
-  },
+
   //获取每个视频的距离顶部的高度
   spHeight() { 
     //微信api获取节点
@@ -154,6 +146,7 @@ Page({
   liveFn(){
     checkLogin('/pages/course/live-detail/index?id='+this.data.liveData.l_id,1,true,1);
   },
+ 
 
   /**
    * 生命周期函数--监听页面初次渲染完成

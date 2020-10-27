@@ -1,0 +1,92 @@
+<view class="pages-member-my-index">
+  <view class="member-header">
+		<view class="header-left">
+			<view class="avatar">
+				<image  src='{{!hasUserInfo ?"/assets/img/avatar.png": userInfo.avatarUrl}}' mode="aspectFill" />
+			</view>
+			<view class="user-info">
+				<navigator hover-class="none" open-type="reLaunch"  url="/pages/login/index" style="font-size:28rpx" wx:if="{{!hasUserInfo && canIUse}}"> 点击登录 </navigator>
+				<block wx:else>
+					<view class="nickname">{{userInfo.nickName?userInfo.nickName:'用户名'}}</view>
+					<view class="level" wx:if="{{vipType==0}}">会员等级：普通用户</view>
+          <view class="level" wx:if="{{vipType==1}}">会员等级：CMAS大讲堂回看权限</view>
+          <view class="level" wx:if="{{vipType==2}}">会员等级：PLUS会员</view>
+          <view class="level" wx:if="{{vipType==3}}">会员等级：PLUS会员（团购版）</view>
+          <view class="level" wx:if="{{vipType==4}}">会员等级：PLUS会员（读者优惠版）</view>
+				</block>
+
+			</view>
+		</view>
+	</view>
+  <view class="vip-box" bindtap="plusFn">
+    <view class="vip-left">成为CMAS PLUS会员</view>
+    <view class="vip-right">
+      <van-icon name="arrow"  size="20px"/>
+    </view>
+  </view>
+  <view class="account-box">
+    <view class="account-header">
+      <view class="tag"></view>
+      <view class="text">我的账户</view>
+    </view>
+    <view class="index-application-content-box">
+        <navigator hover-class="none" url="/pages/member/order/index" class="index-application-content" >
+          <!-- <van-icon name="orders-o" color="red" size="20px"/> -->
+          <image src="/assets/img/icon/order.jpg" alt="" class="img"></image>
+          <view class="application-content-text">订单</view>
+        </navigator>
+        <navigator url="/pages/member/index/index" hover-class="none" class="index-application-content" >
+           <!-- <van-icon name="contact" color="red" size="20px"/> -->
+           <image src="/assets/img/icon/info.jpg" alt="" class="img"></image>
+          <view class="application-content-text">基本信息</view>
+        </navigator>
+        <view class="index-application-content" bindtap="formRouter">
+           <!-- <van-icon name="orders-o" /> -->
+           <image src="/assets/img/icon/inviot.jpg" alt="" class="img"></image>
+          <view class="application-content-text">发票</view>
+        </view>
+        <navigator url="/pages/member/address-list/index" hover-class="none" class="index-application-content">
+           <!-- <van-icon name="orders-o" /> -->
+           <image src="/assets/img/icon/address.png" alt="" class="img"></image>
+          <view class="application-content-text">领取地址</view>
+        </navigator>
+      </view>
+  </view>
+  <view class="account-box">
+    <view class="account-header">
+      <view class="tag"></view>
+      <view class="text">我的内容</view>
+    </view>
+    <view class="index-application-content-box">
+        <view class="index-application-content" bindtap="courseFn">
+          <!-- <van-icon name="todo-list-o" color="red" size="20px"/> -->
+          <image src="/assets/img/icon/course.jpg" alt="" class="img"></image>
+          <view class="application-content-text">直播课程</view>
+        </view>
+        <navigator url="/pages/member/content/index" hover-class="none" class="index-application-content" >
+           <!-- <van-icon name="like-o" color="red" size="20px"/> -->
+           <image src="/assets/img/icon/love.jpg" alt="" class="img"></image>
+           <view class="application-content-text">收藏</view>
+        </navigator>
+        <navigator url="/pages/member/comment/index" hover-class="none" class="index-application-content">
+           <!-- <van-icon name="edit" color="red" size="20px"/> -->
+            <image src="/assets/img/icon/conment.jpg" alt="" class="img"></image>
+            <view class="application-content-text">评论</view>
+        </navigator>
+        <view class="replay-num" wx:if="{{replyNum>0}}">{{replyNum}}</view>
+        <view class="index-application-content" style="paading-top:30rpx" bindtap="notice">
+           <van-icon name="bulb-o" size="25px" color="#999"/>
+            <!-- <image src="/assets/img/icon/conment.jpg" alt="" class="img"></image> -->
+            <view class="application-content-text">站内信</view>
+        </view>
+        <view class="notice-state" wx:if="{{noticeState!=0}}"></view>
+      </view>
+  </view>
+  <navigator url="/pages/member/help/index" hover-class="none"  class="question-box">
+    <view class="question-left">
+       <view class="tag"></view>
+      <view class="text">常见问题</view>
+    </view>
+    <van-icon name="arrow"  size="20px" color="#ccc"/>
+  </navigator>
+</view>

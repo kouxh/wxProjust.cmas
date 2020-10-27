@@ -2,7 +2,7 @@
     <van-loading class="load"/>
 </view>
 <view class="page-member-index" wx:if="{{!isLoad}}">
-	<view class="member-header">
+	<!-- <view class="member-header">
 		<view class="header-left">
 			<view class="avatar">
 				<image  src='{{!hasUserInfo ?"/assets/img/avatar.png": userInfo.avatarUrl}}' mode="aspectFill" />
@@ -19,11 +19,15 @@
 		<view class="header-right">
 			<van-icon name="arrow" size="24px" />
 		</view>
-	</view>
+	</view> -->
+	<view class="content-title">
+    <van-icon name="edit" size="22px" color="red" />
+    <view class="title">基本信息</view>
+  </view>
 	<view class="member-info">
 		<view class="every-info">
 			<text class="title">真实姓名</text>
-			<input class="input" value="{{info.name}}" type="text" placeholder="请输入姓名" bindinput="infoNameFn" placeholder-class="pla"/>
+			<input class="input" value="{{info.name=='0'?'':info.name}}" type="text" placeholder="请输入姓名" bindinput="infoNameFn" placeholder-class="pla"/>
 		</view>
 		<view class="every-info">
 			<text class="title">注册手机</text>
@@ -31,18 +35,18 @@
 		</view>
 		<view class="every-info">
 			<text class="title">注册邮箱</text>
-			<input class="input" type="text"  value="{{info.email}}" placeholder="请输入邮箱" bindinput="infoEmailFn" placeholder-class="pla" />
+			<input class="input" type="text"  value="{{info.email=='0'?'':info.email}}" placeholder="请输入邮箱" bindinput="infoEmailFn" placeholder-class="pla" />
 		</view>
 		<view class="every-info1">
 			<text class="title">性别</text>
 			<van-radio-group value="{{ info.sex }}" bind:change="onSwitch" class="radio-icon">
-				<van-radio name="1">男</van-radio>
-				<van-radio name="2">女</van-radio>
+				<van-radio name="0">男</van-radio>
+				<van-radio name="1">女</van-radio>
 			</van-radio-group>
 		</view>
 		<view class="every-info">
 			<text class="title" >生日</text>
-			<input class="input" value="{{ info.birthday }}" type="text" placeholder="YYYY-MM-DD" bindinput="" placeholder-class="pla"  bindtap="onDisplay" disabled/>
+			<input class="input" value="{{ info.birthday=='0'?'':info.birthday }}" type="text" placeholder="YYYY-MM-DD" bindinput="" placeholder-class="pla"  bindtap="onDisplay" disabled/>
 		</view>
 		<van-popup
 				show="{{ calendarShow }}"
@@ -78,14 +82,14 @@
 	
 		<view class="every-info">
 			<text class="title">公司名称</text>
-			<input class="input"  value="{{ info.company}}" type="text" placeholder="" bindinput="infoConFn" placeholder-class="pla"/>
+			<input class="input"  value="{{ info.company=='0'?'':info.company}}" type="text" placeholder="" bindinput="infoConFn" placeholder-class="pla"/>
 		</view>
 		<view class="every-info">
 		  <van-icon name="play" color="#ccc" class="up-iocn {{selectOption&&'select_img_rotate'}}"/>
 			<text class="title">职位</text>
 			<!-- <input class="input" bindtap='selectOption' value="{{ info.occupation}}" type="text" placeholder="职位" bindinput="" placeholder-class="pla"/> -->
 			<view class="input" bindtap='selectOption'>
-     		<text class='ms-text'>{{ info.occupation==null ?"管理者":info.occupation}}</text>
+     		<text class='ms-text'>{{ info.occupation==='0' ?"管理者":info.occupation}}</text>
   	  </view>
 			<view class="select_box" wx:if="{{selectOption}}">
         <view class="select_one " bindtap="optionSelect" data-name="管理者">管理者</view>     
@@ -97,14 +101,4 @@
 		</view>
 	</view>
 	<view class="change-btn" bindtap="changeInfo">修改资料</view>
-	<van-sidebar wx:if="{{isShow}}" active-key="{{ activeKey }}" class="side" bind:change="onChange">
-		<van-sidebar-item title="基本信息" />
-		<van-sidebar-item title="我的订单" />
-		<van-sidebar-item title="我的内容" />
-		<van-sidebar-item title="帮助中心" />
-			<!-- <van-sidebar-item title="我的资产" /> -->
-		<!-- <van-sidebar-item title="杂志购买" /> -->
-	</van-sidebar>
-	<!-- 绑定手机号弹层 -->
-  <bindMobile wx:if='{{bindMobileShow}}' bind:bindEnd='bindEndFn' />
 </view>

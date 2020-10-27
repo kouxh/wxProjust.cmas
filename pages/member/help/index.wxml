@@ -7,21 +7,21 @@
         </view>
         <view class="question-box">
             <view class="each">
-                <view class="question">如何成为CMAS会员？</view>
-                <view class="result">
+                <view class="question" bindtap="openFn">如何成为CMAS会员？</view>
+                <view class="result" wx:if="{{isOpen}}">
                     答：关注【管理会计研究网】服务号，免费注册成为会员即可。
                 </view>
             </view>
             <view class="each">
-                <view class="question">CMAS会员的权益是什么？</view>
-                <view class="result">
+                <view class="question" bindtap="openFn1">CMAS会员的权益是什么？</view>
+                <view class="result" wx:if="{{isOpen1}}">
                     <view>答：1.观看年《CMAS大讲堂》课程直播；</view>
                     <text decode="{{true}}">&ensp;&ensp;&ensp;&ensp;2.阅读管理会计研究官网（www.chinamas.cn）中杂志精选文章。</text>
                 </view>
             </view>
             <view class="each">
-                <view class="question">CMAS PLUS会员的权益是什么？</view>
-                <view class="result">
+                <view class="question" bindtap="openFn2">CMAS PLUS会员的权益是什么？</view>
+                <view class="result"  wx:if="{{isOpen2}}">
                     <view>答：1.赠阅全年《管理会计研究》杂志一套，共六本，价值300元（50元/本，共六期）；</view>
                     <text decode="{{true}}">&ensp;&ensp;&ensp;&ensp;2.免费阅读管理会计研究网站付费文章；</text>
                     <view><text decode="{{true}}">&ensp;&ensp;&ensp;&ensp;3.观看全年《CMAS大讲堂》课程，包含直播及回看；</text></view>
@@ -31,20 +31,20 @@
                 </view>
             </view>
             <view class="each">
-                <view class="question">2020年《管理会计研究》读者如果成为CMAS PIUS会员？</view>
-                <view class="result">
+                <view class="question" bindtap="openFn3">2020年《管理会计研究》读者如果成为CMAS PIUS会员？</view>
+                <view class="result" wx:if="{{isOpen3}}">
                     答：已订阅2020年全年《管理会计研究》的读者，只需**元即可成为CMAS PLUS会员，享受所有会员权益。
                 </view>
             </view>
             <view class="each">
-                <view class="question">发票开具的内容是什么？</view>
-                <view class="result">
+                <view class="question" bindtap="openFn4">发票开具的内容是什么？</view>
+                <view class="result" wx:if="{{isOpen4}}">
                     答：开具的发票统一为【电子发票】；开具金额为实际付款金额，发票的内容为【培训费】。
                 </view>
             </view>
             <view class="each">
-                <view class="question">发票大概多久开出来？</view>
-                <view class="result">
+                <view class="question" bindtap="openFn5">发票大概多久开出来？</view>
+                <view class="result" wx:if="{{isOpen5}}">
                     答：发票申请提交后，在电子发票充足的情况下，一般会在30天内开出并发送至您指定的邮箱。
                 </view>
             </view>

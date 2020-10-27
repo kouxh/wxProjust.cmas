@@ -5,5 +5,5 @@
     "van-dialog": "@vant/weapp/dialog/index",
     "van-loading": "@vant/weapp/loading/index"
   },
-  "enablePullDownRefresh": false
+  "enablePullDownRefresh": true
 }

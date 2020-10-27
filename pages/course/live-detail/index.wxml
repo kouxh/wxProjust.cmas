@@ -39,7 +39,7 @@
         <view class="theme">
             <view class="left">演讲主题</view>
             <view class="right">
-                “基于大数据的智能管理会计”的精彩演讲，和您探讨“智能时代会计的变与不变和智能管理会计的体系重构”.
+            {{liveDetailData.l_theme}}
             </view>
         </view>
     </view>
@@ -93,11 +93,11 @@
             </van-popup>
         </view>
     </view>
-    <view class="button-btn-box {{isIphoneX?'IpX-Bottom':''}}" >
-        <!-- <view class="button-btn-text {{liveDetailData.status=='直播已开始' ? 'button-btn-text1':''}}">{{statusName}}</view> -->
+       <!-- <view class="button-btn-text {{liveDetailData.status=='直播已开始' ? 'button-btn-text1':''}}">{{statusName}}</view> -->
+    <!-- <view class="button-btn-box {{isIphoneX?'IpX-Bottom':''}}" >
         <view class="button-btn-text" bindtap="applyFn" wx:if="{{status==1}}">{{statusName}}</view>
         <view class="button-btn-text" bindtap="applyFn" wx:if="{{status==2}}">{{statusName}}</view>
         <view class="button-btn-text" wx:if="{{status==3}}" bindtap="lookFn">{{statusName}}</view>
         <view class="button-btn-text1" wx:if="{{status==4}}">{{statusName}}</view>
-    </view>
+    </view> -->
 </view>

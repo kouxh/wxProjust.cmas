@@ -1,0 +1,44 @@
+<view class="loading" wx:if="{{isLoad}}">
+    <van-loading class="load"/>
+</view>
+<view class="pages-live-index" wx:if="{{!isLoad}}">
+   <view class="content-box">
+    <view class="item" wx:for="{{liveListData}}" wx:key="index" wx:for-item="item" wx:for-index="index">
+      <view class="item-left">
+        <image class="live-img" src="https://www.chinamas.cn{{item.l_img}}" mode="aspectFill"/>
+      </view>
+      <view class="item-right">
+        <view class="title ellipsis2row" style="color : {{item.status=='已报名'?'#558dfe':'#141718'}}" >{{item.l_title}}</view>
+        <view class="time">开始时间:{{item.start_at}} - {{item.end_at}}</view>
+      </view>
+      <view class="statu statu1">{{item.status}}</view>
+    </view>
+    <!-- <view class="item">
+      <view class="item-left">
+        <image class="live-img" src="/assets/img/cont1.png" mode="aspectFill"/>
+      </view>
+      <view class="item-right">
+        <view class="title ellipsis2row" >数据中台系列第07期：企业该建数据仓库，还是大数据...</view>
+        <view class="time">开始时间：09月27日 20:00-21:00</view>
+      </view>
+      <view class="statu statu2" wx:if="{{statu==2}}">已学习</view>
+    </view>
+    <view class="item">
+      <view class="item-left">
+        <image class="live-img" src="/assets/img/cont1.png" mode="aspectFill"/>
+      </view>
+      <view class="item-right">
+        <view class="title ellipsis2row " >数据中台系列第07期：企业该建数据仓库，还是大数据...</view>
+        <view class="time">开始时间：09月27日 20:00-21:00</view>
+      </view>
+      <view class="statu statu3" wx:if="{{statu==3}}">未学习</view>
+    </view> -->
+   </view>
+  <!-- 无数据 -->
+  <view class="content-box" wx:if="{{listData.length==0}}">
+    <view class="nomsg-img-box">
+        <image mode='aspectFill' src="/assets/img/nomsg.png" alt class="nomsg-img"></image>
+        <view class="tips-msg">暂无数据哟~</view>
+    </view>
+  </view>
+</view>

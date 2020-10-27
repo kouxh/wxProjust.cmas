@@ -2,5 +2,5 @@
   "usingComponents": {
     "van-icon": "@vant/weapp/icon/index"
   },
-  "navigationBarTitleText": "我的资产"
+  "navigationBarTitleText": "PLUS会员团购"
 }

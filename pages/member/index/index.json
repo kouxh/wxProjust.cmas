@@ -6,9 +6,8 @@
     "van-sidebar": "@vant/weapp/sidebar/index",
     "van-sidebar-item": "@vant/weapp/sidebar-item/index",
     "van-datetime-picker": "@vant/weapp/datetime-picker/index",
-    "van-popup": "@vant/weapp/popup/index",
-    "bindMobile": "../../../components/bind-mobile/index"
+    "van-popup": "@vant/weapp/popup/index"
   },
-  "navigationBarTitleText": "我的基本信息",
+  "navigationBarTitleText": "基本信息",
   "enablePullDownRefresh": false
 }

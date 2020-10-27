@@ -9,6 +9,19 @@ const formatTime = date => {
   return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
 }
 
+function format(shijianchuo){
+//shijianchuo是整数，否则要parseInt转换
+var time = new Date(shijianchuo);
+var y = time.getFullYear();
+var m = time.getMonth()+1;
+var d = time.getDate();
+var h = time.getHours();
+var mm = time.getMinutes();
+var s = time.getSeconds();
+return y+'-'+add0(m)+'-'+add0(d)+' '+add0(h)+':'+add0(mm)+':'+add0(s);
+}
+function add0(m){return m<10?'0'+m:m }
+
 // 【 将数据同时存入'global和storage'中 】
 // 【 设置存储 】
 // --- key 键
@@ -227,5 +240,7 @@ module.exports = {
   formateObjToParamStr:formateObjToParamStr,
   liveStatusFn:liveStatusFn,
   dateFormat:dateFormat,
-  checkLogin:checkLogin
+  checkLogin:checkLogin,
+  format:format,
+  add0:add0
 }

@@ -1,0 +1,73 @@
+<view class="pages-gruop-index">
+  <view class="content-box">
+    <view class="title">PLUS的权益</view>
+    <view class="limit-box">
+      <view class="each-limits">
+        <view class="circle"></view>
+        <view class="text">赠阅全年《管理会计研究》杂志一套，共六本，价值300元（50元/本，共六期）</view>
+      </view>
+      <view class="each-limits">
+        <view class="circle"></view>
+        <view class="text">畅读管理会计研究网站付费文章</view>
+      </view>
+      <view class="each-limits">
+        <view class="circle"></view>
+        <view class="text">观看全年《CMAS大讲堂》课程，包含直播及回看</view>
+      </view>
+      <view class="each-limits">
+        <view class="circle"></view>
+        <view class="text">观看全年《CMAS对话》高端访谈节目</view>
+      </view>
+      <view class="each-limits">
+        <view class="circle"></view>
+        <view class="text">观看全年“走进名企”实务直播节目</view>
+      </view>
+      <view class="each-limits">
+        <view class="circle"></view>
+        <view class="text">优先受邀参加主题沙龙、年度峰会等线下活动</view>
+      </view>
+    </view>
+    <view class="join-box">
+      <view class="join-tit">团购参与人：</view>
+      <view class="member-box">
+        <view class="member-each" wx:for="{{userInfoArr}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+          <image mode='aspectFill' class="member-each-img" src='{{item.photo}}' />
+        </view>
+        <view class="member-each member-invite member-icon-box" wx:for="{{groupAllArr.length-userInfoArr.length}}" wx:for-item="it" wx:for-index="in" wx:key="in">
+          <image mode='aspectFill' class="member-each-img" src='../../../assets/img/person.png' />
+        </view>
+      </view>
+      <view class="count-down" wx:if="{{grouponsState=='分享'||grouponsState=='未支付'}}">结束时间：{{countDownStr}}</view>
+      <view class="count-down" wx:if="{{grouponsState=='拼团失败'}}">有效时间内, 未达到拼团要求！</view>
+      <view class="count-down" wx:if="{{grouponsState=='拼团成功'}}">拼团成功了!</view>
+
+<!-- 
+      <view class="count-down" wx:if="{{grouponsState=='未参与'||grouponsState=='已参与'}}">结束时间：{{countDownStr}}</view>
+      <view class="count-down" wx:if="{{grouponsState=='拼团失败'}}">有效时间内, 未达到拼团要求！</view>
+      <view class="count-down" wx:if="{{grouponsState=='拼团成功'}}">拼团成功了!</view> -->
+    </view>
+    <view class="price">团购价格：499元/年/人</view>
+    <view class="tip">*拼团失败后，费用将原路返回</view>
+    
+  </view>
+  <!-- 已参与 -->
+  <button open-type='share' class="btn" wx:if="{{grouponsState=='分享'}}">正在拼团，邀请好友</button>
+   <!-- 未参与 -->
+  <view class="btn" bind:tap="goDetailsFn" wx:if="{{grouponsState=='未支付'}}">立即参团</view>
+  <!-- 拼团成功 -->
+  <view class="btn" wx:if="{{grouponsState=='拼团成功'}}" bind:tap="successfn">拼团成功</view>
+  <!-- 拼团失败 -->
+  <view class="btn" bind:tap="failfn"  wx:if="{{grouponsState=='拼团失败'}}">拼团失败了, 再次发起！</view>
+
+
+
+
+   <!-- 已参与 -->
+  <!-- <button open-type='share' class="btn" wx:if="{{grouponsState=='已参与'}}">正在拼团，邀请好友</button> -->
+   <!-- 未参与 -->
+  <!-- <view class="btn" bind:tap="goDetailsFn" wx:if="{{grouponsState=='未参与'}}">立即参团</view> -->
+  <!-- 拼团成功 -->
+  <!-- <view class="btn" wx:if="{{grouponsState=='拼团成功'}}" bind:tap="successfn">拼团成功</view> -->
+  <!-- 拼团失败 -->
+  <!-- <view class="btn" bind:tap="failfn"  wx:if="{{grouponsState=='拼团失败'}}">拼团失败了, 再次发起！</view> -->
+</view>
