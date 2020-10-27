@@ -39,9 +39,9 @@ Page({
     console.log(userN,'userN----------')
     if(that.data.plusId){
       if(!userN){
-        this.setData({
-          isAuthorized:false
-        })
+        // this.setData({
+        //   isAuthorized:false
+        // })
         return wx.reLaunch({ url: '/pages/login/index?pagePlus=1' })
       }
       // wx.getSetting({
@@ -353,7 +353,7 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function (options) {
-    let _this = this.data;
+    let that = this;
     // var uid=wx.getStorageSync("userInfoData").uid
     // console.log(uid,'0000000000000')
     if (options.from === 'button') {
@@ -363,7 +363,7 @@ Page({
     console.log(uid,'0000000000000')
     return {
       title: "PLUS会员团购",
-      path:`/pages/course/plus-group/index?plusId=1`
+      path:`/pages/course/plus-group/index?plusId=1&teamId=${that.data.teamId}`
       // path:`/pages/course/plus-group/index?plusId=1&uid=${wx.getStorageSync('userInfoData').uid}`
     };
   }

@@ -381,9 +381,12 @@ Page({
            })
           }else if(that.data.radio=="2"&&that.data.together==false){
             console.log(that.data.together,'0000000000')
-            wx.navigateTo({
-              url:`/pages/course/plus-group/index?teamId=${this.data.teamId}`,
-            })
+            that.checkUserInGroup();
+            setTimeout(() => {
+              wx.navigateTo({
+                url:`/pages/course/plus-group/index?teamId=${that.data.teamId}`,
+              })
+            }, 2000);
           }
         }else if(that.data.radio=="1"||that.data.radio=="3"||(that.data.radio=="2"&&that.data.together==true)){
           wx.navigateBack({
@@ -391,9 +394,13 @@ Page({
            })
           that.paySuccessPlus();
         }else if(that.data.radio=="2"&&that.data.together==false){
-          wx.navigateTo({
-            url:`/pages/course/plus-group/index?teamId=${this.data.teamId}`,
-          })
+          that.checkUserInGroup();
+          setTimeout(() => {
+            wx.navigateTo({
+              url:`/pages/course/plus-group/index?teamId=${that.data.teamId}`,
+            })
+          }, 2000);
+          
         }
         //跳转到表单页面
         // if(that.data.radio=="1"||that.data.radio=="2"){

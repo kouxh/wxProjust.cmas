@@ -1,4 +1,4 @@
-<view class="pages-gruop-index" wx:if="{{isAuthorized}}">
+<view class="pages-gruop-index">
   <view class="content-box">
     <view class="title">PLUS的权益</view>
     <view class="limit-box">
