@@ -81,6 +81,7 @@ Page({
               })
            
               var nowTime = format(parseInt(res.data.groupEndAT*1000));
+              console.log(nowTime,'0000')
               // 处理 参团状态 --- 无 拼团成功 未参与 已参与 拼团失败
               if (that.data.userInfoArr.length==3) {
                 that.setData({ grouponsState: "拼团成功" });
