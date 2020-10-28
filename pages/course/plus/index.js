@@ -50,11 +50,11 @@ Page({
       radio: event.detail,
     });
     if (this.data.radio == "2") {
+    this.setData({
+      groupShow: true
+    })
     //检测用户是否在成团列表中
     this.checkUserInGroup();
-      this.setData({
-        groupShow: true
-      })
     }
     if (this.data.radio == "3") {
       this.setData({ readerShow: true });
@@ -101,35 +101,35 @@ Page({
     });
   },
   //点击请支付
-  payFn(){
-    //判断是否拼团已满 如果未满进入邀请页面 已满提示状态状态更改为1
-     //显示支付前的状态 --- 查询团是否满员
-    let that=this;
-    getApp()
-        .globalData.api.getPayStatus({
-          uid:wx.getStorageSync('userInfoData').uid
-        }).then(res=>{
-          if(res.err_code=='10047'){
-            wx.navigateTo({
-              url:`/pages/course/plus-group/index?teamId=${this.data.teamId}`,
-            })
-          }else if(res.err_code=='10048'){
-            that.setData({
-              groupShow: false,
-              radio: "1"
-            })
-            return wx.showToast({ title: res.data.msg, icon: "none" });  
-          }else if (res.err_code=='10000') {
-            that.setData({
-              groupShow: false,
-              radio: "1"
-            })
-            wx.navigateTo({
-              url:`/pages/course/plus-group/index?teamId=${this.data.teamId}`,
-            })
-          }
-        })
-  },
+  // payFn(){
+  //   //判断是否拼团已满 如果未满进入邀请页面 已满提示状态状态更改为1
+  //    //显示支付前的状态 --- 查询团是否满员
+  //   let that=this;
+  //   getApp()
+  //       .globalData.api.getPayStatus({
+  //         uid:wx.getStorageSync('userInfoData').uid
+  //       }).then(res=>{
+  //         if(res.err_code=='10047'){
+  //           wx.navigateTo({
+  //             url:`/pages/course/plus-group/index?teamId=${this.data.teamId}`,
+  //           })
+  //         }else if(res.err_code=='10048'){
+  //           that.setData({
+  //             groupShow: false,
+  //             radio: "1"
+  //           })
+  //           return wx.showToast({ title: res.data.msg, icon: "none" });  
+  //         }else if (res.err_code=='10000') {
+  //           that.setData({
+  //             groupShow: false,
+  //             radio: "1"
+  //           })
+  //           wx.navigateTo({
+  //             url:`/pages/course/plus-group/index?teamId=${this.data.teamId}`,
+  //           })
+  //         }
+  //       })
+  // },
  
   //读者优惠点击关闭图标
   onClose() {
@@ -249,12 +249,14 @@ Page({
           that.setData({ readerShow: false, radio: "1", mobile: '', code: '', sendState: 0  });
         }else if(plusType==3){
           that.setData({ uniformShow: false, radio: "1",together:true});
+        }else if(plusType==4){
+          that.setData({
+            groupShow: false,
+            radio: "1"
+          })
         }
         console.log(that.data.payData, '读者唤起支付页面')
-        // 唤起支付弹框
-        // setTimeout(() => {
           that.arousePayFn();
-        // }, 2000);
       });
   },
   //读者优惠确认支付
@@ -364,6 +366,7 @@ Page({
   // 唤起支付弹框
   arousePayFn() {
     let that = this;
+    
     let payData = that.data.payData;
     wx.requestPayment({
       timeStamp: payData.timeStamp.toString(),
@@ -372,7 +375,6 @@ Page({
       signType: payData.signType,
       paySign: payData.sign,
       success(res) {
-        console.log(res,'-------------')
         //返回课堂详情页
         if(that.data.pageName=="my"){
           if(that.data.radio=="1"||that.data.radio=="3"||(that.data.radio=="2"&&that.data.together==true)){
@@ -380,13 +382,12 @@ Page({
               delta: 1
            })
           }else if(that.data.radio=="2"&&that.data.together==false){
-            console.log(that.data.together,'0000000000')
             that.checkUserInGroup();
             setTimeout(() => {
               wx.navigateTo({
                 url:`/pages/course/plus-group/index?teamId=${that.data.teamId}`,
               })
-            }, 2000);
+            }, 1000);
           }
         }else if(that.data.radio=="1"||that.data.radio=="3"||(that.data.radio=="2"&&that.data.together==true)){
           wx.navigateBack({
@@ -399,7 +400,7 @@ Page({
             wx.navigateTo({
               url:`/pages/course/plus-group/index?teamId=${that.data.teamId}`,
             })
-          }, 2000);
+          }, 1000);
           
         }
         //跳转到表单页面

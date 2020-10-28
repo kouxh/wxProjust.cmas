@@ -61,10 +61,10 @@
                             <view class="lh">2020年订阅《管理会计研究》全年刊的读者可享读者价。该套餐不享受本年度全年刊物免费看的服务</view>
                      </radio-group> -->
                         <van-radio-group value="{{ radio }}" bind:change="onChange">
-                            <van-radio name="1">599元/年/人</van-radio>
-                            <van-radio name="2" >团购 499元/年/人 </van-radio>
+                            <van-radio name="1" icon-size="26px">599元/年/人</van-radio>
+                            <van-radio name="2" icon-size="26px">团购 499元/年/人 </van-radio>
                             <view class="lh" >3人以上（含3人）成团可享受优惠</view>
-                            <van-radio name="3">读者优惠 199元/年/人 </van-radio>
+                            <van-radio name="3" icon-size="26px">读者优惠 199元/年/人 </van-radio>
                             <view class="lh">已订阅2020年《管理会计研究》全年刊的读者可享受读者价</view>
                         </van-radio-group>
                      

@@ -364,15 +364,6 @@ Page({
       backLookShow:false,
       isShow:true
     });
-    // setTimeout(() => {
-    //   this.setData({
-    //     controls: true,
-    //     initialTime:'0',
-    //     isPlay:true
-    //   });
-    //   this.videoContext.seek(0);//跳转到指定位置
-    //   this.videoContext.play();//播放视频
-    // }, 2000);
   },
   
    // 编辑/添加地址 详细地址 同步
