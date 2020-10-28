@@ -73,12 +73,12 @@ Page({
           }).then(res=>{
             console.log(res,'0000')
             if(res.bol){
-              // wx.showToast({ title: res.data.groupEndAT, icon: "none" });
               that.setData({
                 details:res.data,
                 userInfoArr:res.data.member,
                 grouponsState:res.data.msg
               })
+              wx.showToast({ title: res.data.msg, icon: "none" });
               var nowTime = format(parseInt(res.data.groupEndAT*1000));
               console.log(nowTime,'0000')
               // 处理 参团状态 --- 无 拼团成功 未参与 已参与 拼团失败
