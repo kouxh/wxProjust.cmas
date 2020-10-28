@@ -93,11 +93,6 @@ Page({
                 }, 1000);
               }
             }else{
-              that.setData({
-                details:res.data,
-                userInfoArr:res.data.member,
-                grouponsState:res.data.msg
-              })
               wx.showToast({ title: res.data.msg, icon: "none" });
             }
           })
@@ -157,8 +152,8 @@ Page({
             //请求支付接口
             that.unifiedPay();
           }else{
-            wx.reLaunch({
-              url:"/pages/course/plus/index",
+            wx.switchTab({
+              url: "/pages/course/index/index"
             })
             return wx.showToast({ title: res.data.msg, icon: "none" });  
           }
@@ -204,9 +199,9 @@ Page({
       signType: payData.signType,
       paySign: payData.sign,
       success(res) {
-        wx.navigateTo({
-          url:"/pages/course/index/index",
-        })
+       wx.switchTab({
+        url: "/pages/course/index/index"
+      })
       },
       fail(res) {
         wx.showToast({ title: "支付失败,请求重试", icon: "none" });
