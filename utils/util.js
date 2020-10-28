@@ -8,7 +8,13 @@ const formatTime = date => {
 
   return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
 }
-
+const formatNumber = n => {
+  n = n.toString()
+  return n[1] ? n : '0' + n
+}
+// 时间戳转日期
+// const util = require('../../utils/util.js')
+// return util.formatTime(new Date(log))
 function format(shijianchuo){
 //shijianchuo是整数，否则要parseInt转换
 var time = new Date(shijianchuo);

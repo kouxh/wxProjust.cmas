@@ -246,13 +246,12 @@ Page({
           payData: res.data,
         })
         if(plusType==1){
-          that.setData({ readerShow: false, radio: "1", mobile: '', code: '', sendState: 0  });
+          that.setData({ readerShow: false,radio: "1", mobile: '', code: '', sendState: 0  });
         }else if(plusType==3){
-          that.setData({ uniformShow: false, radio: "1",together:true});
+          that.setData({ uniformShow: false,radio: "1",together:true});
         }else if(plusType==4){
           that.setData({
             groupShow: false,
-            radio: "1"
           })
         }
         console.log(that.data.payData, '读者唤起支付页面')
@@ -377,32 +376,31 @@ Page({
       success(res) {
         //返回课堂详情页
         if(that.data.pageName=="my"){
-          if(that.data.radio=="1"||that.data.radio=="3"||(that.data.radio=="2"&&that.data.together==true)){
+          if(that.data.radio=="1"||that.data.together==true){
             wx.navigateBack({
               delta: 1
            })
-          }else if(that.data.radio=="2"&&that.data.together==false){
-            that.checkUserInGroup();
-            setTimeout(() => {
-              wx.navigateTo({
-                url:`/pages/course/plus-group/index?teamId=${that.data.teamId}`,
-              })
-            }, 1000);
           }
-        }else if(that.data.radio=="1"||that.data.radio=="3"||(that.data.radio=="2"&&that.data.together==true)){
-          wx.navigateBack({
-                delta: 1
-           })
-          that.paySuccessPlus();
-        }else if(that.data.radio=="2"&&that.data.together==false){
+        }else{
+          if(that.data.radio=="1"||that.data.together==true){
+            wx.navigateBack({
+                  delta: 1
+             })
+            that.paySuccessPlus();
+          }
+        } 
+        if(that.data.radio=="2"&&that.data.together==false){
           that.checkUserInGroup();
           setTimeout(() => {
             wx.navigateTo({
               url:`/pages/course/plus-group/index?teamId=${that.data.teamId}`,
             })
+            that.setData({
+              radio: "1"
+            })
           }, 1000);
-          
         }
+       
         //跳转到表单页面
         // if(that.data.radio=="1"||that.data.radio=="2"){
         //   wx.navigateTo({

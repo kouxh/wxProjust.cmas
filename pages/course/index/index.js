@@ -69,6 +69,7 @@ Page({
   },
   //页面滚动触发
   onPageScroll(event) {
+    console.log(event,'---------------')
     this.setData({
       end:null,
       autoplay:true
