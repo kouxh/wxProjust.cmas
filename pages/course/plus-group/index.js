@@ -93,6 +93,11 @@ Page({
                 }, 1000);
               }
             }else{
+              that.setData({
+                details:res.data,
+                userInfoArr:res.data.member,
+                grouponsState:res.data.msg
+              })
               wx.showToast({ title: res.data.msg, icon: "none" });
             }
           })
@@ -200,7 +205,7 @@ Page({
       paySign: payData.sign,
       success(res) {
         wx.navigateTo({
-          url:"/pages/course/plus/index",
+          url:"/pages/course/index/index",
         })
       },
       fail(res) {

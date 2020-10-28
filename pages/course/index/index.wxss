@@ -92,13 +92,13 @@ page{
 }
 .live .img {
   width: 686rpx;
-  height: 300rpx;
-  object-fit: cover;
+  height: 380rpx;
+  object-fit: contain;
 }
 .live .live-badge {
   width: 142rpx;
   height: 38rpx;
-  top: 35rpx;
+  top: -6rpx;
   left: 32rpx;
   display: flex;
   justify-content: center;

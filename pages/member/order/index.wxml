@@ -28,7 +28,7 @@
                     </view>
                 </view>
                 <view class="info-bottom" wx:if="{{item.status!='已过期'}}">
-                    <view class="addBtn" bindtap="getAddress" data-order="{{item.order_num}}" wx:if="{{item.addID==0 &&(item.vid==2||item.vid==3)}}">领取地址</view>
+                    <view class="addBtn" bindtap="getAddress" data-order="{{item.order_num}}" wx:if="{{item.addID==0 &&(item.vid==2||item.vid==3||item.vid==4)}}">领取地址</view>
                     <view class="addBtn1" wx:if="{{item.invoice==0}}" bindtap="geInvoice" data-order="{{item.order_num}}">开具发票</view>
                 </view>
             </view>
