@@ -116,12 +116,12 @@ Page({
     var that = this;
     var id = e.currentTarget.id;
     for (var i = 0; i < that.data.detailData.relevant.length; i++) {
-      if (id === 'myVideo' + i) {
+      if (id === 'video' + i) {
         //console.log('播放视频不做处理');
       } else {
         //console.log('暂停其他正在播放的视频');
-        var videoContext = wx.createVideoContext("myVideo"+i, that);
-        videoContext.pause();
+        var videoContext2 = wx.createVideoContext("video"+i, that);
+        videoContext2.pause();
       }
     }
   },

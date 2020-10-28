@@ -9,15 +9,15 @@
             <view class="each-item">
                 <view class="tit">{{detailData.desc.cl_title}}</view>
                 <view class="video-box">
-                <!-- show-center-play-btn='{{false}}'  -->
+                <!-- show-center-play-btn='{{false}}'    poster="https://www.chinamas.cn{{detailData.desc.cl_img}}"-->
                     <video class="img" id="myVideo" src="{{detailData.desc.cl_video_path}}" binderror="videoErrorCallback" 
                     show-play-btn="{{true}}" 
+                    custom-cache="{{false}}"
                     controls='{{controls}}'
                     object-fit='fill'
                     autoplay='{{isPlay}}'
                     initial-time='{{initialTime}}'
                     play-btn-position="bottom"
-                    poster="https://www.chinamas.cn{{detailData.desc.cl_img}}"
                     enable-play-gesture='{{true}}'
                     picture-in-picture-mode="{{['push', 'pop']}}" 
                     bindtimeupdate='bindtimeupdate'
@@ -67,7 +67,7 @@
                                 <text class="down-l">{{item.cl_type}}</text>
                             </view>
                         </view>
-                        <video class="frame-r" src="{{item.cl_marvellous}}" data-id="{{item.cl_id}}" id="myVideo{{index}}" bindplay="play" objectFit='fill'   
+                        <video class="frame-r" src="{{item.cl_marvellous}}" data-id="{{item.cl_id}}" id="video{{index}}" bindplay="play" objectFit='fill'   
                         binderror="videoErrorCallback" 
                         show-center-play-btn='{{true}}' 
                         play-btn-position="center"
