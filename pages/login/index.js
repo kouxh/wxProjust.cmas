@@ -134,6 +134,7 @@ Page({
             ivInfo: that.data.ivInfo,
             encryptedDataPhone: e.detail.encryptedData,
             ivPhone: e.detail.iv,
+            type:1
           };
 
           var jsonStr = JSON.stringify(datas)
