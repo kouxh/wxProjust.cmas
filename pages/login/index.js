@@ -12,6 +12,7 @@ Page({
     encryptedInfo:'',
     ivInfo:'',
     pagePlus:'',//从plus分享页面跳转标识
+    code:''
   },
 
   /**
@@ -19,6 +20,17 @@ Page({
    */
   onLoad: function (options) {
     let that=this;
+    // wx.login({
+    //   success(res) {
+    //     console.log(res,'00000000000000')
+    //     if(res.code){
+    //       that.setData({
+    //         code:res.code
+    //       })
+    //       console.log(that.data.code,'code-----------')
+    //     }
+    //   }
+    // })
       this.setData({
         pagePlus: options.pagePlus,
       })
@@ -126,10 +138,10 @@ Page({
     if (e.detail.encryptedData) {
       wx.setStorageSync('bindPhone', true)
       //用户点击允许
-      wx.login({
-        success(res) {
+      // wx.login({
+      //   success(res) {
           var datas = {
-            code:res.code,
+            code:that.data.code,
             encryptedDataInfo: that.data.encryptedInfo,
             ivInfo: that.data.ivInfo,
             encryptedDataPhone: e.detail.encryptedData,
@@ -181,8 +193,8 @@ Page({
               }
              
             });
-        }
-      });
+      //   }
+      // });
     } else {
       //用户点击拒绝
       wx.showModal({
@@ -212,7 +224,19 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-   
+    let that=this;
+     //登录态刷新
+    wx.login({
+      success(res) {
+        console.log(res,'00000000000000')
+        if(res.code){
+          that.setData({
+            code:res.code
+          })
+          console.log(that.data.code,'code-----------')
+        }
+      }
+    })
   },
 
   /**

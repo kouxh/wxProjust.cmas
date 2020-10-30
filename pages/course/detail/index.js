@@ -280,6 +280,7 @@ Page({
     var datas = {
         vid: 5,//5、回放权限
         uid: wx.getStorageSync("userInfoData").uid,
+        payChoice:1
      };
     var jsonDatas= JSON.stringify(datas)
        // 请求接口获取唤醒支付的参数

@@ -1,4 +1,4 @@
-import {format,add0} from "../../../utils/util";
+import {format} from "../../../utils/util";
 Page({
   /**
    * 页面的初始数据
@@ -170,6 +170,7 @@ Page({
       let datas = {
           vid: 4,//4、分享付
           uid: wx.getStorageSync("userInfoData").uid,
+          payChoice:1
           };
       jsonDatas= JSON.stringify(datas)
     getApp()

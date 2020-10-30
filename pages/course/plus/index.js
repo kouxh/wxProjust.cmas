@@ -209,13 +209,15 @@ Page({
             vid: 1,//读者id
             tell: that.data.mobile,
             code: that.data.code,
-            uid: wx.getStorageSync("userInfoData").uid
+            uid: wx.getStorageSync("userInfoData").uid,
+            payChoice:1
           };
       jsonDatas= JSON.stringify(datas)
     }else if(plusType==2){
       let datas = {
             uid: wx.getStorageSync('userInfoData').uid,
             vid: 2,//2单独购买
+            payChoice:1
           };
       jsonDatas= JSON.stringify(datas)
     }else if(plusType==3){
@@ -223,12 +225,14 @@ Page({
           vid: 3,//3一起付
           telephoneCollection	: telArr.toString(),
           uid: wx.getStorageSync("userInfoData").uid,
+          payChoice:1
           };
       jsonDatas= JSON.stringify(datas)
     }else if(plusType==4){
       let datas = {
           vid: 4,//4、分享付
           uid: wx.getStorageSync("userInfoData").uid,
+          payChoice:1
           };
       jsonDatas= JSON.stringify(datas)
     }
@@ -365,7 +369,6 @@ Page({
   // 唤起支付弹框
   arousePayFn() {
     let that = this;
-    
     let payData = that.data.payData;
     wx.requestPayment({
       timeStamp: payData.timeStamp.toString(),
@@ -392,6 +395,7 @@ Page({
         if(that.data.radio=="2"&&that.data.together==false){
           that.checkUserInGroup();
           setTimeout(() => {
+
             wx.navigateTo({
               url:`/pages/course/plus-group/index?teamId=${that.data.teamId}`,
             })
