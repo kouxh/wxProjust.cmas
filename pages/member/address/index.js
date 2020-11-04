@@ -36,7 +36,7 @@ Page({
     let title = '新增收货地址'
     if (that.data.editid > 0) {
       title = '编辑收货地址'
-      this.getAddressVip();//获取领取地址
+      this.getAddressVip();//获取邮寄地址
     }
     wx.setNavigationBarTitle({
       title: title

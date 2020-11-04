@@ -20,7 +20,8 @@
 		</view>
 	</view>
   <view class="vip-box" bindtap="plusFn">
-    <view class="vip-left">成为CMAS PLUS会员</view>
+    <view class="vip-left" wx:if="{{vipType==0}}">成为CMAS PLUS会员</view>
+    <view class="vip-left" wx:else>CMAS PLUS会员续费</view>
     <view class="vip-right">
       <van-icon name="arrow"  size="20px"/>
     </view>
@@ -49,7 +50,7 @@
         <navigator url="/pages/member/address-list/index" hover-class="none" class="index-application-content">
            <!-- <van-icon name="orders-o" /> -->
            <image src="/assets/img/icon/address.png" alt="" class="img"></image>
-          <view class="application-content-text">领取地址</view>
+          <view class="application-content-text">邮寄地址</view>
         </navigator>
       </view>
   </view>

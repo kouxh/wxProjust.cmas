@@ -26,7 +26,7 @@
   <view class="content-box" wx:if="{{originalRessList.length==0}}">
     <view class="nomsg-img-box">
         <image mode='aspectFill' src="/assets/img/nomsg.png" alt class="nomsg-img"></image>
-        <view class="tips-msg">您还设置领取地址</view>
+        <view class="tips-msg">您还设置邮寄地址</view>
     </view>
   </view>
   <!-- 底部按钮 -->

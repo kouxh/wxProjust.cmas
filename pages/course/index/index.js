@@ -144,9 +144,9 @@ Page({
     checkLogin('/pages/course/detail/index?id='+id,1,true,1);
   },
   //点击跳转到直播详情
-  liveFn(){
-    checkLogin('/pages/course/live-detail/index?id='+this.data.liveData.l_id,1,true,1);
-  },
+  // liveFn(){
+  //   checkLogin('/pages/course/live-detail/index?id='+this.data.liveData.l_id,1,true,1);
+  // },
  
 
   /**

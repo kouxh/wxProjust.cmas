@@ -130,13 +130,13 @@
     <!-- 开通会员 -->
     <van-dialog use-slot show="{{ isShow }}"  catchtouchmove="true" showConfirmButton="{{false}}" class="dialog-box" width="290px">
          <view style="height:60rpx" catchtap="onClose" > <van-icon name="cross"  class="van-icon1" /></view>
-        <view  class="price-box1" catchtap="liveLimit" >
+        <!-- <view  class="price-box1" catchtap="liveLimit" >
             <view class="up">全年线上课程直播及回看</view>
            <view class="down">
             <image class="img" src="/assets/img/icon/look.png" mode="aspectFill" />
             <text class="buy">购买课程会员</text>
            </view>
-        </view>
+        </view> -->
         <view class="price-box1" catchtap="plusLimit">
             <view class="up">全年杂志赠阅、线上课程直播及回看</view>
            <view class="down">

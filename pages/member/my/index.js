@@ -121,7 +121,7 @@ Page({
       url: '/pages/member/live/index',
     })
   },
-  //跳转到领取地址页
+  //跳转到邮寄地址页
   goForm:function(e){
     // wx.navigateTo({
     //   url: `/pages/course/form/index?type=true`,

@@ -72,7 +72,8 @@
                 </view>
             </view>
             <view class="button-btn-box {{isIphoneX?'IpX-Bottom':''}}" bind:tap="goPayFn">
-                <view class="button-btn-text">成为PLUS会员</view>
+                <view class="button-btn-text" wx:if="{{vipType==0}}">成为PLUS会员</view>
+                <view class="button-btn-text" wx:else>PLUS会员续费</view>
             </view>
         </view>
     </view>

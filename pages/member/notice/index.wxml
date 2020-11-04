@@ -7,7 +7,7 @@
         <view class="circle"></view>
         <view class="text">赠阅全年《管理会计研究》杂志一套，共六本，价值300元（50元/本，共六期）</view>
       </view>
-      <navigator url="/pages/member/order/index" hover-class="none" class="limit-btn">领取地址 +</navigator> 
+      <navigator url="/pages/member/order/index" hover-class="none" class="limit-btn">邮寄地址 +</navigator> 
       <view class="each-limits">
         <view class="circle"></view>
         <view class="text">畅读管理会计研究网站付费文章</view>
@@ -29,7 +29,7 @@
         <view class="text">优先受邀参加主题沙龙、年度峰会等线下活动</view>
       </view>
     </view>
-    <view class="tip">*请您务必填写领取地址，杂志将分期邮寄到该地址，如有变动请联系我们</view>
+    <view class="tip">*请您务必填写邮寄地址，杂志将分期邮寄到该地址，如有变动请联系我们</view>
     <view class="btn" bindtap="confirm">确定</view>
   </view>
 </view>

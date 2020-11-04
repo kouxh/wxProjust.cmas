@@ -3,7 +3,7 @@
         <image src="/assets/img/banner1.jpg" mode='aspectFill' alt=""></image>
 	</view>
 	<!-- 直播 -->
-	<view class="live" bindtap="liveFn">
+	<view class="live">
 		<image mode="aspectFill" class="img" src="https://www.chinamas.cn/{{liveData.l_img}}"/>
 		<view class="live-badge" wx:if="{{liveData.is_end==1}}">
 			<van-icon name="orders-o" size="16px" color="#fff"/>

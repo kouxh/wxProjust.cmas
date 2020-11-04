@@ -33,6 +33,7 @@ Page({
     pageName:'',//跳转页面标题
     together:false,//是否统一支付
     teamId:'',//团id
+    vipType:0
   },
 
   /**
@@ -42,7 +43,7 @@ Page({
     console.log(options,'options----')
     let that = this;
     that.setData({ detailId: options.id,jump:options.page,pageName:options.page });
-    console.log(that.data.pageName)
+    that.checkUserVip();
   },
   //单选框切换
   onChange(event) {
@@ -100,36 +101,22 @@ Page({
       }
     });
   },
-  //点击请支付
-  // payFn(){
-  //   //判断是否拼团已满 如果未满进入邀请页面 已满提示状态状态更改为1
-  //    //显示支付前的状态 --- 查询团是否满员
-  //   let that=this;
-  //   getApp()
-  //       .globalData.api.getPayStatus({
-  //         uid:wx.getStorageSync('userInfoData').uid
-  //       }).then(res=>{
-  //         if(res.err_code=='10047'){
-  //           wx.navigateTo({
-  //             url:`/pages/course/plus-group/index?teamId=${this.data.teamId}`,
-  //           })
-  //         }else if(res.err_code=='10048'){
-  //           that.setData({
-  //             groupShow: false,
-  //             radio: "1"
-  //           })
-  //           return wx.showToast({ title: res.data.msg, icon: "none" });  
-  //         }else if (res.err_code=='10000') {
-  //           that.setData({
-  //             groupShow: false,
-  //             radio: "1"
-  //           })
-  //           wx.navigateTo({
-  //             url:`/pages/course/plus-group/index?teamId=${this.data.teamId}`,
-  //           })
-  //         }
-  //       })
-  // },
+  //判断是否是VIP
+  checkUserVip(){
+    let that=this;
+    getApp()
+      .globalData.api.checkUserVip({
+        uid:wx.getStorageSync('userInfoData').uid
+      }).then(res=>{
+        if (res.bol == true){
+          that.setData({
+            vipType:res.data.is_vip,
+          })
+        }else{
+        wx.showToast({ title: "获取数据失败，请稍后重试哟~", icon: "none" });
+        }
+   })
+  },
  
   //读者优惠点击关闭图标
   onClose() {

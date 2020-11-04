@@ -35,7 +35,7 @@ Page({
            
         });
   },
-  //领取地址
+  //邮寄地址
   getAddress:function(e){
     console.log(e,'---------------')
     var orderNum = e.currentTarget.dataset.order;

@@ -343,6 +343,9 @@ button::after {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-top: 20rpx;
+    padding-bottom: 20rpx;
+
 }
 
 .price-box1 .up {
@@ -373,10 +376,9 @@ button::after {
 .invoice {
     color: #999;
     font-size: 28rpx;
-    height: 70rpx;
+    height: 82rpx;
     text-align: center;
-    line-height: 70rpx;
-
+    line-height: 82rpx;
 }
 
 .back-box {

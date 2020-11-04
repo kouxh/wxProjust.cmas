@@ -109,11 +109,20 @@ Page({
     let shi = parseInt(shijianc / 1000 / 60 / 60) % 24; //时
     let fen = parseInt((shijianc / 1000 / 60) % 60); //分
     let miao = parseInt((shijianc / 1000) % 60); //秒
-    let shuziArr = [tian, shi, fen, miao];
-    for (let i = 0; i < shuziArr.length; i++) {
-      shuziArr[i] = shuziArr[i] < 10 ? "0" + shuziArr[i] : shuziArr[i];
-    }
-    that.setData({ countDownStr: shuziArr.join(":") });
+    // let shuziArr = [tian, shi, fen, miao];
+    // for (let i = 0; i < shuziArr.length; i++) {
+    //   shuziArr[i] = shuziArr[i] < 10 ? "0" + shuziArr[i] : shuziArr[i];
+    // }
+    tian = tian < 10 ? '0' + tian : tian;
+    shi = shi < 10 ? '0' + shi : shi;
+    fen = fen < 10 ? '0' + fen : fen;
+    miao = miao < 10 ? '0' + miao : miao;
+
+  //  let countDown = day + '天' + hour + '时' + min + '分' + sec + '秒';
+   let countDown = tian + '天' + shi + '时' + fen + '分' + miao+ '秒';
+   that.setData({ countDownStr: countDown });
+   console.log(countDownStr,'------')
+    // that.setData({ countDownStr: shuziArr.join(":") });
     // let partakeBool = false; // 是否参与该团
     // for (let userInfo of that.data.userInfoArr) {
     //   if (userInfo.photo) partakeBool = true;

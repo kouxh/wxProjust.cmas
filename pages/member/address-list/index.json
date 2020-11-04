@@ -2,5 +2,5 @@
   "usingComponents": {
     "van-loading": "@vant/weapp/loading/index"
   },
-  "navigationBarTitleText": "领取地址"
+  "navigationBarTitleText": "邮寄地址"
 }
