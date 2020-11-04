@@ -84,7 +84,7 @@ Page({
       //   indexKey=0
       //   this.setData({ _index:indexKey})
       // }
-      if (indexKey + 1 < meigeSP.length && scrollTop >= meigeSP[indexKey] * 1) {
+      if (indexKey + 1 < meigeSP.length && scrollTop >= meigeSP[indexKey] * 0.9) {
         this.setData({ _index: indexKey + 1 })
         indexKey += 1
       }

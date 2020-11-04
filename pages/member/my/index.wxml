@@ -9,10 +9,11 @@
 				<block wx:else>
 					<view class="nickname">{{userInfo.nickName?userInfo.nickName:'用户名'}}</view>
 					<view class="level" wx:if="{{vipType==0}}">会员等级：普通用户</view>
-          <view class="level" wx:if="{{vipType==1}}">会员等级：CMAS大讲堂回看权限</view>
+          <view class="level" wx:if="{{vipType==5}}">会员等级：CMAS大讲堂回看权限</view>
           <view class="level" wx:if="{{vipType==2}}">会员等级：PLUS会员</view>
           <view class="level" wx:if="{{vipType==3}}">会员等级：PLUS会员（团购版）</view>
-          <view class="level" wx:if="{{vipType==4}}">会员等级：PLUS会员（读者优惠版）</view>
+          <view class="level" wx:if="{{vipType==4}}">会员等级：PLUS会员（分享版）</view>
+          <view class="level" wx:if="{{vipType==1}}">会员等级：PLUS会员（读者优惠版）</view>
 				</block>
 
 			</view>
