@@ -26,12 +26,11 @@
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
+    "navigationBarBackgroundColor": "#FAFAFA",
     "navigationBarTitleText": "CMAS大讲堂",
     "navigationBarTextStyle": "black",
     "backgroundColor": "#f8f8f8",
-    "onReachBottomDistance": 300,
-    "enablePullDownRefresh":false
+    "onReachBottomDistance": 300
   },
   "tabBar": {
     "custom": false,

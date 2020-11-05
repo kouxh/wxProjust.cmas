@@ -426,6 +426,8 @@ Page({
   onPullDownRefresh: function () {
     // this.descDataFn();//大讲堂详情
     this.checkUserVipFn();//判断是否是VIP
+    // 收起页面下拉动画
+    wx.stopPullDownRefresh();
   },
 
   /**
