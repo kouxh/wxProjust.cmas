@@ -7,11 +7,11 @@
 		<image mode="aspectFill" class="img" src="https://www.chinamas.cn/{{liveData.l_img}}"/>
 		<view class="live-badge" wx:if="{{liveData.is_end==1}}">
 			<van-icon name="orders-o" size="16px" color="#fff"/>
-			<view class="badge-new">直播预告</view>
+			<view class="badge-new">活动预告</view>
 		</view>
 		<view class="live-badge" wx:if="{{liveData.is_end==0}}">
 			<van-icon name="orders-o" size="16px" color="#fff"/>
-			<view class="badge-new">直播结束</view>
+			<view class="badge-new">活动结束</view>
 		</view>
 	</view>
 	<!-- 视频 -->

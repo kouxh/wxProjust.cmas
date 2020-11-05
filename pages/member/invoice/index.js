@@ -88,7 +88,6 @@ Page({
         return wx.showToast({ title: "请输入正确联系电话", icon: "none" });
       }
       //编辑
-      console.log(that.data.orderNum,'0000000000000')
     if(that.data.invoiceId!="" && that.data.orderNum!=undefined){
       that.orderInvoiceApi();
     }else if(that.data.invoiceId!="" && that.data.orderNum==undefined){
