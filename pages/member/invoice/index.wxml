@@ -15,7 +15,7 @@
         <view class="invoice-type">发票类型</view>
         <view class="type-box">
           <view class="type">电子发票</view>
-          <view class="tip">*15个工作日内开具并发至邮箱!</view>
+          <view class="tip">*30个工作日内开具并发至邮箱!</view>
         </view>
       </view>
       <view class="title-box">

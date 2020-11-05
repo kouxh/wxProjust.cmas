@@ -136,6 +136,14 @@ orderAddressApi(e){
       url: '/pages/member/address/index?id=' + e.currentTarget.dataset.editid
     })
   },
+   // 兼容ios下拉
+   onPageScroll:function(e){
+    if(e.scrollTop<0){
+      wx.pageScrollTo({
+        scrollTop: 0
+      })
+    }
+  },
 
 
   /**

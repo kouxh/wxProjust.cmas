@@ -17,6 +17,14 @@ Page({
   onLoad: function (options) {
     this.collectionListFn();
   },
+   // 兼容ios下拉
+   onPageScroll:function(e){
+    if(e.scrollTop<0){
+      wx.pageScrollTo({
+        scrollTop: 0
+      })
+    }
+  },
   // 获取我的收藏列表
   collectionListFn(){
     let that=this;
