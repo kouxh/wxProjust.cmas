@@ -30,9 +30,8 @@
     "navigationBarTitleText": "CMAS大讲堂",
     "navigationBarTextStyle": "black",
     "backgroundColor": "#f8f8f8",
-    "backgroundColorTop": "#00f",
     "onReachBottomDistance": 300,
-    "enablePullDownRefresh": false
+    "enablePullDownRefresh":false
   },
   "tabBar": {
     "custom": false,

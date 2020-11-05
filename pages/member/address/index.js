@@ -26,13 +26,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options,'==========')
     let that=this;
     that.setData({
       editid: options.id,
       orderNum:options.orderNum
     })
-    console.log(that.data.editid,'===========')
     let title = '新增收货地址'
     if (that.data.editid > 0) {
       title = '编辑收货地址'
@@ -57,7 +55,6 @@ Page({
   },
 //点击右上方完成按钮
   getArea: function(val) {
-    console.log('getArea-- ',val)
     if (val.detail.values.length >= 3) {
       let areaStr = val.detail.values[0].name + '/' + val.detail.values[1].name + '/' + val.detail.values[2].name;
       this.setData({
@@ -73,11 +70,9 @@ Page({
   },
 //选项改变时触发
   showArea: function(val) {
-    console.log('showArea-- ',val)
   },
 //点击关闭地址弹框
  colseArea: function() {
-    console.log('colseArea-- ')
     this.setData({
       areaShow:false
     })
@@ -189,7 +184,6 @@ Page({
           that.setData({
             addId:res.data.id
           })
-          console.log(that.data.orderNum,'33333')
           if(that.data.orderNum!=undefined ){
             that.orderAddressApi();
           }else{
@@ -223,7 +217,6 @@ Page({
     })
     .then(res => {
       if (res.bol) {
-        console.log(res,'------------')
       wx.showToast({ title: res.data.msg, icon: "none" });
       setTimeout(() => {
         wx.navigateBack({

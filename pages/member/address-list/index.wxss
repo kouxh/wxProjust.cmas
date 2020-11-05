@@ -38,7 +38,7 @@
 .mysite-content-default {
   font-size: 30rpx;
   color: #333;
-  padding-left: 96rpx;
+  padding-left: 70rpx;
   padding-top: 10rpx;
 }
 
@@ -180,4 +180,15 @@
   height: 50rpx;
   object-fit: cover;
 
+}
+.default{
+  border-radius: 6rpx;
+  margin-left: 20rpx;
+  padding: 2rpx 4rpx;
+  text-align: center;
+  background-color: #ff4444;
+  line-height: 32rpx;
+  font-size: 20rpx;
+  color: #fff;
+  height: 30rpx;
 }

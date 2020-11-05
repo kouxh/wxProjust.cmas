@@ -6,12 +6,16 @@ Page({
     isIphoneX: getApp().globalData.isIphoneX,
     isBtnClicked: false, //点击的初始数据
     isLoad:true,//是否加载
+    orderNum:'',//订单编号
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      orderNum:options.orderNum
+    })
     this.gainRessListFn();
   },
   // 获取地址列表
@@ -95,7 +99,37 @@ Page({
       }
     });
   },
+//分享成团订单添加收货地址
+orderAddressApi(e){
+  let that =this;
+  if(that.data.orderNum!=undefined){
+    getApp()
+    .globalData.api.orderAddressApi({
+      uid:wx.getStorageSync("userInfoData").uid,
+      aid:e.currentTarget.dataset.addid,
+      orderNum:that.data.orderNum
+    })
+    .then(res => {
+      if (res.bol) {
+      wx.showToast({ title: res.data.msg, icon: "none" });
+      let pages = getCurrentPages() //获取当前页面栈的信息
+      let prevPage = pages[pages.length - 2] //获取上一个页面
+      prevPage.setData({ //把需要回传的值保存到上一个页面
+        addressData: "succeed"
+      });
+      setTimeout(() => {
+        wx.navigateBack({
+          delta: 1
+        })
+      }, 1000)
+      } else {
+        wx.showToast({ title: res.data.msg, icon: "none" });
+      }
+    });
+  }
+  
 
+},
   // 点击“编辑地址”时
   onEdit(e) {
     wx.navigateTo({

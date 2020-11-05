@@ -8,6 +8,5 @@
     "van-datetime-picker": "@vant/weapp/datetime-picker/index",
     "van-popup": "@vant/weapp/popup/index"
   },
-  "navigationBarTitleText": "基本信息",
-  "enablePullDownRefresh": false
+  "navigationBarTitleText": "基本信息"
 }

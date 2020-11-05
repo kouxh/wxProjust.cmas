@@ -7,6 +7,5 @@
     "van-popup": "@vant/weapp/popup/index",
     "van-icon": "@vant/weapp/icon/index"
   },
-  "navigationBarTitleText": "PLUS会员",
-  "enablePullDownRefresh": false
+  "navigationBarTitleText": "PLUS会员"
 }

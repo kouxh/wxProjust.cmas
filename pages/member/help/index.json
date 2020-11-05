@@ -2,6 +2,5 @@
   "usingComponents": {
     "van-icon": "@vant/weapp/icon/index"
   },
-  "navigationBarTitleText": "帮助中心",
-  "enablePullDownRefresh": false
+  "navigationBarTitleText": "帮助中心"
 }

@@ -37,10 +37,9 @@ Page({
   },
   //邮寄地址
   getAddress:function(e){
-    console.log(e,'---------------')
     var orderNum = e.currentTarget.dataset.order;
     wx.navigateTo({
-      url: `/pages/member/address/index?orderNum=${orderNum}`
+      url: `/pages/member/address-list/index?orderNum=${orderNum}`
     })
   },
   //开具发票
@@ -61,7 +60,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    if (this.data.addressData) {
+      this.gainRessListFn();
+      this.data.addressData = null;
+    }
   },
 
   /**

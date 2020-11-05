@@ -4,12 +4,12 @@
 <view class="page page-member-mysite">
   <view class="mysite-list" wx:if="{{originalRessList.length>0}}">
     <view class="mysite" wx:for="{{originalRessList}}" wx:key="ressListI" wx:for-item="ressListD" wx:for-index="ressListI">
-      <view class="mysite-content">
+      <view class="mysite-content" bindtap="orderAddressApi" data-addid="{{ressListD.id}}">
         <view class="mysite-content-name">
           {{ressListD.consignee}}
           <view class="mysite-content-default">{{ressListD.tell}}</view>
+          <view class="default" wx:if="{{ressListD.status==1}}">默认</view>
         </view>
-         
         <view class="mysite-content-site">
          {{ressListD.city}}{{ressListD.area}}{{ressListD.county}}{{ressListD.desc_address}}
         </view>
@@ -17,7 +17,6 @@
       <view class="mysite-edit">
         <view class="mysite-edit-icon">
           <image src="/assets/img/icon/info.jpg" bind:tap="onEdit" data-editid="{{ressListD.id}}" alt="" class="img"></image>
-          <!-- <icon class="iconfont icon-bianji" data-editid="{{ressListD.id}}" bind:tap="onEdit" /> -->
         </view>
       </view>
     </view>
