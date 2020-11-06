@@ -1,6 +1,5 @@
 {
   "usingComponents": {
     "van-loading": "@vant/weapp/loading/index"
-  },
-  "navigationBarTitleText": "直播课程"
+  }
 }

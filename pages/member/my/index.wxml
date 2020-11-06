@@ -63,7 +63,7 @@
         <view class="index-application-content" bindtap="courseFn">
           <!-- <van-icon name="todo-list-o" color="red" size="20px"/> -->
           <image src="/assets/img/icon/course.jpg" alt="" class="img"></image>
-          <view class="application-content-text">直播课程</view>
+          <view class="application-content-text">活动课程</view>
         </view>
         <navigator url="/pages/member/content/index" hover-class="none" class="index-application-content" >
            <!-- <van-icon name="like-o" color="red" size="20px"/> -->
