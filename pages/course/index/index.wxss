@@ -66,7 +66,7 @@ page{
   top: 0rpx;
   left: 0;
   background-color: #e33229;
-  border-radius: 6rpx;
+  /* border-radius: 4rpx; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -77,26 +77,24 @@ page{
   border-bottom: none;
 }
 .live {
-  height: 370rpx;
   background-color: #fff;
   padding-left: 32rpx;
   display: flex;
   align-items: center;
-  margin-top: -20rpx;
   position: relative;
-  border-bottom: 2rpx solid #eee;
-  border-top: 2rpx solid #eee;
   margin-top: 20rpx;
 }
 .live .img {
   width: 686rpx;
   height: 380rpx;
-  object-fit: contain;
+  object-fit: cover;
+  border-radius: 2px;
+
 }
 .live .live-badge {
   width: 142rpx;
   height: 38rpx;
-  top: -6rpx;
+  top: 0rpx;
   left: 32rpx;
   display: flex;
   justify-content: center;
