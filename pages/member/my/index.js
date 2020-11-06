@@ -93,13 +93,7 @@ Page({
         }
   })
   },
-  onPageScroll:function(e){
-    if(e.scrollTop<0){
-      wx.pageScrollTo({
-        scrollTop: 0
-      })
-    }
-  },
+ 
   //判断是否是VIP
   checkUserVip(){
     let that=this;

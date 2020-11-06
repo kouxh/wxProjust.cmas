@@ -16,7 +16,8 @@ Page({
     liveData:{},//直播图片
     end:null,//视频播放结束
     autoplay:false,
-    url:'/assets/img/1.png'
+    url:'/assets/img/1.png',
+    bannerImg:''
   },
   onLoad: function (options) {
     // 基础数据监测,以及初始请求
@@ -46,6 +47,7 @@ Page({
             that.setData({
               dataList: res.data.data.list,
               liveData:res.data.data.live,
+              bannerImg:res.data.data.banner.s_img
             });
           });
         }else{
@@ -69,7 +71,6 @@ Page({
   },
   //页面滚动触发
   onPageScroll(event) {
-    console.log(event,'---------------')
     this.setData({
       end:null,
       autoplay:true

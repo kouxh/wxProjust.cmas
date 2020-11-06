@@ -87,8 +87,6 @@ page{
   border-bottom: 2rpx solid #eee;
   border-top: 2rpx solid #eee;
   margin-top: 20rpx;
-  
-  
 }
 .live .img {
   width: 686rpx;

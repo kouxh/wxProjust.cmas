@@ -71,14 +71,7 @@ Page({
       }
     })
   },
-    // 兼容ios下拉
-    onPageScroll:function(e){
-      if(e.scrollTop<0){
-        wx.pageScrollTo({
-          scrollTop: 0
-        })
-      }
-    },
+   
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

@@ -1,6 +1,7 @@
 <view class="page-course-index">
 	<view class="header">
-        <image src="/assets/img/banner1.jpg" mode='aspectFill' alt=""></image>
+        <!-- <image src="/assets/img/banner1.jpg" mode='aspectFill' alt=""></image> -->
+				<image src="https://www.chinamas.cn/{{bannerImg}}" mode='aspectFill' alt=""></image>
 	</view>
 	<!-- 直播 -->
 	<view class="live">
