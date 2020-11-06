@@ -33,22 +33,18 @@
     </view>
     <view class="index-application-content-box">
         <navigator hover-class="none" url="/pages/member/order/index" class="index-application-content" >
-          <!-- <van-icon name="orders-o" color="red" size="20px"/> -->
           <image src="/assets/img/icon/order.jpg" alt="" class="img"></image>
           <view class="application-content-text">订单</view>
         </navigator>
         <navigator url="/pages/member/index/index" hover-class="none" class="index-application-content" >
-           <!-- <van-icon name="contact" color="red" size="20px"/> -->
            <image src="/assets/img/icon/info.jpg" alt="" class="img"></image>
           <view class="application-content-text">基本信息</view>
         </navigator>
         <view class="index-application-content" bindtap="formRouter">
-           <!-- <van-icon name="orders-o" /> -->
            <image src="/assets/img/icon/inviot.jpg" alt="" class="img"></image>
           <view class="application-content-text">发票</view>
         </view>
         <navigator url="/pages/member/address-list/index" hover-class="none" class="index-application-content">
-           <!-- <van-icon name="orders-o" /> -->
            <image src="/assets/img/icon/address.png" alt="" class="img"></image>
           <view class="application-content-text">邮寄地址</view>
         </navigator>
@@ -61,7 +57,6 @@
     </view>
     <view class="index-application-content-box">
         <view class="index-application-content" bindtap="courseFn">
-          <!-- <van-icon name="todo-list-o" color="red" size="20px"/> -->
           <image src="/assets/img/icon/course.jpg" alt="" class="img"></image>
           <view class="application-content-text">活动课程</view>
         </view>
@@ -71,14 +66,12 @@
            <view class="application-content-text">收藏</view>
         </navigator>
         <navigator url="/pages/member/comment/index" hover-class="none" class="index-application-content">
-           <!-- <van-icon name="edit" color="red" size="20px"/> -->
             <image src="/assets/img/icon/conment.jpg" alt="" class="img"></image>
             <view class="application-content-text">评论</view>
         </navigator>
         <view class="replay-num" wx:if="{{replyNum>0}}">{{replyNum}}</view>
         <view class="index-application-content" style="paading-top:30rpx" bindtap="notice">
            <van-icon name="bulb-o" size="25px" color="#999"/>
-            <!-- <image src="/assets/img/icon/conment.jpg" alt="" class="img"></image> -->
             <view class="application-content-text">站内信</view>
         </view>
         <view class="notice-state" wx:if="{{noticeState!=0}}"></view>

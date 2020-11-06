@@ -8,24 +8,29 @@ Page({
   data: {
     contactPhone:'400 819 1255',
     isShow: true, // 是否显示'公众号'组件
+    bannerImg:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // 查看是否授权
-    // wx.getSetting({
-    //   success: function (res) {
-    //     if (!res.authSetting['scope.userInfo']) {
-    //       //未登录,跳转到登录页
-    //       wx.reLaunch({
-    //         url: '/pages/login/index',
-    //       })
-    //     }
-    //   }
-    // })
-      
+   this.classRoomBanner()
+  },
+  //图片
+  classRoomBanner(){
+    let that=this;
+    getApp()
+      .globalData.api.classRoomBanner({
+      }).then(res=>{
+        if (res.bol == true){
+          that.setData({
+            bannerImg:res.data.banner.s_img,
+          })
+        }else{
+        wx.showToast({ title: res.data.msg, icon: "none" });
+        }
+   })
   },
    /**点击底部tab */
    onTabItemTap(item) {
@@ -54,7 +59,6 @@ Page({
 
   // 加载'失败'时
   errorFn(e) {
-    // wx.showToast({ title: e.detail.errMsg, icon: "none" });
     this.setData({
       isShow: false,
     });

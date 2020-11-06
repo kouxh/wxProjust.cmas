@@ -27,10 +27,16 @@ Page({
         })
         .then(res => {
           if (res.bol == true){
-            that.setData({
+            if(res.data!=null){
+              that.setData({
               collectionList: res.data,
-              listShowType: res.data.length>0 ? 1 : 2
+              listShowType: res.data.length > 0 ? 1 : 2
             });
+            }else{
+              that.setData({
+                listShowType: 2
+              });
+            } 
           }else{
            wx.showToast({ title: "获取数据失败,请稍后重试哟~", icon: "none" });
           }

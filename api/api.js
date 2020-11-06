@@ -282,6 +282,14 @@ export default {
   sharePageShow(params) {
     return fetch.fetchGet("applets/forum/sharePageShow", params);
   },
+  /**
+   *获取banner
+   * @param  {[type]} params [description]
+   * @return {[type]}        [description]
+   */
+  classRoomBanner(params) {
+    return fetch.fetchGet("applets/forum/classRoomBanner", params);
+  },
 
 }
 
