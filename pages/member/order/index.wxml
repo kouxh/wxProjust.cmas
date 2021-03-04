@@ -22,12 +22,11 @@
                         <!-- <van-icon name="delete" /> -->
                     </view>
                     <view class="info-top-down">
-                        <view class="down-left" wx:if="{{item.status!='已过期'}}">期限：{{item.start_time}}-{{item.end_time}}</view>
-                        <view class="down-left" wx:if="{{item.status=='已过期'}}">期限：{{item.status}}</view>
+                        <view class="down-left">期限：{{item.status}}</view>
                         <view class="down-right">数量：{{item.num}}</view>
                     </view>
                 </view>
-                <view class="info-bottom" wx:if="{{item.status!='已过期'}}">
+                <view class="info-bottom" wx:if="{{item.status!='待支付'}}">
                     <view class="addBtn" bindtap="getAddress" data-order="{{item.order_num}}" wx:if="{{item.addID==0 &&(item.vid==2||item.vid==3||item.vid==4)}}">邮寄地址</view>
                     <view class="addBtn1" wx:if="{{item.invoice==0}}" bindtap="geInvoice" data-order="{{item.order_num}}">开具发票</view>
                 </view>

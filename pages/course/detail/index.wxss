@@ -148,7 +148,7 @@
     border-radius: 10rpx;
     padding: 24rpx;
     box-sizing: border-box;
-    width: 686rpx;
+    width: 630rpx;
     height: 160rpx;
     font-size: 26rpx;
     color: #333;
