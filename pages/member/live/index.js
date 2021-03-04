@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isLoad:false,
+    isLoad:true,
     // listData:[],//直播列表数据
     statu:1,//1 已报名 2 已学习 3 未学习
     liveListData:[],//直播列表数据
@@ -28,7 +28,8 @@ Page({
       console.log(res,'---------------')
       if (res.bol) {
         that.setData({
-          liveListData:res.data
+          liveListData:res.data,
+          isLoad:false
         })
       } else {
         wx.showToast({ title: res.data.msg, icon: "none" });
